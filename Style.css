@@ -1,0 +1,150 @@
+/* Colors used:
+   #7BB0BC  main blue (header)
+   #8EB8BF  light blue (hover on dark parts)
+   #F9E5AE  light yellow (hover / links)
+   #F8F0EA  background
+   #30335B  text color + footer
+*/
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Tahoma, Arial, sans-serif;
+  background-color: #F8F0EA;
+  color: #30335B;
+  /* This keeps the footer at the bottom even if main is empty */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+a {
+  text-decoration: none;
+}
+
+/* ---------- Header ---------- */
+.header {
+  background-color: #7BB0BC;
+  padding: 10px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 4px solid #F9E5AE;
+}
+
+.logo img {
+  height: 60px;
+  display: block;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav a {
+  color: #30335B;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 8px 14px;
+  border-radius: 6px;
+}
+
+.nav a:hover {
+  background-color: #F9E5AE;
+}
+
+.nav .logout {
+  border: 2px solid #30335B;
+}
+
+.nav .logout:hover {
+  background-color: #30335B;
+  color: #F9E5AE;
+}
+
+/* ---------- Main (empty) ---------- */
+main {
+  flex: 1;
+}
+
+/* ---------- Footer ---------- */
+.footer {
+  background-color: #30335B;
+  color: #F8F0EA;
+  padding: 30px;
+  border-top: 4px solid #F9E5AE;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #8EB8BF;
+}
+
+.footer-about {
+  max-width: 400px;
+}
+
+.footer-logo {
+  height: 50px;
+  margin-bottom: 10px;
+  background-color: #F8F0EA;
+  padding: 5px;
+  border-radius: 6px;
+}
+
+.footer-about p {
+  margin: 0;
+  line-height: 1.8;
+}
+
+.footer-links h3 {
+  margin: 0 0 10px 0;
+  color: #F9E5AE;
+}
+
+.footer-links a {
+  display: block;
+  color: #F8F0EA;
+  margin-bottom: 8px;
+}
+
+.footer-links a:hover {
+  color: #F9E5AE;
+}
+
+.copyright {
+  text-align: center;
+  margin: 20px 0 0 0;
+  font-size: 14px;
+}
+
+/* ---------- Mobile ---------- */
+@media (max-width: 800px) {
+  .header {
+    flex-direction: column;
+    gap: 10px;
+    padding: 10px;
+  }
+
+  .nav {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .nav a {
+    font-size: 14px;
+    padding: 6px 10px;
+  }
+
+  .footer-top {
+    flex-direction: column;
+  }
+}
