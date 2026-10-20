@@ -10,95 +10,54 @@
   <!-- التنسيق المشترك للموقع -->
   <link rel="stylesheet" href="Style.css">
 
-  <!-- تنسيق صفحة الملف الشخصي -->
+  <!-- تنسيق صفحة الملف الشخصي فقط -->
   <style>
 
-    /* =========================
+    /* ========================================
        PROFILE PAGE
-    ========================= */
+    ======================================== */
 
     .profile-page {
-      padding: 50px 24px 70px;
+      padding: 48px 24px 70px;
     }
 
     .profile-container {
-      width: min(950px, 100%);
+      width: min(760px, 100%);
       margin: 0 auto;
     }
 
 
-    /* =========================
-       PAGE HEADING
-    ========================= */
+    /* ========================================
+       PAGE TITLE
+    ======================================== */
 
-    .page-heading {
+    .profile-heading {
       display: flex;
       align-items: center;
-      gap: 14px;
-      margin-bottom: 28px;
+      justify-content: center;
+      gap: 10px;
+
+      margin-bottom: 8px;
     }
 
-    .heading-sun {
-      width: 58px;
-      height: 58px;
-      object-fit: contain;
-    }
+    .profile-heading h1 {
+      margin: 0;
 
-    .heading-text h1 {
-      margin: 0 0 4px;
       color: var(--ink-dark);
       font-size: 34px;
       font-weight: 500;
     }
 
-    .heading-text p {
-      margin: 0;
-      color: var(--ink);
-      font-size: 16px;
-      font-weight: 300;
+    .profile-heading img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
     }
 
+    .profile-subtitle {
+      margin: 0 0 30px;
 
-    /* =========================
-       MAIN PROFILE FRAME
-    ========================= */
-
-    .profile-frame {
-      padding: 32px;
-
-      background-color: var(--header-bg);
-      border: 1px solid var(--teal-light);
-      border-radius: 24px;
-
-      box-shadow: 0 10px 28px rgba(46, 85, 96, 0.10);
-    }
-
-
-    /* =========================
-       STUDENT INTRO
-    ========================= */
-
-    .student-intro {
-      margin-bottom: 22px;
-      padding: 18px 20px;
-
-      background-color: var(--beige);
-
-      /* لمسة غامقة بسيطة */
-      border-right: 5px solid var(--ink);
-      border-radius: 14px;
-    }
-
-    .student-intro h2 {
-      margin: 0 0 6px;
-
-      color: var(--ink-dark);
-      font-size: 26px;
-      font-weight: 500;
-    }
-
-    .student-intro p {
-      margin: 0;
+      text-align: center;
 
       color: var(--ink);
       font-size: 15px;
@@ -106,42 +65,89 @@
     }
 
 
-    /* =========================
-       PROFILE SECTIONS
-    ========================= */
+    /* ========================================
+       STUDENT NAME
+    ======================================== */
 
-    .profile-section {
-      margin-top: 18px;
-      padding: 25px;
+    .student-intro {
+      margin-bottom: 20px;
+      padding: 18px 22px;
 
-      background-color: var(--beige);
-      border-radius: 18px;
+      background-color: var(--header-bg);
+
+      border: 1px solid var(--teal-light);
+      border-right: 5px solid var(--ink);
+      border-radius: 15px;
+
+      box-shadow: 0 5px 15px rgba(46, 85, 96, 0.08);
     }
 
-    .section-header {
-      margin-bottom: 19px;
-    }
-
-    .section-title {
-      margin: 0;
+    .student-intro h2 {
+      margin: 0 0 5px;
 
       color: var(--ink-dark);
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 500;
     }
 
-    .section-description {
-      margin: 5px 0 0;
+    .student-intro p {
+      margin: 0;
 
       color: var(--ink);
-      font-size: 13px;
+      font-size: 14px;
       font-weight: 300;
     }
 
 
-    /* =========================
+    /* ========================================
+       SHARED PROFILE CARD
+    ======================================== */
+
+    .profile-card {
+      margin-bottom: 24px;
+
+      overflow: hidden;
+
+      background-color: var(--header-bg);
+
+      border-radius: 17px;
+
+      box-shadow: 0 5px 16px rgba(46, 85, 96, 0.10);
+    }
+
+
+    /* ========================================
+       DARK SECTION HEADER
+    ======================================== */
+
+    .card-header {
+      padding: 15px 22px;
+
+      background-color: var(--ink-dark);
+      border-bottom: 3px solid var(--gold);
+    }
+
+    .card-header h2 {
+      margin: 0;
+
+      color: var(--header-bg);
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+
+    /* ========================================
+       CARD BODY
+    ======================================== */
+
+    .card-body {
+      padding: 22px;
+    }
+
+
+    /* ========================================
        BASIC INFORMATION
-    ========================= */
+    ======================================== */
 
     .student-info {
       display: grid;
@@ -149,37 +155,37 @@
       gap: 14px;
     }
 
-    .info-box {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
+    .info-item {
+      padding: 15px 17px;
 
-      padding: 17px 19px;
+      background-color: var(--beige);
 
-      background-color: var(--header-bg);
-
-      /* الغامق كتفصيلة فقط */
-      border-right: 4px solid var(--ink);
-
-      border-radius: 12px;
+      border: 1px solid var(--teal-light);
+      border-radius: 11px;
     }
 
     .info-label {
+      display: block;
+
+      margin-bottom: 6px;
+
       color: var(--ink);
       font-size: 13px;
       font-weight: 300;
     }
 
     .info-value {
+      display: block;
+
       color: var(--ink-dark);
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 500;
     }
 
 
-    /* =========================
+    /* ========================================
        STUDENT RECORD SUMMARY
-    ========================= */
+    ======================================== */
 
     .record-summary {
       display: grid;
@@ -189,21 +195,23 @@
       margin-bottom: 25px;
     }
 
-    .summary-box {
+    .summary-item {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 14px;
 
-      padding: 18px;
+      padding: 17px;
 
-      background-color: var(--header-bg);
+      background-color: var(--beige);
+
       border: 1px solid var(--gold);
-      border-radius: 14px;
+      border-radius: 12px;
     }
 
     .summary-icon {
-      width: 52px;
-      height: 52px;
+      width: 48px;
+      height: 48px;
+
       flex-shrink: 0;
 
       display: flex;
@@ -211,34 +219,37 @@
       justify-content: center;
 
       background-color: var(--yellow);
+
       border-radius: 50%;
 
-      color: var(--ink-dark);
-      font-size: 23px;
+      font-size: 21px;
     }
 
     .summary-number {
       display: block;
+
       margin-bottom: 2px;
 
       color: var(--ink-dark);
-      font-size: 24px;
+      font-size: 23px;
       font-weight: 500;
     }
 
     .summary-label {
+      display: block;
+
       color: var(--ink);
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 300;
     }
 
 
-    /* =========================
+    /* ========================================
        ACHIEVEMENTS
-    ========================= */
+    ======================================== */
 
     .achievements-title {
-      margin: 0 0 13px;
+      margin: 0 0 12px;
 
       color: var(--ink-dark);
       font-size: 17px;
@@ -251,28 +262,26 @@
       gap: 10px;
     }
 
-    .achievement-card {
+    .achievement-item {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
+      gap: 16px;
 
-      padding: 16px 18px;
+      padding: 15px 17px;
 
-      background-color: var(--header-bg);
+      background-color: var(--beige);
 
-      /* لمسة من لون هوية مِراس */
       border-right: 4px solid var(--teal);
-
-      border-radius: 12px;
+      border-radius: 11px;
     }
 
     .achievement-info {
       flex: 1;
     }
 
-    .achievement-info h4 {
-      margin: 0 0 5px;
+    .achievement-info h3 {
+      margin: 0 0 4px;
 
       color: var(--ink-dark);
       font-size: 15px;
@@ -288,50 +297,50 @@
     }
 
 
-    /* =========================
-       VERIFIED STATUS
-    ========================= */
+    /* ========================================
+       VERIFIED BADGE
+    ======================================== */
 
     .achievement-status {
       flex-shrink: 0;
 
-      padding: 5px 12px;
+      padding: 5px 13px;
 
-      /* الغامق مستخدم بمساحة صغيرة فقط */
-      background-color: var(--ink);
-      color: var(--header-bg);
+      background-color: var(--teal-light);
+      color: var(--ink-dark);
 
-      border-radius: 999px;
+      border-radius: 20px;
 
       font-size: 12px;
       font-weight: 500;
     }
 
 
-    /* =========================
-       EMPTY ACHIEVEMENTS
-    ========================= */
+    /* ========================================
+       EMPTY ACHIEVEMENTS STATE
+    ======================================== */
 
     .empty-achievements {
       display: none;
 
-      padding: 22px;
+      padding: 28px 20px;
 
       text-align: center;
 
-      background-color: var(--header-bg);
-      border: 1px dashed var(--teal);
-      border-radius: 12px;
+      background-color: var(--beige);
+
+      border: 2px dashed var(--teal-light);
+      border-radius: 11px;
 
       color: var(--ink);
       font-size: 14px;
-      font-weight: 400;
+      font-weight: 300;
     }
 
 
-    /* =========================
+    /* ========================================
        RESPONSIVE
-    ========================= */
+    ======================================== */
 
     @media (max-width: 650px) {
 
@@ -339,34 +348,38 @@
         padding: 35px 16px 50px;
       }
 
-      .heading-sun {
-        width: 48px;
-        height: 48px;
-      }
-
-      .heading-text h1 {
+      .profile-heading h1 {
         font-size: 27px;
       }
 
-      .heading-text p {
-        font-size: 14px;
+      .profile-heading img {
+        width: 35px;
+        height: 35px;
       }
 
-      .profile-frame {
-        padding: 20px 15px;
-        border-radius: 19px;
+      .profile-subtitle {
+        font-size: 14px;
+        margin-bottom: 23px;
       }
 
       .student-intro {
-        padding: 16px;
+        padding: 16px 17px;
       }
 
       .student-intro h2 {
-        font-size: 22px;
+        font-size: 20px;
       }
 
-      .profile-section {
-        padding: 19px 15px;
+      .card-header {
+        padding: 14px 17px;
+      }
+
+      .card-header h2 {
+        font-size: 18px;
+      }
+
+      .card-body {
+        padding: 17px;
       }
 
       .student-info,
@@ -374,9 +387,8 @@
         grid-template-columns: 1fr;
       }
 
-      .achievement-card {
+      .achievement-item {
         align-items: flex-start;
-        flex-direction: column;
       }
 
     }
@@ -388,99 +400,91 @@
 <body data-role="student" data-page="profile">
 
 
-  <!-- =========================
+  <!-- ========================================
        SHARED HEADER
-  ========================== -->
+  ========================================= -->
 
-  <header
-    class="header"
-    id="site-header">
-  </header>
+  <header class="header" id="site-header"></header>
 
 
 
-  <!-- =========================
+  <!-- ========================================
        PROFILE PAGE
-  ========================== -->
+  ========================================= -->
 
   <main class="profile-page">
 
     <div class="profile-container">
 
 
-      <!-- عنوان الصفحة -->
-      <div class="page-heading">
+      <!-- ====================================
+           PAGE TITLE
+      ===================================== -->
+
+      <div class="profile-heading">
+
+        <h1>
+          الملف الشخصي
+        </h1>
 
         <img
           src="sunMeras.png"
           alt=""
-          class="heading-sun"
         >
 
-        <div class="heading-text">
+      </div>
 
-          <h1>
-            الملف الشخصي
-          </h1>
 
-          <p>
-            معلومات الطالب وسجل مشاركاته وإنجازاته في مِراس
-          </p>
+      <p class="profile-subtitle">
+        معلومات الطالب وسجل مشاركاته وإنجازاته في مِراس
+      </p>
 
-        </div>
+
+
+      <!-- ====================================
+           STUDENT INTRO
+      ===================================== -->
+
+      <div class="student-intro">
+
+        <h2>
+          سارة محمد
+        </h2>
+
+        <p>
+          طالبة في جامعة الملك سعود
+        </p>
 
       </div>
 
 
 
-      <!-- =========================
-           MAIN PROFILE FRAME
-      ========================== -->
+      <!-- ====================================
+           BASIC INFORMATION
+      ===================================== -->
 
-      <div class="profile-frame">
+      <section class="profile-card">
 
 
-        <!-- اسم الطالب -->
-        <div class="student-intro">
+        <!-- رأس القسم -->
+        <div class="card-header">
 
           <h2>
-            سارة محمد
+            المعلومات الأساسية
           </h2>
-
-          <p>
-            طالبة في جامعة الملك سعود
-          </p>
 
         </div>
 
 
-
-        <!-- =========================
-             BASIC INFORMATION
-        ========================== -->
-
-        <section class="profile-section">
-
-
-          <div class="section-header">
-
-            <h3 class="section-title">
-              المعلومات الأساسية
-            </h3>
-
-            <p class="section-description">
-              البيانات الأساسية للطالب
-            </p>
-
-          </div>
-
+        <!-- محتوى القسم -->
+        <div class="card-body">
 
 
           <div class="student-info">
 
 
-            <!-- الاسم -->
-            <div class="info-box">
+            <!-- الاسم الكامل -->
+            <div class="info-item">
 
               <span class="info-label">
                 الاسم الكامل
@@ -495,7 +499,7 @@
 
 
             <!-- الرقم الجامعي -->
-            <div class="info-box">
+            <div class="info-item">
 
               <span class="info-label">
                 الرقم الجامعي
@@ -510,7 +514,7 @@
 
 
             <!-- التخصص -->
-            <div class="info-box">
+            <div class="info-item">
 
               <span class="info-label">
                 التخصص
@@ -525,7 +529,7 @@
 
 
             <!-- البريد الإلكتروني -->
-            <div class="info-box">
+            <div class="info-item">
 
               <span class="info-label">
                 البريد الإلكتروني
@@ -542,37 +546,42 @@
 
           </div>
 
-        </section>
+        </div>
+
+      </section>
 
 
 
-        <!-- =========================
-             STUDENT RECORD
-        ========================== -->
+      <!-- ====================================
+           STUDENT RECORD
+      ===================================== -->
 
-        <section class="profile-section">
-
-
-          <div class="section-header">
-
-            <h3 class="section-title">
-              سجل الطالب
-            </h3>
-
-            <p class="section-description">
-              المشاركات والإنجازات الموثقة للطالب
-            </p>
-
-          </div>
+      <section class="profile-card">
 
 
+        <!-- رأس القسم -->
+        <div class="card-header">
 
-          <!-- ملخص سجل الطالب -->
+          <h2>
+            سجل الطالب
+          </h2>
+
+        </div>
+
+
+        <!-- محتوى القسم -->
+        <div class="card-body">
+
+
+          <!-- ================================
+               RECORD SUMMARY
+          ================================= -->
+
           <div class="record-summary">
 
 
             <!-- الإنجازات الموثقة -->
-            <div class="summary-box">
+            <div class="summary-item">
 
               <div class="summary-icon">
                 🏆
@@ -595,7 +604,7 @@
 
 
             <!-- الساعات التطوعية -->
-            <div class="summary-box">
+            <div class="summary-item">
 
               <div class="summary-icon">
                 ⏱
@@ -620,26 +629,26 @@
 
 
 
-          <!-- =========================
+          <!-- ================================
                ACHIEVEMENTS
-          ========================== -->
+          ================================= -->
 
-          <h4 class="achievements-title">
+          <h3 class="achievements-title">
             الإنجازات
-          </h4>
+          </h3>
 
 
           <div class="achievements-list">
 
 
             <!-- الإنجاز الأول -->
-            <div class="achievement-card">
+            <div class="achievement-item">
 
               <div class="achievement-info">
 
-                <h4>
+                <h3>
                   تنظيم فعالية تقنية
-                </h4>
+                </h3>
 
                 <p>
                   نادي التقنية
@@ -656,13 +665,13 @@
 
 
             <!-- الإنجاز الثاني -->
-            <div class="achievement-card">
+            <div class="achievement-item">
 
               <div class="achievement-info">
 
-                <h4>
+                <h3>
                   المشاركة في مبادرة تطوعية
-                </h4>
+                </h3>
 
                 <p>
                   نادي المسؤولية الاجتماعية
@@ -681,11 +690,14 @@
 
 
 
-          <!--
-            إذا لم يكن لدى الطالب إنجازات:
-            نخفي achievements-list
-            ونظهر empty-achievements
-          -->
+          <!-- =================================
+               EMPTY STATE
+
+               إذا لم يكن لدى الطالب إنجازات:
+               1- نخفي achievements-list
+               2- نظهر empty-achievements
+               3- يكون عدد الإنجازات 0
+          ================================== -->
 
           <div class="empty-achievements">
 
@@ -694,10 +706,10 @@
           </div>
 
 
-        </section>
+        </div>
 
+      </section>
 
-      </div>
 
     </div>
 
@@ -705,14 +717,11 @@
 
 
 
-  <!-- =========================
+  <!-- ========================================
        SHARED FOOTER
-  ========================== -->
+  ========================================= -->
 
-  <footer
-    class="footer"
-    id="site-footer">
-  </footer>
+  <footer class="footer" id="site-footer"></footer>
 
 
 
