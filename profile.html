@@ -10,7 +10,7 @@
   <!-- التنسيق المشترك للموقع -->
   <link rel="stylesheet" href="Style.css">
 
-  <!-- تنسيق صفحة الملف الشخصي فقط -->
+  <!-- تنسيق صفحة الملف الشخصي -->
   <style>
 
     /* =========================
@@ -66,10 +66,11 @@
     .profile-frame {
       padding: 32px;
 
-      background-color: var(--ink);
+      background-color: var(--header-bg);
+      border: 1px solid var(--teal-light);
       border-radius: 24px;
 
-      box-shadow: 0 10px 28px rgba(46, 85, 96, 0.15);
+      box-shadow: 0 10px 28px rgba(46, 85, 96, 0.10);
     }
 
 
@@ -78,14 +79,20 @@
     ========================= */
 
     .student-intro {
-      margin-bottom: 26px;
-      padding: 4px 4px 2px;
+      margin-bottom: 22px;
+      padding: 18px 20px;
+
+      background-color: var(--beige);
+
+      /* لمسة غامقة بسيطة */
+      border-right: 5px solid var(--ink);
+      border-radius: 14px;
     }
 
     .student-intro h2 {
       margin: 0 0 6px;
 
-      color: var(--header-bg);
+      color: var(--ink-dark);
       font-size: 26px;
       font-weight: 500;
     }
@@ -93,7 +100,7 @@
     .student-intro p {
       margin: 0;
 
-      color: var(--yellow);
+      color: var(--ink);
       font-size: 15px;
       font-weight: 300;
     }
@@ -107,7 +114,7 @@
       margin-top: 18px;
       padding: 25px;
 
-      background-color: var(--header-bg);
+      background-color: var(--beige);
       border-radius: 18px;
     }
 
@@ -149,8 +156,11 @@
 
       padding: 17px 19px;
 
-      background-color: var(--beige);
-      border-right: 4px solid var(--teal);
+      background-color: var(--header-bg);
+
+      /* الغامق كتفصيلة فقط */
+      border-right: 4px solid var(--ink);
+
       border-radius: 12px;
     }
 
@@ -186,8 +196,8 @@
 
       padding: 18px;
 
-      background-color: var(--beige);
-      border: 1px solid var(--yellow);
+      background-color: var(--header-bg);
+      border: 1px solid var(--gold);
       border-radius: 14px;
     }
 
@@ -203,6 +213,7 @@
       background-color: var(--yellow);
       border-radius: 50%;
 
+      color: var(--ink-dark);
       font-size: 23px;
     }
 
@@ -248,7 +259,11 @@
 
       padding: 16px 18px;
 
-      background-color: var(--beige);
+      background-color: var(--header-bg);
+
+      /* لمسة من لون هوية مِراس */
+      border-right: 4px solid var(--teal);
+
       border-radius: 12px;
     }
 
@@ -272,13 +287,19 @@
       font-weight: 300;
     }
 
+
+    /* =========================
+       VERIFIED STATUS
+    ========================= */
+
     .achievement-status {
       flex-shrink: 0;
 
       padding: 5px 12px;
 
-      background-color: var(--yellow);
-      color: var(--ink-dark);
+      /* الغامق مستخدم بمساحة صغيرة فقط */
+      background-color: var(--ink);
+      color: var(--header-bg);
 
       border-radius: 999px;
 
@@ -288,7 +309,7 @@
 
 
     /* =========================
-       EMPTY ACHIEVEMENTS STATE
+       EMPTY ACHIEVEMENTS
     ========================= */
 
     .empty-achievements {
@@ -298,7 +319,7 @@
 
       text-align: center;
 
-      background-color: var(--beige);
+      background-color: var(--header-bg);
       border: 1px dashed var(--teal);
       border-radius: 12px;
 
@@ -336,6 +357,10 @@
         border-radius: 19px;
       }
 
+      .student-intro {
+        padding: 16px;
+      }
+
       .student-intro h2 {
         font-size: 22px;
       }
@@ -362,9 +387,21 @@
 
 <body data-role="student" data-page="profile">
 
-  <!-- الهيدر المشترك -->
-  <header class="header" id="site-header"></header>
 
+  <!-- =========================
+       SHARED HEADER
+  ========================== -->
+
+  <header
+    class="header"
+    id="site-header">
+  </header>
+
+
+
+  <!-- =========================
+       PROFILE PAGE
+  ========================== -->
 
   <main class="profile-page">
 
@@ -381,21 +418,34 @@
         >
 
         <div class="heading-text">
-          <h1>الملف الشخصي</h1>
-          <p>معلومات الطالب وسجل مشاركاته وإنجازاته في مِراس</p>
+
+          <h1>
+            الملف الشخصي
+          </h1>
+
+          <p>
+            معلومات الطالب وسجل مشاركاته وإنجازاته في مِراس
+          </p>
+
         </div>
 
       </div>
 
 
-      <!-- الفريم الرئيسي -->
+
+      <!-- =========================
+           MAIN PROFILE FRAME
+      ========================== -->
+
       <div class="profile-frame">
 
 
         <!-- اسم الطالب -->
         <div class="student-intro">
 
-          <h2>سارة محمد</h2>
+          <h2>
+            سارة محمد
+          </h2>
 
           <p>
             طالبة في جامعة الملك سعود
@@ -404,8 +454,13 @@
         </div>
 
 
-        <!-- المعلومات الأساسية -->
+
+        <!-- =========================
+             BASIC INFORMATION
+        ========================== -->
+
         <section class="profile-section">
+
 
           <div class="section-header">
 
@@ -418,6 +473,7 @@
             </p>
 
           </div>
+
 
 
           <div class="student-info">
@@ -437,6 +493,7 @@
             </div>
 
 
+
             <!-- الرقم الجامعي -->
             <div class="info-box">
 
@@ -451,6 +508,7 @@
             </div>
 
 
+
             <!-- التخصص -->
             <div class="info-box">
 
@@ -463,6 +521,7 @@
               </span>
 
             </div>
+
 
 
             <!-- البريد الإلكتروني -->
@@ -486,8 +545,13 @@
         </section>
 
 
-        <!-- سجل الطالب -->
+
+        <!-- =========================
+             STUDENT RECORD
+        ========================== -->
+
         <section class="profile-section">
+
 
           <div class="section-header">
 
@@ -502,11 +566,12 @@
           </div>
 
 
-          <!-- ملخص السجل -->
+
+          <!-- ملخص سجل الطالب -->
           <div class="record-summary">
 
 
-            <!-- عدد الإنجازات -->
+            <!-- الإنجازات الموثقة -->
             <div class="summary-box">
 
               <div class="summary-icon">
@@ -526,6 +591,7 @@
               </div>
 
             </div>
+
 
 
             <!-- الساعات التطوعية -->
@@ -553,7 +619,11 @@
           </div>
 
 
-          <!-- الإنجازات -->
+
+          <!-- =========================
+               ACHIEVEMENTS
+          ========================== -->
+
           <h4 class="achievements-title">
             الإنجازات
           </h4>
@@ -584,6 +654,7 @@
             </div>
 
 
+
             <!-- الإنجاز الثاني -->
             <div class="achievement-card">
 
@@ -609,14 +680,17 @@
           </div>
 
 
+
           <!--
-            في حال لم يكن لدى الطالب أي إنجازات:
+            إذا لم يكن لدى الطالب إنجازات:
             نخفي achievements-list
-            ونظهر هذه الرسالة
+            ونظهر empty-achievements
           -->
 
           <div class="empty-achievements">
+
             لا توجد إنجازات موثقة حتى الآن.
+
           </div>
 
 
@@ -630,15 +704,21 @@
   </main>
 
 
-  <!-- الفوتر المشترك -->
+
+  <!-- =========================
+       SHARED FOOTER
+  ========================== -->
+
   <footer
     class="footer"
     id="site-footer">
   </footer>
 
 
+
   <!-- الهيدر والفوتر المشترك -->
   <script src="layout.js" defer></script>
+
 
 </body>
 
