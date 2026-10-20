@@ -7,7 +7,7 @@
 
   <title>مِراس - الملف الشخصي</title>
 
-  <!-- التنسيق المشترك -->
+  <!-- التنسيق المشترك للموقع -->
   <link rel="stylesheet" href="Style.css">
 
   <!-- تنسيق صفحة الملف الشخصي فقط -->
@@ -18,27 +18,10 @@
     ========================= */
 
     .profile-page {
-      position: relative;
-      padding: 55px 24px 75px;
-      overflow: hidden;
-
-      background:
-        radial-gradient(
-          circle at 8% 18%,
-          rgba(123, 176, 188, 0.24),
-          transparent 25%
-        ),
-        radial-gradient(
-          circle at 92% 85%,
-          rgba(237, 208, 138, 0.30),
-          transparent 24%
-        ),
-        var(--beige);
+      padding: 50px 24px 70px;
     }
 
     .profile-container {
-      position: relative;
-      z-index: 1;
       width: min(950px, 100%);
       margin: 0 auto;
     }
@@ -51,7 +34,7 @@
     .page-heading {
       display: flex;
       align-items: center;
-      gap: 15px;
+      gap: 14px;
       margin-bottom: 28px;
     }
 
@@ -62,7 +45,7 @@
     }
 
     .heading-text h1 {
-      margin: 0 0 5px;
+      margin: 0 0 4px;
       color: var(--ink-dark);
       font-size: 34px;
       font-weight: 500;
@@ -77,119 +60,122 @@
 
 
     /* =========================
-       PROFILE CARD
+       MAIN PROFILE FRAME
     ========================= */
 
-    .profile-card {
-      background-color: var(--header-bg);
-      border: 1px solid var(--gold);
-      border-radius: 22px;
-      padding: 34px;
-
-      box-shadow:
-        0 12px 32px rgba(31, 63, 73, 0.12);
+    .profile-frame {
+      background-color: var(--ink);
+      border-radius: 24px;
+      padding: 32px;
+      box-shadow: 0 10px 28px rgba(46, 85, 96, 0.15);
     }
 
 
     /* =========================
-       PROFILE HEADER
+       STUDENT INTRO
     ========================= */
 
-    .profile-header {
+    .student-intro {
       display: flex;
       align-items: center;
-      gap: 20px;
+      gap: 18px;
+      margin-bottom: 26px;
     }
 
-    .profile-avatar {
-      width: 82px;
-      height: 82px;
+    .student-avatar {
+      width: 78px;
+      height: 78px;
       flex-shrink: 0;
 
       display: flex;
-      align-items: center;
       justify-content: center;
+      align-items: center;
 
       border-radius: 50%;
-
       background-color: var(--yellow);
       border: 3px solid var(--gold);
 
       color: var(--ink-dark);
-      font-size: 30px;
+      font-size: 28px;
       font-weight: 500;
     }
 
-    .profile-intro h2 {
+    .student-name h2 {
       margin: 0 0 5px;
-
-      color: var(--ink-dark);
+      color: var(--header-bg);
       font-size: 25px;
       font-weight: 500;
     }
 
-    .profile-intro p {
+    .student-name p {
       margin: 0;
-      color: var(--ink);
+      color: var(--yellow);
       font-size: 15px;
       font-weight: 300;
     }
 
 
     /* =========================
-       DIVIDER
+       WHITE SECTIONS
     ========================= */
 
-    .profile-divider {
-      height: 1px;
-      margin: 28px 0;
-      background-color: var(--gold);
-      opacity: 0.7;
+    .profile-section {
+      margin-top: 18px;
+      padding: 25px;
+
+      background-color: var(--header-bg);
+      border-radius: 18px;
     }
 
+    .section-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
 
-    /* =========================
-       SECTION TITLE
-    ========================= */
+      margin-bottom: 19px;
+    }
 
     .section-title {
-      margin: 0 0 17px;
+      margin: 0;
       color: var(--ink-dark);
       font-size: 20px;
       font-weight: 500;
     }
 
-
-    /* =========================
-       STUDENT INFORMATION
-    ========================= */
-
-    .profile-info {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 16px;
+    .section-description {
+      margin: 4px 0 0;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 300;
     }
 
-    .info-item {
-      position: relative;
+
+    /* =========================
+       BASIC INFORMATION
+    ========================= */
+
+    .student-info {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+    }
+
+    .info-box {
+      padding: 17px 19px;
 
       display: flex;
       flex-direction: column;
-      gap: 7px;
-
-      padding: 18px 20px;
+      gap: 6px;
 
       background-color: var(--beige);
-
-      border: 1px solid rgba(123, 176, 188, 0.45);
       border-right: 4px solid var(--teal);
-
-      border-radius: 13px;
+      border-radius: 12px;
     }
 
     .info-label {
       color: var(--ink);
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 300;
     }
 
@@ -201,65 +187,168 @@
 
 
     /* =========================
-       BUTTONS
+       RECORD SUMMARY
     ========================= */
 
-    .profile-actions {
-      display: flex;
-      gap: 12px;
-      margin-top: 30px;
-      padding-top: 25px;
-
-      border-top: 1px solid var(--yellow);
+    .record-summary {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      margin-bottom: 24px;
     }
 
-    .profile-actions button {
-      min-width: 170px;
+    .summary-box {
+      display: flex;
+      align-items: center;
+      gap: 15px;
 
-      padding: 12px 24px;
+      padding: 18px;
 
-      font-family: inherit;
+      background-color: var(--beige);
+      border: 1px solid var(--yellow);
+      border-radius: 14px;
+    }
+
+    .summary-icon {
+      width: 52px;
+      height: 52px;
+      flex-shrink: 0;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background-color: var(--yellow);
+      border-radius: 50%;
+
+      font-size: 23px;
+    }
+
+    .summary-number {
+      display: block;
+      margin-bottom: 2px;
+
+      color: var(--ink-dark);
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    .summary-label {
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 300;
+    }
+
+
+    /* =========================
+       RECENT ACHIEVEMENTS
+    ========================= */
+
+    .achievements-heading {
+      margin: 0 0 12px;
+      color: var(--ink-dark);
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .achievement-card {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+
+      margin-bottom: 10px;
+      padding: 15px 17px;
+
+      background-color: var(--beige);
+      border-radius: 12px;
+    }
+
+    .achievement-info h4 {
+      margin: 0 0 4px;
+
+      color: var(--ink-dark);
       font-size: 15px;
       font-weight: 500;
+    }
 
-      border-radius: 12px;
+    .achievement-info p {
+      margin: 0;
 
-      cursor: pointer;
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 300;
+    }
+
+    .verified {
+      flex-shrink: 0;
+
+      padding: 5px 11px;
+
+      background-color: var(--yellow);
+      color: var(--ink-dark);
+
+      border-radius: 999px;
+
+      font-size: 12px;
+      font-weight: 500;
+    }
+
+
+    /* =========================
+       VIEW ALL BUTTON
+    ========================= */
+
+    .achievements-action {
+      margin-top: 18px;
+      text-align: left;
+    }
+
+    .view-achievements {
+      display: inline-block;
+
+      padding: 10px 18px;
+
+      background-color: var(--ink);
+      color: var(--header-bg);
+
+      border: 2px solid var(--ink);
+      border-radius: 11px;
+
+      font-size: 14px;
+      font-weight: 500;
 
       transition:
-        background-color 0.2s,
-        color 0.2s,
-        border-color 0.2s,
-        transform 0.2s;
+        background-color .2s,
+        border-color .2s,
+        color .2s;
     }
 
-    .profile-actions button:hover {
-      transform: translateY(-2px);
-    }
-
-    .primary-btn {
-      border: 2px solid var(--ink-dark);
-
-      background-color: var(--ink-dark);
-      color: var(--header-bg);
-    }
-
-    .primary-btn:hover {
+    .view-achievements:hover {
       background-color: var(--teal);
       border-color: var(--teal);
       color: var(--ink-dark);
     }
 
-    .secondary-btn {
-      border: 2px solid var(--teal);
 
-      background-color: transparent;
-      color: var(--ink-dark);
-    }
+    /* =========================
+       EMPTY ACHIEVEMENTS
+    ========================= */
 
-    .secondary-btn:hover {
-      background-color: var(--yellow);
-      border-color: var(--gold);
+    .empty-achievements {
+      display: none;
+
+      padding: 22px;
+
+      text-align: center;
+
+      background-color: var(--beige);
+      border: 1px dashed var(--teal);
+      border-radius: 12px;
+
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 400;
     }
 
 
@@ -286,30 +375,42 @@
         font-size: 14px;
       }
 
-      .profile-card {
-        padding: 24px 18px;
+      .profile-frame {
+        padding: 20px 15px;
+        border-radius: 19px;
       }
 
-      .profile-avatar {
-        width: 68px;
-        height: 68px;
-        font-size: 25px;
+      .student-avatar {
+        width: 65px;
+        height: 65px;
+        font-size: 24px;
       }
 
-      .profile-intro h2 {
+      .student-name h2 {
         font-size: 21px;
       }
 
-      .profile-info {
+      .profile-section {
+        padding: 19px 15px;
+      }
+
+      .student-info,
+      .record-summary {
         grid-template-columns: 1fr;
       }
 
-      .profile-actions {
+      .achievement-card {
+        align-items: flex-start;
         flex-direction: column;
       }
 
-      .profile-actions button {
+      .achievements-action {
+        text-align: center;
+      }
+
+      .view-achievements {
         width: 100%;
+        text-align: center;
       }
     }
 
@@ -339,24 +440,24 @@
 
         <div class="heading-text">
           <h1>الملف الشخصي</h1>
-          <p>معلومات حسابك الشخصي في مِراس</p>
+          <p>معلومات الطالب وسجل مشاركاته وإنجازاته في مِراس</p>
         </div>
 
       </div>
 
 
-      <!-- بطاقة الملف الشخصي -->
-      <section class="profile-card">
+      <!-- الفريم الرئيسي -->
+      <div class="profile-frame">
 
 
-        <!-- معلومات الطالب الأساسية -->
-        <div class="profile-header">
+        <!-- تعريف الطالب -->
+        <div class="student-intro">
 
-          <div class="profile-avatar">
-            <span>ط</span>
+          <div class="student-avatar">
+            س
           </div>
 
-          <div class="profile-intro">
+          <div class="student-name">
             <h2>سارة محمد</h2>
             <p>طالبة في جامعة الملك سعود</p>
           </div>
@@ -364,85 +465,213 @@
         </div>
 
 
-        <div class="profile-divider"></div>
+        <!-- المعلومات الأساسية -->
+        <section class="profile-section">
 
+          <div class="section-header">
 
-        <!-- المعلومات الشخصية -->
-        <h3 class="section-title">
-          المعلومات الشخصية
-        </h3>
+            <div>
+              <h3 class="section-title">
+                المعلومات الأساسية
+              </h3>
 
+              <p class="section-description">
+                البيانات الأساسية للطالب
+              </p>
+            </div>
 
-        <div class="profile-info">
-
-          <div class="info-item">
-            <span class="info-label">
-              الاسم الكامل
-            </span>
-
-            <span class="info-value">
-              سارة محمد
-            </span>
           </div>
 
 
-          <div class="info-item">
-            <span class="info-label">
-              الرقم الجامعي
-            </span>
+          <div class="student-info">
 
-            <span class="info-value">
-              44XXXXXXX
-            </span>
+            <div class="info-box">
+              <span class="info-label">
+                الاسم الكامل
+              </span>
+
+              <span class="info-value">
+                سارة محمد
+              </span>
+            </div>
+
+
+            <div class="info-box">
+              <span class="info-label">
+                الرقم الجامعي
+              </span>
+
+              <span class="info-value">
+                44XXXXXXX
+              </span>
+            </div>
+
+
+            <div class="info-box">
+              <span class="info-label">
+                التخصص
+              </span>
+
+              <span class="info-value">
+                تقنية المعلومات
+              </span>
+            </div>
+
+
+            <div class="info-box">
+              <span class="info-label">
+                البريد الإلكتروني
+              </span>
+
+              <span
+                class="info-value"
+                dir="ltr">
+                sara@student.ksu.edu.sa
+              </span>
+            </div>
+
+          </div>
+
+        </section>
+
+
+        <!-- سجل الطالب -->
+        <section class="profile-section">
+
+          <div class="section-header">
+
+            <div>
+              <h3 class="section-title">
+                سجل الطالب
+              </h3>
+
+              <p class="section-description">
+                ملخص المشاركات والإنجازات الموثقة
+              </p>
+            </div>
+
           </div>
 
 
-          <div class="info-item">
-            <span class="info-label">
-              التخصص
-            </span>
+          <!-- ملخص السجل -->
+          <div class="record-summary">
 
-            <span class="info-value">
-              تقنية المعلومات
-            </span>
+
+            <!-- عدد الإنجازات -->
+            <div class="summary-box">
+
+              <div class="summary-icon">
+                🏆
+              </div>
+
+              <div>
+
+                <span class="summary-number">
+                  4
+                </span>
+
+                <span class="summary-label">
+                  إنجازات موثقة
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <!-- الساعات التطوعية -->
+            <div class="summary-box">
+
+              <div class="summary-icon">
+                ⏱
+              </div>
+
+              <div>
+
+                <span class="summary-number">
+                  32
+                </span>
+
+                <span class="summary-label">
+                  ساعة تطوعية
+                </span>
+
+              </div>
+
+            </div>
+
           </div>
 
 
-          <div class="info-item">
-            <span class="info-label">
-              رقم الجوال
+          <!-- أحدث الإنجازات -->
+          <h4 class="achievements-heading">
+            أحدث الإنجازات
+          </h4>
+
+
+          <div class="achievement-card">
+
+            <div class="achievement-info">
+
+              <h4>
+                تنظيم فعالية تقنية
+              </h4>
+
+              <p>
+                نادي التقنية
+              </p>
+
+            </div>
+
+            <span class="verified">
+              موثق
             </span>
 
-            <span class="info-value" dir="ltr">
-              05XXXXXXXX
-            </span>
           </div>
 
-        </div>
+
+          <div class="achievement-card">
+
+            <div class="achievement-info">
+
+              <h4>
+                المشاركة في مبادرة تطوعية
+              </h4>
+
+              <p>
+                نادي المسؤولية الاجتماعية
+              </p>
+
+            </div>
+
+            <span class="verified">
+              موثق
+            </span>
+
+          </div>
 
 
-        <!-- الأزرار -->
-        <div class="profile-actions">
-
-          <button
-            type="button"
-            class="primary-btn"
-          >
-            تعديل المعلومات
-          </button>
+          <!-- يظهر عند عدم وجود إنجازات -->
+          <div class="empty-achievements">
+            لا توجد إنجازات موثقة حتى الآن.
+          </div>
 
 
-          <button
-            type="button"
-            class="secondary-btn"
-          >
-            تغيير كلمة المرور
-          </button>
+          <!-- الانتقال لصفحة الإنجازات -->
+          <div class="achievements-action">
 
-        </div>
+            <a
+              href="student-achievements.html"
+              class="view-achievements">
+              عرض جميع الإنجازات
+            </a>
+
+          </div>
+
+        </section>
 
 
-      </section>
+      </div>
 
     </div>
 
@@ -452,8 +681,8 @@
   <!-- الفوتر المشترك -->
   <footer
     class="footer"
-    id="site-footer"
-  ></footer>
+    id="site-footer">
+  </footer>
 
 
   <script src="layout.js" defer></script>
