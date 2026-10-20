@@ -28,7 +28,7 @@
 
 
     /* =========================
-       PAGE TITLE
+       PAGE HEADING
     ========================= */
 
     .page-heading {
@@ -64,9 +64,11 @@
     ========================= */
 
     .profile-frame {
+      padding: 32px;
+
       background-color: var(--ink);
       border-radius: 24px;
-      padding: 32px;
+
       box-shadow: 0 10px 28px rgba(46, 85, 96, 0.15);
     }
 
@@ -76,39 +78,21 @@
     ========================= */
 
     .student-intro {
-      display: flex;
-      align-items: center;
-      gap: 18px;
       margin-bottom: 26px;
+      padding: 4px 4px 2px;
     }
 
-    .student-avatar {
-      width: 78px;
-      height: 78px;
-      flex-shrink: 0;
+    .student-intro h2 {
+      margin: 0 0 6px;
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      border-radius: 50%;
-      background-color: var(--yellow);
-      border: 3px solid var(--gold);
-
-      color: var(--ink-dark);
-      font-size: 28px;
-      font-weight: 500;
-    }
-
-    .student-name h2 {
-      margin: 0 0 5px;
       color: var(--header-bg);
-      font-size: 25px;
+      font-size: 26px;
       font-weight: 500;
     }
 
-    .student-name p {
+    .student-intro p {
       margin: 0;
+
       color: var(--yellow);
       font-size: 15px;
       font-weight: 300;
@@ -116,7 +100,7 @@
 
 
     /* =========================
-       WHITE SECTIONS
+       PROFILE SECTIONS
     ========================= */
 
     .profile-section {
@@ -128,23 +112,20 @@
     }
 
     .section-header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 15px;
-
       margin-bottom: 19px;
     }
 
     .section-title {
       margin: 0;
+
       color: var(--ink-dark);
       font-size: 20px;
       font-weight: 500;
     }
 
     .section-description {
-      margin: 4px 0 0;
+      margin: 5px 0 0;
+
       color: var(--ink);
       font-size: 13px;
       font-weight: 300;
@@ -162,11 +143,11 @@
     }
 
     .info-box {
-      padding: 17px 19px;
-
       display: flex;
       flex-direction: column;
       gap: 6px;
+
+      padding: 17px 19px;
 
       background-color: var(--beige);
       border-right: 4px solid var(--teal);
@@ -187,14 +168,15 @@
 
 
     /* =========================
-       RECORD SUMMARY
+       STUDENT RECORD SUMMARY
     ========================= */
 
     .record-summary {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 14px;
-      margin-bottom: 24px;
+
+      margin-bottom: 25px;
     }
 
     .summary-box {
@@ -241,31 +223,41 @@
 
 
     /* =========================
-       RECENT ACHIEVEMENTS
+       ACHIEVEMENTS
     ========================= */
 
-    .achievements-heading {
-      margin: 0 0 12px;
+    .achievements-title {
+      margin: 0 0 13px;
+
       color: var(--ink-dark);
-      font-size: 16px;
+      font-size: 17px;
       font-weight: 500;
+    }
+
+    .achievements-list {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
     }
 
     .achievement-card {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 15px;
+      gap: 18px;
 
-      margin-bottom: 10px;
-      padding: 15px 17px;
+      padding: 16px 18px;
 
       background-color: var(--beige);
       border-radius: 12px;
     }
 
+    .achievement-info {
+      flex: 1;
+    }
+
     .achievement-info h4 {
-      margin: 0 0 4px;
+      margin: 0 0 5px;
 
       color: var(--ink-dark);
       font-size: 15px;
@@ -280,10 +272,10 @@
       font-weight: 300;
     }
 
-    .verified {
+    .achievement-status {
       flex-shrink: 0;
 
-      padding: 5px 11px;
+      padding: 5px 12px;
 
       background-color: var(--yellow);
       color: var(--ink-dark);
@@ -296,43 +288,7 @@
 
 
     /* =========================
-       VIEW ALL BUTTON
-    ========================= */
-
-    .achievements-action {
-      margin-top: 18px;
-      text-align: left;
-    }
-
-    .view-achievements {
-      display: inline-block;
-
-      padding: 10px 18px;
-
-      background-color: var(--ink);
-      color: var(--header-bg);
-
-      border: 2px solid var(--ink);
-      border-radius: 11px;
-
-      font-size: 14px;
-      font-weight: 500;
-
-      transition:
-        background-color .2s,
-        border-color .2s,
-        color .2s;
-    }
-
-    .view-achievements:hover {
-      background-color: var(--teal);
-      border-color: var(--teal);
-      color: var(--ink-dark);
-    }
-
-
-    /* =========================
-       EMPTY ACHIEVEMENTS
+       EMPTY ACHIEVEMENTS STATE
     ========================= */
 
     .empty-achievements {
@@ -380,14 +336,8 @@
         border-radius: 19px;
       }
 
-      .student-avatar {
-        width: 65px;
-        height: 65px;
-        font-size: 24px;
-      }
-
-      .student-name h2 {
-        font-size: 21px;
+      .student-intro h2 {
+        font-size: 22px;
       }
 
       .profile-section {
@@ -404,14 +354,6 @@
         flex-direction: column;
       }
 
-      .achievements-action {
-        text-align: center;
-      }
-
-      .view-achievements {
-        width: 100%;
-        text-align: center;
-      }
     }
 
   </style>
@@ -450,17 +392,14 @@
       <div class="profile-frame">
 
 
-        <!-- تعريف الطالب -->
+        <!-- اسم الطالب -->
         <div class="student-intro">
 
-          <div class="student-avatar">
-            س
-          </div>
+          <h2>سارة محمد</h2>
 
-          <div class="student-name">
-            <h2>سارة محمد</h2>
-            <p>طالبة في جامعة الملك سعود</p>
-          </div>
+          <p>
+            طالبة في جامعة الملك سعود
+          </p>
 
         </div>
 
@@ -470,22 +409,23 @@
 
           <div class="section-header">
 
-            <div>
-              <h3 class="section-title">
-                المعلومات الأساسية
-              </h3>
+            <h3 class="section-title">
+              المعلومات الأساسية
+            </h3>
 
-              <p class="section-description">
-                البيانات الأساسية للطالب
-              </p>
-            </div>
+            <p class="section-description">
+              البيانات الأساسية للطالب
+            </p>
 
           </div>
 
 
           <div class="student-info">
 
+
+            <!-- الاسم -->
             <div class="info-box">
+
               <span class="info-label">
                 الاسم الكامل
               </span>
@@ -493,10 +433,13 @@
               <span class="info-value">
                 سارة محمد
               </span>
+
             </div>
 
 
+            <!-- الرقم الجامعي -->
             <div class="info-box">
+
               <span class="info-label">
                 الرقم الجامعي
               </span>
@@ -504,10 +447,13 @@
               <span class="info-value">
                 44XXXXXXX
               </span>
+
             </div>
 
 
+            <!-- التخصص -->
             <div class="info-box">
+
               <span class="info-label">
                 التخصص
               </span>
@@ -515,10 +461,13 @@
               <span class="info-value">
                 تقنية المعلومات
               </span>
+
             </div>
 
 
+            <!-- البريد الإلكتروني -->
             <div class="info-box">
+
               <span class="info-label">
                 البريد الإلكتروني
               </span>
@@ -528,7 +477,9 @@
                 dir="ltr">
                 sara@student.ksu.edu.sa
               </span>
+
             </div>
+
 
           </div>
 
@@ -540,15 +491,13 @@
 
           <div class="section-header">
 
-            <div>
-              <h3 class="section-title">
-                سجل الطالب
-              </h3>
+            <h3 class="section-title">
+              سجل الطالب
+            </h3>
 
-              <p class="section-description">
-                ملخص المشاركات والإنجازات الموثقة
-              </p>
-            </div>
+            <p class="section-description">
+              المشاركات والإنجازات الموثقة للطالب
+            </p>
 
           </div>
 
@@ -567,11 +516,11 @@
               <div>
 
                 <span class="summary-number">
-                  4
+                  2
                 </span>
 
                 <span class="summary-label">
-                  إنجازات موثقة
+                  إنجازان موثقان
                 </span>
 
               </div>
@@ -600,73 +549,76 @@
 
             </div>
 
+
           </div>
 
 
-          <!-- أحدث الإنجازات -->
-          <h4 class="achievements-heading">
-            أحدث الإنجازات
+          <!-- الإنجازات -->
+          <h4 class="achievements-title">
+            الإنجازات
           </h4>
 
 
-          <div class="achievement-card">
+          <div class="achievements-list">
 
-            <div class="achievement-info">
 
-              <h4>
-                تنظيم فعالية تقنية
-              </h4>
+            <!-- الإنجاز الأول -->
+            <div class="achievement-card">
 
-              <p>
-                نادي التقنية
-              </p>
+              <div class="achievement-info">
+
+                <h4>
+                  تنظيم فعالية تقنية
+                </h4>
+
+                <p>
+                  نادي التقنية
+                </p>
+
+              </div>
+
+              <span class="achievement-status">
+                موثق
+              </span>
 
             </div>
 
-            <span class="verified">
-              موثق
-            </span>
+
+            <!-- الإنجاز الثاني -->
+            <div class="achievement-card">
+
+              <div class="achievement-info">
+
+                <h4>
+                  المشاركة في مبادرة تطوعية
+                </h4>
+
+                <p>
+                  نادي المسؤولية الاجتماعية
+                </p>
+
+              </div>
+
+              <span class="achievement-status">
+                موثق
+              </span>
+
+            </div>
+
 
           </div>
 
 
-          <div class="achievement-card">
+          <!--
+            في حال لم يكن لدى الطالب أي إنجازات:
+            نخفي achievements-list
+            ونظهر هذه الرسالة
+          -->
 
-            <div class="achievement-info">
-
-              <h4>
-                المشاركة في مبادرة تطوعية
-              </h4>
-
-              <p>
-                نادي المسؤولية الاجتماعية
-              </p>
-
-            </div>
-
-            <span class="verified">
-              موثق
-            </span>
-
-          </div>
-
-
-          <!-- يظهر عند عدم وجود إنجازات -->
           <div class="empty-achievements">
             لا توجد إنجازات موثقة حتى الآن.
           </div>
 
-
-          <!-- الانتقال لصفحة الإنجازات -->
-          <div class="achievements-action">
-
-            <a
-              href="student-achievements.html"
-              class="view-achievements">
-              عرض جميع الإنجازات
-            </a>
-
-          </div>
 
         </section>
 
@@ -685,7 +637,9 @@
   </footer>
 
 
+  <!-- الهيدر والفوتر المشترك -->
   <script src="layout.js" defer></script>
 
 </body>
+
 </html>
