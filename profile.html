@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>مِراس - الملف الشخصي</title>
+
+  <!-- التنسيق المشترك للهيدر والفوتر وهوية مِراس -->
+  <link rel="stylesheet" href="Style.css">
+
+  <!-- Embedded CSS الخاص بصفحة الملف الشخصي -->
+  <style>
+
+    .profile-page {
+      padding: 55px 24px 70px;
+    }
+
+    .profile-container {
+      width: min(900px, 100%);
+      margin: 0 auto;
+    }
+
+    /* عنوان الصفحة */
+    .page-heading {
+      margin-bottom: 26px;
+    }
+
+    .page-heading h1 {
+      margin: 0 0 7px;
+      color: var(--ink-dark);
+      font-size: 32px;
+      font-weight: 500;
+    }
+
+    .page-heading p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 16px;
+      font-weight: 300;
+    }
+
+    /* بطاقة الملف الشخصي */
+    .profile-card {
+      background-color: var(--header-bg);
+      border: 1px solid var(--yellow);
+      border-radius: 22px;
+      padding: 32px;
+      box-shadow: 0 8px 26px rgba(46, 85, 96, 0.08);
+    }
+
+    /* الجزء العلوي */
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .profile-avatar {
+      width: 78px;
+      height: 78px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      background-color: var(--yellow);
+      color: var(--ink-dark);
+      font-size: 30px;
+      font-weight: 500;
+    }
+
+    .profile-intro h2 {
+      margin: 0 0 5px;
+      color: var(--ink-dark);
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    .profile-intro p {
+      margin: 0;
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 300;
+    }
+
+    .profile-divider {
+      height: 1px;
+      margin: 28px 0;
+      background-color: var(--yellow);
+    }
+
+    /* معلومات الطالب */
+    .profile-info {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .info-item {
+      padding: 18px 20px;
+      background-color: var(--beige);
+      border-radius: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 7px;
+    }
+
+    .info-label {
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 300;
+    }
+
+    .info-value {
+      color: var(--ink-dark);
+      font-size: 17px;
+      font-weight: 500;
+    }
+
+    /* الأزرار */
+    .profile-actions {
+      display: flex;
+      gap: 12px;
+      margin-top: 30px;
+    }
+
+    .profile-actions button {
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 11px 22px;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+
+    .primary-btn {
+      border: 2px solid var(--ink);
+      background-color: var(--ink);
+      color: var(--header-bg);
+    }
+
+    .primary-btn:hover {
+      background-color: var(--teal);
+      border-color: var(--teal);
+      color: var(--ink-dark);
+    }
+
+    .secondary-btn {
+      border: 2px solid var(--teal);
+      background-color: transparent;
+      color: var(--ink);
+    }
+
+    .secondary-btn:hover {
+      background-color: var(--yellow);
+      border-color: var(--yellow);
+    }
+
+    /* Responsive */
+    @media (max-width: 650px) {
+
+      .profile-page {
+        padding: 35px 16px 50px;
+      }
+
+      .page-heading h1 {
+        font-size: 27px;
+      }
+
+      .profile-card {
+        padding: 24px 18px;
+      }
+
+      .profile-avatar {
+        width: 65px;
+        height: 65px;
+        font-size: 25px;
+      }
+
+      .profile-intro h2 {
+        font-size: 21px;
+      }
+
+      .profile-info {
+        grid-template-columns: 1fr;
+      }
+
+      .profile-actions {
+        flex-direction: column;
+      }
+
+      .profile-actions button {
+        width: 100%;
+      }
+    }
+
+  </style>
+</head>
+
+<body data-role="student" data-page="profile">
+
+  <!-- الهيدر من layout.js -->
+  <header class="header" id="site-header"></header>
+
+  <main class="profile-page">
+
+    <div class="profile-container">
+
+      <div class="page-heading">
+        <h1>الملف الشخصي</h1>
+        <p>معلومات حسابك الشخصي في مِراس</p>
+      </div>
+
+      <section class="profile-card">
+
+        <div class="profile-header">
+
+          <div class="profile-avatar">
+            <span>ط</span>
+          </div>
+
+          <div class="profile-intro">
+            <h2>سارة محمد</h2>
+            <p>طالبة في جامعة الملك سعود</p>
+          </div>
+
+        </div>
+
+        <div class="profile-divider"></div>
+
+        <div class="profile-info">
+
+          <div class="info-item">
+            <span class="info-label">الاسم الكامل</span>
+            <span class="info-value">سارة محمد</span>
+          </div>
+
+          <div class="info-item">
+            <span class="info-label">الرقم الجامعي</span>
+            <span class="info-value">44XXXXXXX</span>
+          </div>
+
+          <div class="info-item">
+            <span class="info-label">التخصص</span>
+            <span class="info-value">تقنية المعلومات</span>
+          </div>
+
+          <div class="info-item">
+            <span class="info-label">رقم الجوال</span>
+            <span class="info-value" dir="ltr">05XXXXXXXX</span>
+          </div>
+
+        </div>
+
+        <div class="profile-actions">
+
+          <button type="button" class="primary-btn">
+            تعديل المعلومات
+          </button>
+
+          <button type="button" class="secondary-btn">
+            تغيير كلمة المرور
+          </button>
+
+        </div>
+
+      </section>
+
+    </div>
+
+  </main>
+
+  <!-- الفوتر من layout.js -->
+  <footer class="footer" id="site-footer"></footer>
+
+  <script src="layout.js" defer></script>
+
+</body>
+</html>
