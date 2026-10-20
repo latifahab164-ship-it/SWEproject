@@ -167,17 +167,16 @@ main {
   line-height: 1.9;
 }
 
-.footer-links h3 {
-  margin: 0 0 12px 0;
-  font-weight: 500;
-  color: var(--ink-dark);
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  gap: 9px;
 }
 
 .footer-links a {
-  display: block;
   color: var(--ink-dark);
   font-weight: 500;
-  margin-bottom: 9px;
   transition: color .2s;
 }
 
@@ -269,5 +268,9 @@ main {
 
   .footer-top {
     flex-direction: column;
+  }
+
+  .footer-links {
+    align-self: flex-start;
   }
 }

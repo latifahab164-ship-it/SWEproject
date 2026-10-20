@@ -10,7 +10,6 @@
       ["opportunities", "الفــرص", "opportunities.html"],
       ["clubs", "الأنــدية", "#"],
       ["requests", "طلبــاتي", "#"],
-      ["achievements", "إنجــازاتي", "#"],
       ["profile", "الملــف الشخصــي", "#"]
     ],
     club: [
@@ -52,8 +51,8 @@
       '<div class="footer-brand"><div class="footer-title">' +
       '<img src="sunMeras.png" alt="شمس مِراس" class="footer-sun"><h2>مِـــراس</h2></div>' +
       "<p>منصة تجمع طلاب جامعة الملك سعود بالأندية والفرص الجامعية.</p></div>" +
-      '<nav class="footer-links"><h3>روابـط سريعـة</h3>' +
-      '<a href="' + homeHref + '">الرئيســية</a><a href="opportunities.html">الفــرص</a><a href="#">الأنــدية</a></nav>' +
+      '<nav class="footer-links" aria-label="روابط سريعة">' +
+      '<a href="' + homeHref + '">الرئيســية</a><a href="opportunities.html">الفــرص</a><a href="#">الأنــدية</a><a href="about.html">عــن مِــراس</a></nav>' +
       "</div>" +
       '<p class="copyright">© 2026 مِراس. جميع الحقوق محفوظة.</p>';
   }
