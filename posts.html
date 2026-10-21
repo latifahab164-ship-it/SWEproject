@@ -1,0 +1,677 @@
+ <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مِراس - مسؤول النادي</title>
+  <link rel="stylesheet" href="Style.css">
+
+<style>
+
+  .posts-page {
+    --teal-dark: #2E5560;
+    --gold-dark: #EDD08A;
+    --line: rgba(46, 85, 96, 0.18);
+ 
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 34px 24px 60px;
+  }
+ 
+
+  .posts-page .page-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 8px;
+    font-size: 30px;
+    color: var(--ink-dark);
+  }
+ 
+  .posts-page .page-title img {
+    height: 34px;
+  }
+ 
+  .posts-page .page-subtitle {
+    margin: 0 0 28px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+ 
+
+  .posts-page .btn {
+    display: inline-block;
+    padding: 10px 24px;
+    border-radius: 999px;
+    border: 2px solid #2E5560;
+    background-color: #2E5560;
+    color: #fff;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color .2s, color .2s, border-color .2s;
+  }
+ 
+.posts-page .btn:hover {
+    background-color: var(--gold);
+    border-color: var(--gold);
+    color: var(--ink-dark);
+}
+ 
+.posts-page .btn-light {
+    background-color: transparent;
+    color: var(--ink);
+    border-color: var(--teal);
+}
+
+.posts-page .btn-light:hover {
+    background-color: var(--yellow);
+    border-color: var(--gold);
+    color: var(--ink-dark);
+}
+ 
+
+  .posts-page .btn-add {
+    padding: 12px 28px;
+    font-size: 16px;
+  }
+ 
+
+  .posts-page .section {
+    background-color: #fff;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    box-shadow: 0 6px 20px rgba(46, 85, 96, 0.10);
+    overflow: hidden;
+  }
+ 
+  .posts-page .add-section {
+    margin-top: 28px;
+  }
+ 
+  .posts-page .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 16px 22px;
+    background-color: transparent;
+    border-bottom: none;
+  }
+ 
+  .posts-page .section-title {
+    margin: 0;
+    font-size: 21px;
+    color: #2E5560;
+  }
+ 
+  .posts-page .section-body {
+    padding: 20px 22px 22px;
+    background-color: #fff;
+  }
+ 
+
+  .posts-page .posts-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+ 
+
+  .posts-page .posts-grid:not(.show-all) .post-extra {
+    display: none;
+  }
+ 
+  .posts-page .post-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    border-top: 5px solid var(--teal-light);
+    box-shadow: 0 6px 20px rgba(46, 85, 96, 0.10);
+    padding: 18px 20px 20px;
+  }
+ 
+  .posts-page .post-top {
+    margin-bottom: 12px;
+  }
+ 
+  .posts-page .badge {
+    display: inline-block;
+    padding: 3px 14px;
+    border-radius: 999px;
+    background-color: var(--teal-light);
+    border: 1px solid var(--teal);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-dark);
+  }
+ 
+  .posts-page .post-title {
+    margin: 0 0 8px;
+    font-size: 20px;
+    color: var(--ink-dark);
+  }
+ 
+  .posts-page .post-content {
+    margin: 0 0 14px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.9;
+  }
+ 
+
+  .posts-page .post-details {
+    list-style: none;
+    margin: auto 0 0;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    border-right: 5px solid var(--teal-light);
+    background-color: var(--header-bg);
+    font-size: 14px;
+    line-height: 2;
+  }
+ 
+  .posts-page .post-details b {
+    margin-left: 4px;
+    color: var(--ink-dark);
+  }
+ 
+  .posts-page .more-wrap {
+    margin-top: 22px;
+    text-align: center;
+  }
+ 
+
+  .posts-page .empty {
+    grid-column: 1 / -1;
+    margin: 0;
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 14px;
+    border: 2px dashed var(--teal-dark);
+    background-color: #fff;
+    font-size: 16px;
+    color: var(--ink-dark);
+  }
+ 
+
+  .posts-page .add-text {
+    margin: 0 0 16px;
+    font-size: 15px;
+    font-weight: 400;
+  }
+ 
+
+  .posts-page .form-wrap {
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: grid-template-rows .35s ease, visibility .35s;
+  }
+ 
+  .posts-page .form-wrap.open {
+    grid-template-rows: 1fr;
+    visibility: visible;
+  }
+ 
+  .posts-page .form-wrap-inner {
+    min-height: 0;
+    overflow: hidden;
+  }
+ 
+  .posts-page #post-form {
+    margin-top: 22px;
+    background-color: var(--header-bg);
+    border: 1px solid var(--line);
+    border-top: 5px solid var(--teal-light);
+    border-radius: 18px;
+    box-shadow: 0 6px 20px rgba(46, 85, 96, 0.10);
+  }
+ 
+  .posts-page .form-title {
+    margin: 0;
+    padding: 14px 22px;
+    background-color: transparent;
+    border-bottom: none;
+    border-radius: 13px 13px 0 0;
+    font-size: 19px;
+    color: #2E5560;
+  }
+ 
+  .posts-page .form-body {
+    padding: 20px 22px 6px;
+  }
+ 
+  .posts-page .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+ 
+  .posts-page .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+ 
+
+  .posts-page .field-full {
+    grid-column: 1 / -1;
+  }
+ 
+  .posts-page .field label {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink-dark);
+  }
+ 
+  .posts-page .optional {
+    font-weight: 400;
+    color: var(--teal-dark);
+  }
+ 
+  .posts-page .field input,
+  .posts-page .field select,
+  .posts-page .field textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 2px solid var(--teal-light);
+    background-color: #fff;
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 15px;
+  }
+ 
+  .posts-page .field textarea {
+    min-height: 130px;
+    resize: vertical;
+  }
+ 
+  .posts-page .field input:focus,
+  .posts-page .field select:focus,
+  .posts-page .field textarea:focus {
+    outline: none;
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px var(--yellow);
+  }
+ 
+  .posts-page .form-actions {
+    display: flex;
+    gap: 10px;
+    padding: 18px 22px 22px;
+  }
+ 
+  /* ---------- الجوال ---------- */
+  @media (max-width: 900px) {
+    .posts-page .posts-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+ 
+  @media (max-width: 800px) {
+    .posts-page {
+      padding: 24px 16px 44px;
+    }
+ 
+    .posts-page .page-title {
+      font-size: 24px;
+    }
+ 
+    .posts-page .section-head,
+    .posts-page .section-body {
+      padding-right: 16px;
+      padding-left: 16px;
+    }
+ 
+    .posts-page .btn-add {
+      width: 100%;
+      text-align: center;
+    }
+ 
+    .posts-page .posts-grid,
+    .posts-page .form-grid {
+      grid-template-columns: 1fr;
+    }
+ 
+    .posts-page .form-actions .btn {
+      flex: 1;
+      text-align: center;
+    }
+  }
+  
+  .posts-page #previous-posts {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+}
+
+.posts-page #previous-posts .section-body {
+    background: transparent;
+}
+</style>
+
+ </head>
+<body data-role="club" data-page="posts">
+
+  <!-- ===== Club Admin Header ===== -->
+  <header class="header" id="site-header">
+    <a href="clubAdmin.html" class="logo">
+      <img src="logoMeras.jpg" alt="شعار مِراس">
+    </a>
+
+    <nav class="nav">
+      <a href="clubAdmin.html">لوحة التحكم</a>
+      <a href="opportunities.html">إدارة الفرص</a>
+      <a href="applications.html">إدارة الطلبات</a>
+      <a href="posts.html">المنشورات</a>
+      <a href="achievements.html">توثيق الإنجازات</a>
+      <a href="clubInfo.html">معلومات النادي</a>
+      <a href="#" class="logout">تسجيل الخروج</a>
+    </nav>
+  </header>
+
+<main class="page posts-page">
+ 
+  <!-- ===== عنوان الصفحة ===== -->
+  <h1 class="page-title">
+    <img src="sunMeras.png" alt="">
+    إدارة المنشورات
+  </h1>
+  <p class="page-subtitle">عرض منشورات النادي السابقة وإضافة إعلانات جديدة.</p>
+ 
+  <!-- ===== المنشورات السابقة ===== -->
+  <section class="section" id="previous-posts">
+    <div class="section-head">
+      <h2 class="section-title">المنشورات السابقة</h2>
+    </div>
+ 
+    <div class="section-body">
+      <div class="posts-grid" id="posts-grid">
+
+ 
+        <article class="post-card">
+          <div class="post-top">
+            <span class="badge">إعلان عام</span>
+          </div>
+          <h3 class="post-title">فتح باب التسجيل في الفرص الجديدة</h3>
+          <p class="post-content">يعلن نادي إبداع عن فتح باب التسجيل في فرص جديدة لهذا الفصل، منها مصمم هوية بصرية ومحرر محتوى ومنسق فعاليات. نرحب بجميع الطلاب المهتمين.</p>
+          <ul class="post-details">
+            <li><b>تاريخ النشر:</b> 18 أكتوبر 2026</li>
+          </ul>
+          <div class="post-actions" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;">
+            <button type="button" class="btn edit-post">تعديل</button>
+            <button type="button" class="btn btn-light delete-post">حذف</button>
+          </div>
+        </article>
+ 
+        <article class="post-card">
+          <div class="post-top">
+            <span class="badge">ورشة عمل</span>
+          </div>
+          <h3 class="post-title">ورشة كتابة المحتوى الرقمي</h3>
+          <p class="post-content">ندعوكم لحضور ورشة تعرّفكم بأساسيات كتابة المحتوى لمنصات التواصل الاجتماعي، وكيفية صياغة منشورات جذابة وواضحة.</p>
+          <ul class="post-details">
+            <li><b>تاريخ النشر:</b> 15 أكتوبر 2026</li>
+          </ul>
+          <div class="post-actions" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;">
+            <button type="button" class="btn edit-post">تعديل</button>
+            <button type="button" class="btn btn-light delete-post">حذف</button>
+          </div>
+        </article>
+ 
+        <article class="post-card">
+          <div class="post-top">
+            <span class="badge">فعالية</span>
+          </div>
+          <h3 class="post-title">لقاء التعارف الأول لأعضاء النادي</h3>
+          <p class="post-content">أقام النادي لقاءً تعريفيًا جمع الأعضاء الجدد بفريق العمل، وتعرّفوا خلاله على أنشطة النادي وخططه لهذا الفصل الدراسي.</p>
+          <ul class="post-details">
+            <li><b>تاريخ النشر:</b> 11 أكتوبر 2026</li>
+          </ul>
+          <div class="post-actions" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;">
+            <button type="button" class="btn edit-post">تعديل</button>
+            <button type="button" class="btn btn-light delete-post">حذف</button>
+          </div>
+        </article>
+ 
+        <article class="post-card post-extra">
+          <div class="post-top">
+            <span class="badge">نشاط طلابي</span>
+          </div>
+          <h3 class="post-title">مسابقة تصميم شعار الفعاليات</h3>
+          <p class="post-content">أطلق النادي مسابقة بين الأعضاء لتصميم شعار فعاليات الفصل، وسيُعلن عن العمل الفائز وتُعتمد نتيجته بعد تقييم لجنة النادي.</p>
+          <ul class="post-details">
+            <li><b>تاريخ النشر:</b> 5 أكتوبر 2026</li>
+          </ul>
+          <div class="post-actions" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;">
+            <button type="button" class="btn edit-post">تعديل</button>
+            <button type="button" class="btn btn-light delete-post">حذف</button>
+          </div>
+        </article>
+ 
+        <article class="post-card post-extra">
+          <div class="post-top">
+            <span class="badge">إعلان عام</span>
+          </div>
+          <h3 class="post-title">ترحيب بالأعضاء الجدد</h3>
+          <p class="post-content">يرحب نادي إبداع بجميع الطلاب المنضمين حديثًا، ويتمنى لهم عامًا دراسيًا مليئًا بالمشاركة والإنجاز داخل النادي.</p>
+          <ul class="post-details">
+            <li><b>تاريخ النشر:</b> 28 سبتمبر 2026</li>
+          </ul>
+          <div class="post-actions" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;">
+            <button type="button" class="btn edit-post">تعديل</button>
+            <button type="button" class="btn btn-light delete-post">حذف</button>
+          </div>
+        </article>
+ 
+        <article class="post-card post-extra">
+          <div class="post-top">
+            <span class="badge">ورشة عمل</span>
+          </div>
+          <h3 class="post-title">ورشة التصوير بالجوال</h3>
+          <p class="post-content">ورشة تدريبية عن أساسيات التصوير بالهاتف المحمول، تشمل التكوين والإضاءة، وتفيد أعضاء النادي في توثيق الفعاليات.</p>
+          <ul class="post-details">
+            <li><b>تاريخ النشر:</b> 20 سبتمبر 2026</li>
+          </ul>
+          <div class="post-actions" style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;">
+            <button type="button" class="btn edit-post">تعديل</button>
+            <button type="button" class="btn btn-light delete-post">حذف</button>
+          </div>
+        </article>
+ 
+
+ 
+      </div>
+ 
+      <div class="more-wrap">
+        <button type="button" class="btn btn-light" id="toggle-posts">عرض المزيد</button>
+      </div>
+    </div>
+  </section>
+ 
+
+  <section class="section add-section" id="add-post">
+    <div class="section-head">
+      <h2 class="section-title">إضافة منشور جديد</h2>
+    </div>
+ 
+    <div class="section-body">
+      <p class="add-text">يمكنك كتابة إعلان جديد باسم النادي ونشره للطلاب.</p>
+ 
+      <button type="button" class="btn btn-add" id="open-form" aria-expanded="false" aria-controls="form-wrap">إضافة منشور</button>
+ 
+
+      <div class="form-wrap" id="form-wrap">
+        <div class="form-wrap-inner">
+ 
+          <form action="" method="post" enctype="multipart/form-data" id="post-form">
+            <h3 class="form-title">منشور جديد</h3>
+ 
+            <div class="form-body">
+              <div class="form-grid">
+ 
+                <div class="field">
+                  <label for="post-title">عنوان المنشور</label>
+                  <input type="text" id="post-title" name="title" required>
+                </div>
+ 
+                <div class="field">
+                  <label for="post-type">نوع الإعلان</label>
+                  <select id="post-type" name="type" required>
+                    <option value="general">إعلان عام</option>
+                    <option value="event">فعالية</option>
+                    <option value="workshop">ورشة عمل</option>
+                    <option value="activity">نشاط طلابي</option>
+                    <option value="other">أخرى</option>
+                  </select>
+                </div>
+ 
+                <div class="field field-full">
+                  <label for="post-content">محتوى المنشور</label>
+                  <textarea id="post-content" name="content" required></textarea>
+                </div>
+ 
+                <div class="field field-full">
+                  <label for="post-image">صورة المنشور <span class="optional">(اختياري)</span></label>
+                  <input type="file" id="post-image" name="image" accept="image/*">
+                </div>
+ 
+              </div>
+            </div>
+ 
+            <div class="form-actions">
+              <button type="submit" class="btn">نشر المنشور</button>
+              <button type="button" class="btn btn-light" id="close-form">إلغاء</button>
+            </div>
+          </form>
+ 
+        </div>
+      </div>
+    </div>
+  </section>
+ 
+</main>
+  
+  <footer class="footer" id="site-footer"></footer>
+
+  <script src="layout.js" defer></script>
+
+ <script>
+ var formWrap = document.getElementById("form-wrap");
+  var openBtn = document.getElementById("open-form");
+ 
+  function openForm() {
+    formWrap.classList.add("open");
+    openBtn.setAttribute("aria-expanded", "true");
+  }
+ 
+  function closeForm() {
+    formWrap.classList.remove("open");
+    openBtn.setAttribute("aria-expanded", "false");
+    document.getElementById("post-form").reset();
+  }
+ 
+  openBtn.addEventListener("click", openForm);
+  document.getElementById("close-form").addEventListener("click", closeForm);
+ 
+  /* ----- عرض المزيد / عرض أقل ----- */
+  var postsGrid = document.getElementById("posts-grid");
+  var toggleBtn = document.getElementById("toggle-posts");
+ 
+  /* إذا كانت المنشورات ثلاثة أو أقل لا حاجة للزر */
+  if (postsGrid.querySelectorAll(".post-extra").length === 0) {
+    toggleBtn.parentNode.style.display = "none";
+  }
+ 
+  toggleBtn.addEventListener("click", function () {
+    var showAll = postsGrid.classList.toggle("show-all");
+    toggleBtn.textContent = showAll ? "عرض أقل" : "عرض المزيد";
+  });
+
+  /* تعديل وحذف المنشورات التجريبية (إلى حين الربط بقاعدة البيانات) */
+  var postTypes = {
+    "إعلان عام": "general", "فعالية": "event", "ورشة عمل": "workshop",
+    "نشاط طلابي": "activity", "أخرى": "other"
+  };
+
+  postsGrid.addEventListener("click", function (event) {
+    var card = event.target.closest(".post-card");
+    if (!card) return;
+
+    if (event.target.classList.contains("delete-post")) {
+      if (!confirm("هل أنت متأكد من حذف هذا المنشور؟")) return;
+      card.remove();
+      var remaining = postsGrid.querySelectorAll(".post-card");
+      remaining.forEach(function (post, index) {
+        post.classList.toggle("post-extra", index >= 3);
+      });
+      if (remaining.length === 0) {
+        var empty = document.createElement("p");
+        empty.className = "empty";
+        empty.textContent = "لم ينشر النادي أي منشورات حتى الآن.";
+        postsGrid.appendChild(empty);
+      }
+      if (remaining.length <= 3) {
+        toggleBtn.parentNode.style.display = "none";
+        postsGrid.classList.remove("show-all");
+        toggleBtn.textContent = "عرض المزيد";
+      }
+      alert("تم حذف المنشور بنجاح.");
+      return;
+    }
+
+    if (event.target.classList.contains("edit-post")) {
+      var oldEditor = card.querySelector(".post-editor");
+      if (oldEditor) {
+        oldEditor.remove();
+        return;
+      }
+      var title = card.querySelector(".post-title").textContent;
+      var content = card.querySelector(".post-content").textContent;
+      var type = card.querySelector(".badge").textContent;
+      var editor = document.createElement("form");
+      editor.className = "post-editor";
+      editor.style.marginTop = "16px";
+      editor.style.padding = "16px";
+      editor.style.borderRadius = "12px";
+      editor.style.backgroundColor = "var(--header-bg)";
+      editor.style.border = "1px solid var(--line)";
+      editor.innerHTML = '<div class="field"><label>عنوان المنشور</label><input name="edit-title" type="text" required></div>' +
+        '<div class="field" style="margin-top:12px"><label>نوع الإعلان</label><select name="edit-type">' +
+        '<option value="إعلان عام">إعلان عام</option><option value="فعالية">فعالية</option>' +
+        '<option value="ورشة عمل">ورشة عمل</option><option value="نشاط طلابي">نشاط طلابي</option>' +
+        '<option value="أخرى">أخرى</option></select></div>' +
+        '<div class="field" style="margin-top:12px"><label>محتوى المنشور</label><textarea name="edit-content" required></textarea></div>' +
+        '<div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:14px">' +
+        '<button type="submit" class="btn">حفظ التعديلات</button>' +
+        '<button type="button" class="btn btn-light cancel-edit">إلغاء</button></div>';
+      card.appendChild(editor);
+      editor.elements["edit-title"].value = title;
+      editor.elements["edit-type"].value = type;
+      editor.elements["edit-content"].value = content;
+      editor.addEventListener("submit", function (e) {
+        e.preventDefault();
+        card.querySelector(".post-title").textContent = editor.elements["edit-title"].value;
+        card.querySelector(".badge").textContent = editor.elements["edit-type"].value;
+        card.querySelector(".post-content").textContent = editor.elements["edit-content"].value;
+        editor.remove();
+        alert("تم تعديل المنشور بنجاح.");
+      });
+    }
+    if (event.target.classList.contains("cancel-edit")) {
+      card.querySelector(".post-editor").remove();
+    }
+  });
+ </script>
+
+</body>
+</html>

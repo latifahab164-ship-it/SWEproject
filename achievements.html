@@ -1,0 +1,749 @@
+ <!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مِراس - مسؤول النادي</title>
+  <link rel="stylesheet" href="Style.css">
+<style>
+  .ach-page {
+    --teal-dark: #2E5560;
+    --gold-dark: #EDD08A;
+    --line: rgba(46, 85, 96, 0.18);
+ 
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 34px 24px 60px;
+  }
+ 
+
+  .ach-page .ach-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 8px;
+    font-size: 30px;
+    color: var(--ink-dark);
+  }
+ 
+  .ach-page .ach-title img {
+    height: 34px;
+  }
+ 
+  .ach-page .ach-subtitle {
+    margin: 0 0 28px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+ 
+
+  .ach-page .ach-btn {
+    display: inline-block;
+    padding: 10px 24px;
+    border-radius: 999px;
+    border: 2px solid #2E5560;
+    background-color: #2E5560;
+    color: #fff;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color .2s, color .2s, border-color .2s;
+}
+
+.ach-page .ach-btn:hover {
+    background-color: var(--gold);
+    border-color: var(--gold);
+    color: var(--ink-dark);
+}
+
+.ach-page .ach-btn-light {
+    background-color: transparent;
+    color: var(--ink);
+    border-color: var(--teal);
+}
+
+.ach-page .ach-btn-light:hover {
+    background-color: var(--yellow);
+    border-color: var(--gold);
+    color: var(--ink-dark);
+}
+ 
+
+.ach-page .ach-section-head .ach-btn-light {
+    color: var(--ink);
+    border-color: var(--teal);
+}
+
+.ach-page .ach-section-head .ach-btn-light:hover {
+    background-color: var(--yellow);
+    border-color: var(--gold);
+    color: var(--ink-dark);
+}
+ 
+
+  .ach-page .ach-section {
+    background-color: #fff;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    box-shadow: 0 6px 20px rgba(46, 85, 96, 0.10);
+    overflow: hidden;
+  }
+ 
+  .ach-page .ach-manage {
+    margin-top: 28px;
+  }
+ 
+  .ach-page .ach-section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 16px 22px;
+background-color: transparent;
+border-bottom: none;
+  }
+ 
+  .ach-page .ach-section-title {
+    margin: 0;
+    font-size: 21px;
+    color: #2E5560;
+  }
+ 
+  .ach-page .ach-section-body {
+    padding: 20px 22px 22px;
+    background-color: #fff;
+  }
+ 
+
+  .ach-page .ach-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+ 
+  .ach-page .ach-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    border-top: 5px solid var(--teal-light);
+    box-shadow: 0 6px 20px rgba(46, 85, 96, 0.10);
+    padding: 18px 20px 20px;
+  }
+ 
+
+  .ach-page .ach-card.is-active {
+    border-top-color: var(--gold-dark);
+    box-shadow: 0 8px 24px rgba(46, 85, 96, 0.22);
+  }
+ 
+.ach-page .ach-badge {
+    align-self: flex-start;
+    margin-bottom: 12px;
+    padding: 3px 14px;
+    border-radius: 999px;
+    background-color: var(--teal-light);
+    border: 1px solid var(--teal);
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--ink-dark);
+}
+ 
+  .ach-page .ach-card-title {
+    margin: 0 0 8px;
+    font-size: 20px;
+    color: var(--ink-dark);
+  }
+ 
+  .ach-page .ach-card-desc {
+    margin: 0 0 14px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.9;
+  }
+ 
+
+  .ach-page .ach-details {
+    list-style: none;
+    margin: auto 0 14px;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    border-right: 5px solid var(--gold-dark);
+    background-color: var(--header-bg);
+    font-size: 14px;
+    line-height: 2;
+  }
+ 
+  .ach-page .ach-details b {
+    margin-left: 4px;
+    color: var(--ink-dark);
+  }
+ 
+  .ach-page .ach-card .ach-btn {
+    text-align: center;
+  }
+ 
+
+  .ach-page .ach-empty {
+    grid-column: 1 / -1;
+    margin: 0;
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 14px;
+    border: 2px dashed var(--teal-dark);
+    background-color: #fff;
+    font-size: 16px;
+    color: var(--ink-dark);
+  }
+ 
+
+  .ach-page .ach-manage[hidden] {
+    display: none;
+  }
+ 
+
+  .ach-page .ach-bulk {
+    display: flex;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin-bottom: 20px;
+    padding: 16px 18px;
+    background-color: #fff;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    border-right: 8px solid var(--gold-dark);
+    box-shadow: 0 4px 14px rgba(46, 85, 96, 0.08);
+  }
+ 
+  .ach-page .ach-field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+ 
+  .ach-page .ach-field label {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink-dark);
+  }
+ 
+  .ach-page .ach-field input {
+    width: 150px;
+    padding: 9px 14px;
+    border-radius: 12px;
+    border: 2px solid var(--teal-light);
+    background-color: #fff;
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 15px;
+  }
+ 
+  .ach-page .ach-field input:focus {
+    outline: none;
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px var(--yellow);
+  }
+ 
+
+  .ach-page .ach-field input.is-invalid {
+    border-color: var(--gold-dark);
+    box-shadow: 0 0 0 3px var(--yellow);
+  }
+ 
+
+  .ach-page .ach-students {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+ 
+  .ach-page .ach-student {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 16px;
+    background-color: #fff;
+    border-radius: 14px;
+    border: 1px solid var(--line);
+    border-right: 8px solid var(--teal-dark);
+    box-shadow: 0 4px 14px rgba(46, 85, 96, 0.08);
+  }
+ 
+  .ach-page .ach-student-name {
+    margin: 0 0 2px;
+    font-size: 16px;
+    font-weight: 500;
+    color: var(--ink-dark);
+  }
+ 
+  .ach-page .ach-student-id {
+    margin: 0;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--teal-dark);
+  }
+ 
+  .ach-page .ach-student .ach-field input {
+    width: 100px;
+    text-align: center;
+  }
+ 
+
+  .ach-page .ach-student {
+    flex-wrap: wrap;
+  }
+
+  .ach-page .ach-certificate {
+    width: 100%;
+    padding-top: 10px;
+    border-top: 1px solid var(--line);
+  }
+
+  .ach-page .ach-certificate label {
+    display: block;
+    margin-bottom: 7px;
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--ink-dark);
+  }
+
+  .ach-page .ach-certificate input[type="file"] {
+    width: 100%;
+    max-width: 100%;
+    font: inherit;
+    font-size: 13px;
+    color: var(--ink-dark);
+  }
+
+  .ach-page .ach-certificate-name {
+    margin: 7px 0 0;
+    font-size: 13px;
+    color: var(--teal-dark);
+    overflow-wrap: anywhere;
+  }
+
+
+  .ach-page .ach-message {
+    margin-top: 18px;
+    padding: 12px 16px;
+    border-radius: 12px;
+    font-size: 15px;
+    font-weight: 500;
+  }
+ 
+  .ach-page .ach-message[hidden] {
+    display: none;
+  }
+ 
+  .ach-page .ach-message.is-success {
+    background-color: var(--teal-dark);
+    border: 1px solid var(--ink);
+    color: #fff;
+  }
+ 
+  .ach-page .ach-message.is-error {
+    background-color: var(--gold);
+    border: 1px solid var(--gold-dark);
+    color: var(--ink-dark);
+  }
+ 
+  .ach-page .ach-actions {
+    margin-top: 18px;
+  }
+ 
+
+  @media (max-width: 900px) {
+    .ach-page .ach-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+ 
+  @media (max-width: 800px) {
+    .ach-page {
+      padding: 24px 16px 44px;
+    }
+ 
+    .ach-page .ach-title {
+      font-size: 24px;
+    }
+ 
+    .ach-page .ach-section-head,
+    .ach-page .ach-section-body {
+      padding-right: 16px;
+      padding-left: 16px;
+    }
+ 
+    .ach-page .ach-grid,
+    .ach-page .ach-students {
+      grid-template-columns: 1fr;
+    }
+ 
+    .ach-page .ach-bulk .ach-field,
+    .ach-page .ach-bulk .ach-field input {
+      width: 100%;
+    }
+ 
+    .ach-page .ach-bulk .ach-btn,
+    .ach-page .ach-actions .ach-btn {
+      width: 100%;
+      text-align: center;
+    }
+  }
+  
+  .ach-page #completed-opportunities {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+}
+
+.ach-page #completed-opportunities .ach-section-body {
+    background: transparent;
+}
+</style>
+ </head>
+<body data-role="club" data-page="achievements">
+
+  <!-- ===== Club Admin Header ===== -->
+  <header class="header" id="site-header">
+    <a href="clubAdmin.html" class="logo">
+      <img src="logoMeras.jpg" alt="شعار مِراس">
+    </a>
+
+    <nav class="nav">
+      <a href="clubAdmin.html">لوحة التحكم</a>
+      <a href="opportunities.html">إدارة الفرص</a>
+      <a href="applications.html">إدارة الطلبات</a>
+      <a href="posts.html">المنشورات</a>
+      <a href="achievements.html">توثيق الإنجازات</a>
+      <a href="clubInfo.html">معلومات النادي</a>
+      <a href="#" class="logout">تسجيل الخروج</a>
+    </nav>
+  </header>
+
+<main class="page ach-page">
+ 
+  <h1 class="ach-title">
+    <img src="sunMeras.png" alt="">
+    توثيق الإنجازات
+  </h1>
+  <p class="ach-subtitle">اختاري فرصة منتهية لتوثيق الساعات التطوعية والشهادات للطلاب المشاركين فيها.</p>
+ 
+  <!-- ===== الفرص المنتهية ===== -->
+  <section class="ach-section" id="completed-opportunities">
+    <div class="ach-section-head">
+      <h2 class="ach-section-title">الفرص المنتهية</h2>
+    </div>
+ 
+    <div class="ach-section-body">
+      <div class="ach-grid" id="ach-grid">
+ 
+        <!-- ===== بيانات تجريبية للعرض فقط: تُستبدل بالبيانات من قاعدة البيانات =====
+             data-id يربط البطاقة بطلاب الفرصة في السكربت أسفل الصفحة.
+             عدد المشاركين يطابق عدد طلاب الفرصة في بيانات السكربت. -->
+ 
+        <article class="ach-card" data-id="1">
+          <span class="ach-badge">منتهية</span>
+          <h3 class="ach-card-title">مصور فعاليات</h3>
+          <p class="ach-card-desc">تصوير فعاليات النادي وتسليم المواد المصورة بعد انتهاء الفعالية.</p>
+          <ul class="ach-details">
+            <li><b>تاريخ الانتهاء:</b> 11 أكتوبر 2026</li>
+            <li><b>عدد المشاركين:</b> 4</li>
+          </ul>
+          <button type="button" class="ach-btn ach-manage-btn">إدارة الإنجازات</button>
+        </article>
+ 
+        <article class="ach-card" data-id="2">
+          <span class="ach-badge">منتهية</span>
+          <h3 class="ach-card-title">منظم لقاء التعارف</h3>
+          <p class="ach-card-desc">استقبال الأعضاء الجدد وتنظيم فقرات لقاء التعارف الأول للنادي.</p>
+          <ul class="ach-details">
+            <li><b>تاريخ الانتهاء:</b> 8 أكتوبر 2026</li>
+            <li><b>عدد المشاركين:</b> 5</li>
+          </ul>
+          <button type="button" class="ach-btn ach-manage-btn">إدارة الإنجازات</button>
+        </article>
+ 
+        <article class="ach-card" data-id="3">
+          <span class="ach-badge">منتهية</span>
+          <h3 class="ach-card-title">مساعد إعلامي</h3>
+          <p class="ach-card-desc">إعداد المحتوى الإعلاني ونشر أخبار النادي على منصات التواصل.</p>
+          <ul class="ach-details">
+            <li><b>تاريخ الانتهاء:</b> 29 سبتمبر 2026</li>
+            <li><b>عدد المشاركين:</b> 3</li>
+          </ul>
+          <button type="button" class="ach-btn ach-manage-btn">إدارة الإنجازات</button>
+        </article>
+ 
+        <article class="ach-card" data-id="4">
+          <span class="ach-badge">منتهية</span>
+          <h3 class="ach-card-title">مصمم مطبوعات الملتقى</h3>
+          <p class="ach-card-desc">تصميم اللوحات والبروشورات المطبوعة الخاصة بملتقى النادي.</p>
+          <ul class="ach-details">
+            <li><b>تاريخ الانتهاء:</b> 22 سبتمبر 2026</li>
+            <li><b>عدد المشاركين:</b> 4</li>
+          </ul>
+          <button type="button" class="ach-btn ach-manage-btn">إدارة الإنجازات</button>
+        </article>
+ 
+        <!-- عند عدم وجود فرص منتهية تظهر هذه الرسالة بدل البطاقات:
+        <p class="ach-empty">لا توجد فرص منتهية حتى الآن.</p>
+        -->
+ 
+      </div>
+    </div>
+  </section>
+ 
+ 
+  <!-- ===== إدارة إنجازات الطلاب (مخفي حتى اختيار فرصة) ===== -->
+  <section class="ach-section ach-manage" id="ach-manage" hidden>
+    <div class="ach-section-head">
+      <h2 class="ach-section-title" id="ach-manage-title">إدارة الإنجازات</h2>
+      <button type="button" class="ach-btn ach-btn-light" id="ach-close">إغلاق</button>
+    </div>
+ 
+    <div class="ach-section-body">
+ 
+      <!-- الساعات الموحدة لجميع الطلاب -->
+      <div class="ach-bulk">
+        <div class="ach-field">
+          <label for="ach-bulk-hours">الساعات التطوعية الموحدة</label>
+          <input type="number" id="ach-bulk-hours" min="0" step="0.5" placeholder="مثال: 5">
+        </div>
+        <button type="button" class="ach-btn ach-btn-light" id="ach-apply-all">تطبيق على الجميع</button>
+      </div>
+ 
+      <!-- قائمة الطلاب: تُعبّأ من بيانات السكربت -->
+      <div class="ach-students" id="ach-students"></div>
+ 
+      <!-- رسالة النجاح أو الخطأ -->
+      <div class="ach-message" id="ach-message" role="status" hidden></div>
+ 
+      <div class="ach-actions">
+        <button type="button" class="ach-btn" id="ach-save">حفظ الإنجازات</button>
+      </div>
+ 
+    </div>
+  </section>
+ 
+</main>
+  
+  <footer class="footer" id="site-footer"></footer>
+
+  <script src="layout.js" defer></script>
+
+<script>
+  /* ===== بيانات تجريبية: تُستبدل بالبيانات من قاعدة البيانات لاحقًا =====
+     كل فرصة لها رقم (id) يطابق data-id في البطاقة، وقائمة بالطلاب المشاركين. */
+  var opportunitiesData = {
+    1: [
+      { id: "1-1", name: "نورة القحطاني",  uid: "446101523" },
+      { id: "1-2", name: "ريم الشهري",     uid: "446104871" },
+      { id: "1-3", name: "عبدالله السبيعي", uid: "445207390" },
+      { id: "1-4", name: "هند المطيري",    uid: "446108264" }
+    ],
+    2: [
+      { id: "2-1", name: "سارة العتيبي",   uid: "446102956" },
+      { id: "2-2", name: "لمى الدوسري",    uid: "446105418" },
+      { id: "2-3", name: "فهد الحربي",     uid: "445209137" },
+      { id: "2-4", name: "جود الغامدي",    uid: "446107702" },
+      { id: "2-5", name: "محمد العنزي",    uid: "445203685" }
+    ],
+    3: [
+      { id: "3-1", name: "ريم الشهري",     uid: "446104871" },
+      { id: "3-2", name: "عبدالرحمن القرني", uid: "445206049" },
+      { id: "3-3", name: "أروى الزهراني",   uid: "446109335" }
+    ],
+    4: [
+      { id: "4-1", name: "نورة القحطاني",  uid: "446101523" },
+      { id: "4-2", name: "سلمان الشمري",   uid: "445208826" },
+      { id: "4-3", name: "لمى الدوسري",    uid: "446105418" },
+      { id: "4-4", name: "تالا الخالدي",    uid: "446103091" }
+    ]
+  };
+ 
+  /* الساعات التي أدخلها المسؤول لكل فرصة، تبقى محفوظة أثناء التنقل بين الفرص في الصفحة */
+  var enteredHours = {};
+  /* ملفات الشهادات تبقى في ذاكرة الصفحة فقط، ولا تُرفع إلى خادم */
+  var enteredCertificates = {};
+ 
+  var currentId = null;
+  var manageSection = document.getElementById("ach-manage");
+  var manageTitle = document.getElementById("ach-manage-title");
+  var studentsBox = document.getElementById("ach-students");
+  var bulkInput = document.getElementById("ach-bulk-hours");
+  var messageBox = document.getElementById("ach-message");
+  var cards = document.querySelectorAll(".ach-card");
+ 
+  function showMessage(text, type) {
+    messageBox.textContent = text;
+    messageBox.className = "ach-message is-" + type;
+    messageBox.hidden = false;
+  }
+ 
+  function hideMessage() {
+    messageBox.hidden = true;
+  }
+ 
+  /* يعرض طلاب الفرصة مع الساعات المدخلة سابقًا (إن وجدت) */
+  function renderStudents(id) {
+    var saved = enteredHours[id] || {};
+    var html = "";
+ 
+    opportunitiesData[id].forEach(function (student) {
+      var value = saved[student.id] !== undefined ? saved[student.id] : "";
+      html +=
+        '<div class="ach-student">' +
+          '<div>' +
+            '<h4 class="ach-student-name">' + student.name + '</h4>' +
+            '<p class="ach-student-id">الرقم الجامعي: ' + student.uid + '</p>' +
+          '</div>' +
+          '<div class="ach-field">' +
+            '<label for="hours-' + student.id + '">الساعات</label>' +
+            '<input type="number" class="ach-hours" id="hours-' + student.id + '"' +
+            ' data-student="' + student.id + '" min="0" step="0.5" value="' + value + '">' +
+          '</div>' +
+          '<div class="ach-certificate">' +
+            '<label for="certificate-' + student.id + '">شهادة الطالب (اختياري)</label>' +
+            '<input type="file" class="ach-certificate-input" id="certificate-' + student.id + '"' +
+            ' data-student="' + student.id + '" accept=".pdf,.png,.jpg,.jpeg">' +
+            '<p class="ach-certificate-name" data-student="' + student.id + '"></p>' +
+          '</div>' +
+        '</div>';
+    });
+ 
+    studentsBox.innerHTML = html;
+    var savedFiles = enteredCertificates[id] || {};
+    studentsBox.querySelectorAll(".ach-certificate-name").forEach(function (label) {
+      var file = savedFiles[label.dataset.student];
+      label.textContent = file ? "الشهادة المختارة: " + file.name : "";
+    });
+  }
+ 
+  /* يحفظ القيم الحالية في الذاكرة حتى لا تضيع عند التنقل بين الفرص */
+  function rememberHours() {
+    if (currentId === null) return;
+    enteredHours[currentId] = {};
+    studentsBox.querySelectorAll(".ach-hours").forEach(function (input) {
+      enteredHours[currentId][input.dataset.student] = input.value;
+    });
+  }
+ 
+  /* فتح قسم الإدارة لفرصة معيّنة */
+  function openManage(card) {
+    rememberHours();
+    currentId = card.dataset.id;
+ 
+    cards.forEach(function (c) { c.classList.remove("is-active"); });
+    card.classList.add("is-active");
+ 
+    manageTitle.textContent = "إدارة إنجازات: " + card.querySelector(".ach-card-title").textContent;
+    bulkInput.value = "";
+    bulkInput.classList.remove("is-invalid");
+    hideMessage();
+    renderStudents(currentId);
+ 
+    manageSection.hidden = false;
+    manageSection.scrollIntoView({ behavior: "smooth", block: "start" });
+  }
+ 
+  document.querySelectorAll(".ach-manage-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      openManage(btn.closest(".ach-card"));
+    });
+  });
+ 
+  /* إغلاق القسم (القيم المدخلة تبقى محفوظة في الذاكرة) */
+  document.getElementById("ach-close").addEventListener("click", function () {
+    rememberHours();
+    manageSection.hidden = true;
+    cards.forEach(function (c) { c.classList.remove("is-active"); });
+    currentId = null;
+  });
+ 
+  /* التحقق من قيمة: رقم صحيح وغير سالب */
+  function isValidHours(text) {
+    return text !== "" && !isNaN(text) && Number(text) >= 0;
+  }
+ 
+  /* تطبيق الساعات الموحدة على جميع الطلاب (ويمكن تعديل أي طالب بعدها) */
+  document.getElementById("ach-apply-all").addEventListener("click", function () {
+    if (!isValidHours(bulkInput.value)) {
+      bulkInput.classList.add("is-invalid");
+      showMessage("الرجاء إدخال عدد ساعات موحد صحيح (صفر أو أكثر).", "error");
+      return;
+    }
+ 
+    bulkInput.classList.remove("is-invalid");
+    studentsBox.querySelectorAll(".ach-hours").forEach(function (input) {
+      input.value = bulkInput.value;
+      input.classList.remove("is-invalid");
+    });
+    rememberHours();
+    hideMessage();
+  });
+ 
+  /* حفظ ما يكتبه المسؤول أثناء الكتابة وإزالة علامة الخطأ */
+  studentsBox.addEventListener("input", function (e) {
+    if (!e.target.classList.contains("ach-hours")) return;
+    e.target.classList.remove("is-invalid");
+    rememberHours();
+    hideMessage();
+  });
+ 
+  /* الاحتفاظ بشهادة كل طالب عند التنقل بين الفرص داخل الصفحة */
+  studentsBox.addEventListener("change", function (e) {
+    if (!e.target.classList.contains("ach-certificate-input")) return;
+    var input = e.target;
+    var studentId = input.dataset.student;
+    var file = input.files[0];
+    if (!enteredCertificates[currentId]) enteredCertificates[currentId] = {};
+    if (file) {
+      enteredCertificates[currentId][studentId] = file;
+    }
+    var label = studentsBox.querySelector('.ach-certificate-name[data-student="' + studentId + '"]');
+    label.textContent = file ? "الشهادة المختارة: " + file.name : "";
+    hideMessage();
+  });
+
+  bulkInput.addEventListener("input", function () {
+    bulkInput.classList.remove("is-invalid");
+  });
+ 
+  /* حفظ الإنجازات: تحقق ثم رسالة نجاح (بدون قاعدة بيانات) */
+  document.getElementById("ach-save").addEventListener("click", function () {
+    var inputs = studentsBox.querySelectorAll(".ach-hours");
+    var allValid = true;
+ 
+    inputs.forEach(function (input) {
+      var hasCertificate = !!(enteredCertificates[currentId] &&
+        enteredCertificates[currentId][input.dataset.student]);
+      if (isValidHours(input.value) || (input.value === "" && hasCertificate)) {
+        input.classList.remove("is-invalid");
+      } else {
+        input.classList.add("is-invalid");
+        allValid = false;
+      }
+    });
+ 
+    if (!allValid) {
+      showMessage("الرجاء إدخال ساعات صحيحة أو إرفاق شهادة لكل طالب قبل الحفظ.", "error");
+      return;
+    }
+ 
+    rememberHours();
+    /* تجربة واجهة فقط: الساعات والشهادات لا تُحفظ في قاعدة بيانات أو خادم */
+    showMessage("تم تسجيل إنجازات " + inputs.length + " طلاب في الصفحة بنجاح (بيانات تجريبية).", "success");
+  });
+</script>
+
+</body>
+</html>

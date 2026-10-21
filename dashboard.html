@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مِراس - لوحة التحكم</title>
+  <style>
+    /* Colors: #7BB0BC blue, #8EB8BF light blue, #F9E5AE yellow, #F8F0EA background, #30335B text */
+
+    /* Main page area */
+    .page {
+      background-color: #F8F0EA;
+      color: #30335B;
+      font-family: Tahoma, Arial, sans-serif;
+      padding: 30px;
+    }
+
+    .page-title {
+      margin: 0 0 10px 0;
+      font-size: 28px;
+    }
+
+    .subtitle {
+      margin: 0 0 25px 0;
+      font-size: 16px;
+    }
+
+    .top-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .top-bar .page-title {
+      margin: 0;
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-block;
+      background-color: #7BB0BC;
+      color: #30335B;
+      border: 2px solid #7BB0BC;
+      border-radius: 6px;
+      padding: 8px 16px;
+      font-size: 15px;
+      font-weight: bold;
+      font-family: Tahoma, Arial, sans-serif;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background-color: #F9E5AE;
+      border-color: #F9E5AE;
+    }
+
+    .btn-outline {
+      background-color: #F8F0EA;
+      border: 2px solid #30335B;
+    }
+
+    .btn-outline:hover {
+      background-color: #30335B;
+      border-color: #30335B;
+      color: #F9E5AE;
+    }
+
+    .buttons-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    /* Summary cards */
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .card {
+      border: 2px solid #8EB8BF;
+      border-top: 6px solid #7BB0BC;
+      border-radius: 8px;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .card-number {
+      font-size: 36px;
+      font-weight: bold;
+      margin: 0 0 5px 0;
+    }
+
+    .card-text {
+      margin: 0;
+      font-size: 16px;
+    }
+
+    /* Boxes for sections */
+    .section-box {
+      border: 2px solid #8EB8BF;
+      border-radius: 8px;
+      padding: 20px;
+      margin-bottom: 25px;
+    }
+
+    .section-title {
+      margin: 0 0 15px 0;
+      font-size: 22px;
+    }
+
+    /* Tables */
+    .table-box {
+      overflow-x: auto;
+    }
+
+    .table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .table th {
+      background-color: #7BB0BC;
+      padding: 10px;
+      text-align: right;
+    }
+
+    .table td {
+      padding: 10px;
+      border-bottom: 1px solid #8EB8BF;
+    }
+
+    /* Status labels */
+    .status {
+      display: inline-block;
+      padding: 3px 12px;
+      border-radius: 20px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    .status-wait {
+      background-color: #F9E5AE;
+    }
+
+    .status-ok {
+      background-color: #7BB0BC;
+    }
+
+    .status-no {
+      background-color: #30335B;
+      color: #F8F0EA;
+    }
+
+    /* Forms */
+    .form-box label {
+      display: block;
+      font-weight: bold;
+      margin-bottom: 5px;
+      margin-top: 15px;
+    }
+
+    .field {
+      width: 100%;
+      padding: 10px;
+      border: 2px solid #8EB8BF;
+      border-radius: 6px;
+      background-color: #F8F0EA;
+      color: #30335B;
+      font-size: 15px;
+      font-family: Tahoma, Arial, sans-serif;
+      box-sizing: border-box;
+    }
+
+    .form-box .btn {
+      margin-top: 20px;
+    }
+
+    /* Posts */
+    .post {
+      border: 2px solid #8EB8BF;
+      border-right: 6px solid #7BB0BC;
+      border-radius: 8px;
+      padding: 15px 20px;
+      margin-bottom: 15px;
+    }
+
+    .post-title {
+      margin: 0 0 8px 0;
+      font-size: 20px;
+    }
+
+    .post-date {
+      margin: 0 0 10px 0;
+      font-size: 14px;
+    }
+
+    .post-text {
+      margin: 0 0 12px 0;
+      line-height: 1.8;
+    }
+
+    /* Club information */
+    .club-info {
+      display: flex;
+      gap: 25px;
+      align-items: center;
+    }
+
+    .club-logo {
+      width: 130px;
+      height: 130px;
+      border: 2px solid #8EB8BF;
+      border-radius: 8px;
+      padding: 10px;
+    }
+
+    .club-name {
+      margin: 0 0 10px 0;
+      font-size: 24px;
+    }
+
+    .club-line {
+      margin: 0 0 8px 0;
+      line-height: 1.8;
+    }
+
+    /* Mobile screens */
+    @media (max-width: 800px) {
+      .cards {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .club-info {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 500px) {
+      .cards {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+  </header>
+
+  <main class="page">
+    <h1 class="page-title">مرحبًا بك يا مسؤول نادي التقنية</h1>
+    <p class="subtitle">من هنا تستطيع متابعة نشاط النادي وإدارة الفرص والطلبات. (البيانات أمثلة فقط)</p>
+
+    <!-- Summary cards -->
+    <div class="cards">
+      <div class="card">
+        <p class="card-number">12</p>
+        <p class="card-text">الفرص المنشورة</p>
+      </div>
+      <div class="card">
+        <p class="card-number">7</p>
+        <p class="card-text">الطلبات قيد الانتظار</p>
+      </div>
+      <div class="card">
+        <p class="card-number">9</p>
+        <p class="card-text">المنشورات</p>
+      </div>
+      <div class="card">
+        <p class="card-number">25</p>
+        <p class="card-text">الإنجازات الموثقة</p>
+      </div>
+    </div>
+
+    <!-- Recent applications -->
+    <div class="section-box">
+      <h2 class="section-title">أحدث الطلبات</h2>
+      <div class="table-box">
+        <table class="table">
+          <tr>
+            <th>اسم الطالب</th>
+            <th>نوع الطلب</th>
+            <th>الفرصة</th>
+            <th>تاريخ الطلب</th>
+            <th>الحالة</th>
+          </tr>
+          <tr>
+            <td>سارة العتيبي</td>
+            <td>عضوية النادي</td>
+            <td>-</td>
+            <td>12 أكتوبر 2026</td>
+            <td><span class="status status-wait">قيد الانتظار</span></td>
+          </tr>
+          <tr>
+            <td>محمد القحطاني</td>
+            <td>فرصة</td>
+            <td>ورشة تطوير المواقع</td>
+            <td>11 أكتوبر 2026</td>
+            <td><span class="status status-ok">مقبول</span></td>
+          </tr>
+          <tr>
+            <td>نورة الدوسري</td>
+            <td>فرصة</td>
+            <td>هاكاثون الجامعة</td>
+            <td>10 أكتوبر 2026</td>
+            <td><span class="status status-no">مرفوض</span></td>
+          </tr>
+          <tr>
+            <td>فهد الشهري</td>
+            <td>عضوية النادي</td>
+            <td>-</td>
+            <td>9 أكتوبر 2026</td>
+            <td><span class="status status-wait">قيد الانتظار</span></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+    <!-- Links to main pages -->
+    <div class="section-box">
+      <h2 class="section-title">الوصول السريع</h2>
+      <div class="buttons-row">
+        <a href="opportunities.html" class="btn">إدارة الفرص</a>
+        <a href="applications.html" class="btn">إدارة الطلبات</a>
+        <a href="posts.html" class="btn">المنشورات</a>
+        <a href="achievements.html" class="btn">توثيق الإنجازات</a>
+        <a href="clubInfo.html" class="btn">معلومات النادي</a>
+      </div>
+    </div>
+
+  </main>
+
+  <footer>
+  </footer>
+
+</body>
+</html>

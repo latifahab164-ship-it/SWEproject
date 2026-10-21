@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مِراس - مسؤول النادي</title>
+  <link rel="stylesheet" href="Style.css">
+
+  <style>
+
+  .opps-page {
+    --teal-dark: #2E5560;
+    --gold-dark: #EDD08A;
+    --line: rgba(46, 85, 96, 0.18);
+
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 34px 24px 60px;
+  }
+
+
+  .opps-page .page-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+
+  .opps-page .page-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 0 0 8px;
+    font-size: 30px;
+    color: var(--ink-dark);
+  }
+
+  .opps-page .page-title img {
+    height: 34px;
+  }
+
+  .opps-page .page-subtitle {
+    margin: 0;
+    font-size: 16px;
+    font-weight: 400;
+  }
+
+
+  .opps-page .btn {
+    display: inline-block;
+    padding: 10px 24px;
+    border-radius: 999px;
+    border: 2px solid var(--ink);
+    background-color: #2E5560;
+    color: #fff;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color .2s, color .2s, border-color .2s;
+  }
+
+.opps-page .btn:hover {
+    background-color: var(--gold);
+    border-color: var(--gold);
+    color: var(--ink-dark);
+}
+
+.opps-page .btn-light {
+    background-color: transparent;
+    color: var(--ink);
+    border-color: var(--teal);
+}
+
+.opps-page .btn-light:hover {
+    background-color: var(--yellow);
+    border-color: var(--gold);
+    color: var(--ink-dark);
+}
+
+
+  .opps-page .btn-add {
+    padding: 12px 28px;
+    font-size: 16px;
+  }
+
+
+  .opps-page .section {
+    background-color: #fff;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    box-shadow: 0 6px 20px rgba(46, 85, 96, 0.10);
+    overflow: hidden;
+  }
+
+  .opps-page .section-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 16px 22px;
+    background-color: transparent;
+    border-bottom: none;
+  }
+
+  .opps-page .section-title {
+    margin: 0;
+    font-size: 21px;
+    color: var(--ink-dark);
+  }
+
+  .opps-page .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .opps-page .section-body {
+    padding: 20px 22px 22px;
+    background-color: #fff;
+  }
+
+
+  .opps-page .status {
+    display: inline-block;
+    padding: 3px 14px;
+    border-radius: 999px;
+    border: 1px solid transparent;
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+
+  .opps-page .status-open {
+    background-color: var(--teal-dark);
+    border-color: var(--ink);
+    color: #fff;
+  }
+
+
+  .opps-page .status-closed {
+    background-color: var(--gold);
+    border-color: var(--gold-dark);
+    color: var(--ink-dark);
+  }
+
+  /* منتهية: بيج مع حدّ غامق */
+  .opps-page .status-ended {
+    background-color: var(--beige);
+    border-color: var(--ink);
+    color: var(--ink);
+  }
+
+
+  .opps-page .opps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+  }
+
+  .opps-page .opp-card {
+    display: flex;
+    flex-direction: column;
+    background-color: #fff;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    border-top: 5px solid var(--teal-light);
+    box-shadow: 0 6px 20px rgba(46, 85, 96, 0.10);
+    padding: 18px 20px 20px;
+  }
+
+  .opps-page .opp-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+
+  .opps-page .opp-label {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--teal-dark);
+  }
+
+  .opps-page .opp-title {
+    margin: 0 0 8px;
+    font-size: 20px;
+    color: var(--ink-dark);
+  }
+
+  .opps-page .opp-desc {
+    margin: 0 0 14px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.9;
+  }
+
+
+  .opps-page .opp-details {
+    list-style: none;
+    margin: auto 0 0;
+    padding: 12px 14px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    border-right: 5px solid var(--teal-light);
+    background-color: var(--header-bg);
+    font-size: 14px;
+    line-height: 2;
+  }
+
+  .opps-page .opp-details b {
+    margin-left: 4px;
+    color: var(--ink-dark);
+  }
+
+
+  .opps-page .empty {
+    grid-column: 1 / -1;
+    margin: 0;
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 14px;
+    border: 2px dashed var(--teal-dark);
+    background-color: #fff;
+    font-size: 16px;
+    color: var(--ink-dark);
+  }
+
+  .opps-page .empty p {
+    margin: 0 0 16px;
+  }
+
+
+  .opps-page .add-section {
+    margin-top: 28px;
+  }
+
+  .opps-page .add-text {
+    margin: 0 0 16px;
+    font-size: 15px;
+    font-weight: 400;
+  }
+
+
+  .opps-page .form-wrap {
+    display: grid;
+    grid-template-rows: 0fr;
+    visibility: hidden;
+    transition: grid-template-rows .35s ease, visibility .35s;
+  }
+
+  .opps-page .form-wrap.open {
+    grid-template-rows: 1fr;
+    visibility: visible;
+  }
+
+  .opps-page .form-wrap-inner {
+    min-height: 0;
+    overflow: hidden;
+  }
+
+  .opps-page #opp-form {
+    margin-top: 22px;
+    background-color: var(--header-bg);
+    border: 1px solid var(--line);
+    border-top: 5px solid var(--teal-light);
+    border-radius: 18px;
+    box-shadow: 0 6px 20px rgba(46, 85, 96, 0.10);
+  }
+
+  .opps-page .form-title {
+    margin: 0;
+    padding: 14px 22px;
+    background-color: transparent;
+    border-bottom: none;
+    border-radius: 13px 13px 0 0;
+    font-size: 19px;
+    color: var(--ink-dark);
+  }
+
+  .opps-page .form-body {
+    padding: 20px 22px 6px;
+  }
+
+  .opps-page .form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+
+  .opps-page .field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+
+  .opps-page .field-full {
+    grid-column: 1 / -1;
+  }
+
+  .opps-page .field label {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink-dark);
+  }
+
+  .opps-page .field input,
+  .opps-page .field textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    border: 2px solid var(--teal-light);
+    background-color: #fff;
+    color: var(--ink);
+    font-family: inherit;
+    font-size: 15px;
+  }
+
+  .opps-page .field textarea {
+    min-height: 100px;
+    resize: vertical;
+  }
+
+  .opps-page .field input:focus,
+  .opps-page .field textarea:focus {
+    outline: none;
+    border-color: var(--teal);
+    box-shadow: 0 0 0 3px var(--yellow);
+  }
+
+  .opps-page .form-actions {
+    display: flex;
+    gap: 10px;
+    padding: 18px 22px 22px;
+  }
+
+
+  @media (max-width: 900px) {
+    .opps-page .opps-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 800px) {
+    .opps-page {
+      padding: 24px 16px 44px;
+    }
+
+    .opps-page .page-title {
+      font-size: 24px;
+    }
+
+    .opps-page .btn-add {
+      width: 100%;
+      text-align: center;
+    }
+
+    .opps-page .section-head,
+    .opps-page .section-body {
+      padding-right: 16px;
+      padding-left: 16px;
+    }
+
+    .opps-page .opps-grid,
+    .opps-page .form-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .opps-page .form-actions .btn {
+      flex: 1;
+      text-align: center;
+    }
+  }
+  
+  .opps-page #published-opportunities {
+    background: transparent;
+    border: none;
+    box-shadow: none;
+    border-radius: 0;
+    overflow: visible;
+}
+
+.opps-page #published-opportunities .section-body {
+    background: transparent;
+}
+</style>
+
+  </head>
+<body data-role="club" data-page="manage-opportunities">
+
+  <!-- ===== Club Admin Header ===== -->
+  <header class="header" id="site-header">
+    <a href="clubAdmin.html" class="logo">
+      <img src="logoMeras.jpg" alt="شعار مِراس">
+    </a>
+
+    <nav class="nav">
+      <a href="clubAdmin.html">لوحة التحكم</a>
+      <a href="opportunities.html">إدارة الفرص</a>
+      <a href="applications.html">إدارة الطلبات</a>
+      <a href="posts.html">المنشورات</a>
+      <a href="achievements.html">توثيق الإنجازات</a>
+      <a href="clubInfo.html">معلومات النادي</a>
+      <a href="#" class="logout">تسجيل الخروج</a>
+    </nav>
+  </header>
+
+  <main class="page opps-page">
+
+  <!-- ===== عنوان الصفحة + زر الإضافة ===== -->
+  <div class="page-head">
+    <div>
+      <h1 class="page-title">
+        <img src="sunMeras.png" alt="">
+        إدارة الفرص
+      </h1>
+      <p class="page-subtitle">عرض الفرص التي نشرها النادي وإضافة فرص جديدة.</p>
+    </div>
+
+  </div>
+
+  <!-- ===== الفرص المنشورة ===== -->
+  <section class="section" id="published-opportunities">
+    <div class="section-head">
+      <h2 class="section-title">الفرص المنشورة</h2>
+      <div class="legend">
+        <span class="status status-open">متاحة</span>
+        <span class="status status-closed">مغلقة</span>
+        <span class="status status-ended">منتهية</span>
+      </div>
+    </div>
+
+    <div class="section-body">
+      <div class="opps-grid" id="opps-grid">
+
+        <!-- ===== بيانات تجريبية للعرض فقط: تُستبدل بالبيانات من قاعدة البيانات =====
+             الفرص الثلاث الأولى هي نفسها فرص لوحة التحكم، وعدد المتقدمين من بيانات صفحة الطلبات.
+             غيّري كلاس الحالة حسب الفرصة:
+               status-open (متاحة) / status-closed (مغلقة) / status-ended (منتهية) -->
+
+        <article class="opp-card">
+          <div class="opp-top">
+            <span class="opp-label">فرصة</span>
+            <span class="status status-open">متاحة</span>
+          </div>
+          <h3 class="opp-title">مصمم هوية بصرية</h3>
+          <p class="opp-desc">تصميم الهوية البصرية لفعاليات النادي، وتشمل الشعار والألوان وقوالب المنشورات.</p>
+          <ul class="opp-details">
+            <li><b>تاريخ الفرصة:</b> الأحد 15 نوفمبر، 4:00 م</li>
+            <li><b>عدد المتقدمين:</b> 1</li>
+          </ul>
+        </article>
+        <article class="opp-card">
+          <div class="opp-top">
+            <span class="opp-label">فرصة</span>
+            <span class="status status-closed">مغلقة</span>
+          </div>
+          <h3 class="opp-title">محرر محتوى</h3>
+          <p class="opp-desc">كتابة وتحرير منشورات النادي ومحتواه على منصات التواصل بأسلوب واضح وجذاب.</p>
+          <ul class="opp-details">
+            <li><b>تاريخ الفرصة:</b> الثلاثاء 17 نوفمبر، 6:00 م</li>
+            <li><b>عدد المتقدمين:</b> 1</li>
+          </ul>
+        </article>
+        <article class="opp-card">
+          <div class="opp-top">
+            <span class="opp-label">فرصة</span>
+            <span class="status status-open">متاحة</span>
+          </div>
+          <h3 class="opp-title">منسق فعاليات</h3>
+          <p class="opp-desc">التنسيق مع الأعضاء والجهات المعنية وتنظيم سير الفعاليات يوم التنفيذ.</p>
+          <ul class="opp-details">
+            <li><b>تاريخ الفرصة:</b> الخميس 19 نوفمبر، 5:00 م</li>
+            <li><b>عدد المتقدمين:</b> 1</li>
+          </ul>
+        </article>
+        <article class="opp-card">
+          <div class="opp-top">
+            <span class="opp-label">فرصة</span>
+            <span class="status status-ended">منتهية</span>
+          </div>
+          <h3 class="opp-title">مصور فعاليات</h3>
+          <p class="opp-desc">تصوير فعاليات النادي وتسليم المواد المصورة بعد انتهاء الفعالية.</p>
+          <ul class="opp-details">
+            <li><b>تاريخ الفرصة:</b> الأحد 11 أكتوبر، 5:00 م</li>
+            <li><b>عدد المتقدمين:</b> 3</li>
+          </ul>
+        </article>
+
+        <!-- عند عدم وجود فرص تظهر هذه الرسالة بدل البطاقات:
+        <div class="empty">
+          <p>لم يقم النادي بنشر أي فرص حتى الآن.</p>
+          <button type="button" class="btn btn-light" id="open-form-empty">إضافة فرصة</button>
+        </div>
+        -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== إضافة فرصة (أسفل الصفحة) =====
+       لاحقًا: غيّري action في النموذج إلى صفحة الـ PHP التي تحفظ الفرصة (مثل add_opportunity.php).
+       الحقول لها name جاهزة للربط مع قاعدة البيانات. -->
+  <section class="section add-section" id="add-opportunity">
+    <div class="section-head">
+      <h2 class="section-title">إضافة فرصة</h2>
+    </div>
+
+    <div class="section-body">
+      <p class="add-text">يمكنك إضافة فرصة جديدة للنادي ليتمكن الطلاب من التقديم عليها.</p>
+
+      <button type="button" class="btn btn-add" id="open-form" aria-expanded="false" aria-controls="form-wrap">إضافة فرصة</button>
+
+      <!-- النموذج مخفي حتى الضغط على الزر -->
+      <div class="form-wrap" id="form-wrap">
+        <div class="form-wrap-inner">
+    <form action="" method="post" id="opp-form">
+          <h3 class="form-title">إضافة فرصة جديدة</h3>
+      <div class="form-body">
+        <div class="form-grid">
+
+          <div class="field field-full">
+            <label for="opp-title">عنوان الفرصة</label>
+            <input type="text" id="opp-title" name="title" required>
+          </div>
+
+          <div class="field field-full">
+            <label for="opp-desc">وصف الفرصة</label>
+            <textarea id="opp-desc" name="description" required></textarea>
+          </div>
+
+          <div class="field">
+            <label for="opp-date">تاريخ الفرصة</label>
+            <input type="date" id="opp-date" name="date" required>
+          </div>
+
+          <div class="field">
+            <label for="opp-time">وقت الفرصة</label>
+            <input type="time" id="opp-time" name="time" required>
+          </div>
+
+          <div class="field">
+            <label for="opp-deadline">آخر موعد للتسجيل</label>
+            <input type="date" id="opp-deadline" name="deadline" required>
+          </div>
+
+          <div class="field field-full">
+            <label for="opp-place">مكان الفرصة</label>
+            <input type="text" id="opp-place" name="place" required>
+          </div>
+
+          <div class="field field-full">
+            <label for="opp-skills">المهارات المطلوبة</label>
+            <textarea id="opp-skills" name="skills"></textarea>
+          </div>
+
+          <div class="field field-full">
+            <label for="opp-requirements">شروط المشاركة (اختياري)</label>
+            <textarea id="opp-requirements" name="requirements"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="opp-seats">عدد المقاعد المتاحة</label>
+            <input type="number" id="opp-seats" name="seats" min="1">
+          </div>
+
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn">إضافة الفرصة</button>
+        <button type="button" class="btn btn-light" id="close-form">إلغاء</button>
+      </div>
+    </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+
+  <footer class="footer" id="site-footer"></footer>
+
+  <script src="layout.js" defer></script>
+
+
+  <script>
+    var formWrap = document.getElementById("form-wrap");
+    var openBtn = document.getElementById("open-form");
+
+    function openForm() {
+      formWrap.classList.add("open");
+      openBtn.setAttribute("aria-expanded", "true");
+    }
+
+    function closeForm() {
+      formWrap.classList.remove("open");
+      openBtn.setAttribute("aria-expanded", "false");
+      document.getElementById("opp-form").reset();
+    }
+
+    openBtn.addEventListener("click", openForm);
+
+    /* زر الحالة الفارغة موجود فقط عندما لا توجد فرص */
+    var emptyBtn = document.getElementById("open-form-empty");
+    if (emptyBtn) emptyBtn.addEventListener("click", openForm);
+
+    document.getElementById("close-form").addEventListener("click", closeForm);
+  </script>
+
+</body>
+</html>
