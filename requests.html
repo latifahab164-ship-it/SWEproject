@@ -24,11 +24,23 @@
 
 
     /* ========================================
-       PAGE HEADING
+       PAGE TITLE
     ======================================== */
 
     .requests-content .page-title {
+      gap: 10px;
       margin-bottom: 4px;
+    }
+
+    /* تصغير الشمس في هذه الصفحة فقط */
+    .requests-content .page-title img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    .requests-content .page-title h1 {
+      font-size: 30px;
     }
 
     .requests-intro {
@@ -45,16 +57,49 @@
     ======================================== */
 
     .requests-filters {
-      display: flex;
+      display: inline-flex;
       flex-wrap: wrap;
-      gap: 9px;
+      gap: 6px;
 
-      margin-bottom: 22px;
+      margin-bottom: 24px;
+      padding: 6px;
+
+      background-color: var(--header-bg);
+
+      border: 1px solid var(--teal-light);
+      border-radius: 16px;
     }
 
-    .requests-filters .btn-outline {
-      padding: 7px 18px;
+    .filter-btn {
+      min-width: 100px;
+
+      padding: 9px 16px;
+
+      font-family: inherit;
       font-size: 14px;
+      font-weight: 400;
+
+      color: var(--ink);
+      background-color: transparent;
+
+      border: 0;
+      border-radius: 11px;
+
+      cursor: pointer;
+
+      transition:
+        background-color .2s,
+        color .2s;
+    }
+
+    .filter-btn:hover {
+      background-color: var(--yellow);
+      color: var(--ink-dark);
+    }
+
+    .filter-btn.active {
+      background-color: var(--ink);
+      color: var(--beige);
     }
 
 
@@ -74,8 +119,6 @@
     ======================================== */
 
     .application-card {
-      position: relative;
-
       display: flex;
       align-items: center;
       justify-content: space-between;
@@ -94,7 +137,7 @@
 
 
     /* ========================================
-       APPLICATION INFORMATION
+       APPLICATION INFO
     ======================================== */
 
     .application-info {
@@ -143,7 +186,7 @@
       align-items: center;
       gap: 6px;
 
-      min-width: 115px;
+      min-width: 120px;
     }
 
     .status-label {
@@ -153,13 +196,13 @@
     }
 
     .status-badge {
+      min-width: 112px;
+
       display: inline-flex;
       align-items: center;
       justify-content: center;
 
-      min-width: 105px;
-
-      padding: 7px 14px;
+      padding: 7px 15px;
 
       border-radius: 999px;
 
@@ -173,6 +216,8 @@
     .status-review {
       background-color: var(--yellow);
       color: var(--ink-dark);
+
+      border: 1px solid var(--gold);
     }
 
 
@@ -180,13 +225,17 @@
     .status-accepted {
       background-color: var(--teal-light);
       color: var(--ink-dark);
+
+      border: 1px solid var(--teal);
     }
 
 
     /* مرفوض */
     .status-rejected {
-      background-color: var(--ink);
-      color: var(--beige);
+      background-color: var(--beige);
+      color: var(--ink);
+
+      border: 1px solid var(--ink);
     }
 
 
@@ -201,7 +250,7 @@
 
       text-align: center;
 
-      background-color: #fff;
+      background-color: var(--header-bg);
 
       border: 2px dashed var(--teal-light);
       border-radius: 18px;
@@ -234,12 +283,13 @@
         width: min(680px, 100%);
       }
 
-      .requests-content .page-title {
-        margin-bottom: 3px;
+      .requests-content .page-title img {
+        width: 34px;
+        height: 34px;
       }
 
-      .requests-intro {
-        margin-bottom: 20px;
+      .requests-content .page-title h1 {
+        font-size: 26px;
       }
 
       .application-card {
@@ -260,6 +310,19 @@
         width: 100%;
       }
 
+      .requests-content .page-title {
+        gap: 8px;
+      }
+
+      .requests-content .page-title img {
+        width: 30px;
+        height: 30px;
+      }
+
+      .requests-content .page-title h1 {
+        font-size: 24px;
+      }
+
       .requests-intro {
         margin-bottom: 18px;
 
@@ -270,22 +333,25 @@
 
       /* الفلاتر */
       .requests-filters {
+        width: 100%;
+
         display: grid;
         grid-template-columns: repeat(2, 1fr);
 
-        gap: 8px;
-        margin-bottom: 18px;
+        gap: 6px;
       }
 
-      .requests-filters .btn-outline {
+      .filter-btn {
         width: 100%;
-        padding: 8px 10px;
+        min-width: 0;
+
+        padding: 9px 8px;
 
         font-size: 13px;
       }
 
 
-      /* الكرت */
+      /* الكروت */
       .application-card {
         display: block;
 
@@ -294,36 +360,34 @@
         border-radius: 16px;
       }
 
-      .application-info h2 {
-        padding-left: 110px;
+      .application-info {
+        margin-bottom: 16px;
+      }
 
+      .application-info h2 {
         font-size: 17px;
       }
 
-      .application-type {
-        margin-bottom: 10px;
-      }
-
-
-      /* الحالة أعلى الكرت */
       .application-status {
-        position: absolute;
-        top: 16px;
-        left: 16px;
-
         min-width: 0;
 
-        display: block;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        padding-top: 13px;
+
+        border-top: 1px solid var(--yellow);
       }
 
       .status-label {
-        display: none;
+        font-size: 12px;
       }
 
       .status-badge {
-        min-width: 90px;
+        min-width: 100px;
 
-        padding: 6px 11px;
+        padding: 6px 12px;
 
         font-size: 12px;
       }
@@ -332,29 +396,18 @@
 
 
     /* ========================================
-       VERY SMALL MOBILE
+       SMALL MOBILE
     ======================================== */
 
-    @media (max-width: 380px) {
+    @media (max-width: 360px) {
 
       .requests-filters {
         grid-template-columns: 1fr;
       }
 
-      .application-info h2 {
-        padding-left: 0;
-        padding-top: 38px;
-      }
-
-      .application-status {
-        right: 18px;
-        left: auto;
-      }
-
     }
 
   </style>
-
 </head>
 
 
@@ -377,7 +430,10 @@
       <!-- عنوان الصفحة -->
       <div class="page-title">
 
-        <img src="sunMeras.png" alt="">
+        <img
+          src="sunMeras.png"
+          alt=""
+        >
 
         <h1>
           طلباتي
@@ -400,28 +456,28 @@
 
         <button
           type="button"
-          class="btn-outline active"
+          class="filter-btn active"
           data-filter="all">
           الكل
         </button>
 
         <button
           type="button"
-          class="btn-outline"
+          class="filter-btn"
           data-filter="review">
           قيد المراجعة
         </button>
 
         <button
           type="button"
-          class="btn-outline"
+          class="filter-btn"
           data-filter="accepted">
           مقبول
         </button>
 
         <button
           type="button"
-          class="btn-outline"
+          class="filter-btn"
           data-filter="rejected">
           مرفوض
         </button>
@@ -447,7 +503,7 @@
           <div class="application-info">
 
             <h2>
-              نادي التقنية
+              نادي الذكاء الاصطناعي
             </h2>
 
             <p class="application-type">
@@ -486,7 +542,7 @@
           <div class="application-info">
 
             <h2>
-              نادي الذكاء الاصطناعي
+              نادي الأمن السيبراني
             </h2>
 
             <p class="application-type">
@@ -525,7 +581,7 @@
           <div class="application-info">
 
             <h2>
-              نادي الابتكار
+              نادي الابتكار وريادة الأعمال
             </h2>
 
             <p class="application-type">
@@ -592,13 +648,13 @@
 
 
   <!-- ========================================
-       FILTER
+       FILTERING
   ========================================= -->
 
   <script>
 
     const filterButtons =
-      document.querySelectorAll(".requests-filters .btn-outline");
+      document.querySelectorAll(".filter-btn");
 
     const applications =
       document.querySelectorAll(".application-card");
@@ -614,11 +670,13 @@
 
       button.addEventListener("click", function () {
 
-        const selectedFilter = button.dataset.filter;
+        const selectedFilter =
+          button.dataset.filter;
+
         let visibleApplications = 0;
 
 
-        /* الزر النشط */
+        /* تغيير الفلتر النشط */
         filterButtons.forEach(function (btn) {
           btn.classList.remove("active");
         });
@@ -629,7 +687,9 @@
         /* فلترة الطلبات */
         applications.forEach(function (application) {
 
-          const status = application.dataset.status;
+          const status =
+            application.dataset.status;
+
 
           if (
             selectedFilter === "all" ||
@@ -650,7 +710,7 @@
         });
 
 
-        /* لا توجد نتائج */
+        /* حالة عدم وجود نتائج */
         if (visibleApplications === 0) {
 
           applicationsList.style.display = "none";
