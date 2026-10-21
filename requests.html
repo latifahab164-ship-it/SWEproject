@@ -7,23 +7,32 @@
 
   <title>مِراس - طلباتي</title>
 
-  <!-- التنسيق المشترك للموقع -->
+  <!-- التنسيق المشترك -->
   <link rel="stylesheet" href="Style.css">
-
-  <!-- المكونات المشتركة -->
   <link rel="stylesheet" href="components.css">
 
-
-  <!-- تنسيق خاص بصفحة طلباتي فقط -->
   <style>
 
     /* ========================================
-       PAGE INTRO
+       REQUESTS PAGE
     ======================================== */
 
+    .requests-content {
+      width: min(820px, 100%);
+      margin: 0 auto;
+    }
+
+
+    /* ========================================
+       PAGE HEADING
+    ======================================== */
+
+    .requests-content .page-title {
+      margin-bottom: 4px;
+    }
+
     .requests-intro {
-      margin-top: -14px;
-      margin-bottom: 24px;
+      margin: 0 0 24px;
 
       color: var(--ink);
       font-size: 15px;
@@ -38,20 +47,25 @@
     .requests-filters {
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      gap: 9px;
 
-      margin-bottom: 24px;
+      margin-bottom: 22px;
+    }
+
+    .requests-filters .btn-outline {
+      padding: 7px 18px;
+      font-size: 14px;
     }
 
 
     /* ========================================
-       APPLICATIONS
+       APPLICATIONS LIST
     ======================================== */
 
     .applications-list {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 14px;
     }
 
 
@@ -60,12 +74,15 @@
     ======================================== */
 
     .application-card {
+      position: relative;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 24px;
 
-      padding: 21px 24px;
+      width: 100%;
+      padding: 20px 22px;
 
       background-color: #fff;
 
@@ -77,62 +94,56 @@
 
 
     /* ========================================
-       CLUB INFORMATION
+       APPLICATION INFORMATION
     ======================================== */
 
     .application-info {
+      min-width: 0;
       flex: 1;
     }
 
     .application-info h2 {
-      margin: 0 0 7px;
+      margin: 0 0 5px;
 
       color: var(--ink);
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 500;
     }
 
     .application-type {
-      margin: 0 0 13px;
+      margin: 0 0 11px;
 
       color: var(--ink);
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 300;
     }
 
-
-    /* ========================================
-       SUBMISSION DATE
-    ======================================== */
-
     .application-date {
-      display: flex;
-      align-items: center;
-      gap: 7px;
-
       margin: 0;
 
       color: var(--ink);
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 300;
     }
 
-    .date-label {
+    .application-date strong {
       font-weight: 500;
     }
 
 
     /* ========================================
-       STATUS AREA
+       STATUS
     ======================================== */
 
     .application-status {
-      min-width: 135px;
+      flex-shrink: 0;
 
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 7px;
+      gap: 6px;
+
+      min-width: 115px;
     }
 
     .status-label {
@@ -141,24 +152,20 @@
       font-weight: 300;
     }
 
-
-    /* ========================================
-       STATUS BADGES
-    ======================================== */
-
     .status-badge {
-      min-width: 110px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
 
-      display: inline-block;
+      min-width: 105px;
 
-      padding: 7px 15px;
-
-      text-align: center;
+      padding: 7px 14px;
 
       border-radius: 999px;
 
       font-size: 13px;
       font-weight: 500;
+      white-space: nowrap;
     }
 
 
@@ -190,7 +197,7 @@
     .requests-empty {
       display: none;
 
-      padding: 60px 20px;
+      padding: 45px 20px;
 
       text-align: center;
 
@@ -201,10 +208,10 @@
     }
 
     .requests-empty h2 {
-      margin: 0 0 7px;
+      margin: 0 0 6px;
 
       color: var(--ink);
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 500;
     }
 
@@ -218,47 +225,144 @@
 
 
     /* ========================================
-       RESPONSIVE
+       TABLET
     ======================================== */
 
-    @media (max-width: 650px) {
+    @media (max-width: 800px) {
 
-      .requests-intro {
-        margin-top: -10px;
+      .requests-content {
+        width: min(680px, 100%);
       }
 
-      .requests-filters {
-        gap: 8px;
+      .requests-content .page-title {
+        margin-bottom: 3px;
+      }
+
+      .requests-intro {
+        margin-bottom: 20px;
       }
 
       .application-card {
-        align-items: flex-start;
-        flex-direction: column;
+        padding: 18px 20px;
+        gap: 18px;
+      }
 
-        padding: 19px;
+    }
+
+
+    /* ========================================
+       MOBILE
+    ======================================== */
+
+    @media (max-width: 560px) {
+
+      .requests-content {
+        width: 100%;
+      }
+
+      .requests-intro {
+        margin-bottom: 18px;
+
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+
+      /* الفلاتر */
+      .requests-filters {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+
+        gap: 8px;
+        margin-bottom: 18px;
+      }
+
+      .requests-filters .btn-outline {
+        width: 100%;
+        padding: 8px 10px;
+
+        font-size: 13px;
+      }
+
+
+      /* الكرت */
+      .application-card {
+        display: block;
+
+        padding: 18px;
+
+        border-radius: 16px;
+      }
+
+      .application-info h2 {
+        padding-left: 110px;
+
+        font-size: 17px;
+      }
+
+      .application-type {
+        margin-bottom: 10px;
+      }
+
+
+      /* الحالة أعلى الكرت */
+      .application-status {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+
+        min-width: 0;
+
+        display: block;
+      }
+
+      .status-label {
+        display: none;
+      }
+
+      .status-badge {
+        min-width: 90px;
+
+        padding: 6px 11px;
+
+        font-size: 12px;
+      }
+
+    }
+
+
+    /* ========================================
+       VERY SMALL MOBILE
+    ======================================== */
+
+    @media (max-width: 380px) {
+
+      .requests-filters {
+        grid-template-columns: 1fr;
+      }
+
+      .application-info h2 {
+        padding-left: 0;
+        padding-top: 38px;
       }
 
       .application-status {
-        min-width: 0;
-
-        align-items: flex-start;
+        right: 18px;
+        left: auto;
       }
 
     }
 
   </style>
+
 </head>
 
 
 <body data-role="student" data-page="requests">
 
 
-  <!-- ========================================
-       SHARED HEADER
-  ========================================= -->
-
+  <!-- الهيدر المشترك -->
   <header class="header" id="site-header"></header>
-
 
 
   <!-- ========================================
@@ -267,261 +371,220 @@
 
   <main class="container">
 
+    <div class="requests-content">
 
-    <!-- عنوان الصفحة -->
-    <div class="page-title">
 
-      <img
-        src="sunMeras.png"
-        alt=""
-      >
+      <!-- عنوان الصفحة -->
+      <div class="page-title">
 
-      <h1>
-        طلباتي
-      </h1>
+        <img src="sunMeras.png" alt="">
 
-    </div>
+        <h1>
+          طلباتي
+        </h1>
 
+      </div>
 
-    <!-- وصف الصفحة -->
-    <p class="requests-intro">
-      تابعي حالة طلبات الانضمام المقدمة للأندية.
-    </p>
 
-
-
-    <!-- ====================================
-         FILTERS
-    ===================================== -->
-
-    <div class="requests-filters">
-
-      <button
-        type="button"
-        class="btn-outline active"
-        data-filter="all">
-        الكل
-      </button>
-
-      <button
-        type="button"
-        class="btn-outline"
-        data-filter="review">
-        قيد المراجعة
-      </button>
-
-      <button
-        type="button"
-        class="btn-outline"
-        data-filter="accepted">
-        مقبول
-      </button>
-
-      <button
-        type="button"
-        class="btn-outline"
-        data-filter="rejected">
-        مرفوض
-      </button>
-
-    </div>
-
-
-
-    <!-- ====================================
-         APPLICATIONS LIST
-    ===================================== -->
-
-    <div
-      class="applications-list"
-      id="applications-list">
-
-
-      <!-- ==================================
-           APPLICATION 1
-      =================================== -->
-
-      <article
-        class="application-card"
-        data-status="review">
-
-
-        <div class="application-info">
-
-          <h2>
-            نادي التقنية
-          </h2>
-
-          <p class="application-type">
-            طلب عضوية النادي
-          </p>
-
-          <p class="application-date">
-
-            <span class="date-label">
-              تاريخ التقديم:
-            </span>
-
-            <span>
-              18 أكتوبر 2026
-            </span>
-
-          </p>
-
-        </div>
-
-
-        <div class="application-status">
-
-          <span class="status-label">
-            حالة الطلب
-          </span>
-
-          <span class="status-badge status-review">
-            قيد المراجعة
-          </span>
-
-        </div>
-
-
-      </article>
-
-
-
-      <!-- ==================================
-           APPLICATION 2
-      =================================== -->
-
-      <article
-        class="application-card"
-        data-status="accepted">
-
-
-        <div class="application-info">
-
-          <h2>
-            نادي الذكاء الاصطناعي
-          </h2>
-
-          <p class="application-type">
-            طلب عضوية النادي
-          </p>
-
-          <p class="application-date">
-
-            <span class="date-label">
-              تاريخ التقديم:
-            </span>
-
-            <span>
-              12 أكتوبر 2026
-            </span>
-
-          </p>
-
-        </div>
-
-
-        <div class="application-status">
-
-          <span class="status-label">
-            حالة الطلب
-          </span>
-
-          <span class="status-badge status-accepted">
-            مقبول
-          </span>
-
-        </div>
-
-
-      </article>
-
-
-
-      <!-- ==================================
-           APPLICATION 3
-      =================================== -->
-
-      <article
-        class="application-card"
-        data-status="rejected">
-
-
-        <div class="application-info">
-
-          <h2>
-            نادي الابتكار
-          </h2>
-
-          <p class="application-type">
-            طلب عضوية النادي
-          </p>
-
-          <p class="application-date">
-
-            <span class="date-label">
-              تاريخ التقديم:
-            </span>
-
-            <span>
-              8 أكتوبر 2026
-            </span>
-
-          </p>
-
-        </div>
-
-
-        <div class="application-status">
-
-          <span class="status-label">
-            حالة الطلب
-          </span>
-
-          <span class="status-badge status-rejected">
-            مرفوض
-          </span>
-
-        </div>
-
-
-      </article>
-
-
-    </div>
-
-
-
-    <!-- ====================================
-         EMPTY STATE
-    ===================================== -->
-
-    <div
-      class="requests-empty"
-      id="requests-empty">
-
-      <h2>
-        لا توجد لديك طلبات
-      </h2>
-
-      <p>
-        لم تقومي بتقديم أي طلبات انضمام للأندية حتى الآن.
+      <p class="requests-intro">
+        تابعي حالة طلبات الانضمام المقدمة للأندية.
       </p>
 
-    </div>
 
+
+      <!-- ====================================
+           FILTERS
+      ===================================== -->
+
+      <div class="requests-filters">
+
+        <button
+          type="button"
+          class="btn-outline active"
+          data-filter="all">
+          الكل
+        </button>
+
+        <button
+          type="button"
+          class="btn-outline"
+          data-filter="review">
+          قيد المراجعة
+        </button>
+
+        <button
+          type="button"
+          class="btn-outline"
+          data-filter="accepted">
+          مقبول
+        </button>
+
+        <button
+          type="button"
+          class="btn-outline"
+          data-filter="rejected">
+          مرفوض
+        </button>
+
+      </div>
+
+
+
+      <!-- ====================================
+           APPLICATIONS
+      ===================================== -->
+
+      <div
+        class="applications-list"
+        id="applications-list">
+
+
+        <!-- الطلب الأول -->
+        <article
+          class="application-card"
+          data-status="review">
+
+          <div class="application-info">
+
+            <h2>
+              نادي التقنية
+            </h2>
+
+            <p class="application-type">
+              طلب عضوية النادي
+            </p>
+
+            <p class="application-date">
+              <strong>تاريخ التقديم:</strong>
+              18 أكتوبر 2026
+            </p>
+
+          </div>
+
+
+          <div class="application-status">
+
+            <span class="status-label">
+              حالة الطلب
+            </span>
+
+            <span class="status-badge status-review">
+              قيد المراجعة
+            </span>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- الطلب الثاني -->
+        <article
+          class="application-card"
+          data-status="accepted">
+
+          <div class="application-info">
+
+            <h2>
+              نادي الذكاء الاصطناعي
+            </h2>
+
+            <p class="application-type">
+              طلب عضوية النادي
+            </p>
+
+            <p class="application-date">
+              <strong>تاريخ التقديم:</strong>
+              12 أكتوبر 2026
+            </p>
+
+          </div>
+
+
+          <div class="application-status">
+
+            <span class="status-label">
+              حالة الطلب
+            </span>
+
+            <span class="status-badge status-accepted">
+              مقبول
+            </span>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- الطلب الثالث -->
+        <article
+          class="application-card"
+          data-status="rejected">
+
+          <div class="application-info">
+
+            <h2>
+              نادي الابتكار
+            </h2>
+
+            <p class="application-type">
+              طلب عضوية النادي
+            </p>
+
+            <p class="application-date">
+              <strong>تاريخ التقديم:</strong>
+              8 أكتوبر 2026
+            </p>
+
+          </div>
+
+
+          <div class="application-status">
+
+            <span class="status-label">
+              حالة الطلب
+            </span>
+
+            <span class="status-badge status-rejected">
+              مرفوض
+            </span>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
+
+
+      <!-- ====================================
+           EMPTY STATE
+      ===================================== -->
+
+      <div
+        class="requests-empty"
+        id="requests-empty">
+
+        <h2>
+          لا توجد لديك طلبات
+        </h2>
+
+        <p>
+          لم تقومي بتقديم أي طلبات انضمام للأندية حتى الآن.
+        </p>
+
+      </div>
+
+
+    </div>
 
   </main>
 
 
-
-  <!-- ========================================
-       SHARED FOOTER
-  ========================================= -->
-
+  <!-- الفوتر المشترك -->
   <footer class="footer" id="site-footer"></footer>
-
 
 
   <!-- الهيدر والفوتر المشترك -->
@@ -529,7 +592,7 @@
 
 
   <!-- ========================================
-       FILTERING
+       FILTER
   ========================================= -->
 
   <script>
@@ -551,11 +614,11 @@
 
       button.addEventListener("click", function () {
 
-        const selectedFilter =
-          button.dataset.filter;
+        const selectedFilter = button.dataset.filter;
+        let visibleApplications = 0;
 
 
-        /* تغيير الزر النشط */
+        /* الزر النشط */
         filterButtons.forEach(function (btn) {
           btn.classList.remove("active");
         });
@@ -564,20 +627,16 @@
 
 
         /* فلترة الطلبات */
-        let visibleApplications = 0;
-
         applications.forEach(function (application) {
 
-          const applicationStatus =
-            application.dataset.status;
-
+          const status = application.dataset.status;
 
           if (
             selectedFilter === "all" ||
-            applicationStatus === selectedFilter
+            status === selectedFilter
           ) {
 
-            application.style.display = "flex";
+            application.style.display = "";
             visibleApplications++;
 
           }
@@ -591,7 +650,7 @@
         });
 
 
-        /* إذا لم توجد نتائج في الفلتر */
+        /* لا توجد نتائج */
         if (visibleApplications === 0) {
 
           applicationsList.style.display = "none";
@@ -614,5 +673,4 @@
 
 
 </body>
-
 </html>
