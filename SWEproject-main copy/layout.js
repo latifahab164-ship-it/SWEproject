@@ -8,7 +8,7 @@
     student: [
       ["home", "الرئيســية", "home.html"],
       ["opportunities", "الفــرص", "opportunities.html"],
-      ["clubs", "الأنــدية", "#"],
+      ["clubs", "الأنــدية", "clubs.html"],
       ["requests", "طلبــاتي", "#"],
       ["profile", "الملــف الشخصــي", "#"]
     ],
@@ -23,6 +23,10 @@
   };
 
   var homeHref = role === "club" ? "clubAdmin.html" : "home.html";
+
+  var tagline = role === "club"
+    ? "منصة تجمع طلاب جامعة الملك سعود بالأندية والفرص الجامعية."
+    : "وجهَتــك إلى الأنديــة الطلابيَّــة بجامعــة الملــك سعــود.";
 
   var links = NAV[role].map(function (l) {
     return '<a href="' + l[2] + '"' + (l[0] === page ? ' class="active"' : "") + ">" + l[1] + "</a>";
@@ -50,9 +54,9 @@
       '<div class="footer-top">' +
       '<div class="footer-brand"><div class="footer-title">' +
       '<img src="sunMeras.png" alt="شمس مِراس" class="footer-sun"><h2>مِـــراس</h2></div>' +
-      "<p>منصة تجمع طلاب جامعة الملك سعود بالأندية والفرص الجامعية.</p></div>" +
+      "<p>" + tagline + "</p></div>" +
       '<nav class="footer-links" aria-label="روابط سريعة">' +
-      '<a href="' + homeHref + '">الرئيســية</a><a href="opportunities.html">الفــرص</a><a href="#">الأنــدية</a><a href="about.html">عــن مِــراس</a></nav>' +
+      '<a href="' + homeHref + '">الرئيســية</a><a href="opportunities.html">الفــرص</a><a href="clubs.html">الأنــدية</a><a href="about.html">عــن مِــراس</a></nav>' +
       "</div>" +
       '<p class="copyright">© 2026 مِراس. جميع الحقوق محفوظة.</p>';
   }
