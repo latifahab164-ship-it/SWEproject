@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>مِراس - الأندية</title>
+
+  <!-- التنسيق المشترك -->
+  <link rel="stylesheet" href="Style.css">
+  <link rel="stylesheet" href="components.css">
+
+  <style>
+
+    /* ========================================
+       CLUBS PAGE
+    ======================================== */
+
+    .clubs-content {
+      width: min(980px, 100%);
+      margin: 0 auto;
+    }
+
+
+    /* ========================================
+       PAGE TITLE
+    ======================================== */
+
+    .clubs-content .page-title {
+      gap: 10px;
+      margin-bottom: 4px;
+    }
+
+    .clubs-content .page-title img {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    .clubs-content .page-title h1 {
+      font-size: 30px;
+    }
+
+    .clubs-intro {
+      margin: 0 0 26px;
+
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 300;
+    }
+
+
+    /* ========================================
+       SEARCH
+    ======================================== */
+
+    .clubs-tools {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      margin-bottom: 25px;
+    }
+
+    .clubs-search {
+      position: relative;
+      flex: 1;
+    }
+
+    .clubs-search input {
+      width: 100%;
+      padding: 12px 17px;
+
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 400;
+
+      color: var(--ink);
+      background-color: var(--header-bg);
+
+      border: 2px solid var(--teal-light);
+      border-radius: 14px;
+    }
+
+    .clubs-search input::placeholder {
+      color: var(--ink);
+      opacity: .65;
+    }
+
+    .clubs-search input:focus {
+      outline: none;
+      border-color: var(--ink);
+    }
+
+
+    /* ========================================
+       CLUBS GRID
+    ======================================== */
+
+    .clubs-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+
+    /* ========================================
+       CLUB CARD
+    ======================================== */
+
+    .club-card {
+      overflow: hidden;
+
+      display: flex;
+      flex-direction: column;
+
+      background-color: #fff;
+
+      border-radius: 20px;
+      border-top: 5px solid var(--teal);
+
+      box-shadow: 0 6px 22px rgba(46, 85, 96, 0.10);
+
+      transition:
+        transform .2s,
+        box-shadow .2s;
+    }
+
+    .club-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 9px 24px rgba(46, 85, 96, 0.14);
+    }
+
+
+    /* ========================================
+       VISUAL AREA
+    ======================================== */
+
+    .club-cover {
+      height: 105px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background-color: var(--beige);
+
+      border-bottom: 1px solid var(--yellow);
+    }
+
+    .club-symbol {
+      width: 58px;
+      height: 58px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      background-color: var(--yellow);
+      color: var(--ink);
+
+      border: 3px solid var(--header-bg);
+      border-radius: 50%;
+
+      font-size: 23px;
+      font-weight: 500;
+    }
+
+
+    /* ========================================
+       CLUB CONTENT
+    ======================================== */
+
+    .club-body {
+      flex: 1;
+
+      display: flex;
+      flex-direction: column;
+
+      padding: 19px 20px 20px;
+    }
+
+    .club-body h2 {
+      margin: 0 0 7px;
+
+      color: var(--ink);
+      font-size: 19px;
+      font-weight: 500;
+    }
+
+    .club-description {
+      margin: 0 0 17px;
+
+      color: var(--ink);
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.8;
+    }
+
+
+    /* ========================================
+       CLUB STATS
+    ======================================== */
+
+    .club-stats {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+
+      margin-top: auto;
+      margin-bottom: 17px;
+    }
+
+    .club-stat {
+      padding: 6px 11px;
+
+      background-color: var(--beige);
+      color: var(--ink);
+
+      border-radius: 999px;
+
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    .club-stat.gold {
+      background-color: var(--yellow);
+    }
+
+
+    /* ========================================
+       CLUB BUTTON
+    ======================================== */
+
+    .club-link {
+      display: block;
+
+      width: 100%;
+      padding: 10px 15px;
+
+      text-align: center;
+      text-decoration: none;
+
+      background-color: var(--ink);
+      color: var(--beige);
+
+      border-radius: 12px;
+
+      font-size: 14px;
+      font-weight: 500;
+
+      transition:
+        background-color .2s,
+        color .2s;
+    }
+
+    .club-link:hover {
+      background-color: var(--gold);
+      color: var(--ink-dark);
+    }
+
+
+    /* ========================================
+       EMPTY SEARCH
+    ======================================== */
+
+    .clubs-empty {
+      display: none;
+
+      margin-top: 20px;
+      padding: 45px 20px;
+
+      text-align: center;
+
+      background-color: var(--header-bg);
+
+      border: 2px dashed var(--teal-light);
+      border-radius: 18px;
+
+      color: var(--ink);
+      font-size: 15px;
+      font-weight: 400;
+    }
+
+
+    /* ========================================
+       TABLET
+    ======================================== */
+
+    @media (max-width: 800px) {
+
+      .clubs-content {
+        width: min(680px, 100%);
+      }
+
+      .clubs-content .page-title img {
+        width: 34px;
+        height: 34px;
+      }
+
+      .clubs-content .page-title h1 {
+        font-size: 26px;
+      }
+
+      .clubs-grid {
+        gap: 16px;
+      }
+
+    }
+
+
+    /* ========================================
+       MOBILE
+    ======================================== */
+
+    @media (max-width: 600px) {
+
+      .clubs-content {
+        width: 100%;
+      }
+
+      .clubs-content .page-title {
+        gap: 8px;
+      }
+
+      .clubs-content .page-title img {
+        width: 30px;
+        height: 30px;
+      }
+
+      .clubs-content .page-title h1 {
+        font-size: 24px;
+      }
+
+      .clubs-intro {
+        margin-bottom: 20px;
+
+        font-size: 14px;
+        line-height: 1.8;
+      }
+
+      .clubs-tools {
+        margin-bottom: 20px;
+      }
+
+      .clubs-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .club-cover {
+        height: 90px;
+      }
+
+      .club-body {
+        padding: 17px;
+      }
+
+    }
+
+  </style>
+</head>
+
+
+<body data-role="student" data-page="clubs">
+
+
+  <!-- الهيدر المشترك -->
+  <header class="header" id="site-header"></header>
+
+
+  <!-- ========================================
+       CLUBS PAGE
+  ========================================= -->
+
+  <main class="container">
+
+    <div class="clubs-content">
+
+
+      <!-- عنوان الصفحة -->
+      <div class="page-title">
+
+        <img src="sunMeras.png" alt="">
+
+        <h1>
+          الأندية
+        </h1>
+
+      </div>
+
+
+      <p class="clubs-intro">
+        اكتشفي أندية جامعة الملك سعود وتابعي أنشطتها وفرصها.
+      </p>
+
+
+      <!-- ====================================
+           SEARCH
+      ===================================== -->
+
+      <div class="clubs-tools">
+
+        <div class="clubs-search">
+
+          <input
+            type="search"
+            id="club-search"
+            placeholder="ابحثي عن نادٍ..."
+            aria-label="البحث عن نادٍ">
+
+        </div>
+
+      </div>
+
+
+      <!-- ====================================
+           CLUBS
+      ===================================== -->
+
+      <div class="clubs-grid" id="clubs-grid">
+
+
+        <!-- نادي الذكاء الاصطناعي -->
+        <article
+          class="club-card"
+          data-name="نادي الذكاء الاصطناعي">
+
+          <div class="club-cover">
+
+            <div class="club-symbol">
+              AI
+            </div>
+
+          </div>
+
+
+          <div class="club-body">
+
+            <h2>
+              نادي الذكاء الاصطناعي
+            </h2>
+
+            <p class="club-description">
+              مجتمع طلابي يهتم بمجالات الذكاء الاصطناعي
+              والتقنيات الحديثة وتنمية مهارات الطلاب.
+            </p>
+
+
+            <div class="club-stats">
+
+              <span class="club-stat gold">
+                3 فرص وفعاليات
+              </span>
+
+              <span class="club-stat">
+                5 منشورات
+              </span>
+
+            </div>
+
+
+            <a
+              href="club-details.html?club=ai"
+              class="club-link">
+              عرض النادي
+            </a>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- نادي الأمن السيبراني -->
+        <article
+          class="club-card"
+          data-name="نادي الأمن السيبراني">
+
+          <div class="club-cover">
+
+            <div class="club-symbol">
+              CS
+            </div>
+
+          </div>
+
+
+          <div class="club-body">
+
+            <h2>
+              نادي الأمن السيبراني
+            </h2>
+
+            <p class="club-description">
+              نادي طلابي يهتم بنشر الوعي بالأمن السيبراني
+              وتطوير المهارات التقنية لدى الطلاب.
+            </p>
+
+
+            <div class="club-stats">
+
+              <span class="club-stat gold">
+                4 فرص وفعاليات
+              </span>
+
+              <span class="club-stat">
+                7 منشورات
+              </span>
+
+            </div>
+
+
+            <a
+              href="club-details.html?club=cyber"
+              class="club-link">
+              عرض النادي
+            </a>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- نادي الابتكار وريادة الأعمال -->
+        <article
+          class="club-card"
+          data-name="نادي الابتكار وريادة الأعمال">
+
+          <div class="club-cover">
+
+            <div class="club-symbol">
+              IN
+            </div>
+
+          </div>
+
+
+          <div class="club-body">
+
+            <h2>
+              نادي الابتكار وريادة الأعمال
+            </h2>
+
+            <p class="club-description">
+              بيئة طلابية تهتم بالأفكار الإبداعية والابتكار
+              وتطوير المبادرات والمشاريع الريادية.
+            </p>
+
+
+            <div class="club-stats">
+
+              <span class="club-stat gold">
+                2 فرص وفعاليات
+              </span>
+
+              <span class="club-stat">
+                4 منشورات
+              </span>
+
+            </div>
+
+
+            <a
+              href="club-details.html?club=innovation"
+              class="club-link">
+              عرض النادي
+            </a>
+
+          </div>
+
+        </article>
+
+
+
+        <!-- نادي البرمجة -->
+        <article
+          class="club-card"
+          data-name="نادي البرمجة">
+
+          <div class="club-cover">
+
+            <div class="club-symbol">
+              &lt;/&gt;
+            </div>
+
+          </div>
+
+
+          <div class="club-body">
+
+            <h2>
+              نادي البرمجة
+            </h2>
+
+            <p class="club-description">
+              مجتمع طلابي لتنمية المهارات البرمجية
+              وتبادل المعرفة والخبرات التقنية بين الطلاب.
+            </p>
+
+
+            <div class="club-stats">
+
+              <span class="club-stat gold">
+                3 فرص وفعاليات
+              </span>
+
+              <span class="club-stat">
+                6 منشورات
+              </span>
+
+            </div>
+
+
+            <a
+              href="club-details.html?club=programming"
+              class="club-link">
+              عرض النادي
+            </a>
+
+          </div>
+
+        </article>
+
+
+      </div>
+
+
+      <!-- لا توجد نتائج -->
+      <div class="clubs-empty" id="clubs-empty">
+        لا توجد أندية مطابقة لبحثك.
+      </div>
+
+
+    </div>
+
+  </main>
+
+
+  <!-- الفوتر المشترك -->
+  <footer class="footer" id="site-footer"></footer>
+
+
+  <!-- الهيدر والفوتر المشترك -->
+  <script src="layout.js" defer></script>
+
+
+  <!-- ========================================
+       SEARCH
+  ========================================= -->
+
+  <script>
+
+    const searchInput =
+      document.getElementById("club-search");
+
+    const clubCards =
+      document.querySelectorAll(".club-card");
+
+    const clubsGrid =
+      document.getElementById("clubs-grid");
+
+    const clubsEmpty =
+      document.getElementById("clubs-empty");
+
+
+    searchInput.addEventListener("input", function () {
+
+      const searchValue =
+        searchInput.value.trim().toLowerCase();
+
+      let visibleClubs = 0;
+
+
+      clubCards.forEach(function (club) {
+
+        const clubName =
+          club.dataset.name.toLowerCase();
+
+
+        if (clubName.includes(searchValue)) {
+
+          club.style.display = "";
+          visibleClubs++;
+
+        }
+
+        else {
+
+          club.style.display = "none";
+
+        }
+
+      });
+
+
+      if (visibleClubs === 0) {
+
+        clubsGrid.style.display = "none";
+        clubsEmpty.style.display = "block";
+
+      }
+
+      else {
+
+        clubsGrid.style.display = "grid";
+        clubsEmpty.style.display = "none";
+
+      }
+
+    });
+
+  </script>
+
+
+</body>
+
+</html>
