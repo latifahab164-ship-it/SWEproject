@@ -7,7 +7,7 @@
 
   <title>مِراس - طلباتي</title>
 
-  <!-- التنسيق المشترك -->
+  <!-- ملفات التنسيق المشتركة -->
   <link rel="stylesheet" href="Style.css">
   <link rel="stylesheet" href="components.css">
 
@@ -28,19 +28,18 @@
     ======================================== */
 
     .requests-content .page-title {
-      gap: 10px;
-      margin-bottom: 4px;
+      gap: 9px;
+      margin-bottom: 5px;
     }
 
-    /* تصغير الشمس في هذه الصفحة فقط */
     .requests-content .page-title img {
-      width: 36px;
-      height: 36px;
+      width: 34px;
+      height: 34px;
       object-fit: contain;
     }
 
     .requests-content .page-title h1 {
-      font-size: 30px;
+      font-size: 29px;
     }
 
     .requests-intro {
@@ -57,9 +56,12 @@
     ======================================== */
 
     .requests-filters {
-      display: inline-flex;
+      display: flex;
       flex-wrap: wrap;
-      gap: 6px;
+      gap: 7px;
+
+      width: fit-content;
+      max-width: 100%;
 
       margin-bottom: 24px;
       padding: 6px;
@@ -71,12 +73,12 @@
     }
 
     .filter-btn {
-      min-width: 100px;
+      min-width: 92px;
 
-      padding: 9px 16px;
+      padding: 8px 15px;
 
       font-family: inherit;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 400;
 
       color: var(--ink);
@@ -104,7 +106,7 @@
 
 
     /* ========================================
-       APPLICATIONS LIST
+       APPLICATION LIST
     ======================================== */
 
     .applications-list {
@@ -119,13 +121,14 @@
     ======================================== */
 
     .application-card {
+      width: 100%;
+
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 24px;
 
-      width: 100%;
-      padding: 20px 22px;
+      padding: 19px 21px;
 
       background-color: #fff;
 
@@ -141,8 +144,8 @@
     ======================================== */
 
     .application-info {
-      min-width: 0;
       flex: 1;
+      min-width: 0;
     }
 
     .application-info h2 {
@@ -154,7 +157,7 @@
     }
 
     .application-type {
-      margin: 0 0 11px;
+      margin: 0 0 10px;
 
       color: var(--ink);
       font-size: 13px;
@@ -175,18 +178,18 @@
 
 
     /* ========================================
-       STATUS
+       APPLICATION ACTIONS
     ======================================== */
 
-    .application-status {
+    .application-actions {
       flex-shrink: 0;
+
+      min-width: 125px;
 
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 6px;
-
-      min-width: 120px;
+      gap: 9px;
     }
 
     .status-label {
@@ -195,14 +198,19 @@
       font-weight: 300;
     }
 
+
+    /* ========================================
+       STATUS
+    ======================================== */
+
     .status-badge {
-      min-width: 112px;
+      min-width: 110px;
 
       display: inline-flex;
       align-items: center;
       justify-content: center;
 
-      padding: 7px 15px;
+      padding: 7px 14px;
 
       border-radius: 999px;
 
@@ -211,15 +219,13 @@
       white-space: nowrap;
     }
 
-
     /* قيد المراجعة */
-    .status-review {
+    .status-pending {
       background-color: var(--yellow);
       color: var(--ink-dark);
 
       border: 1px solid var(--gold);
     }
-
 
     /* مقبول */
     .status-accepted {
@@ -229,13 +235,79 @@
       border: 1px solid var(--teal);
     }
 
-
     /* مرفوض */
     .status-rejected {
       background-color: var(--beige);
       color: var(--ink);
 
       border: 1px solid var(--ink);
+    }
+
+    /* ملغي */
+    .status-cancelled {
+      background-color: var(--header-bg);
+      color: var(--ink);
+
+      border: 1px dashed var(--teal);
+    }
+
+
+    /* ========================================
+       CANCEL BUTTON
+    ======================================== */
+
+    .cancel-btn {
+      padding: 6px 14px;
+
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 500;
+
+      color: var(--ink);
+      background-color: transparent;
+
+      border: 1px solid var(--ink);
+      border-radius: 999px;
+
+      cursor: pointer;
+
+      transition:
+        background-color .2s,
+        color .2s;
+    }
+
+    .cancel-btn:hover {
+      background-color: var(--ink);
+      color: var(--beige);
+    }
+
+
+    /* ========================================
+       SUCCESS MESSAGE
+    ======================================== */
+
+    .success-message {
+      display: none;
+
+      align-items: center;
+      justify-content: space-between;
+      gap: 15px;
+
+      margin-bottom: 20px;
+      padding: 13px 17px;
+
+      background-color: var(--yellow);
+
+      border-right: 4px solid var(--teal);
+      border-radius: 12px;
+
+      color: var(--ink-dark);
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .success-message.show {
+      display: flex;
     }
 
 
@@ -274,6 +346,140 @@
 
 
     /* ========================================
+       CONFIRMATION MODAL
+    ======================================== */
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+
+      z-index: 1000;
+
+      display: none;
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px;
+
+      background-color: rgba(31, 63, 73, 0.45);
+    }
+
+    .modal-overlay.show {
+      display: flex;
+    }
+
+    .cancel-modal {
+      width: min(420px, 100%);
+
+      padding: 27px;
+
+      text-align: center;
+
+      background-color: var(--header-bg);
+
+      border-top: 5px solid var(--gold);
+      border-radius: 20px;
+
+      box-shadow: 0 8px 28px rgba(31, 63, 73, 0.18);
+    }
+
+    .modal-mark {
+      width: 48px;
+      height: 48px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      margin: 0 auto 15px;
+
+      background-color: var(--yellow);
+      color: var(--ink);
+
+      border-radius: 50%;
+
+      font-size: 23px;
+      font-weight: 500;
+    }
+
+    .cancel-modal h2 {
+      margin: 0 0 9px;
+
+      color: var(--ink);
+      font-size: 20px;
+      font-weight: 500;
+    }
+
+    .cancel-modal p {
+      margin: 0;
+
+      color: var(--ink);
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.9;
+    }
+
+    .modal-club-name {
+      font-weight: 500;
+      color: var(--ink-dark);
+    }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+
+      margin-top: 22px;
+    }
+
+    .modal-actions button {
+      flex: 1;
+    }
+
+    .confirm-cancel-btn {
+      padding: 10px 16px;
+
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+
+      color: var(--beige);
+      background-color: var(--ink);
+
+      border: 2px solid var(--ink);
+      border-radius: 12px;
+
+      cursor: pointer;
+    }
+
+    .confirm-cancel-btn:hover {
+      background-color: var(--gold);
+      border-color: var(--gold);
+      color: var(--ink-dark);
+    }
+
+    .back-btn {
+      padding: 10px 16px;
+
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+
+      color: var(--ink);
+      background-color: var(--header-bg);
+
+      border: 2px solid var(--teal-light);
+      border-radius: 12px;
+
+      cursor: pointer;
+    }
+
+    .back-btn:hover {
+      background-color: var(--yellow);
+      border-color: var(--gold);
+    }
+
+
+    /* ========================================
        TABLET
     ======================================== */
 
@@ -284,8 +490,8 @@
       }
 
       .requests-content .page-title img {
-        width: 34px;
-        height: 34px;
+        width: 32px;
+        height: 32px;
       }
 
       .requests-content .page-title h1 {
@@ -293,7 +499,6 @@
       }
 
       .application-card {
-        padding: 18px 20px;
         gap: 18px;
       }
 
@@ -310,13 +515,9 @@
         width: 100%;
       }
 
-      .requests-content .page-title {
-        gap: 8px;
-      }
-
       .requests-content .page-title img {
-        width: 30px;
-        height: 30px;
+        width: 29px;
+        height: 29px;
       }
 
       .requests-content .page-title h1 {
@@ -337,42 +538,38 @@
 
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-
-        gap: 6px;
       }
 
       .filter-btn {
         width: 100%;
         min-width: 0;
-
-        padding: 9px 8px;
-
-        font-size: 13px;
       }
 
 
-      /* الكروت */
+      /* الطلب */
       .application-card {
         display: block;
 
         padding: 18px;
-
         border-radius: 16px;
       }
 
       .application-info {
-        margin-bottom: 16px;
+        margin-bottom: 15px;
       }
 
       .application-info h2 {
         font-size: 17px;
       }
 
-      .application-status {
+
+      /* الحالة والإلغاء */
+      .application-actions {
+        width: 100%;
         min-width: 0;
 
-        flex-direction: row;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: 1fr auto;
         align-items: center;
 
         padding-top: 13px;
@@ -381,15 +578,25 @@
       }
 
       .status-label {
-        font-size: 12px;
+        grid-column: 1 / -1;
       }
 
       .status-badge {
-        min-width: 100px;
+        justify-self: start;
+      }
 
-        padding: 6px 12px;
+      .cancel-btn {
+        justify-self: end;
+      }
 
-        font-size: 12px;
+
+      /* المودال */
+      .cancel-modal {
+        padding: 23px 18px;
+      }
+
+      .modal-actions {
+        flex-direction: column;
       }
 
     }
@@ -418,34 +625,40 @@
   <header class="header" id="site-header"></header>
 
 
-  <!-- ========================================
-       REQUESTS PAGE
-  ========================================= -->
-
   <main class="container">
 
     <div class="requests-content">
 
 
-      <!-- عنوان الصفحة -->
+      <!-- ====================================
+           PAGE TITLE
+      ===================================== -->
+
       <div class="page-title">
 
-        <img
-          src="sunMeras.png"
-          alt=""
-        >
+        <img src="sunMeras.png" alt="">
 
-        <h1>
-          طلباتي
-        </h1>
+        <h1>طلباتي</h1>
 
       </div>
-
 
       <p class="requests-intro">
         تابعي حالة طلبات الانضمام المقدمة للأندية.
       </p>
 
+
+      <!-- ====================================
+           SUCCESS MESSAGE
+      ===================================== -->
+
+      <div
+        class="success-message"
+        id="success-message"
+        role="status">
+
+        تم إلغاء طلب الانضمام بنجاح.
+
+      </div>
 
 
       <!-- ====================================
@@ -464,7 +677,7 @@
         <button
           type="button"
           class="filter-btn"
-          data-filter="review">
+          data-filter="pending">
           قيد المراجعة
         </button>
 
@@ -482,8 +695,14 @@
           مرفوض
         </button>
 
-      </div>
+        <button
+          type="button"
+          class="filter-btn"
+          data-filter="cancelled">
+          ملغي
+        </button>
 
+      </div>
 
 
       <!-- ====================================
@@ -495,16 +714,17 @@
         id="applications-list">
 
 
-        <!-- الطلب الأول -->
+        <!-- ==================================
+             PENDING APPLICATION
+        =================================== -->
+
         <article
           class="application-card"
-          data-status="review">
+          data-status="pending">
 
           <div class="application-info">
 
-            <h2>
-              نادي الذكاء الاصطناعي
-            </h2>
+            <h2>نادي الذكاء الاصطناعي</h2>
 
             <p class="application-type">
               طلب عضوية النادي
@@ -518,32 +738,40 @@
           </div>
 
 
-          <div class="application-status">
+          <div class="application-actions">
 
             <span class="status-label">
               حالة الطلب
             </span>
 
-            <span class="status-badge status-review">
+            <span class="status-badge status-pending">
               قيد المراجعة
             </span>
+
+            <!-- يظهر فقط للطلب Pending -->
+            <button
+              type="button"
+              class="cancel-btn"
+              data-club="نادي الذكاء الاصطناعي">
+              إلغاء الطلب
+            </button>
 
           </div>
 
         </article>
 
 
+        <!-- ==================================
+             ACCEPTED APPLICATION
+        =================================== -->
 
-        <!-- الطلب الثاني -->
         <article
           class="application-card"
           data-status="accepted">
 
           <div class="application-info">
 
-            <h2>
-              نادي الأمن السيبراني
-            </h2>
+            <h2>نادي الأمن السيبراني</h2>
 
             <p class="application-type">
               طلب عضوية النادي
@@ -557,7 +785,7 @@
           </div>
 
 
-          <div class="application-status">
+          <div class="application-actions">
 
             <span class="status-label">
               حالة الطلب
@@ -572,17 +800,17 @@
         </article>
 
 
+        <!-- ==================================
+             REJECTED APPLICATION
+        =================================== -->
 
-        <!-- الطلب الثالث -->
         <article
           class="application-card"
           data-status="rejected">
 
           <div class="application-info">
 
-            <h2>
-              نادي الابتكار وريادة الأعمال
-            </h2>
+            <h2>نادي الابتكار وريادة الأعمال</h2>
 
             <p class="application-type">
               طلب عضوية النادي
@@ -596,7 +824,7 @@
           </div>
 
 
-          <div class="application-status">
+          <div class="application-actions">
 
             <span class="status-label">
               حالة الطلب
@@ -614,7 +842,6 @@
       </div>
 
 
-
       <!-- ====================================
            EMPTY STATE
       ===================================== -->
@@ -623,9 +850,7 @@
         class="requests-empty"
         id="requests-empty">
 
-        <h2>
-          لا توجد لديك طلبات
-        </h2>
+        <h2>لا توجد لديك طلبات</h2>
 
         <p>
           لم تقومي بتقديم أي طلبات انضمام للأندية حتى الآن.
@@ -643,21 +868,73 @@
   <footer class="footer" id="site-footer"></footer>
 
 
+  <!-- ========================================
+       CANCELLATION MODAL
+  ========================================= -->
+
+  <div
+    class="modal-overlay"
+    id="cancel-modal">
+
+    <div
+      class="cancel-modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="cancel-title">
+
+      <div class="modal-mark">
+        ؟
+      </div>
+
+      <h2 id="cancel-title">
+        إلغاء الطلب
+      </h2>
+
+      <p>
+        هل أنتِ متأكدة من إلغاء طلب الانضمام إلى
+        <span
+          class="modal-club-name"
+          id="modal-club-name">
+        </span>
+        ؟
+      </p>
+
+
+      <div class="modal-actions">
+
+        <button
+          type="button"
+          class="confirm-cancel-btn"
+          id="confirm-cancel">
+          تأكيد الإلغاء
+        </button>
+
+        <button
+          type="button"
+          class="back-btn"
+          id="close-modal">
+          تراجع
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
   <!-- الهيدر والفوتر المشترك -->
   <script src="layout.js" defer></script>
 
 
-  <!-- ========================================
-       FILTERING
-  ========================================= -->
-
   <script>
+
+    /* ========================================
+       ELEMENTS
+    ======================================== */
 
     const filterButtons =
       document.querySelectorAll(".filter-btn");
-
-    const applications =
-      document.querySelectorAll(".application-card");
 
     const applicationsList =
       document.getElementById("applications-list");
@@ -665,67 +942,251 @@
     const emptyState =
       document.getElementById("requests-empty");
 
+    const cancelModal =
+      document.getElementById("cancel-modal");
+
+    const modalClubName =
+      document.getElementById("modal-club-name");
+
+    const confirmCancel =
+      document.getElementById("confirm-cancel");
+
+    const closeModal =
+      document.getElementById("close-modal");
+
+    const successMessage =
+      document.getElementById("success-message");
+
+
+    let selectedApplication = null;
+
+
+    /* ========================================
+       FILTER APPLICATIONS
+    ======================================== */
+
+    function filterApplications(filter) {
+
+      const applications =
+        document.querySelectorAll(".application-card");
+
+      let visibleApplications = 0;
+
+
+      applications.forEach(function (application) {
+
+        const status =
+          application.dataset.status;
+
+
+        if (
+          filter === "all" ||
+          status === filter
+        ) {
+
+          application.style.display = "";
+          visibleApplications++;
+
+        }
+
+        else {
+
+          application.style.display = "none";
+
+        }
+
+      });
+
+
+      if (visibleApplications === 0) {
+
+        applicationsList.style.display = "none";
+        emptyState.style.display = "block";
+
+      }
+
+      else {
+
+        applicationsList.style.display = "flex";
+        emptyState.style.display = "none";
+
+      }
+
+    }
+
 
     filterButtons.forEach(function (button) {
 
       button.addEventListener("click", function () {
 
-        const selectedFilter =
-          button.dataset.filter;
-
-        let visibleApplications = 0;
-
-
-        /* تغيير الفلتر النشط */
         filterButtons.forEach(function (btn) {
           btn.classList.remove("active");
         });
 
         button.classList.add("active");
 
-
-        /* فلترة الطلبات */
-        applications.forEach(function (application) {
-
-          const status =
-            application.dataset.status;
-
-
-          if (
-            selectedFilter === "all" ||
-            status === selectedFilter
-          ) {
-
-            application.style.display = "";
-            visibleApplications++;
-
-          }
-
-          else {
-
-            application.style.display = "none";
-
-          }
-
-        });
-
-
-        /* حالة عدم وجود نتائج */
-        if (visibleApplications === 0) {
-
-          applicationsList.style.display = "none";
-          emptyState.style.display = "block";
-
-        }
-
-        else {
-
-          applicationsList.style.display = "flex";
-          emptyState.style.display = "none";
-
-        }
+        filterApplications(button.dataset.filter);
 
       });
+
+    });
+
+
+    /* ========================================
+       OPEN CANCEL MODAL
+    ======================================== */
+
+    document.addEventListener("click", function (event) {
+
+      const cancelButton =
+        event.target.closest(".cancel-btn");
+
+      if (!cancelButton) {
+        return;
+      }
+
+
+      selectedApplication =
+        cancelButton.closest(".application-card");
+
+
+      /*
+        حماية إضافية:
+        لا يمكن فتح الإلغاء إلا إذا كان الطلب Pending.
+      */
+
+      if (
+        !selectedApplication ||
+        selectedApplication.dataset.status !== "pending"
+      ) {
+
+        selectedApplication = null;
+        return;
+
+      }
+
+
+      modalClubName.textContent =
+        cancelButton.dataset.club;
+
+      cancelModal.classList.add("show");
+
+    });
+
+
+    /* ========================================
+       CLOSE MODAL
+    ======================================== */
+
+    function closeCancelModal() {
+
+      cancelModal.classList.remove("show");
+      selectedApplication = null;
+
+    }
+
+
+    closeModal.addEventListener(
+      "click",
+      closeCancelModal
+    );
+
+
+    /* إغلاق النافذة عند الضغط خارجها */
+    cancelModal.addEventListener("click", function (event) {
+
+      if (event.target === cancelModal) {
+        closeCancelModal();
+      }
+
+    });
+
+
+    /* ========================================
+       CONFIRM CANCELLATION
+    ======================================== */
+
+    confirmCancel.addEventListener("click", function () {
+
+      if (
+        !selectedApplication ||
+        selectedApplication.dataset.status !== "pending"
+      ) {
+        return;
+      }
+
+
+      /* تغيير حالة الطلب */
+      selectedApplication.dataset.status =
+        "cancelled";
+
+
+      const statusBadge =
+        selectedApplication.querySelector(".status-badge");
+
+      statusBadge.textContent =
+        "ملغي";
+
+      statusBadge.classList.remove(
+        "status-pending"
+      );
+
+      statusBadge.classList.add(
+        "status-cancelled"
+      );
+
+
+      /* إزالة زر الإلغاء */
+      const cancelButton =
+        selectedApplication.querySelector(".cancel-btn");
+
+      if (cancelButton) {
+        cancelButton.remove();
+      }
+
+
+      /* إغلاق النافذة */
+      cancelModal.classList.remove("show");
+      selectedApplication = null;
+
+
+      /* رسالة نجاح */
+      successMessage.classList.add("show");
+
+
+      /* إعادة تطبيق الفلتر الحالي */
+      const activeFilter =
+        document.querySelector(".filter-btn.active");
+
+      filterApplications(
+        activeFilter.dataset.filter
+      );
+
+
+      /* إخفاء رسالة النجاح بعد فترة */
+      setTimeout(function () {
+
+        successMessage.classList.remove("show");
+
+      }, 3500);
+
+    });
+
+
+    /* ========================================
+       ESC KEY
+    ======================================== */
+
+    document.addEventListener("keydown", function (event) {
+
+      if (
+        event.key === "Escape" &&
+        cancelModal.classList.contains("show")
+      ) {
+
+        closeCancelModal();
+
+      }
 
     });
 
