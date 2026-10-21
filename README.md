@@ -1,1 +1,5 @@
-# SWEproject
+# Meras Project 
+The project aims to develop an electronic platform that facilitates students' access to university opportunities and activities, exploring student clubs, and joining these opportunities or student clubs. 
+The system provides an easy interface for the user that allows students to browse the clubs and available opportunities. The clubs are displayed in the available section and it allows joining these clubs. It also displays the opportunities provided by the clubs and allows students to request joining these opportunities. 
+On the other hand, the platform allows the administrator to manage the acceptance or rejection of student applications submitted, whether for opportunities or to join the club 
+The system primarily aims to facilitate student participation in these events and organize them so that students can easily access opportunities and clubs, and to enhance communication between officials and students.
