@@ -1,10 +1,29 @@
-/* Colors used:
-   #7BB0BC  main blue (header)
-   #8EB8BF  light blue (hover on dark parts)
-   #F9E5AE  light yellow (hover / links)
-   #F8F0EA  background
-   #30335B  text color + footer
+/* ===== SHARED STYLES: base, header, footer. Used by every page.
+   Page-specific styles live in their own css file (home.css, opportunities.css). =====
+
+   ===== MIRAS brand colors (from the identity sheet) =====
+   --teal        #7BB0BC  main brand teal
+   --teal-light  #8EB8BF  light teal
+   --yellow      #F9E5AE  light yellow
+   --gold        #EDD08A  gold
+   --beige       #F8F0EA  site background
+   --ink         #2E5560  deep teal (text & footer; darker shade of the brand teal for readable contrast)
 */
+
+@font-face { font-family: "Thmanyah Sans"; src: url("fonts/thmanyah-sans-Light.woff2") format("woff2");   font-weight: 300; font-display: swap; }
+@font-face { font-family: "Thmanyah Sans"; src: url("fonts/thmanyah-sans-Regular.woff2") format("woff2"); font-weight: 400; font-display: swap; }
+@font-face { font-family: "Thmanyah Sans"; src: url("fonts/thmanyah-sans-Medium.woff2") format("woff2");  font-weight: 500; font-display: swap; }
+
+:root {
+  --teal: #7BB0BC;
+  --teal-light: #8EB8BF;
+  --yellow: #F9E5AE;
+  --gold: #EDD08A;
+  --beige: #F8F0EA;
+  --ink: #2E5560;
+  --ink-dark: #1F3F49;
+  --header-bg: #FFFCF8;
+}
 
 * {
   box-sizing: border-box;
@@ -12,10 +31,10 @@
 
 body {
   margin: 0;
-  font-family: Tahoma, Arial, sans-serif;
-  background-color: #F8F0EA;
-  color: #30335B;
-  /* This keeps the footer at the bottom even if main is empty */
+  font-family: "Thmanyah Sans", Tahoma, Arial, sans-serif;
+  background-color: var(--beige);
+  color: var(--ink);
+  /* keeps the footer at the bottom even if main is empty */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -25,46 +44,79 @@ a {
   text-decoration: none;
 }
 
+/* Only Light 300, Regular 400 and Medium 500 are loaded; emphasis comes from size and Medium weight */
+b, strong, h1, h2, h3 {
+  font-weight: 500;
+}
+
 /* ---------- Header ---------- */
 .header {
-  background-color: #7BB0BC;
-  padding: 10px 30px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: var(--header-bg);
+  padding: 12px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 4px solid #F9E5AE;
+  /* brand strip on top: teal -> gold */
+  border-top: 5px solid transparent;
+  border-image: linear-gradient(to left, var(--teal), var(--teal-light) 55%, var(--gold)) 1;
+  box-shadow: 0 4px 18px rgba(46, 85, 96, 0.10);
 }
 
 .logo img {
-  height: 60px;
+  height: 88px;
   display: block;
 }
 
 .nav {
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 6px;
 }
 
 .nav a {
-  color: #30335B;
+  position: relative;
+  color: var(--ink);
   font-size: 16px;
-  font-weight: bold;
-  padding: 8px 14px;
-  border-radius: 6px;
+  font-weight: 500;
+  padding: 9px 15px;
+  border-radius: 999px;
+  transition: background-color .2s, color .2s;
 }
 
 .nav a:hover {
-  background-color: #F9E5AE;
+  background-color: var(--yellow);
+}
+
+/* current page: gold dot under the link */
+.nav a.active {
+  font-weight: 500;
+}
+
+.nav a.active::after {
+  content: "";
+  position: absolute;
+  bottom: 2px;
+  left: 50%;
+  width: 22px;
+  height: 4px;
+  margin-left: -11px;
+  border-radius: 4px;
+  background-color: var(--gold);
 }
 
 .nav .logout {
-  border: 2px solid #30335B;
+  margin-right: 10px;
+  background-color: var(--ink);
+  color: var(--beige);
+  font-weight: 500;
 }
 
 .nav .logout:hover {
-  background-color: #30335B;
-  color: #F9E5AE;
+  background-color: var(--teal);
+  color: var(--ink);
 }
 
 /* ---------- Main (empty) ---------- */
@@ -74,77 +126,151 @@ main {
 
 /* ---------- Footer ---------- */
 .footer {
-  background-color: #30335B;
-  color: #F8F0EA;
-  padding: 30px;
-  border-top: 4px solid #F9E5AE;
+  background-color: var(--teal);
+  color: var(--ink-dark);
+  padding: 34px 40px 20px;
+  border-top: 5px solid transparent;
+  border-image: linear-gradient(to left, var(--gold), var(--yellow) 55%, var(--teal-light)) 1;
 }
 
 .footer-top {
   display: flex;
   justify-content: space-between;
   gap: 30px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #8EB8BF;
+  padding-bottom: 22px;
+  border-bottom: 1px solid rgba(31, 63, 73, 0.30);
 }
 
-.footer-about {
-  max-width: 400px;
-}
-
-.footer-logo {
-  height: 50px;
-  margin-bottom: 10px;
-  background-color: #F8F0EA;
-  padding: 5px;
-  border-radius: 6px;
-}
-
-.footer-about p {
-  margin: 0;
-  line-height: 1.8;
-}
-
-.footer-links h3 {
-  margin: 0 0 10px 0;
-  color: #F9E5AE;
-}
-
-.footer-links a {
-  display: block;
-  color: #F8F0EA;
+.footer-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   margin-bottom: 8px;
 }
 
+.footer-sun {
+  height: 44px;
+  display: block;
+}
+
+.footer-title h2 {
+  margin: 0;
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--ink-dark);
+}
+
+.footer-brand p {
+  margin: 0;
+  max-width: 420px;
+  font-weight: 500;
+  line-height: 1.9;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  gap: 9px;
+}
+
+.footer-links a {
+  color: var(--ink-dark);
+  font-weight: 500;
+  transition: color .2s;
+}
+
 .footer-links a:hover {
-  color: #F9E5AE;
+  color: var(--header-bg);
 }
 
 .copyright {
   text-align: center;
-  margin: 20px 0 0 0;
+  margin: 18px 0 0 0;
   font-size: 14px;
+  font-weight: 400;
+  color: var(--ink-dark);
+}
+
+/* ---------- Menu button (mobile only) ---------- */
+.menu-btn {
+  display: none;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: 2px solid var(--teal-light);
+  border-radius: 12px;
+  background: transparent;
+  cursor: pointer;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+}
+
+.menu-btn span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: var(--ink);
 }
 
 /* ---------- Mobile ---------- */
 @media (max-width: 800px) {
   .header {
-    flex-direction: column;
-    gap: 10px;
-    padding: 10px;
+    flex-wrap: wrap;
+    padding: 8px 16px;
+  }
+
+  .logo img {
+    height: 58px;
+  }
+
+  .menu-btn {
+    display: flex;
   }
 
   .nav {
-    flex-wrap: wrap;
-    justify-content: center;
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    padding: 8px 0 6px;
+  }
+
+  .nav.open {
+    display: flex;
   }
 
   .nav a {
-    font-size: 14px;
-    padding: 6px 10px;
+    font-size: 16px;
+    padding: 12px 14px;
+    border-radius: 12px;
+  }
+
+  .nav a.active::after {
+    left: auto;
+    right: 14px;
+    margin-left: 0;
+    bottom: 6px;
+  }
+
+  .nav .logout {
+    margin: 6px 0 0;
+    text-align: center;
+  }
+
+  .footer {
+    padding: 28px 20px 18px;
   }
 
   .footer-top {
     flex-direction: column;
+  }
+
+  .footer-links {
+    align-self: flex-start;
   }
 }
