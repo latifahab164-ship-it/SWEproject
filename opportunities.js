@@ -145,22 +145,32 @@ function hasApplied(opportunityTitle, clubName) {
 
 
 /* =========================================================
-   CREATE APPLICATION
+   MERAS APPLY POPUP
+========================================================= */
+
+const applyModal = $("applyModal");
+const successModal = $("successModal");
+
+const applyOpportunityTitle = $("applyOpportunityTitle");
+const applyOpportunityClub = $("applyOpportunityClub");
+
+const confirmApply = $("confirmApply");
+const cancelApply = $("cancelApply");
+const closeSuccess = $("closeSuccess");
+
+let selectedOpportunity = null;
+
+
+/* =========================================================
+   OPEN APPLICATION POPUP
 ========================================================= */
 
 function applyForOpportunity(item) {
 
-  /* Deadline check */
-
   if (item.deadline.getTime() < Date.now()) {
-
-    alert("انتهى موعد التقديم على هذه الفرصة.");
-
     return;
   }
 
-
-  /* Duplicate application check */
 
   if (
     hasApplied(
@@ -168,126 +178,255 @@ function applyForOpportunity(item) {
       item.club
     )
   ) {
-
-    alert("لقد قدمت على هذه الفرصة مسبقاً.");
-
     return;
   }
 
 
-  /* Confirmation */
+  selectedOpportunity = item;
 
-  const confirmed = confirm(
-    `هل أنت متأكد من التقديم على فرصة "${item.title}" في ${item.club}؟`
+
+  applyOpportunityTitle.textContent =
+    item.title;
+
+
+  applyOpportunityClub.textContent =
+    item.club;
+
+
+  applyModal.classList.add("show");
+
+  applyModal.setAttribute(
+    "aria-hidden",
+    "false"
   );
-
-
-  if (!confirmed) {
-    return;
-  }
-
-
-  const applications =
-    getApplications();
-
-
-  const newApplication = {
-
-    /* Application */
-
-    id:
-      "APP-" +
-      Date.now(),
-
-    type:
-      "opportunity",
-
-    status:
-      "pending",
-
-    submittedAt:
-      new Date().toISOString(),
-
-
-    /* Opportunity */
-
-    opportunityTitle:
-      item.title,
-
-    club:
-      item.club,
-
-    semester:
-      item.semester,
-
-    mode:
-      item.mode,
-
-    location:
-      item.location || "",
-
-    hours:
-      item.hours,
-
-    skills:
-      item.skills,
-
-    seats:
-      item.seats,
-
-    tasks:
-      item.tasks,
-
-    deadline:
-      item.deadline.toISOString(),
-
-
-    /* Student */
-
-    studentId:
-      CURRENT_STUDENT.id,
-
-    studentName:
-      CURRENT_STUDENT.name,
-
-    studentMajor:
-      CURRENT_STUDENT.major,
-
-    studentEmail:
-      CURRENT_STUDENT.email,
-
-    volunteerHours:
-      CURRENT_STUDENT.volunteerHours,
-
-    achievements:
-      CURRENT_STUDENT.achievements
-
-  };
-
-
-  applications.push(
-    newApplication
-  );
-
-
-  saveApplications(
-    applications
-  );
-
-
-  alert(
-    "تم إرسال طلبك بنجاح."
-  );
-
-
-  /*
-    Re-render cards so the button
-    immediately changes to "تم التقديم"
-  */
-
-  render();
-
 }
+
+
+/* =========================================================
+   CLOSE APPLICATION POPUP
+========================================================= */
+
+function closeApplyModal() {
+
+  applyModal.classList.remove("show");
+
+  applyModal.setAttribute(
+    "aria-hidden",
+    "true"
+  );
+
+  selectedOpportunity = null;
+}
+
+
+cancelApply.addEventListener(
+  "click",
+  closeApplyModal
+);
+
+
+/* =========================================================
+   CONFIRM APPLICATION
+========================================================= */
+
+confirmApply.addEventListener(
+  "click",
+  function () {
+
+    if (!selectedOpportunity) {
+      return;
+    }
+
+
+    /*
+      Check again before saving
+      to prevent duplicate applications.
+    */
+
+    if (
+      hasApplied(
+        selectedOpportunity.title,
+        selectedOpportunity.club
+      )
+    ) {
+
+      closeApplyModal();
+
+      return;
+    }
+
+
+    const applications =
+      getApplications();
+
+
+    const newApplication = {
+
+      /* Application */
+
+      id:
+        "APP-" +
+        Date.now(),
+
+      type:
+        "opportunity",
+
+      status:
+        "pending",
+
+      submittedAt:
+        new Date().toISOString(),
+
+
+      /* Opportunity */
+
+      opportunityTitle:
+        selectedOpportunity.title,
+
+      club:
+        selectedOpportunity.club,
+
+      semester:
+        selectedOpportunity.semester,
+
+      mode:
+        selectedOpportunity.mode,
+
+      location:
+        selectedOpportunity.location || "",
+
+      hours:
+        selectedOpportunity.hours,
+
+      skills:
+        selectedOpportunity.skills,
+
+      seats:
+        selectedOpportunity.seats,
+
+      tasks:
+        selectedOpportunity.tasks,
+
+      deadline:
+        selectedOpportunity.deadline.toISOString(),
+
+
+      /* Student */
+
+      studentId:
+        CURRENT_STUDENT.id,
+
+      studentName:
+        CURRENT_STUDENT.name,
+
+      studentMajor:
+        CURRENT_STUDENT.major,
+
+      studentEmail:
+        CURRENT_STUDENT.email,
+
+      volunteerHours:
+        CURRENT_STUDENT.volunteerHours,
+
+      achievements:
+        CURRENT_STUDENT.achievements
+
+    };
+
+
+    applications.push(
+      newApplication
+    );
+
+
+    saveApplications(
+      applications
+    );
+
+
+    /* Close confirmation popup */
+
+    applyModal.classList.remove("show");
+
+    applyModal.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+
+    /* Update card to "تم التقديم" */
+
+    render();
+
+
+    /* Show Meras success popup */
+
+    successModal.classList.add("show");
+
+    successModal.setAttribute(
+      "aria-hidden",
+      "false"
+    );
+
+
+    selectedOpportunity = null;
+
+  }
+);
+
+
+/* =========================================================
+   CLOSE SUCCESS POPUP
+========================================================= */
+
+closeSuccess.addEventListener(
+  "click",
+  function () {
+
+    successModal.classList.remove("show");
+
+    successModal.setAttribute(
+      "aria-hidden",
+      "true"
+    );
+
+  }
+);
+
+
+/* =========================================================
+   CLOSE POPUP WHEN CLICKING OUTSIDE
+========================================================= */
+
+applyModal.addEventListener(
+  "click",
+  function (event) {
+
+    if (event.target === applyModal) {
+      closeApplyModal();
+    }
+
+  }
+);
+
+
+successModal.addEventListener(
+  "click",
+  function (event) {
+
+    if (event.target === successModal) {
+
+      successModal.classList.remove("show");
+
+      successModal.setAttribute(
+        "aria-hidden",
+        "true"
+      );
+
+    }
+
+  }
+);
 
 
 /* =========================================================
@@ -462,9 +601,6 @@ skillSelect.addEventListener(
 
 /* =========================================================
    APPLY BUTTON
-
-   Event delegation is used because cards
-   are re-rendered after filtering/searching.
 ========================================================= */
 
 $("cards").addEventListener(
