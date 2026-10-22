@@ -41,30 +41,162 @@ function deadlineDates(d) {
 
 /* One opportunity card. Used by the opportunities page and by each club page. */
 function cardHTML(i) {
-    const open = i.deadline.getTime() >= now;
-    const kind = i.type === "فرصة" ? "opp" : "act";
-    return `
+
+  const open =
+    i.deadline.getTime() >=
+    Date.now();
+
+
+  const kind =
+    i.type === "فرصة"
+      ? "opp"
+      : "act";
+
+
+  const itemIndex =
+    ITEMS.indexOf(i);
+
+
+  /*
+    Check whether this student
+    already applied.
+  */
+
+  const alreadyApplied =
+    typeof hasApplied === "function"
+      ? hasApplied(
+          i.title,
+          i.club
+        )
+      : false;
+
+
+  let applyButton = "";
+
+
+  if (!open) {
+
+    applyButton =
+      `<span class="apply closed">
+        انتهــى التسجيــل
+      </span>`;
+
+  }
+
+  else if (alreadyApplied) {
+
+    applyButton =
+      `<span class="apply applied">
+        تم التقديــم
+      </span>`;
+
+  }
+
+  else {
+
+    applyButton =
+      `<a
+        href="#"
+        class="apply"
+        data-index="${itemIndex}">
+        قــدّم الآن
+      </a>`;
+
+  }
+
+
+  return `
     <article class="card">
+
       <div class="card-top">
-        <span class="badge ${kind}">${i.type}</span>
-        <span class="mode">${i.mode}</span>
+
+        <span class="badge ${kind}">
+          ${i.type}
+        </span>
+
+        <span class="mode">
+          ${i.mode}
+        </span>
+
       </div>
-      <h3>${i.title}</h3>
-      <p class="club">${i.club} · ${i.semester}</p>
+
+
+      <h3>
+        ${i.title}
+      </h3>
+
+
+      <p class="club">
+        ${i.club} · ${i.semester}
+      </p>
+
+
       <ul class="meta">
-        <li><b>الساعات التطوعية:</b> ${i.hours} ساعة</li>
-        <li><b>آخر موعد للتسجيل:</b> ${deadlineDates(i.deadline)}</li>
-        <li><b>وقت الإغلاق:</b> ${fmtTime.format(i.deadline)}</li>
+
+        <li>
+          <b>الساعات التطوعية:</b>
+          ${i.hours} ساعة
+        </li>
+
+        <li>
+          <b>آخر موعد للتسجيل:</b>
+          ${deadlineDates(i.deadline)}
+        </li>
+
+        <li>
+          <b>وقت الإغلاق:</b>
+          ${fmtTime.format(i.deadline)}
+        </li>
+
       </ul>
+
+
       <details>
-        <summary>التفاصيــل</summary>
+
+        <summary>
+          التفاصيــل
+        </summary>
+
+
         <div class="more">
-          <p><b>أبرز المهام:</b> ${i.tasks}</p>
-          ${i.location ? `<p><b>الموقع:</b> ${i.location}</p>` : ""}
-          <p><b>المهارات:</b> ${i.skills.join("، ")}</p>
-          <p><b>عدد المقاعد:</b> ${i.seats}</p>
+
+          <p>
+            <b>أبرز المهام:</b>
+            ${i.tasks}
+          </p>
+
+
+          ${
+            i.location
+              ? `
+                <p>
+                  <b>الموقع:</b>
+                  ${i.location}
+                </p>
+              `
+              : ""
+          }
+
+
+          <p>
+            <b>المهارات:</b>
+            ${i.skills.join("، ")}
+          </p>
+
+
+          <p>
+            <b>عدد المقاعد:</b>
+            ${i.seats}
+          </p>
+
         </div>
+
       </details>
-      ${open ? `<a href="#" class="apply">قــدّم الآن</a>` : `<span class="apply closed">انتهــى التسجيــل</span>`}
-    </article>`;
+
+
+      ${applyButton}
+
+    </article>
+  `;
+
 }
