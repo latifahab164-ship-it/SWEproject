@@ -1,595 +1,1610 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>مِراس - مسؤول النادي</title>
+
+  <title>مِراس - إدارة الطلبات</title>
+
   <link rel="stylesheet" href="Style.css">
 
   <style>
- 
-  .apps-page {
-    --teal-dark: #2E5560;
-    --gold-dark: #EDD08A;
-    --line: rgba(46, 85, 96, 0.18);
 
-    width: 100%;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 34px 24px 60px;
-  }
+    /* =========================================================
+       APPLICATIONS PAGE
+    ========================================================= */
 
-
-  .apps-page .page-title {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    margin: 0 0 8px;
-    font-size: 30px;
-    color: var(--ink-dark);
-  }
-
-  .apps-page .page-title img {
-    height: 34px;
-  }
-
-  .apps-page .page-subtitle {
-    margin: 0 0 28px;
-    font-size: 16px;
-    font-weight: 400;
-  }
-
-
-.apps-page .filter-bar {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 24px;
-    padding: 14px 18px;
-    background-color: transparent;
-    border-radius: 0;
-    border: none;
-    box-shadow: none;
-}
-
-  .apps-page .filter-label {
-    margin-left: 6px;
-    font-size: 15px;
-    font-weight: 500;
-    color: var(--ink-dark);
-  }
-
-  .apps-page .filter-btn {
-    padding: 9px 20px;
-    border-radius: 999px;
-    border: 2px solid var(--teal);
-    background-color: transparent;
-    color: var(--ink-dark);
-    font-family: inherit;
-    font-size: 15px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color .2s, color .2s;
-  }
-
-  .apps-page .filter-btn:hover {
-    background-color: var(--yellow);
-  }
-
-
-.apps-page .filter-btn.active {
-    background-color: var(--ink);
-    border-color: #2E5560;
-    color: #fff;
-}
-
-  
-  .apps-page .section {
-    background-color: #fff;
-    border-radius: 18px;
-    border: 1px solid var(--line);
-    box-shadow: 0 6px 20px rgba(46, 85, 96, 0.10);
-    overflow: hidden;
-  }
-
-
-  .apps-page .section-head {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
-    padding: 16px 22px;
-    background-color: transparent;
-    border-bottom: none;
-  }
-
-  .apps-page .section-title {
-    margin: 0;
-    font-size: 21px;
-    color: var(--ink-dark);
-  }
-
-  .apps-page .legend {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-
-  .apps-page .section-body {
-    padding: 20px 22px 22px;
-    background-color: #fff;
-  }
-
-
-  .apps-page .badge {
-    display: inline-block;
-    padding: 3px 12px;
-    border-radius: 999px;
-    font-size: 13px;
-    font-weight: 500;
-    color: var(--ink-dark);
-  }
-
-  .apps-page .badge-member {
-    background-color: var(--teal-light);
-    border: 1px solid var(--teal);
-  }
-
-  .apps-page .badge-apply {
-    background-color: var(--gold);
-    border: 1px solid var(--gold-dark);
-  }
-
-
-  .apps-page .app-list {
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-
-  .apps-page .app-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 16px;
-    background-color: #fff;
-    border-radius: 14px;
-    border: 1px solid var(--line);
-    border-right: 8px solid var(--teal-light);
-    box-shadow: 0 4px 14px rgba(46, 85, 96, 0.08);
-    padding: 16px 20px;
-  }
-
-  .apps-page .app-row.type-opportunity {
-    border-right-color: var(--gold-dark);
-  }
-
-  .apps-page .app-info {
-    display: flex;
-    flex-direction: column;
-    gap: 5px;
-  }
-
-  .apps-page .app-student {
-    margin: 0;
-    font-size: 18px;
-    color: var(--ink-dark);
-  }
-
-  .apps-page .app-meta {
-    margin: 0;
-    font-size: 14px;
-    font-weight: 400;
-    color: var(--teal-dark);
-  }
-
-  .apps-page .app-side {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    flex-shrink: 0;
-  }
-
-  .apps-page .status {
-    padding: 3px 12px;
-    border-radius: 999px;
-    border: 1px solid var(--gold-dark);
-    font-size: 13px;
-    font-weight: 500;
-    background-color: var(--yellow);
-    color: var(--ink-dark);
-  }
-
-
-  .apps-page .app-actions {
-    display: flex;
-    gap: 8px;
-  }
-
-  .apps-page .btn-action {
-    padding: 6px 18px;
-    border-radius: 999px;
-    border: 2px solid var(--ink-dark);
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color .2s, color .2s, border-color .2s;
-  }
-
-.apps-page .btn-accept {
-    background-color: var(--ink);
-    border-color: #2E5560;
-    color: #fff;
-}
-
-.apps-page .btn-accept:hover {
-    background-color: var(--gold);
-    border-color: var(--gold);
-    color: var(--ink-dark);
-}
-
-.apps-page .btn-reject {
-    background-color: transparent;
-    border-color: var(--teal);
-    color: var(--ink-dark);
-}
-
-.apps-page .btn-reject:hover {
-    background-color: var(--yellow);
-    border-color: var(--gold);
-    color: var(--ink-dark);
-}
-
-
-  .apps-page .empty {
-    margin: 0;
-    text-align: center;
-    padding: 36px 20px;
-    border-radius: 14px;
-    border: 2px dashed var(--teal-dark);
-    background-color: #fff;
-    font-size: 16px;
-    color: var(--ink-dark);
-  }
-
-
-  @media (max-width: 800px) {
     .apps-page {
-      padding: 24px 16px 44px;
+      --teal-dark: #2E5560;
+      --gold-dark: #EDD08A;
+      --line: rgba(46, 85, 96, 0.18);
+
+      width: 100%;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 34px 24px 60px;
     }
+
+
+    /* =========================================================
+       PAGE TITLE
+    ========================================================= */
 
     .apps-page .page-title {
-      font-size: 24px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      margin: 0 0 8px;
+
+      font-size: 30px;
+      font-weight: 500;
+
+      color: var(--ink-dark);
     }
+
+
+    .apps-page .page-title img {
+      height: 34px;
+    }
+
+
+    .apps-page .page-subtitle {
+      margin: 0 0 28px;
+
+      font-size: 16px;
+      font-weight: 400;
+    }
+
+
+    /* =========================================================
+       FILTER
+    ========================================================= */
 
     .apps-page .filter-bar {
-      padding: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+
+      gap: 10px;
+
+      margin-bottom: 24px;
+      padding: 14px 18px;
+
+      background-color: transparent;
+
+      border: none;
+      box-shadow: none;
     }
+
 
     .apps-page .filter-label {
-      width: 100%;
+      margin-left: 6px;
+
+      font-size: 15px;
+      font-weight: 500;
+
+      color: var(--ink-dark);
     }
+
 
     .apps-page .filter-btn {
-      flex: 1 1 auto;
-      text-align: center;
+      padding: 9px 20px;
+
+      border-radius: 999px;
+      border: 2px solid var(--teal);
+
+      background-color: transparent;
+
+      color: var(--ink-dark);
+
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 500;
+
+      cursor: pointer;
+
+      transition:
+        background-color .2s,
+        color .2s,
+        border-color .2s;
     }
 
-    .apps-page .section-head,
-    .apps-page .section-body {
-      padding-right: 16px;
-      padding-left: 16px;
+
+    .apps-page .filter-btn:hover {
+      background-color: var(--yellow);
     }
+
+
+    .apps-page .filter-btn.active {
+      background-color: var(--ink);
+      border-color: #2E5560;
+      color: #fff;
+    }
+
+
+    /* =========================================================
+       SECTION
+    ========================================================= */
+
+    .apps-page .section {
+      background-color: transparent;
+
+      border: none;
+      border-radius: 0;
+
+      box-shadow: none;
+
+      overflow: visible;
+    }
+
+
+    .apps-page .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+
+      gap: 12px;
+
+      padding: 16px 22px;
+
+      background-color: transparent;
+
+      border-bottom: none;
+    }
+
+
+    .apps-page .section-title {
+      margin: 0;
+
+      font-size: 21px;
+      font-weight: 500;
+
+      color: var(--ink-dark);
+    }
+
+
+    .apps-page .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+
+    .apps-page .section-body {
+      padding: 20px 22px 22px;
+
+      background-color: transparent;
+    }
+
+
+    /* =========================================================
+       BADGES
+    ========================================================= */
+
+    .apps-page .badge {
+      display: inline-block;
+
+      padding: 3px 12px;
+
+      border-radius: 999px;
+
+      font-size: 13px;
+      font-weight: 500;
+
+      color: var(--ink-dark);
+    }
+
+
+    .apps-page .badge-member {
+      background-color: var(--teal-light);
+      border: 1px solid var(--teal);
+    }
+
+
+    .apps-page .badge-apply {
+      background-color: var(--gold);
+      border: 1px solid var(--gold-dark);
+    }
+
+
+    /* =========================================================
+       APPLICATION LIST
+    ========================================================= */
+
+    .apps-page .app-list {
+      display: flex;
+      flex-direction: column;
+
+      gap: 14px;
+    }
+
 
     .apps-page .app-row {
-      flex-direction: column;
-      align-items: flex-start;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      gap: 16px;
+
+      padding: 16px 20px;
+
+      background-color: #fff;
+
+      border: 1px solid var(--line);
+      border-right: 8px solid var(--teal-light);
+      border-radius: 14px;
+
+      box-shadow:
+        0 4px 14px rgba(46, 85, 96, 0.08);
     }
+
+
+    .apps-page .app-row.type-opportunity {
+      border-right-color: var(--gold-dark);
+    }
+
+
+    .apps-page .app-info {
+      display: flex;
+      flex-direction: column;
+
+      gap: 5px;
+    }
+
+
+    .apps-page .app-student {
+      margin: 0;
+
+      font-size: 18px;
+      font-weight: 500;
+
+      color: var(--ink-dark);
+    }
+
+
+    .apps-page .app-meta {
+      margin: 0;
+
+      font-size: 14px;
+      font-weight: 400;
+
+      color: var(--teal-dark);
+    }
+
 
     .apps-page .app-side {
-      width: 100%;
-      justify-content: space-between;
-      flex-wrap: wrap;
+      display: flex;
+      align-items: center;
+
+      gap: 10px;
+
+      flex-shrink: 0;
     }
+
+
+    /* =========================================================
+       STATUS
+    ========================================================= */
+
+    .apps-page .status {
+      padding: 3px 12px;
+
+      border-radius: 999px;
+      border: 1px solid var(--gold-dark);
+
+      background-color: var(--yellow);
+
+      font-size: 13px;
+      font-weight: 500;
+
+      color: var(--ink-dark);
+    }
+
+
+    /* =========================================================
+       BUTTONS
+    ========================================================= */
 
     .apps-page .app-actions {
-      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 8px;
     }
+
 
     .apps-page .btn-action {
-      flex: 1;
+      padding: 6px 18px;
+
+      border-radius: 999px;
+      border: 2px solid var(--ink-dark);
+
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+
+      cursor: pointer;
+
+      transition:
+        background-color .2s,
+        color .2s,
+        border-color .2s;
     }
-  }
-  
-  .apps-page #all-applications {
-    background: transparent;
-    border: none;
-    box-shadow: none;
-    border-radius: 0;
-    overflow: visible;
-}
 
-.apps-page #all-applications .section-body {
-    background: transparent;
-}
 
-  /* تفاصيل الطلب والملف الشخصي */
-  .apps-page .btn-details {
-    background: transparent;
-    border-color: var(--teal);
-    color: var(--ink-dark);
-  }
-  .apps-page .btn-details:hover { background: var(--yellow); }
-  .apps-page .details-overlay {
-    position: fixed;
-    inset: 0;
-    background: rgba(0, 0, 0, 0.35);
-    display: none;
-    align-items: center;
-    justify-content: center;
-    padding: 20px;
-    z-index: 1000;
-  }
-  .apps-page .details-box {
-    width: 100%;
-    max-width: 430px;
-    background: #fff;
-    border: 1px solid var(--line);
-    border-radius: 18px;
-    padding: 24px;
-    box-shadow: 0 6px 20px rgba(46, 85, 96, 0.10);
-    color: var(--ink-dark);
-  }
-  .apps-page .details-box h3 { margin: 0 0 16px; }
-  .apps-page .details-box p { margin: 10px 0; }
-  .apps-page .details-box .btn-action { margin-top: 16px; }
+    .apps-page .btn-accept {
+      background-color: var(--ink);
+      border-color: #2E5560;
 
-</style>
+      color: #fff;
+    }
+
+
+    .apps-page .btn-accept:hover {
+      background-color: var(--gold);
+      border-color: var(--gold);
+
+      color: var(--ink-dark);
+    }
+
+
+    .apps-page .btn-reject {
+      background-color: transparent;
+      border-color: var(--teal);
+
+      color: var(--ink-dark);
+    }
+
+
+    .apps-page .btn-reject:hover {
+      background-color: var(--yellow);
+      border-color: var(--gold);
+
+      color: var(--ink-dark);
+    }
+
+
+    .apps-page .btn-details {
+      background-color: transparent;
+      border-color: var(--teal);
+
+      color: var(--ink-dark);
+    }
+
+
+    .apps-page .btn-details:hover {
+      background-color: var(--yellow);
+    }
+
+
+    /* =========================================================
+       EMPTY STATE
+    ========================================================= */
+
+    .apps-page .empty {
+      margin: 0;
+
+      padding: 36px 20px;
+
+      text-align: center;
+
+      border: 2px dashed var(--teal-dark);
+      border-radius: 14px;
+
+      background-color: #fff;
+
+      font-size: 16px;
+
+      color: var(--ink-dark);
+    }
+
+
+    /* =========================================================
+       DETAILS MODAL
+    ========================================================= */
+
+    .apps-page .details-overlay {
+      position: fixed;
+      inset: 0;
+
+      display: none;
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px;
+
+      background-color: rgba(0, 0, 0, 0.35);
+
+      z-index: 1000;
+    }
+
+
+    .apps-page .details-box {
+      width: 100%;
+      max-width: 460px;
+
+      padding: 24px;
+
+      background-color: #fff;
+
+      border: 1px solid var(--line);
+      border-radius: 18px;
+
+      box-shadow:
+        0 6px 20px rgba(46, 85, 96, 0.10);
+
+      color: var(--ink-dark);
+    }
+
+
+    .apps-page .details-box h3 {
+      margin: 0 0 18px;
+
+      font-size: 21px;
+      font-weight: 500;
+    }
+
+
+    .apps-page .details-box p {
+      margin: 10px 0;
+
+      font-size: 15px;
+      line-height: 1.7;
+    }
+
+
+    .apps-page .details-buttons {
+      display: flex;
+      flex-wrap: wrap;
+
+      gap: 8px;
+
+      margin-top: 22px;
+    }
+
+
+    /* =========================================================
+       SUCCESS MESSAGE
+    ========================================================= */
+
+    .apps-page .action-message {
+      display: none;
+
+      margin: 0 0 18px;
+      padding: 12px 16px;
+
+      background-color: var(--teal-light);
+
+      border: 1px solid var(--teal);
+      border-radius: 14px;
+
+      color: var(--ink-dark);
+
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+
+    .apps-page .action-message.show {
+      display: block;
+    }
+
+
+    /* =========================================================
+       RESPONSIVE
+    ========================================================= */
+
+    @media (max-width: 800px) {
+
+      .apps-page {
+        padding: 24px 16px 44px;
+      }
+
+
+      .apps-page .page-title {
+        font-size: 24px;
+      }
+
+
+      .apps-page .filter-bar {
+        padding: 14px 0;
+      }
+
+
+      .apps-page .filter-label {
+        width: 100%;
+      }
+
+
+      .apps-page .filter-btn {
+        flex: 1 1 auto;
+
+        text-align: center;
+      }
+
+
+      .apps-page .section-head,
+      .apps-page .section-body {
+        padding-right: 0;
+        padding-left: 0;
+      }
+
+
+      .apps-page .app-row {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+
+      .apps-page .app-side {
+        width: 100%;
+
+        justify-content: space-between;
+        flex-wrap: wrap;
+      }
+
+
+      .apps-page .app-actions {
+        width: 100%;
+      }
+
+
+      .apps-page .btn-action {
+        flex: 1;
+
+        text-align: center;
+      }
+
+
+      .apps-page .details-buttons {
+        flex-direction: column;
+      }
+
+
+      .apps-page .details-buttons .btn-action {
+        width: 100%;
+      }
+
+    }
+
+  </style>
 
 </head>
 
-<body data-role="club" data-page="manage-requests">
 
-  <!-- ===== Club Admin Header ===== -->
-  <header class="header" id="site-header">
-    <a href="clubAdmin.html" class="logo">
-      <img src="logoMeras.jpg" alt="شعار مِراس">
-    </a>
+<body
+  data-role="club"
+  data-page="manage-requests"
+>
 
-    <nav class="nav">
-      <a href="clubAdmin.html">لوحة التحكم</a>
-      <a href="opportunities.html">إدارة الفرص</a>
-      <a href="applications.html">إدارة الطلبات</a>
-      <a href="posts.html">المنشورات</a>
-      <a href="achievements.html">توثيق الإنجازات</a>
-      <a href="clubInfo.html">معلومات النادي</a>
-      <a href="#" class="logout">تسجيل الخروج</a>
-    </nav>
-  </header>
 
-  <main class="page apps-page">
+<!-- =========================================================
+     SHARED HEADER
+========================================================= -->
+
+<header
+  class="header"
+  id="site-header"
+></header>
+
+
+<!-- =========================================================
+     PAGE
+========================================================= -->
+
+<main class="page apps-page">
+
+
+  <!-- Page title -->
 
   <h1 class="page-title">
-    <img src="sunMeras.png" alt="">
-    طلبات الطلاب
-  </h1>
-  <p class="page-subtitle">الطلبات قيد المراجعة المقدمة إلى النادي: طلبات الانضمام وطلبات التقديم على الفرص.</p>
 
-  <!-- ===== التصفية ===== -->
-  <div class="filter-bar" id="filter-bar">
-    <span class="filter-label">عرض:</span>
-    <button type="button" class="filter-btn active" data-filter="all">جميع الطلبات</button>
-    <button type="button" class="filter-btn" data-filter="membership">طلبات الانضمام للنادي</button>
-    <button type="button" class="filter-btn" data-filter="opportunity">طلبات التقديم على الفرص</button>
+    <img
+      src="sunMeras.png"
+      alt=""
+    >
+
+    طلبات الطلاب
+
+  </h1>
+
+
+  <p class="page-subtitle">
+    راجع طلبات الانضمام للنادي وطلبات التقديم على الفرص واتخذ القرار المناسب.
+  </p>
+
+
+  <!-- Confirmation message -->
+
+  <p
+    class="action-message"
+    id="action-message"
+    role="status"
+  ></p>
+
+
+  <!-- =======================================================
+       FILTERS
+  ======================================================== -->
+
+  <div
+    class="filter-bar"
+    id="filter-bar"
+  >
+
+    <span class="filter-label">
+      عرض:
+    </span>
+
+
+    <button
+      type="button"
+      class="filter-btn active"
+      data-filter="all"
+    >
+      جميع الطلبات
+    </button>
+
+
+    <button
+      type="button"
+      class="filter-btn"
+      data-filter="membership"
+    >
+      طلبات الانضمام للنادي
+    </button>
+
+
+    <button
+      type="button"
+      class="filter-btn"
+      data-filter="opportunity"
+    >
+      طلبات التقديم على الفرص
+    </button>
+
   </div>
 
-  <!-- ===== كل الطلبات ===== -->
-  <section class="section" id="all-applications">
+
+  <!-- =======================================================
+       APPLICATIONS
+  ======================================================== -->
+
+  <section
+    class="section"
+    id="all-applications"
+  >
+
+
     <div class="section-head">
-      <h2 class="section-title">الطلبات المستلمة</h2>
+
+      <h2 class="section-title">
+        الطلبات المستلمة
+      </h2>
+
+
       <div class="legend">
-        <span class="badge badge-member">طلب انضمام للنادي</span>
-        <span class="badge badge-apply">طلب تقديم على فرصة</span>
+
+        <span class="badge badge-member">
+          طلب انضمام للنادي
+        </span>
+
+
+        <span class="badge badge-apply">
+          طلب تقديم على فرصة
+        </span>
+
       </div>
+
     </div>
+
 
     <div class="section-body">
-      <div class="app-list" id="app-list">
 
-        <!-- ===== بيانات تجريبية للعرض فقط: تُستبدل بالبيانات من قاعدة البيانات =====
-             نفس بيانات لوحة التحكم (clubAdmin.html).
-             data-id     : رقم الطلب (لاحقًا من قاعدة البيانات)
-             data-type   : "membership" أو "opportunity" (تعتمد عليه التصفية)
-             data-status : "pending" أو "accepted" أو "rejected"
-             تظهر فقط الطلبات التي حالتها pending، أما المقبولة والمرفوضة فتبقى في الكود مخفية. -->
 
-        <article class="app-row type-opportunity" data-id="1" data-type="opportunity" data-status="pending">
+      <div
+        class="app-list"
+        id="app-list"
+      >
+
+
+        <!-- =================================================
+             Application 1
+        ================================================== -->
+
+        <article
+          class="app-row type-opportunity"
+          data-id="1"
+          data-student-id="4412345671"
+          data-type="opportunity"
+          data-status="pending"
+        >
+
           <div class="app-info">
-            <h3 class="app-student">نورة القحطاني</h3>
-            <p class="app-meta">التخصص: تقنية المعلومات</p>
-            <p class="app-meta">الفرصة: مصمم هوية بصرية</p>
-            <p class="app-meta">تاريخ الطلب: 19 أكتوبر 2026</p>
+
+            <h3 class="app-student">
+              نورة القحطاني
+            </h3>
+
+            <p class="app-meta">
+              التخصص: تقنية المعلومات
+            </p>
+
+            <p class="app-meta">
+              الفرصة: مصمم هوية بصرية
+            </p>
+
+            <p class="app-meta">
+              تاريخ الطلب: 19 أكتوبر 2026
+            </p>
+
           </div>
+
+
           <div class="app-side">
-            <span class="badge badge-apply">طلب تقديم على فرصة</span>
-            <span class="status">قيد المراجعة</span>
+
+            <span class="badge badge-apply">
+              طلب تقديم على فرصة
+            </span>
+
+
+            <span class="status">
+              قيد المراجعة
+            </span>
+
+
             <div class="app-actions">
-              <button type="button" class="btn-action btn-details">عرض التفاصيل</button>
-              <button type="button" class="btn-action btn-accept">قبول</button>
-              <button type="button" class="btn-action btn-reject">رفض</button>
+
+              <button
+                type="button"
+                class="btn-action btn-details"
+              >
+                عرض التفاصيل
+              </button>
+
+
+              <button
+                type="button"
+                class="btn-action btn-accept"
+              >
+                قبول
+              </button>
+
+
+              <button
+                type="button"
+                class="btn-action btn-reject"
+              >
+                رفض
+              </button>
+
             </div>
+
           </div>
-        </article>
-        <article class="app-row type-membership" data-id="2" data-type="membership" data-status="pending">
-          <div class="app-info">
-            <h3 class="app-student">سارة العتيبي</h3>
-            <p class="app-meta">التخصص: نظم المعلومات</p>
-            <p class="app-meta">تاريخ الطلب: 18 أكتوبر 2026</p>
-          </div>
-          <div class="app-side">
-            <span class="badge badge-member">طلب انضمام للنادي</span>
-            <span class="status">قيد المراجعة</span>
-            <div class="app-actions">
-              <button type="button" class="btn-action btn-details">عرض التفاصيل</button>
-              <button type="button" class="btn-action btn-accept">قبول</button>
-              <button type="button" class="btn-action btn-reject">رفض</button>
-            </div>
-          </div>
-        </article>
-        <article class="app-row type-membership" data-id="3" data-type="membership" data-status="accepted">
-          <div class="app-info">
-            <h3 class="app-student">لمى الدوسري</h3>
-            <p class="app-meta">التخصص: علوم الحاسب</p>
-            <p class="app-meta">تاريخ الطلب: 17 أكتوبر 2026</p>
-          </div>
-          <div class="app-side">
-            <span class="badge badge-member">طلب انضمام للنادي</span>
-            <span class="status">مقبول</span>
-          </div>
-        </article>
-        <article class="app-row type-opportunity" data-id="4" data-type="opportunity" data-status="rejected">
-          <div class="app-info">
-            <h3 class="app-student">ريم الشهري</h3>
-            <p class="app-meta">التخصص: تقنية المعلومات</p>
-            <p class="app-meta">الفرصة: محرر محتوى</p>
-            <p class="app-meta">تاريخ الطلب: 16 أكتوبر 2026</p>
-          </div>
-          <div class="app-side">
-            <span class="badge badge-apply">طلب تقديم على فرصة</span>
-            <span class="status">مرفوض</span>
-          </div>
-        </article>
-        <article class="app-row type-opportunity" data-id="5" data-type="opportunity" data-status="accepted">
-          <div class="app-info">
-            <h3 class="app-student">هند المطيري</h3>
-            <p class="app-meta">التخصص: هندسة البرمجيات</p>
-            <p class="app-meta">الفرصة: منسق فعاليات</p>
-            <p class="app-meta">تاريخ الطلب: 16 أكتوبر 2026</p>
-          </div>
-          <div class="app-side">
-            <span class="badge badge-apply">طلب تقديم على فرصة</span>
-            <span class="status">مقبول</span>
-          </div>
+
         </article>
 
-        <!-- رسالة عدم وجود طلبات: تظهر تلقائيًا عندما لا توجد طلبات قيد المراجعة مطابقة للتصفية -->
-        <p class="empty" id="empty-message">لا توجد طلبات قيد المراجعة حالياً</p>
+
+        <!-- =================================================
+             Application 2
+        ================================================== -->
+
+        <article
+          class="app-row type-membership"
+          data-id="2"
+          data-student-id="4412345672"
+          data-type="membership"
+          data-status="pending"
+        >
+
+          <div class="app-info">
+
+            <h3 class="app-student">
+              سارة العتيبي
+            </h3>
+
+
+            <p class="app-meta">
+              التخصص: نظم المعلومات
+            </p>
+
+
+            <p class="app-meta">
+              تاريخ الطلب: 18 أكتوبر 2026
+            </p>
+
+          </div>
+
+
+          <div class="app-side">
+
+            <span class="badge badge-member">
+              طلب انضمام للنادي
+            </span>
+
+
+            <span class="status">
+              قيد المراجعة
+            </span>
+
+
+            <div class="app-actions">
+
+              <button
+                type="button"
+                class="btn-action btn-details"
+              >
+                عرض التفاصيل
+              </button>
+
+
+              <button
+                type="button"
+                class="btn-action btn-accept"
+              >
+                قبول
+              </button>
+
+
+              <button
+                type="button"
+                class="btn-action btn-reject"
+              >
+                رفض
+              </button>
+
+            </div>
+
+          </div>
+
+        </article>
+
+
+        <!-- =================================================
+             Accepted example - hidden by JS
+        ================================================== -->
+
+        <article
+          class="app-row type-membership"
+          data-id="3"
+          data-student-id="4412345673"
+          data-type="membership"
+          data-status="accepted"
+        >
+
+          <div class="app-info">
+
+            <h3 class="app-student">
+              لمى الدوسري
+            </h3>
+
+
+            <p class="app-meta">
+              التخصص: علوم الحاسب
+            </p>
+
+
+            <p class="app-meta">
+              تاريخ الطلب: 17 أكتوبر 2026
+            </p>
+
+          </div>
+
+
+          <div class="app-side">
+
+            <span class="badge badge-member">
+              طلب انضمام للنادي
+            </span>
+
+
+            <span class="status">
+              مقبول
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- =================================================
+             Rejected example - hidden by JS
+        ================================================== -->
+
+        <article
+          class="app-row type-opportunity"
+          data-id="4"
+          data-student-id="4412345674"
+          data-type="opportunity"
+          data-status="rejected"
+        >
+
+          <div class="app-info">
+
+            <h3 class="app-student">
+              ريم الشهري
+            </h3>
+
+
+            <p class="app-meta">
+              التخصص: تقنية المعلومات
+            </p>
+
+
+            <p class="app-meta">
+              الفرصة: محرر محتوى
+            </p>
+
+
+            <p class="app-meta">
+              تاريخ الطلب: 16 أكتوبر 2026
+            </p>
+
+          </div>
+
+
+          <div class="app-side">
+
+            <span class="badge badge-apply">
+              طلب تقديم على فرصة
+            </span>
+
+
+            <span class="status">
+              مرفوض
+            </span>
+
+          </div>
+
+        </article>
+
+
+        <!-- =================================================
+             Empty message
+        ================================================== -->
+
+        <p
+          class="empty"
+          id="empty-message"
+        >
+          لا توجد طلبات قيد المراجعة حالياً
+        </p>
+
 
       </div>
+
     </div>
+
   </section>
 
-  <!-- عرض تفاصيل الطلب والملف الشخصي -->
-  <div class="details-overlay" id="details-overlay" role="dialog" aria-modal="true" aria-labelledby="details-title">
+
+  <!-- =======================================================
+       DETAILS POPUP
+  ======================================================== -->
+
+  <div
+    class="details-overlay"
+    id="details-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="details-title"
+  >
+
+
     <div class="details-box">
-      <h3 id="details-title">تفاصيل الطلب والملف الشخصي</h3>
-      <div id="details-content"></div>
-      <button type="button" class="btn-action btn-details" id="close-details">إغلاق</button>
+
+
+      <h3 id="details-title">
+        تفاصيل الطلب
+      </h3>
+
+
+      <div id="details-content">
+      </div>
+
+
+      <div class="details-buttons">
+
+
+        <!--
+          يفتح الملف الشخصي للطالب
+        -->
+
+        <button
+          type="button"
+          class="btn-action btn-accept"
+          id="view-student-profile"
+        >
+          عرض الملف الشخصي
+        </button>
+
+
+        <button
+          type="button"
+          class="btn-action btn-details"
+          id="close-details"
+        >
+          إغلاق
+        </button>
+
+
+      </div>
+
     </div>
+
   </div>
+
 
 </main>
 
-  <!-- ===== Footer (same in both pages) ===== -->
-  <footer class="footer" id="site-footer"></footer>
 
-  <script src="layout.js" defer></script>
+<!-- =========================================================
+     SHARED FOOTER
+========================================================= -->
 
-  <!-- سكربت التصفية والقبول والرفض: في وسم منفصل لأن وسم script الذي فيه src يتجاهل أي كود بداخله -->
-  <script>
-    var buttons = document.querySelectorAll(".apps-page .filter-btn");
-    var appList = document.getElementById("app-list");
-    var emptyMessage = document.getElementById("empty-message");
-    var currentFilter = "all";
+<footer
+  class="footer"
+  id="site-footer"
+></footer>
 
-    var emptyTexts = {
-      all: "لا توجد طلبات قيد المراجعة حالياً",
-      membership: "لا توجد طلبات انضمام قيد المراجعة حالياً",
-      opportunity: "لا توجد طلبات تقديم على الفرص قيد المراجعة حالياً"
-    };
 
-    /* يعرض فقط الطلبات قيد المراجعة (pending) حسب نوع التصفية.
-       المقبولة والمرفوضة لا تظهر أبدًا حتى مع "جميع الطلبات". */
-    function applyFilter(filter) {
-      var rows = document.querySelectorAll(".apps-page .app-row");
-      var visible = 0;
+<!-- =========================================================
+     SHARED LAYOUT
+========================================================= -->
 
-      rows.forEach(function (row) {
-        var typeMatch = filter === "all" || row.dataset.type === filter;
-        var show = typeMatch && row.dataset.status === "pending";
-        row.style.display = show ? "" : "none";
-        if (show) visible++;
-      });
+<script
+  src="layout.js"
+  defer
+></script>
 
-      emptyMessage.textContent = emptyTexts[filter];
-      emptyMessage.style.display = visible === 0 ? "" : "none";
+
+<script>
+
+  /* =========================================================
+     ELEMENTS
+  ========================================================= */
+
+  var filterButtons =
+    document.querySelectorAll(
+      ".apps-page .filter-btn"
+    );
+
+
+  var appList =
+    document.getElementById(
+      "app-list"
+    );
+
+
+  var emptyMessage =
+    document.getElementById(
+      "empty-message"
+    );
+
+
+  var actionMessage =
+    document.getElementById(
+      "action-message"
+    );
+
+
+  var currentFilter =
+    "all";
+
+
+  /* الطالب الذي تم فتح طلبه */
+
+  var selectedStudentId =
+    "";
+
+
+  /* =========================================================
+     EMPTY MESSAGES
+  ========================================================= */
+
+  var emptyTexts = {
+
+    all:
+      "لا توجد طلبات قيد المراجعة حالياً",
+
+    membership:
+      "لا توجد طلبات انضمام للنادي قيد المراجعة حالياً",
+
+    opportunity:
+      "لا توجد طلبات تقديم على الفرص قيد المراجعة حالياً"
+
+  };
+
+
+  /* =========================================================
+     FILTER APPLICATIONS
+  ========================================================= */
+
+  function applyFilter(filter) {
+
+    var rows =
+      document.querySelectorAll(
+        ".apps-page .app-row"
+      );
+
+
+    var visible =
+      0;
+
+
+    rows.forEach(function (row) {
+
+      var typeMatches =
+        filter === "all" ||
+        row.dataset.type === filter;
+
+
+      /*
+        حسب Acceptance Criteria:
+        بعد القبول أو الرفض
+        لا يبقى الطلب ضمن Pending.
+      */
+
+      var isPending =
+        row.dataset.status ===
+        "pending";
+
+
+      var shouldShow =
+        typeMatches &&
+        isPending;
+
+
+      row.style.display =
+        shouldShow
+          ? ""
+          : "none";
+
+
+      if (shouldShow) {
+        visible++;
+      }
+
+    });
+
+
+    emptyMessage.textContent =
+      emptyTexts[filter];
+
+
+    emptyMessage.style.display =
+      visible === 0
+        ? ""
+        : "none";
+
+  }
+
+
+  /* =========================================================
+     FILTER BUTTONS
+  ========================================================= */
+
+  filterButtons.forEach(
+    function (button) {
+
+      button.addEventListener(
+        "click",
+        function () {
+
+
+          filterButtons.forEach(
+            function (btn) {
+
+              btn.classList.remove(
+                "active"
+              );
+
+            }
+          );
+
+
+          button.classList.add(
+            "active"
+          );
+
+
+          currentFilter =
+            button.dataset.filter;
+
+
+          applyFilter(
+            currentFilter
+          );
+
+        }
+      );
+
     }
+  );
 
-    buttons.forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        buttons.forEach(function (b) { b.classList.remove("active"); });
-        btn.classList.add("active");
-        currentFilter = btn.dataset.filter;
-        applyFilter(currentFilter);
-      });
-    });
 
-    /* قبول / رفض الطلب (بدون قاعدة بيانات: التغيير في الصفحة فقط).
-       الطلب لا يُحذف، فقط تتغير حالته فيختفي من القائمة. */
-    appList.addEventListener("click", function (e) {
-      var row = e.target.closest(".app-row");
-      if (!row) return;
+  /* =========================================================
+     ACCEPT / REJECT
+  ========================================================= */
 
-      if (e.target.classList.contains("btn-accept")) {
-        row.dataset.status = "accepted";
-        /* لاحقًا: إرسال data-id مع القرار "accepted" إلى الخادم */
-        applyFilter(currentFilter);
+  appList.addEventListener(
+    "click",
+    function (event) {
+
+
+      var row =
+        event.target.closest(
+          ".app-row"
+        );
+
+
+      if (!row) {
+        return;
       }
 
-      if (e.target.classList.contains("btn-reject")) {
-        row.dataset.status = "rejected";
-        /* لاحقًا: إرسال data-id مع القرار "rejected" إلى الخادم */
-        applyFilter(currentFilter);
+
+      /* =========================
+         ACCEPT
+      ========================= */
+
+      if (
+        event.target.classList.contains(
+          "btn-accept"
+        )
+      ) {
+
+
+        row.dataset.status =
+          "accepted";
+
+
+        /*
+          لاحقًا مع Backend:
+          يتم إرسال:
+          row.dataset.id
+          والقرار accepted
+          إلى قاعدة البيانات.
+        */
+
+
+        showActionMessage(
+          "تم قبول الطلب بنجاح."
+        );
+
+
+        applyFilter(
+          currentFilter
+        );
+
       }
-    });
 
 
-    /* عرض تفاصيل الطلب والبيانات الأساسية لملف الطالب */
-    var detailsOverlay = document.getElementById("details-overlay");
-    var detailsContent = document.getElementById("details-content");
-    var closeDetails = document.getElementById("close-details");
+      /* =========================
+         REJECT
+      ========================= */
 
-    appList.addEventListener("click", function (e) {
-      if (!e.target.classList.contains("btn-details")) return;
-      var row = e.target.closest(".app-row");
-      var name = row.querySelector(".app-student").textContent;
-      var info = row.querySelectorAll(".app-meta");
-      var type = row.dataset.type === "membership" ? "طلب انضمام للنادي" : "طلب تقديم على فرصة";
+      if (
+        event.target.classList.contains(
+          "btn-reject"
+        )
+      ) {
+
+
+        row.dataset.status =
+          "rejected";
+
+
+        /*
+          لاحقًا مع Backend:
+          يتم إرسال:
+          row.dataset.id
+          والقرار rejected
+          إلى قاعدة البيانات.
+        */
+
+
+        showActionMessage(
+          "تم رفض الطلب بنجاح."
+        );
+
+
+        applyFilter(
+          currentFilter
+        );
+
+      }
+
+    }
+  );
+
+
+  /* =========================================================
+     SUCCESS MESSAGE
+  ========================================================= */
+
+  function showActionMessage(message) {
+
+    actionMessage.textContent =
+      message;
+
+
+    actionMessage.classList.add(
+      "show"
+    );
+
+
+    setTimeout(
+      function () {
+
+        actionMessage.classList.remove(
+          "show"
+        );
+
+      },
+      2500
+    );
+
+  }
+
+
+  /* =========================================================
+     APPLICATION DETAILS
+  ========================================================= */
+
+  var detailsOverlay =
+    document.getElementById(
+      "details-overlay"
+    );
+
+
+  var detailsContent =
+    document.getElementById(
+      "details-content"
+    );
+
+
+  var closeDetails =
+    document.getElementById(
+      "close-details"
+    );
+
+
+  var viewStudentProfile =
+    document.getElementById(
+      "view-student-profile"
+    );
+
+
+  appList.addEventListener(
+    "click",
+    function (event) {
+
+
+      if (
+        !event.target.classList.contains(
+          "btn-details"
+        )
+      ) {
+
+        return;
+
+      }
+
+
+      var row =
+        event.target.closest(
+          ".app-row"
+        );
+
+
+      if (!row) {
+        return;
+      }
+
+
+      /* Student ID */
+
+      selectedStudentId =
+        row.dataset.studentId;
+
+
+      /* Student name */
+
+      var studentName =
+        row
+          .querySelector(
+            ".app-student"
+          )
+          .textContent;
+
+
+      /* Application info */
+
+      var information =
+        row.querySelectorAll(
+          ".app-meta"
+        );
+
+
+      /* Application type */
+
+      var applicationType =
+        row.dataset.type ===
+        "membership"
+
+          ? "طلب انضمام للنادي"
+
+          : "طلب تقديم على فرصة";
+
+
+      /* Clear previous content */
+
       detailsContent.replaceChildren();
-      ["الطالب: " + name, "نوع الطلب: " + type].concat(Array.from(info, function (p) { return p.textContent; })).forEach(function (value) {
-        var p = document.createElement("p");
-        p.textContent = value;
-        detailsContent.appendChild(p);
-      });
-      detailsOverlay.style.display = "flex";
+
+
+      /* Student */
+
+      addDetail(
+        "الطالب: " +
+        studentName
+      );
+
+
+      /* Type */
+
+      addDetail(
+        "نوع الطلب: " +
+        applicationType
+      );
+
+
+      /* Remaining information */
+
+      information.forEach(
+        function (item) {
+
+          addDetail(
+            item.textContent
+          );
+
+        }
+      );
+
+
+      /* Open modal */
+
+      detailsOverlay.style.display =
+        "flex";
+
+
       closeDetails.focus();
-    });
 
-    function hideDetails() { detailsOverlay.style.display = "none"; }
-    closeDetails.addEventListener("click", hideDetails);
-    detailsOverlay.addEventListener("click", function (e) {
-      if (e.target === detailsOverlay) hideDetails();
-    });
-    document.addEventListener("keydown", function (e) {
-      if (e.key === "Escape") hideDetails();
-    });
+    }
+  );
 
-    applyFilter("all");
-  </script>
+
+  /* =========================================================
+     ADD DETAIL
+  ========================================================= */
+
+  function addDetail(text) {
+
+    var paragraph =
+      document.createElement("p");
+
+
+    paragraph.textContent =
+      text;
+
+
+    detailsContent.appendChild(
+      paragraph
+    );
+
+  }
+
+
+  /* =========================================================
+     VIEW STUDENT PROFILE
+  ========================================================= */
+
+  viewStudentProfile.addEventListener(
+    "click",
+    function () {
+
+
+      if (!selectedStudentId) {
+        return;
+      }
+
+
+      /*
+        يفتح Profile الطالب المحدد.
+
+        مثال:
+        studentProfile.html?id=4412345672
+      */
+
+      window.location.href =
+        "studentProfile.html?id=" +
+        encodeURIComponent(
+          selectedStudentId
+        );
+
+    }
+  );
+
+
+  /* =========================================================
+     CLOSE DETAILS
+  ========================================================= */
+
+  function hideDetails() {
+
+    detailsOverlay.style.display =
+      "none";
+
+
+    selectedStudentId =
+      "";
+
+  }
+
+
+  closeDetails.addEventListener(
+    "click",
+    hideDetails
+  );
+
+
+  /* الضغط خارج الصندوق */
+
+  detailsOverlay.addEventListener(
+    "click",
+    function (event) {
+
+      if (
+        event.target ===
+        detailsOverlay
+      ) {
+
+        hideDetails();
+
+      }
+
+    }
+  );
+
+
+  /* ESC */
+
+  document.addEventListener(
+    "keydown",
+    function (event) {
+
+      if (
+        event.key === "Escape"
+      ) {
+
+        hideDetails();
+
+      }
+
+    }
+  );
+
+
+  /* =========================================================
+     INITIAL VIEW
+  ========================================================= */
+
+  applyFilter("all");
+
+</script>
+
 
 </body>
 </html>
