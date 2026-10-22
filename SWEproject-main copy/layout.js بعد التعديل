@@ -1,5 +1,9 @@
 /* Shared header and footer. Edit them here once and every page changes.
-   A page picks its menu with:  <body data-role="student" data-page="home">  */
+   A page picks its menu with:
+   <body data-role="student" data-page="home">
+   أو
+   <body data-role="club" data-page="home">
+*/
 
 (function () {
 
@@ -7,12 +11,13 @@
   var page = document.body.dataset.page || "";
 
 
-  /* ========================================
-     NAVIGATION LINKS
-  ======================================== */
+  /* ==========================================================
+     روابط الهيدر
+     ========================================================== */
 
   var NAV = {
 
+    /* صفحات الطالب */
     student: [
       ["home", "الرئيســية", "home.html"],
       ["opportunities", "الفــرص", "opportunities.html"],
@@ -21,21 +26,22 @@
       ["profile", "الملــف الشخصــي", "profile.html"]
     ],
 
+    /* صفحات مسؤول النادي */
     club: [
       ["home", "الرئيســية", "clubAdmin.html"],
-      ["manage-opportunities", "إدارة الفــرص", "#"],
-      ["manage-requests", "إدارة الطلبــات", "#"],
-      ["posts", "المنشــورات", "#"],
-      ["achievements", "توثيــق الإنجــازات", "#"],
-      ["club-info", "معلومــات النــادي", "#"]
+      ["manage-opportunities", "إدارة الفــرص", "opportunitiesClub.html"],
+      ["manage-requests", "إدارة الطلبــات", "applications.html"],
+      ["posts", "المنشــورات", "post.html"],
+      ["achievements", "توثيــق الإنجــازات", "achievements.html"],
+      ["club-info", "معلومــات النــادي", "clubInfo.html"]
     ]
 
   };
 
 
-  /* ========================================
-     HOME PAGE
-  ======================================== */
+  /* ==========================================================
+     الصفحة الرئيسية حسب نوع المستخدم
+     ========================================================== */
 
   var homeHref =
     role === "club"
@@ -43,9 +49,9 @@
       : "home.html";
 
 
-  /* ========================================
-     FOOTER TAGLINE
-  ======================================== */
+  /* ==========================================================
+     نص الفوتر
+     ========================================================== */
 
   var tagline =
     role === "club"
@@ -53,9 +59,9 @@
       : "وجهَتــك إلى الأنديــة الطلابيَّــة بجامعــة الملــك سعــود.";
 
 
-  /* ========================================
-     CREATE NAVIGATION
-  ======================================== */
+  /* ==========================================================
+     إنشاء روابط الهيدر
+     ========================================================== */
 
   var links = NAV[role].map(function (l) {
 
@@ -72,34 +78,27 @@
   }).join("");
 
 
-  /* ========================================
+  /* ==========================================================
      HEADER
-  ======================================== */
+     ========================================================== */
 
-  var header =
-    document.getElementById("site-header");
-
+  var header = document.getElementById("site-header");
 
   if (header) {
 
     header.innerHTML =
 
-      /* Logo */
-      '<a href="' +
-      homeHref +
-      '" class="logo">' +
-
+      /* الشعار */
+      '<a href="' + homeHref + '" class="logo">' +
         '<img src="logoMeras.png" alt="شعار مِراس">' +
-
       '</a>' +
 
-
-      /* Mobile menu button */
+      /* زر القائمة للجوال */
       '<button type="button" ' +
-      'class="menu-btn" ' +
-      'aria-label="القائمة" ' +
-      'aria-expanded="false" ' +
-      'aria-controls="nav">' +
+        'class="menu-btn" ' +
+        'aria-label="القائمة" ' +
+        'aria-expanded="false" ' +
+        'aria-controls="nav">' +
 
         '<span></span>' +
         '<span></span>' +
@@ -107,13 +106,12 @@
 
       '</button>' +
 
-
-      /* Navigation */
+      /* روابط التنقل */
       '<nav class="nav" id="nav">' +
 
         links +
 
-        /* Logout */
+        /* تسجيل الخروج */
         '<a href="login.html" class="logout">' +
           'تسجيــل الخــروج' +
         '</a>' +
@@ -121,21 +119,16 @@
       '</nav>';
 
 
-    /* ======================================
-       MOBILE MENU
-    ====================================== */
+    /* ========================================================
+       قائمة الجوال
+       ======================================================== */
 
-    var btn =
-      header.querySelector(".menu-btn");
-
-    var nav =
-      header.querySelector(".nav");
-
+    var btn = header.querySelector(".menu-btn");
+    var nav = header.querySelector(".nav");
 
     btn.addEventListener("click", function () {
 
-      var open =
-        nav.classList.toggle("open");
+      var open = nav.classList.toggle("open");
 
       btn.setAttribute(
         "aria-expanded",
@@ -147,13 +140,11 @@
   }
 
 
-  /* ========================================
+  /* ==========================================================
      FOOTER
-  ======================================== */
+     ========================================================== */
 
-  var footer =
-    document.getElementById("site-footer");
-
+  var footer = document.getElementById("site-footer");
 
   if (footer) {
 
@@ -161,16 +152,14 @@
 
       '<div class="footer-top">' +
 
-
-        /* Brand */
         '<div class="footer-brand">' +
 
           '<div class="footer-title">' +
 
             '<img ' +
-            'src="sunMeras.png" ' +
-            'alt="شمس مِراس" ' +
-            'class="footer-sun">' +
+              'src="sunMeras.png" ' +
+              'alt="شمس مِراس" ' +
+              'class="footer-sun">' +
 
             '<h2>مِـــراس</h2>' +
 
@@ -183,12 +172,9 @@
         '</div>' +
 
 
-        /* Quick links */
         '<nav class="footer-links" aria-label="روابط سريعة">' +
 
-          '<a href="' +
-          homeHref +
-          '">' +
+          '<a href="' + homeHref + '">' +
             'الرئيســية' +
           '</a>' +
 
@@ -207,7 +193,6 @@
         '</nav>' +
 
       '</div>' +
-
 
       '<p class="copyright">' +
         '© 2026 مِراس. جميع الحقوق محفوظة.' +
