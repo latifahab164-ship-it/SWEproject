@@ -5,1606 +5,1934 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>مِراس - إدارة الطلبات</title>
+  <title>مِراس - تسجيل الدخول</title>
 
   <link rel="stylesheet" href="Style.css">
 
   <style>
 
-    /* =========================================================
-       APPLICATIONS PAGE
-    ========================================================= */
+    /* ==========================================================
+       ألوان مِراس
+    ========================================================== */
 
-    .apps-page {
-      --teal-dark: #2E5560;
-      --gold-dark: #EDD08A;
-      --line: rgba(46, 85, 96, 0.18);
+    .auth-page {
+      --au-teal-dark: #2E5560;
+      --au-ink: var(--ink, #2E5560);
+      --au-ink-dark: var(--ink-dark, #1F3A42);
+      --au-teal: var(--teal, #6F9AA5);
+      --au-teal-light: var(--teal-light, #D5E5E8);
+      --au-gold: var(--gold, #F3DFAA);
+      --au-gold-dark: #EDD08A;
+      --au-yellow: var(--yellow, #FBF1CE);
+      --au-beige: var(--beige, #F4EEE2);
+      --au-header-bg: var(--header-bg, #F8F5EE);
+      --au-line: rgba(46, 85, 96, 0.18);
+      --au-error: #A33A3A;
+    }
 
-      width: 100%;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 34px 24px 60px;
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Thmanyah Sans", "Segoe UI", Tahoma, Arial, sans-serif;
+      background-color: var(--au-beige, #F4EEE2);
+      color: #1F3A42;
     }
 
 
-    /* =========================================================
-       PAGE TITLE
-    ========================================================= */
+    /* ==========================================================
+       الصفحة
+    ========================================================== */
 
-    .apps-page .page-title {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .auth-page {
+      width: 100%;
+      max-width: 520px;
 
-      margin: 0 0 8px;
+      margin: 0 auto;
+      padding: 40px 20px 60px;
+    }
+
+    .auth-page .logo {
+      display: block;
+
+      width: 150px;
+      max-width: 100%;
+      height: auto;
+
+      margin: 0 auto 20px;
+    }
+
+    .auth-page .page-title {
+      margin: 0 0 6px;
+
+      text-align: center;
 
       font-size: 30px;
       font-weight: 500;
 
-      color: var(--ink-dark);
+      color: var(--au-ink-dark);
     }
 
-
-    .apps-page .page-title img {
-      height: 34px;
-    }
-
-
-    .apps-page .page-subtitle {
-      margin: 0 0 28px;
-
-      font-size: 16px;
-      font-weight: 400;
-    }
-
-
-    /* =========================================================
-       FILTER
-    ========================================================= */
-
-    .apps-page .filter-bar {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-
-      gap: 10px;
-
-      margin-bottom: 24px;
-      padding: 14px 18px;
-
-      background-color: transparent;
-
-      border: none;
-      box-shadow: none;
-    }
-
-
-    .apps-page .filter-label {
-      margin-left: 6px;
-
-      font-size: 15px;
-      font-weight: 500;
-
-      color: var(--ink-dark);
-    }
-
-
-    .apps-page .filter-btn {
-      padding: 9px 20px;
-
-      border-radius: 999px;
-      border: 2px solid var(--teal);
-
-      background-color: transparent;
-
-      color: var(--ink-dark);
-
-      font-family: inherit;
-      font-size: 15px;
-      font-weight: 500;
-
-      cursor: pointer;
-
-      transition:
-        background-color .2s,
-        color .2s,
-        border-color .2s;
-    }
-
-
-    .apps-page .filter-btn:hover {
-      background-color: var(--yellow);
-    }
-
-
-    .apps-page .filter-btn.active {
-      background-color: var(--ink);
-      border-color: #2E5560;
-      color: #fff;
-    }
-
-
-    /* =========================================================
-       SECTION
-    ========================================================= */
-
-    .apps-page .section {
-      background-color: transparent;
-
-      border: none;
-      border-radius: 0;
-
-      box-shadow: none;
-
-      overflow: visible;
-    }
-
-
-    .apps-page .section-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-
-      gap: 12px;
-
-      padding: 16px 22px;
-
-      background-color: transparent;
-
-      border-bottom: none;
-    }
-
-
-    .apps-page .section-title {
-      margin: 0;
-
-      font-size: 21px;
-      font-weight: 500;
-
-      color: var(--ink-dark);
-    }
-
-
-    .apps-page .legend {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-
-    .apps-page .section-body {
-      padding: 20px 22px 22px;
-
-      background-color: transparent;
-    }
-
-
-    /* =========================================================
-       BADGES
-    ========================================================= */
-
-    .apps-page .badge {
-      display: inline-block;
-
-      padding: 3px 12px;
-
-      border-radius: 999px;
-
-      font-size: 13px;
-      font-weight: 500;
-
-      color: var(--ink-dark);
-    }
-
-
-    .apps-page .badge-member {
-      background-color: var(--teal-light);
-      border: 1px solid var(--teal);
-    }
-
-
-    .apps-page .badge-apply {
-      background-color: var(--gold);
-      border: 1px solid var(--gold-dark);
-    }
-
-
-    /* =========================================================
-       APPLICATION LIST
-    ========================================================= */
-
-    .apps-page .app-list {
-      display: flex;
-      flex-direction: column;
-
-      gap: 14px;
-    }
-
-
-    .apps-page .app-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-
-      gap: 16px;
-
-      padding: 16px 20px;
-
-      background-color: #fff;
-
-      border: 1px solid var(--line);
-      border-right: 8px solid var(--teal-light);
-      border-radius: 14px;
-
-      box-shadow:
-        0 4px 14px rgba(46, 85, 96, 0.08);
-    }
-
-
-    .apps-page .app-row.type-opportunity {
-      border-right-color: var(--gold-dark);
-    }
-
-
-    .apps-page .app-info {
-      display: flex;
-      flex-direction: column;
-
-      gap: 5px;
-    }
-
-
-    .apps-page .app-student {
-      margin: 0;
-
-      font-size: 18px;
-      font-weight: 500;
-
-      color: var(--ink-dark);
-    }
-
-
-    .apps-page .app-meta {
-      margin: 0;
-
-      font-size: 14px;
-      font-weight: 400;
-
-      color: var(--teal-dark);
-    }
-
-
-    .apps-page .app-side {
-      display: flex;
-      align-items: center;
-
-      gap: 10px;
-
-      flex-shrink: 0;
-    }
-
-
-    /* =========================================================
-       STATUS
-    ========================================================= */
-
-    .apps-page .status {
-      padding: 3px 12px;
-
-      border-radius: 999px;
-      border: 1px solid var(--gold-dark);
-
-      background-color: var(--yellow);
-
-      font-size: 13px;
-      font-weight: 500;
-
-      color: var(--ink-dark);
-    }
-
-
-    /* =========================================================
-       BUTTONS
-    ========================================================= */
-
-    .apps-page .app-actions {
-      display: flex;
-      flex-wrap: wrap;
-
-      gap: 8px;
-    }
-
-
-    .apps-page .btn-action {
-      padding: 6px 18px;
-
-      border-radius: 999px;
-      border: 2px solid var(--ink-dark);
-
-      font-family: inherit;
-      font-size: 14px;
-      font-weight: 500;
-
-      cursor: pointer;
-
-      transition:
-        background-color .2s,
-        color .2s,
-        border-color .2s;
-    }
-
-
-    .apps-page .btn-accept {
-      background-color: var(--ink);
-      border-color: #2E5560;
-
-      color: #fff;
-    }
-
-
-    .apps-page .btn-accept:hover {
-      background-color: var(--gold);
-      border-color: var(--gold);
-
-      color: var(--ink-dark);
-    }
-
-
-    .apps-page .btn-reject {
-      background-color: transparent;
-      border-color: var(--teal);
-
-      color: var(--ink-dark);
-    }
-
-
-    .apps-page .btn-reject:hover {
-      background-color: var(--yellow);
-      border-color: var(--gold);
-
-      color: var(--ink-dark);
-    }
-
-
-    .apps-page .btn-details {
-      background-color: transparent;
-      border-color: var(--teal);
-
-      color: var(--ink-dark);
-    }
-
-
-    .apps-page .btn-details:hover {
-      background-color: var(--yellow);
-    }
-
-
-    /* =========================================================
-       EMPTY STATE
-    ========================================================= */
-
-    .apps-page .empty {
-      margin: 0;
-
-      padding: 36px 20px;
+    .auth-page .page-subtitle {
+      margin: 0 0 26px;
 
       text-align: center;
 
-      border: 2px dashed var(--teal-dark);
-      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 300;
 
+      color: var(--au-teal-dark);
+    }
+
+
+    /* ==========================================================
+       البطاقة
+    ========================================================== */
+
+    .auth-page .card {
       background-color: #fff;
 
-      font-size: 16px;
+      border-radius: 18px;
+      border: 1px solid var(--au-line);
+      border-top: 5px solid var(--au-teal-light);
 
-      color: var(--ink-dark);
-    }
-
-
-    /* =========================================================
-       DETAILS MODAL
-    ========================================================= */
-
-    .apps-page .details-overlay {
-      position: fixed;
-      inset: 0;
-
-      display: none;
-      align-items: center;
-      justify-content: center;
-
-      padding: 20px;
-
-      background-color: rgba(0, 0, 0, 0.35);
-
-      z-index: 1000;
-    }
-
-
-    .apps-page .details-box {
-      width: 100%;
-      max-width: 460px;
+      box-shadow: 0 6px 20px rgba(46, 85, 96, 0.10);
 
       padding: 24px;
-
-      background-color: #fff;
-
-      border: 1px solid var(--line);
-      border-radius: 18px;
-
-      box-shadow:
-        0 6px 20px rgba(46, 85, 96, 0.10);
-
-      color: var(--ink-dark);
     }
 
 
-    .apps-page .details-box h3 {
-      margin: 0 0 18px;
+    /* ==========================================================
+       تسجيل الدخول / إنشاء حساب
+    ========================================================== */
+
+    .auth-page .tabs {
+      display: flex;
+      gap: 6px;
+
+      margin-bottom: 22px;
+      padding: 5px;
+
+      border-radius: 999px;
+      border: 1px solid var(--au-line);
+
+      background-color: var(--au-header-bg);
+    }
+
+    .auth-page .tab {
+      flex: 1;
+
+      padding: 9px 12px;
+
+      border: none;
+      border-radius: 999px;
+
+      background-color: transparent;
+
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 500;
+
+      color: var(--au-teal-dark);
+
+      cursor: pointer;
+
+      transition:
+        background-color .2s,
+        color .2s;
+    }
+
+    .auth-page .tab:hover {
+      background-color: var(--au-teal-light);
+    }
+
+    .auth-page .tab.active {
+      background-color: var(--au-teal-dark);
+      color: #fff;
+    }
+
+
+    /* ==========================================================
+       اللوحات
+    ========================================================== */
+
+    .auth-page .panel {
+      display: none;
+    }
+
+    .auth-page .panel.active {
+      display: block;
+      animation: fadeIn .35s ease;
+    }
+
+    @keyframes fadeIn {
+
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+    }
+
+    .auth-page .panel-title {
+      margin: 0 0 6px;
 
       font-size: 21px;
       font-weight: 500;
+
+      color: var(--au-ink-dark);
+    }
+
+    .auth-page .panel-desc {
+      margin: 0 0 18px;
+
+      font-size: 14px;
+      font-weight: 300;
+      line-height: 1.9;
+
+      color: var(--au-teal-dark);
     }
 
 
-    .apps-page .details-box p {
-      margin: 10px 0;
+    /* ==========================================================
+       اختيار نوع المستخدم
+    ========================================================== */
 
-      font-size: 15px;
-      line-height: 1.7;
+    .auth-page .user-type-title {
+      display: block;
+
+      margin: 0 0 8px;
+
+      font-size: 14px;
+      font-weight: 500;
+
+      color: var(--au-teal-dark);
+    }
+
+    .auth-page .user-type {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 7px;
+
+      margin-bottom: 20px;
+      padding: 5px;
+
+      border: 1px solid var(--au-line);
+      border-radius: 14px;
+
+      background-color: var(--au-header-bg);
+    }
+
+    .auth-page .user-type-btn {
+      padding: 9px 10px;
+
+      border: none;
+      border-radius: 10px;
+
+      background-color: transparent;
+
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+
+      color: var(--au-teal-dark);
+
+      cursor: pointer;
+
+      transition:
+        background-color .2s,
+        color .2s;
+    }
+
+    .auth-page .user-type-btn:hover {
+      background-color: var(--au-teal-light);
+    }
+
+    .auth-page .user-type-btn.active {
+      background-color: var(--au-ink);
+      color: #fff;
     }
 
 
-    .apps-page .details-buttons {
-      display: flex;
-      flex-wrap: wrap;
+    /* ==========================================================
+       الحقول
+    ========================================================== */
 
-      gap: 8px;
+    .auth-page .field {
+      margin-bottom: 16px;
+    }
 
-      margin-top: 22px;
+    .auth-page .label {
+      display: block;
+
+      margin: 0 0 6px;
+
+      font-size: 14px;
+      font-weight: 500;
+
+      color: var(--au-teal-dark);
+    }
+
+    .auth-page .input {
+      display: block;
+
+      width: 100%;
+
+      padding: 11px 14px;
+
+      border-radius: 12px;
+      border: 1px solid var(--au-line);
+      border-right: 5px solid var(--au-teal-light);
+
+      background-color: var(--au-header-bg);
+
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 400;
+
+      color: var(--au-ink-dark);
+
+      transition: border-color .2s;
+    }
+
+    .auth-page .input:focus {
+      outline: none;
+      border-color: var(--au-teal-dark);
+    }
+
+    .auth-page .input.ltr {
+      direction: ltr;
+      text-align: right;
+    }
+
+    .auth-page .input.invalid {
+      border-color: var(--au-error);
+    }
+
+    .auth-page .field-error {
+      display: none;
+
+      margin: 6px 0 0;
+
+      font-size: 13px;
+
+      color: var(--au-error);
+    }
+
+    .auth-page .field-error.show {
+      display: block;
     }
 
 
-    /* =========================================================
-       SUCCESS MESSAGE
-    ========================================================= */
+    /* ==========================================================
+       كلمة المرور
+    ========================================================== */
 
-    .apps-page .action-message {
+    .auth-page .password-wrap {
+      position: relative;
+    }
+
+    .auth-page .password-wrap .input {
+      padding-left: 74px;
+    }
+
+    .auth-page .toggle-pass {
+      position: absolute;
+
+      top: 50%;
+      left: 10px;
+
+      transform: translateY(-50%);
+
+      padding: 4px 10px;
+
+      border: none;
+      border-radius: 999px;
+
+      background-color: transparent;
+
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 500;
+
+      color: var(--au-teal-dark);
+
+      cursor: pointer;
+    }
+
+    .auth-page .toggle-pass:hover {
+      background-color: var(--au-teal-light);
+    }
+
+
+    /* ==========================================================
+       الأزرار
+    ========================================================== */
+
+    .auth-page .btn {
+      display: block;
+
+      width: 100%;
+
+      padding: 11px 22px;
+
+      border-radius: 999px;
+      border: 2px solid var(--au-ink);
+
+      background-color: var(--au-ink);
+      color: #fff;
+
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 500;
+
+      text-align: center;
+
+      cursor: pointer;
+
+      transition:
+        background-color .2s,
+        color .2s,
+        border-color .2s;
+    }
+
+    .auth-page .btn:hover {
+      border-color: var(--au-gold);
+      background-color: var(--au-gold);
+
+      color: var(--au-ink-dark);
+    }
+
+
+    /* ==========================================================
+       الروابط
+    ========================================================== */
+
+    .auth-page .link-btn {
+      padding: 0;
+
+      border: none;
+      background: none;
+
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+
+      color: var(--au-teal-dark);
+
+      text-decoration: underline;
+
+      cursor: pointer;
+    }
+
+    .auth-page .link-btn:hover {
+      color: var(--au-ink-dark);
+    }
+
+    .auth-page .forgot-row {
+      margin: -4px 0 18px;
+    }
+
+    .auth-page .switch-row {
+      margin: 18px 0 0;
+
+      text-align: center;
+
+      font-size: 14px;
+
+      color: var(--au-teal-dark);
+    }
+
+
+    /* ==========================================================
+       الرسائل
+    ========================================================== */
+
+    .auth-page .message {
       display: none;
 
       margin: 0 0 18px;
       padding: 12px 16px;
 
-      background-color: var(--teal-light);
-
-      border: 1px solid var(--teal);
       border-radius: 14px;
-
-      color: var(--ink-dark);
 
       font-size: 14px;
       font-weight: 500;
+      line-height: 1.8;
+
+      color: var(--au-ink-dark);
     }
 
-
-    .apps-page .action-message.show {
+    .auth-page .message.show {
       display: block;
     }
 
+    .auth-page .message.success {
+      background-color: var(--au-teal-light);
+      border: 1px solid var(--au-teal);
+    }
 
-    /* =========================================================
-       RESPONSIVE
-    ========================================================= */
+    .auth-page .message.error {
+      background-color: var(--au-yellow);
+      border: 1px solid var(--au-gold-dark);
+    }
 
-    @media (max-width: 800px) {
+    .auth-page .message.info {
+      background-color: var(--au-header-bg);
+      border: 1px dashed var(--au-teal-dark);
+    }
 
-      .apps-page {
-        padding: 24px 16px 44px;
+
+    /* ==========================================================
+       Responsive
+    ========================================================== */
+
+    @media (max-width: 600px) {
+
+      .auth-page {
+        padding: 26px 14px 44px;
       }
 
-
-      .apps-page .page-title {
-        font-size: 24px;
+      .auth-page .page-title {
+        font-size: 25px;
       }
 
-
-      .apps-page .filter-bar {
-        padding: 14px 0;
-      }
-
-
-      .apps-page .filter-label {
-        width: 100%;
-      }
-
-
-      .apps-page .filter-btn {
-        flex: 1 1 auto;
-
-        text-align: center;
-      }
-
-
-      .apps-page .section-head,
-      .apps-page .section-body {
-        padding-right: 0;
-        padding-left: 0;
-      }
-
-
-      .apps-page .app-row {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-
-      .apps-page .app-side {
-        width: 100%;
-
-        justify-content: space-between;
-        flex-wrap: wrap;
-      }
-
-
-      .apps-page .app-actions {
-        width: 100%;
-      }
-
-
-      .apps-page .btn-action {
-        flex: 1;
-
-        text-align: center;
-      }
-
-
-      .apps-page .details-buttons {
-        flex-direction: column;
-      }
-
-
-      .apps-page .details-buttons .btn-action {
-        width: 100%;
+      .auth-page .card {
+        padding: 18px;
       }
 
     }
 
   </style>
-
 </head>
 
 
-<body
-  data-role="club"
-  data-page="manage-requests"
->
+<body>
 
 
-<!-- =========================================================
-     SHARED HEADER
-========================================================= -->
-
-<header
-  class="header"
-  id="site-header"
-></header>
-
-
-<!-- =========================================================
-     PAGE
-========================================================= -->
-
-<main class="page apps-page">
-
-
-  <!-- Page title -->
-
-  <h1 class="page-title">
+  <main class="page auth-page" id="auth-page">
 
     <img
-      src="sunMeras.png"
-      alt=""
+      src="logoMeras.png"
+      alt="شعار مِراس"
+      class="logo"
     >
 
-    طلبات الطلاب
 
-  </h1>
+    <h1 class="page-title">
+      مرحبًا بك في مِراس
+    </h1>
 
-
-  <p class="page-subtitle">
-    راجع طلبات الانضمام للنادي وطلبات التقديم على الفرص واتخذ القرار المناسب.
-  </p>
-
-
-  <!-- Confirmation message -->
-
-  <p
-    class="action-message"
-    id="action-message"
-    role="status"
-  ></p>
+    <p class="page-subtitle">
+      منصة طلاب وأندية جامعة الملك سعود
+    </p>
 
 
-  <!-- =======================================================
-       FILTERS
-  ======================================================== -->
-
-  <div
-    class="filter-bar"
-    id="filter-bar"
-  >
-
-    <span class="filter-label">
-      عرض:
-    </span>
+    <div class="card">
 
 
-    <button
-      type="button"
-      class="filter-btn active"
-      data-filter="all"
-    >
-      جميع الطلبات
-    </button>
+      <!-- ======================================================
+           LOGIN / REGISTER TABS
+      ======================================================= -->
 
+      <div
+        class="tabs"
+        id="auth-tabs"
+        role="tablist"
+      >
 
-    <button
-      type="button"
-      class="filter-btn"
-      data-filter="membership"
-    >
-      طلبات الانضمام للنادي
-    </button>
+        <button
+          type="button"
+          class="tab active"
+          id="tab-login"
+          role="tab"
+          aria-selected="true"
+        >
+          تسجيل الدخول
+        </button>
 
-
-    <button
-      type="button"
-      class="filter-btn"
-      data-filter="opportunity"
-    >
-      طلبات التقديم على الفرص
-    </button>
-
-  </div>
-
-
-  <!-- =======================================================
-       APPLICATIONS
-  ======================================================== -->
-
-  <section
-    class="section"
-    id="all-applications"
-  >
-
-
-    <div class="section-head">
-
-      <h2 class="section-title">
-        الطلبات المستلمة
-      </h2>
-
-
-      <div class="legend">
-
-        <span class="badge badge-member">
-          طلب انضمام للنادي
-        </span>
-
-
-        <span class="badge badge-apply">
-          طلب تقديم على فرصة
-        </span>
+        <button
+          type="button"
+          class="tab"
+          id="tab-register"
+          role="tab"
+          aria-selected="false"
+        >
+          إنشاء حساب جديد
+        </button>
 
       </div>
 
-    </div>
 
+      <!-- ======================================================
+           LOGIN
+      ======================================================= -->
 
-    <div class="section-body">
-
-
-      <div
-        class="app-list"
-        id="app-list"
+      <section
+        class="panel active"
+        id="panel-login"
       >
 
-
-        <!-- =================================================
-             Application 1
-        ================================================== -->
-
-        <article
-          class="app-row type-opportunity"
-          data-id="1"
-          data-student-id="4412345671"
-          data-type="opportunity"
-          data-status="pending"
-        >
-
-          <div class="app-info">
-
-            <h3 class="app-student">
-              نورة القحطاني
-            </h3>
-
-            <p class="app-meta">
-              التخصص: تقنية المعلومات
-            </p>
-
-            <p class="app-meta">
-              الفرصة: مصمم هوية بصرية
-            </p>
-
-            <p class="app-meta">
-              تاريخ الطلب: 19 أكتوبر 2026
-            </p>
-
-          </div>
-
-
-          <div class="app-side">
-
-            <span class="badge badge-apply">
-              طلب تقديم على فرصة
-            </span>
-
-
-            <span class="status">
-              قيد المراجعة
-            </span>
-
-
-            <div class="app-actions">
-
-              <button
-                type="button"
-                class="btn-action btn-details"
-              >
-                عرض التفاصيل
-              </button>
-
-
-              <button
-                type="button"
-                class="btn-action btn-accept"
-              >
-                قبول
-              </button>
-
-
-              <button
-                type="button"
-                class="btn-action btn-reject"
-              >
-                رفض
-              </button>
-
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- =================================================
-             Application 2
-        ================================================== -->
-
-        <article
-          class="app-row type-membership"
-          data-id="2"
-          data-student-id="4412345672"
-          data-type="membership"
-          data-status="pending"
-        >
-
-          <div class="app-info">
-
-            <h3 class="app-student">
-              سارة العتيبي
-            </h3>
-
-
-            <p class="app-meta">
-              التخصص: نظم المعلومات
-            </p>
-
-
-            <p class="app-meta">
-              تاريخ الطلب: 18 أكتوبر 2026
-            </p>
-
-          </div>
-
-
-          <div class="app-side">
-
-            <span class="badge badge-member">
-              طلب انضمام للنادي
-            </span>
-
-
-            <span class="status">
-              قيد المراجعة
-            </span>
-
-
-            <div class="app-actions">
-
-              <button
-                type="button"
-                class="btn-action btn-details"
-              >
-                عرض التفاصيل
-              </button>
-
-
-              <button
-                type="button"
-                class="btn-action btn-accept"
-              >
-                قبول
-              </button>
-
-
-              <button
-                type="button"
-                class="btn-action btn-reject"
-              >
-                رفض
-              </button>
-
-            </div>
-
-          </div>
-
-        </article>
-
-
-        <!-- =================================================
-             Accepted example - hidden by JS
-        ================================================== -->
-
-        <article
-          class="app-row type-membership"
-          data-id="3"
-          data-student-id="4412345673"
-          data-type="membership"
-          data-status="accepted"
-        >
-
-          <div class="app-info">
-
-            <h3 class="app-student">
-              لمى الدوسري
-            </h3>
-
-
-            <p class="app-meta">
-              التخصص: علوم الحاسب
-            </p>
-
-
-            <p class="app-meta">
-              تاريخ الطلب: 17 أكتوبر 2026
-            </p>
-
-          </div>
-
-
-          <div class="app-side">
-
-            <span class="badge badge-member">
-              طلب انضمام للنادي
-            </span>
-
-
-            <span class="status">
-              مقبول
-            </span>
-
-          </div>
-
-        </article>
-
-
-        <!-- =================================================
-             Rejected example - hidden by JS
-        ================================================== -->
-
-        <article
-          class="app-row type-opportunity"
-          data-id="4"
-          data-student-id="4412345674"
-          data-type="opportunity"
-          data-status="rejected"
-        >
-
-          <div class="app-info">
-
-            <h3 class="app-student">
-              ريم الشهري
-            </h3>
-
-
-            <p class="app-meta">
-              التخصص: تقنية المعلومات
-            </p>
-
-
-            <p class="app-meta">
-              الفرصة: محرر محتوى
-            </p>
-
-
-            <p class="app-meta">
-              تاريخ الطلب: 16 أكتوبر 2026
-            </p>
-
-          </div>
-
-
-          <div class="app-side">
-
-            <span class="badge badge-apply">
-              طلب تقديم على فرصة
-            </span>
-
-
-            <span class="status">
-              مرفوض
-            </span>
-
-          </div>
-
-        </article>
-
-
-        <!-- =================================================
-             Empty message
-        ================================================== -->
+        <h2 class="panel-title">
+          تسجيل الدخول
+        </h2>
 
         <p
-          class="empty"
-          id="empty-message"
+          class="panel-desc"
+          id="login-description"
         >
-          لا توجد طلبات قيد المراجعة حالياً
+          اختر نوع حسابك ثم أدخل بيانات تسجيل الدخول.
         </p>
 
 
-      </div>
+        <p
+          class="message"
+          id="login-message"
+          role="alert"
+        ></p>
+
+
+        <!-- نوع الحساب -->
+
+        <span class="user-type-title">
+          نوع الحساب
+        </span>
+
+        <div class="user-type">
+
+          <button
+            type="button"
+            class="user-type-btn active"
+            data-user-type="student"
+          >
+            طالب
+          </button>
+
+          <button
+            type="button"
+            class="user-type-btn"
+            data-user-type="club"
+          >
+            مسؤول نادي
+          </button>
+
+        </div>
+
+
+        <form
+          id="login-form"
+          name="login-form"
+          novalidate
+        >
+
+
+          <!-- حقل الطالب / النادي -->
+
+          <div class="field">
+
+            <label
+              class="label"
+              for="login-identifier"
+              id="login-identifier-label"
+            >
+              الرقم الجامعي
+            </label>
+
+            <input
+              class="input ltr"
+              type="text"
+              id="login-identifier"
+              name="identifier"
+              inputmode="numeric"
+              autocomplete="username"
+              placeholder="4XXXXXXXX"
+            >
+
+            <p
+              class="field-error"
+              id="login-identifier-error"
+            ></p>
+
+          </div>
+
+
+          <!-- كلمة المرور -->
+
+          <div class="field">
+
+            <label
+              class="label"
+              for="login-password"
+            >
+              كلمة المرور
+            </label>
+
+            <div class="password-wrap">
+
+              <input
+                class="input ltr"
+                type="password"
+                id="login-password"
+                name="password"
+                autocomplete="current-password"
+              >
+
+              <button
+                type="button"
+                class="toggle-pass"
+                data-target="login-password"
+              >
+                إظهار
+              </button>
+
+            </div>
+
+            <p
+              class="field-error"
+              id="login-password-error"
+            ></p>
+
+          </div>
+
+
+          <p class="forgot-row">
+
+            <button
+              type="button"
+              class="link-btn"
+              id="go-reset"
+            >
+              نسيت كلمة المرور؟
+            </button>
+
+          </p>
+
+
+          <button
+            type="submit"
+            class="btn"
+          >
+            تسجيل الدخول
+          </button>
+
+        </form>
+
+
+        <p class="switch-row">
+
+          طالب وليس لديك حساب؟
+
+          <button
+            type="button"
+            class="link-btn"
+            id="go-register"
+          >
+            إنشاء حساب جديد
+          </button>
+
+        </p>
+
+      </section>
+
+
+      <!-- ======================================================
+           STUDENT REGISTRATION
+      ======================================================= -->
+
+      <section
+        class="panel"
+        id="panel-register"
+      >
+
+        <h2 class="panel-title">
+          إنشاء حساب طالب جديد
+        </h2>
+
+        <p class="panel-desc">
+          أدخل بياناتك لإنشاء حسابك في منصة مِراس.
+        </p>
+
+
+        <p
+          class="message"
+          id="register-message"
+          role="alert"
+        ></p>
+
+
+        <form
+          id="register-form"
+          name="register-form"
+          novalidate
+        >
+
+
+          <!-- الاسم -->
+
+          <div class="field">
+
+            <label
+              class="label"
+              for="register-name"
+            >
+              الاسم الكامل
+            </label>
+
+            <input
+              class="input"
+              type="text"
+              id="register-name"
+              name="full_name"
+              autocomplete="name"
+            >
+
+            <p
+              class="field-error"
+              id="register-name-error"
+            ></p>
+
+          </div>
+
+
+          <!-- الرقم الجامعي -->
+
+          <div class="field">
+
+            <label
+              class="label"
+              for="register-id"
+            >
+              الرقم الجامعي
+            </label>
+
+            <input
+              class="input ltr"
+              type="text"
+              id="register-id"
+              name="university_id"
+              inputmode="numeric"
+              placeholder="4XXXXXXXX"
+            >
+
+            <p
+              class="field-error"
+              id="register-id-error"
+            ></p>
+
+          </div>
+
+
+          <!-- رقم الجوال -->
+
+          <div class="field">
+
+            <label
+              class="label"
+              for="register-mobile"
+            >
+              رقم الجوال
+            </label>
+
+            <input
+              class="input ltr"
+              type="tel"
+              id="register-mobile"
+              name="mobile"
+              inputmode="tel"
+              autocomplete="tel"
+              placeholder="05XXXXXXXX"
+            >
+
+            <p
+              class="field-error"
+              id="register-mobile-error"
+            ></p>
+
+          </div>
+
+
+          <!-- التخصص -->
+
+          <div class="field">
+
+            <label
+              class="label"
+              for="register-major"
+            >
+              التخصص
+            </label>
+
+            <input
+              class="input"
+              type="text"
+              id="register-major"
+              name="major"
+              placeholder="مثال: تقنية المعلومات"
+            >
+
+            <p
+              class="field-error"
+              id="register-major-error"
+            ></p>
+
+          </div>
+
+
+          <!-- البريد -->
+
+          <div class="field">
+
+            <label
+              class="label"
+              for="register-email"
+            >
+              البريد الإلكتروني
+            </label>
+
+            <input
+              class="input ltr"
+              type="email"
+              id="register-email"
+              name="email"
+              autocomplete="email"
+              placeholder="name@example.com"
+            >
+
+            <p
+              class="field-error"
+              id="register-email-error"
+            ></p>
+
+          </div>
+
+
+          <!-- كلمة المرور -->
+
+          <div class="field">
+
+            <label
+              class="label"
+              for="register-password"
+            >
+              كلمة المرور
+            </label>
+
+            <div class="password-wrap">
+
+              <input
+                class="input ltr"
+                type="password"
+                id="register-password"
+                name="password"
+                autocomplete="new-password"
+              >
+
+              <button
+                type="button"
+                class="toggle-pass"
+                data-target="register-password"
+              >
+                إظهار
+              </button>
+
+            </div>
+
+            <p
+              class="field-error"
+              id="register-password-error"
+            ></p>
+
+          </div>
+
+
+          <!-- تأكيد كلمة المرور -->
+
+          <div class="field">
+
+            <label
+              class="label"
+              for="register-confirm"
+            >
+              تأكيد كلمة المرور
+            </label>
+
+            <div class="password-wrap">
+
+              <input
+                class="input ltr"
+                type="password"
+                id="register-confirm"
+                name="confirm_password"
+                autocomplete="new-password"
+              >
+
+              <button
+                type="button"
+                class="toggle-pass"
+                data-target="register-confirm"
+              >
+                إظهار
+              </button>
+
+            </div>
+
+            <p
+              class="field-error"
+              id="register-confirm-error"
+            ></p>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="btn"
+          >
+            إنشاء حساب
+          </button>
+
+        </form>
+
+
+        <p class="switch-row">
+
+          لديك حساب بالفعل؟
+
+          <button
+            type="button"
+            class="link-btn"
+            id="go-login-from-register"
+          >
+            تسجيل الدخول
+          </button>
+
+        </p>
+
+      </section>
+
+
+      <!-- ======================================================
+           RESET PASSWORD
+      ======================================================= -->
+
+      <section
+        class="panel"
+        id="panel-reset"
+      >
+
+        <h2 class="panel-title">
+          إعادة تعيين كلمة المرور
+        </h2>
+
+        <p class="panel-desc">
+          أدخل البريد الإلكتروني المرتبط بحسابك لإعادة تعيين كلمة المرور.
+        </p>
+
+
+        <p
+          class="message"
+          id="reset-message"
+          role="alert"
+        ></p>
+
+
+        <form
+          id="reset-form"
+          name="reset-form"
+          novalidate
+        >
+
+          <div class="field">
+
+            <label
+              class="label"
+              for="reset-email"
+            >
+              البريد الإلكتروني
+            </label>
+
+            <input
+              class="input ltr"
+              type="email"
+              id="reset-email"
+              name="email"
+              autocomplete="email"
+              placeholder="name@example.com"
+            >
+
+            <p
+              class="field-error"
+              id="reset-email-error"
+            ></p>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="btn"
+          >
+            إرسال رابط إعادة التعيين
+          </button>
+
+        </form>
+
+
+        <p class="switch-row">
+
+          <button
+            type="button"
+            class="link-btn"
+            id="back-to-login"
+          >
+            العودة إلى تسجيل الدخول
+          </button>
+
+        </p>
+
+      </section>
+
 
     </div>
 
-  </section>
+  </main>
 
 
-  <!-- =======================================================
-       DETAILS POPUP
-  ======================================================== -->
+  <script>
 
-  <div
-    class="details-overlay"
-    id="details-overlay"
-    role="dialog"
-    aria-modal="true"
-    aria-labelledby="details-title"
-  >
+    /* ==========================================================
+       PANELS
+    ========================================================== */
 
+    var tabs =
+      document.getElementById("auth-tabs");
 
-    <div class="details-box">
+    var tabLogin =
+      document.getElementById("tab-login");
 
-
-      <h3 id="details-title">
-        تفاصيل الطلب
-      </h3>
+    var tabRegister =
+      document.getElementById("tab-register");
 
 
-      <div id="details-content">
-      </div>
+    var panels = {
+
+      login:
+        document.getElementById("panel-login"),
+
+      register:
+        document.getElementById("panel-register"),
+
+      reset:
+        document.getElementById("panel-reset")
+
+    };
 
 
-      <div class="details-buttons">
+    function showPanel(name) {
+
+      Object.keys(panels).forEach(function (key) {
+
+        panels[key].classList.remove("active");
+
+      });
 
 
-        <!--
-          يفتح الملف الشخصي للطالب
-        -->
-
-        <button
-          type="button"
-          class="btn-action btn-accept"
-          id="view-student-profile"
-        >
-          عرض الملف الشخصي
-        </button>
+      panels[name].classList.add("active");
 
 
-        <button
-          type="button"
-          class="btn-action btn-details"
-          id="close-details"
-        >
-          إغلاق
-        </button>
+      tabs.style.display =
+        name === "reset"
+          ? "none"
+          : "flex";
 
 
-      </div>
+      tabLogin.classList.toggle(
+        "active",
+        name === "login"
+      );
 
-    </div>
-
-  </div>
-
-
-</main>
-
-
-<!-- =========================================================
-     SHARED FOOTER
-========================================================= -->
-
-<footer
-  class="footer"
-  id="site-footer"
-></footer>
-
-
-<!-- =========================================================
-     SHARED LAYOUT
-========================================================= -->
-
-<script
-  src="layout.js"
-  defer
-></script>
-
-
-<script>
-
-  /* =========================================================
-     ELEMENTS
-  ========================================================= */
-
-  var filterButtons =
-    document.querySelectorAll(
-      ".apps-page .filter-btn"
-    );
-
-
-  var appList =
-    document.getElementById(
-      "app-list"
-    );
-
-
-  var emptyMessage =
-    document.getElementById(
-      "empty-message"
-    );
-
-
-  var actionMessage =
-    document.getElementById(
-      "action-message"
-    );
-
-
-  var currentFilter =
-    "all";
-
-
-  /* الطالب الذي تم فتح طلبه */
-
-  var selectedStudentId =
-    "";
-
-
-  /* =========================================================
-     EMPTY MESSAGES
-  ========================================================= */
-
-  var emptyTexts = {
-
-    all:
-      "لا توجد طلبات قيد المراجعة حالياً",
-
-    membership:
-      "لا توجد طلبات انضمام للنادي قيد المراجعة حالياً",
-
-    opportunity:
-      "لا توجد طلبات تقديم على الفرص قيد المراجعة حالياً"
-
-  };
-
-
-  /* =========================================================
-     FILTER APPLICATIONS
-  ========================================================= */
-
-  function applyFilter(filter) {
-
-    var rows =
-      document.querySelectorAll(
-        ".apps-page .app-row"
+      tabRegister.classList.toggle(
+        "active",
+        name === "register"
       );
 
 
-    var visible =
-      0;
+      tabLogin.setAttribute(
+        "aria-selected",
+        name === "login"
+      );
+
+      tabRegister.setAttribute(
+        "aria-selected",
+        name === "register"
+      );
 
 
-    rows.forEach(function (row) {
+      document
+        .querySelectorAll(".message")
+        .forEach(function (message) {
 
-      var typeMatches =
-        filter === "all" ||
-        row.dataset.type === filter;
+          message.classList.remove("show");
 
-
-      /*
-        حسب Acceptance Criteria:
-        بعد القبول أو الرفض
-        لا يبقى الطلب ضمن Pending.
-      */
-
-      var isPending =
-        row.dataset.status ===
-        "pending";
+        });
 
 
-      var shouldShow =
-        typeMatches &&
-        isPending;
+      document
+        .querySelectorAll(".field-error")
+        .forEach(function (error) {
+
+          error.classList.remove("show");
+
+        });
 
 
-      row.style.display =
-        shouldShow
-          ? ""
-          : "none";
+      document
+        .querySelectorAll(".input")
+        .forEach(function (input) {
+
+          input.classList.remove("invalid");
+
+        });
+
+    }
 
 
-      if (shouldShow) {
-        visible++;
+    tabLogin.addEventListener(
+      "click",
+      function () {
+
+        showPanel("login");
+
       }
+    );
+
+
+    tabRegister.addEventListener(
+      "click",
+      function () {
+
+        showPanel("register");
+
+      }
+    );
+
+
+    document
+      .getElementById("go-register")
+      .addEventListener(
+        "click",
+        function () {
+
+          showPanel("register");
+
+        }
+      );
+
+
+    document
+      .getElementById("go-login-from-register")
+      .addEventListener(
+        "click",
+        function () {
+
+          showPanel("login");
+
+        }
+      );
+
+
+    document
+      .getElementById("go-reset")
+      .addEventListener(
+        "click",
+        function () {
+
+          showPanel("reset");
+
+        }
+      );
+
+
+    document
+      .getElementById("back-to-login")
+      .addEventListener(
+        "click",
+        function () {
+
+          showPanel("login");
+
+        }
+      );
+
+
+    /* ==========================================================
+       STUDENT / CLUB LOGIN
+    ========================================================== */
+
+    var selectedUserType = "student";
+
+    var userTypeButtons =
+      document.querySelectorAll(".user-type-btn");
+
+    var loginIdentifier =
+      document.getElementById("login-identifier");
+
+    var loginIdentifierLabel =
+      document.getElementById("login-identifier-label");
+
+
+    userTypeButtons.forEach(function (button) {
+
+      button.addEventListener("click", function () {
+
+        selectedUserType =
+          button.dataset.userType;
+
+
+        userTypeButtons.forEach(function (btn) {
+
+          btn.classList.remove("active");
+
+        });
+
+
+        button.classList.add("active");
+
+
+        loginIdentifier.value = "";
+
+        loginIdentifier.classList.remove("invalid");
+
+        document
+          .getElementById("login-identifier-error")
+          .classList.remove("show");
+
+
+        /* طالب */
+
+        if (selectedUserType === "student") {
+
+          loginIdentifierLabel.textContent =
+            "الرقم الجامعي";
+
+          loginIdentifier.type =
+            "text";
+
+          loginIdentifier.inputMode =
+            "numeric";
+
+          loginIdentifier.placeholder =
+            "4XXXXXXXX";
+
+        }
+
+
+        /* مسؤول نادي */
+
+        else {
+
+          loginIdentifierLabel.textContent =
+            "البريد الإلكتروني";
+
+          loginIdentifier.type =
+            "email";
+
+          loginIdentifier.inputMode =
+            "email";
+
+          loginIdentifier.placeholder =
+            "club@example.com";
+
+        }
+
+      });
 
     });
 
 
-    emptyMessage.textContent =
-      emptyTexts[filter];
+    /* ==========================================================
+       PASSWORD VISIBILITY
+    ========================================================== */
+
+    document
+      .querySelectorAll(".toggle-pass")
+      .forEach(function (btn) {
+
+        btn.addEventListener("click", function () {
+
+          var input =
+            document.getElementById(
+              btn.dataset.target
+            );
 
 
-    emptyMessage.style.display =
-      visible === 0
-        ? ""
-        : "none";
+          if (input.type === "password") {
 
-  }
+            input.type = "text";
+            btn.textContent = "إخفاء";
 
+          }
 
-  /* =========================================================
-     FILTER BUTTONS
-  ========================================================= */
+          else {
 
-  filterButtons.forEach(
-    function (button) {
+            input.type = "password";
+            btn.textContent = "إظهار";
 
-      button.addEventListener(
-        "click",
-        function () {
+          }
 
+        });
 
-          filterButtons.forEach(
-            function (btn) {
-
-              btn.classList.remove(
-                "active"
-              );
-
-            }
-          );
+      });
 
 
-          button.classList.add(
-            "active"
-          );
+    /* ==========================================================
+       VALIDATION HELPERS
+    ========================================================== */
+
+    function setError(inputId, text) {
+
+      document
+        .getElementById(inputId)
+        .classList.add("invalid");
 
 
-          currentFilter =
-            button.dataset.filter;
+      var error =
+        document.getElementById(
+          inputId + "-error"
+        );
 
 
-          applyFilter(
-            currentFilter
-          );
+      error.textContent = text;
+      error.classList.add("show");
+
+    }
+
+
+    function clearErrors(form) {
+
+      form
+        .querySelectorAll(".input")
+        .forEach(function (input) {
+
+          input.classList.remove("invalid");
+
+        });
+
+
+      form
+        .querySelectorAll(".field-error")
+        .forEach(function (error) {
+
+          error.classList.remove("show");
+
+        });
+
+    }
+
+
+    function showMessage(id, type, text) {
+
+      var box =
+        document.getElementById(id);
+
+      box.className =
+        "message show " + type;
+
+      box.textContent =
+        text;
+
+    }
+
+
+    function hideMessage(id) {
+
+      document
+        .getElementById(id)
+        .classList.remove("show");
+
+    }
+
+
+    function isValidEmail(email) {
+
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+
+    }
+
+
+    function isValidMobile(mobile) {
+
+      return /^05\d{8}$/.test(mobile);
+
+    }
+
+
+    /* ==========================================================
+       LOGIN
+    ========================================================== */
+
+    var loginForm =
+      document.getElementById("login-form");
+
+
+    loginForm.addEventListener(
+      "submit",
+      function (event) {
+
+        event.preventDefault();
+
+        clearErrors(loginForm);
+        hideMessage("login-message");
+
+
+        var identifier =
+          loginIdentifier.value.trim();
+
+        var password =
+          document
+            .getElementById("login-password")
+            .value;
+
+        var valid = true;
+
+
+        /* ----------------------------------
+           Student
+        ---------------------------------- */
+
+        if (selectedUserType === "student") {
+
+          if (identifier === "") {
+
+            setError(
+              "login-identifier",
+              "يرجى إدخال الرقم الجامعي."
+            );
+
+            valid = false;
+
+          }
+
+          else if (!/^\d+$/.test(identifier)) {
+
+            setError(
+              "login-identifier",
+              "الرقم الجامعي يجب أن يحتوي على أرقام فقط."
+            );
+
+            valid = false;
+
+          }
 
         }
-      );
 
-    }
-  );
 
+        /* ----------------------------------
+           Club
+        ---------------------------------- */
 
-  /* =========================================================
-     ACCEPT / REJECT
-  ========================================================= */
+        else {
 
-  appList.addEventListener(
-    "click",
-    function (event) {
+          if (identifier === "") {
 
+            setError(
+              "login-identifier",
+              "يرجى إدخال البريد الإلكتروني."
+            );
 
-      var row =
-        event.target.closest(
-          ".app-row"
-        );
+            valid = false;
 
+          }
 
-      if (!row) {
-        return;
-      }
+          else if (!isValidEmail(identifier)) {
 
+            setError(
+              "login-identifier",
+              "صيغة البريد الإلكتروني غير صحيحة."
+            );
 
-      /* =========================
-         ACCEPT
-      ========================= */
+            valid = false;
 
-      if (
-        event.target.classList.contains(
-          "btn-accept"
-        )
-      ) {
-
-
-        row.dataset.status =
-          "accepted";
-
-
-        /*
-          لاحقًا مع Backend:
-          يتم إرسال:
-          row.dataset.id
-          والقرار accepted
-          إلى قاعدة البيانات.
-        */
-
-
-        showActionMessage(
-          "تم قبول الطلب بنجاح."
-        );
-
-
-        applyFilter(
-          currentFilter
-        );
-
-      }
-
-
-      /* =========================
-         REJECT
-      ========================= */
-
-      if (
-        event.target.classList.contains(
-          "btn-reject"
-        )
-      ) {
-
-
-        row.dataset.status =
-          "rejected";
-
-
-        /*
-          لاحقًا مع Backend:
-          يتم إرسال:
-          row.dataset.id
-          والقرار rejected
-          إلى قاعدة البيانات.
-        */
-
-
-        showActionMessage(
-          "تم رفض الطلب بنجاح."
-        );
-
-
-        applyFilter(
-          currentFilter
-        );
-
-      }
-
-    }
-  );
-
-
-  /* =========================================================
-     SUCCESS MESSAGE
-  ========================================================= */
-
-  function showActionMessage(message) {
-
-    actionMessage.textContent =
-      message;
-
-
-    actionMessage.classList.add(
-      "show"
-    );
-
-
-    setTimeout(
-      function () {
-
-        actionMessage.classList.remove(
-          "show"
-        );
-
-      },
-      2500
-    );
-
-  }
-
-
-  /* =========================================================
-     APPLICATION DETAILS
-  ========================================================= */
-
-  var detailsOverlay =
-    document.getElementById(
-      "details-overlay"
-    );
-
-
-  var detailsContent =
-    document.getElementById(
-      "details-content"
-    );
-
-
-  var closeDetails =
-    document.getElementById(
-      "close-details"
-    );
-
-
-  var viewStudentProfile =
-    document.getElementById(
-      "view-student-profile"
-    );
-
-
-  appList.addEventListener(
-    "click",
-    function (event) {
-
-
-      if (
-        !event.target.classList.contains(
-          "btn-details"
-        )
-      ) {
-
-        return;
-
-      }
-
-
-      var row =
-        event.target.closest(
-          ".app-row"
-        );
-
-
-      if (!row) {
-        return;
-      }
-
-
-      /* Student ID */
-
-      selectedStudentId =
-        row.dataset.studentId;
-
-
-      /* Student name */
-
-      var studentName =
-        row
-          .querySelector(
-            ".app-student"
-          )
-          .textContent;
-
-
-      /* Application info */
-
-      var information =
-        row.querySelectorAll(
-          ".app-meta"
-        );
-
-
-      /* Application type */
-
-      var applicationType =
-        row.dataset.type ===
-        "membership"
-
-          ? "طلب انضمام للنادي"
-
-          : "طلب تقديم على فرصة";
-
-
-      /* Clear previous content */
-
-      detailsContent.replaceChildren();
-
-
-      /* Student */
-
-      addDetail(
-        "الطالب: " +
-        studentName
-      );
-
-
-      /* Type */
-
-      addDetail(
-        "نوع الطلب: " +
-        applicationType
-      );
-
-
-      /* Remaining information */
-
-      information.forEach(
-        function (item) {
-
-          addDetail(
-            item.textContent
-          );
+          }
 
         }
-      );
 
 
-      /* Open modal */
+        /* Password */
 
-      detailsOverlay.style.display =
-        "flex";
+        if (password === "") {
 
+          setError(
+            "login-password",
+            "يرجى إدخال كلمة المرور."
+          );
 
-      closeDetails.focus();
+          valid = false;
 
-    }
-  );
-
-
-  /* =========================================================
-     ADD DETAIL
-  ========================================================= */
-
-  function addDetail(text) {
-
-    var paragraph =
-      document.createElement("p");
+        }
 
 
-    paragraph.textContent =
-      text;
+        if (!valid) {
+
+          showMessage(
+            "login-message",
+            "error",
+            "يرجى تصحيح الأخطاء الموضحة أدناه."
+          );
+
+          return;
+
+        }
 
 
-    detailsContent.appendChild(
-      paragraph
+        /* ======================================================
+           مؤقت للـ Front-end Demo
+
+           عند ربط Backend:
+           لا يتم الانتقال إلا بعد أن يؤكد الخادم
+           أن الرقم الجامعي/الإيميل وكلمة المرور صحيحة.
+        ====================================================== */
+
+
+        if (selectedUserType === "student") {
+
+          window.location.href =
+            "home.html";
+
+        }
+
+        else {
+
+          window.location.href =
+            "clubAdmin.html";
+
+        }
+
+      }
     );
 
-  }
+
+    /* ==========================================================
+       STUDENT REGISTRATION
+    ========================================================== */
+
+    var registerForm =
+      document.getElementById("register-form");
 
 
-  /* =========================================================
-     VIEW STUDENT PROFILE
-  ========================================================= */
+    registerForm.addEventListener(
+      "submit",
+      function (event) {
 
-  viewStudentProfile.addEventListener(
-    "click",
-    function () {
+        event.preventDefault();
 
-
-      if (!selectedStudentId) {
-        return;
-      }
+        clearErrors(registerForm);
+        hideMessage("register-message");
 
 
-      /*
-        يفتح Profile الطالب المحدد.
+        var name =
+          document
+            .getElementById("register-name")
+            .value.trim();
 
-        مثال:
-        studentProfile.html?id=4412345672
-      */
+        var uniId =
+          document
+            .getElementById("register-id")
+            .value.trim();
 
-      window.location.href =
-        "studentProfile.html?id=" +
-        encodeURIComponent(
-          selectedStudentId
+        var mobile =
+          document
+            .getElementById("register-mobile")
+            .value.trim();
+
+        var major =
+          document
+            .getElementById("register-major")
+            .value.trim();
+
+        var email =
+          document
+            .getElementById("register-email")
+            .value.trim();
+
+        var password =
+          document
+            .getElementById("register-password")
+            .value;
+
+        var confirm =
+          document
+            .getElementById("register-confirm")
+            .value;
+
+
+        var valid = true;
+
+
+        /* Full name */
+
+        if (name === "") {
+
+          setError(
+            "register-name",
+            "يرجى إدخال الاسم الكامل."
+          );
+
+          valid = false;
+
+        }
+
+
+        /* University ID */
+
+        if (uniId === "") {
+
+          setError(
+            "register-id",
+            "يرجى إدخال الرقم الجامعي."
+          );
+
+          valid = false;
+
+        }
+
+        else if (!/^\d+$/.test(uniId)) {
+
+          setError(
+            "register-id",
+            "الرقم الجامعي يجب أن يحتوي على أرقام فقط."
+          );
+
+          valid = false;
+
+        }
+
+
+        /* Mobile */
+
+        if (mobile === "") {
+
+          setError(
+            "register-mobile",
+            "يرجى إدخال رقم الجوال."
+          );
+
+          valid = false;
+
+        }
+
+        else if (!isValidMobile(mobile)) {
+
+          setError(
+            "register-mobile",
+            "يرجى إدخال رقم جوال صحيح يبدأ بـ 05 ويتكون من 10 أرقام."
+          );
+
+          valid = false;
+
+        }
+
+
+        /* Major */
+
+        if (major === "") {
+
+          setError(
+            "register-major",
+            "يرجى إدخال التخصص."
+          );
+
+          valid = false;
+
+        }
+
+
+        /* Email */
+
+        if (email === "") {
+
+          setError(
+            "register-email",
+            "يرجى إدخال البريد الإلكتروني."
+          );
+
+          valid = false;
+
+        }
+
+        else if (!isValidEmail(email)) {
+
+          setError(
+            "register-email",
+            "صيغة البريد الإلكتروني غير صحيحة."
+          );
+
+          valid = false;
+
+        }
+
+
+        /* Password */
+
+        if (password === "") {
+
+          setError(
+            "register-password",
+            "يرجى إدخال كلمة المرور."
+          );
+
+          valid = false;
+
+        }
+
+        else if (password.length < 8) {
+
+          setError(
+            "register-password",
+            "كلمة المرور يجب ألا تقل عن 8 أحرف."
+          );
+
+          valid = false;
+
+        }
+
+
+        /* Confirm password */
+
+        if (confirm === "") {
+
+          setError(
+            "register-confirm",
+            "يرجى تأكيد كلمة المرور."
+          );
+
+          valid = false;
+
+        }
+
+        else if (confirm !== password) {
+
+          setError(
+            "register-confirm",
+            "كلمة المرور وتأكيدها غير متطابقتين."
+          );
+
+          valid = false;
+
+        }
+
+
+        if (!valid) {
+
+          showMessage(
+            "register-message",
+            "error",
+            "يرجى تصحيح الأخطاء الموضحة أدناه."
+          );
+
+          return;
+
+        }
+
+
+        /* ======================================================
+           Backend Required
+
+           هنا لاحقًا:
+           1. التحقق أن University ID غير مسجل.
+           2. التحقق أن Email غير مسجل.
+           3. إنشاء Student Account.
+           4. بعد النجاح يتم الانتقال إلى Login.
+
+           حاليًا نحاكي نجاح التسجيل للعرض فقط.
+        ====================================================== */
+
+
+        showMessage(
+          "register-message",
+          "success",
+          "تم إنشاء الحساب بنجاح. سيتم تحويلك إلى تسجيل الدخول."
         );
 
-    }
-  );
+
+        registerForm.reset();
 
 
-  /* =========================================================
-     CLOSE DETAILS
-  ========================================================= */
+        setTimeout(function () {
 
-  function hideDetails() {
+          showPanel("login");
 
-    detailsOverlay.style.display =
-      "none";
-
-
-    selectedStudentId =
-      "";
-
-  }
-
-
-  closeDetails.addEventListener(
-    "click",
-    hideDetails
-  );
-
-
-  /* الضغط خارج الصندوق */
-
-  detailsOverlay.addEventListener(
-    "click",
-    function (event) {
-
-      if (
-        event.target ===
-        detailsOverlay
-      ) {
-
-        hideDetails();
+        }, 1200);
 
       }
-
-    }
-  );
+    );
 
 
-  /* ESC */
+    /* ==========================================================
+       RESET PASSWORD
+    ========================================================== */
 
-  document.addEventListener(
-    "keydown",
-    function (event) {
+    var resetForm =
+      document.getElementById("reset-form");
 
-      if (
-        event.key === "Escape"
-      ) {
 
-        hideDetails();
+    resetForm.addEventListener(
+      "submit",
+      function (event) {
+
+        event.preventDefault();
+
+        clearErrors(resetForm);
+        hideMessage("reset-message");
+
+
+        var email =
+          document
+            .getElementById("reset-email")
+            .value.trim();
+
+
+        if (email === "") {
+
+          setError(
+            "reset-email",
+            "يرجى إدخال البريد الإلكتروني."
+          );
+
+          return;
+
+        }
+
+
+        if (!isValidEmail(email)) {
+
+          setError(
+            "reset-email",
+            "صيغة البريد الإلكتروني غير صحيحة."
+          );
+
+          return;
+
+        }
+
+
+        showMessage(
+          "reset-message",
+          "success",
+          "تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني."
+        );
 
       }
+    );
 
-    }
-  );
-
-
-  /* =========================================================
-     INITIAL VIEW
-  ========================================================= */
-
-  applyFilter("all");
-
-</script>
-
+  </script>
 
 </body>
 </html>
