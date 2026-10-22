@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مِراس - إنشاء حساب</title>
+  <link rel="stylesheet" href="Style.css">
+  <link rel="stylesheet" href="student.css">
+</head>
+<body data-role="student" data-page="auth">
+
+  <header class="header">
+    <a href="login.html" class="logo"><img src="logoMeras.png" alt="شعار مِراس"></a>
+  </header>
+
+  <main class="auth">
+    <div class="auth-card">
+      <div class="auth-head">
+        <img src="sunMeras.png" alt="">
+        <h1>إنشــاء حســاب جديــد</h1>
+        <p>سجّــل في مِــراس واكتشــف الأنديــة والفــرص الجامعيــة.</p>
+      </div>
+
+      <p class="auth-msg" id="formMsg" hidden></p>
+
+      <form id="registerForm" novalidate>
+        <div class="auth-field"><label for="fullName">الاسم الكامل</label><input type="text" id="fullName" name="fullName" autocomplete="name"></div>
+        <div class="auth-field"><label for="uid">الرقم الجامعي</label><input class="ltr" type="text" id="uid" name="uid" inputmode="numeric" maxlength="9" placeholder="4XXXXXXXX" autocomplete="off"></div>
+        <div class="auth-field"><label for="phone">رقم الجوال</label><input class="ltr" type="tel" id="phone" name="phone" inputmode="numeric" maxlength="10" placeholder="05XXXXXXXX" autocomplete="tel"></div>
+        <div class="auth-field"><label for="major">التخصص</label><input type="text" id="major" name="major"></div>
+        <div class="auth-field"><label for="email">البريد الإلكتروني</label><input class="ltr" type="email" id="email" name="email" placeholder="name@example.com" autocomplete="email"></div>
+        <div class="auth-field">
+          <label for="password">كلمة المرور</label>
+          <div class="pass-wrap"><input class="ltr" type="password" id="password" name="password" autocomplete="new-password"><button type="button" class="pass-toggle">إظهــار</button></div>
+        </div>
+        <div class="auth-field">
+          <label for="confirm">تأكيد كلمة المرور</label>
+          <div class="pass-wrap"><input class="ltr" type="password" id="confirm" name="confirm" autocomplete="new-password"><button type="button" class="pass-toggle">إظهــار</button></div>
+        </div>
+        <p class="auth-hint">8 أحرف على الأقل.</p>
+        <button type="submit" class="auth-btn">إنشــاء الحســاب</button>
+      </form>
+
+      <p class="auth-alt">لديك حساب؟ <a href="login.html">تسجيــل الدخــول</a></p>
+    </div>
+  </main>
+
+  <footer class="footer" id="site-footer"></footer>
+
+  <script src="layout.js" defer></script>
+  <script src="auth.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مِراس - النادي</title>
+  <link rel="stylesheet" href="Style.css">
+  <link rel="stylesheet" href="student.css">
+</head>
+<body data-role="student" data-page="clubs">
+
+  <header class="header" id="site-header"></header>
+
+  <main class="club-page">
+
+    <!-- ===== Back to the previous page (home, clubs list, or a post) ===== -->
+    <a href="clubs.html" class="back" id="backBtn">
+      <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      رجــوع
+    </a>
+
+    <!-- ===== Club profile (filled by club.js from clubs-data.js) ===== -->
+    <section class="profile" id="profile" aria-label="معلومات النادي"></section>
+
+    <!-- ===== Tabs ===== -->
+    <div class="tabs" id="tabs" role="tablist" aria-label="أقسام النادي">
+      <button type="button" role="tab" class="tab active" data-tab="posts" aria-selected="true">المنشــورات</button>
+      <button type="button" role="tab" class="tab" data-tab="opps" aria-selected="false">الفــرص</button>
+      <button type="button" role="tab" class="tab" data-tab="structure" aria-selected="false">الهيكلــة</button>
+    </div>
+
+    <section class="panel" id="panel-posts" role="tabpanel">
+      <div class="feed" id="feed" aria-label="منشورات النادي"></div>
+    </section>
+
+    <section class="panel" id="panel-opps" role="tabpanel" hidden>
+      <p id="oppsEmpty" class="empty" hidden>لا توجد فرص متاحة حاليًا.</p>
+      <div id="cards" class="cards"></div>
+    </section>
+
+    <section class="panel" id="panel-structure" role="tabpanel" hidden></section>
+
+  </main>
+
+  <footer class="footer" id="site-footer"></footer>
+
+  <script src="layout.js" defer></script>
+  <script src="clubs-data.js" defer></script>
+  <script src="opportunities-data.js" defer></script>
+  <script src="club.js" defer></script>
+  <script src="feed.js" defer></script>
+</body>
+</html>

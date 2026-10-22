@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مِراس - الأندية</title>
+  <link rel="stylesheet" href="Style.css">
+  <link rel="stylesheet" href="student.css">
+</head>
+<body data-role="student" data-page="clubs">
+
+  <header class="header" id="site-header"></header>
+
+  <main class="home">
+
+    <section class="hero">
+      <img src="sunMeras.png" alt="" class="hero-sun">
+      <h1>تصفّــح الأنديــة الطلابيــة</h1>
+    </section>
+
+    <section class="filters" aria-label="البحث">
+      <input type="search" id="searchBox" class="search" placeholder="ابحث عن نادٍ..." aria-label="بحث في الأندية" autocomplete="off">
+    </section>
+
+    <p id="emptyMessage" class="empty" hidden>لا توجد أندية مطابقة لبحثك.</p>
+    <div id="clubsGrid" class="clubs-grid"></div>
+
+  </main>
+
+  <footer class="footer" id="site-footer"></footer>
+
+  <script src="layout.js" defer></script>
+  <script src="clubs-data.js" defer></script>
+  <script src="clubs.js" defer></script>
+</body>
+</html>

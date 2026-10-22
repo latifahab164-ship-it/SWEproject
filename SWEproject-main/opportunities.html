@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مِراس - الفرص</title>
+  <link rel="stylesheet" href="Style.css">
+  <link rel="stylesheet" href="student.css">
+</head>
+<body data-role="student" data-page="opportunities">
+
+  <header class="header" id="site-header"></header>
+
+  <main class="home">
+
+    <!-- ===== Title ===== -->
+    <section class="hero">
+      <img src="sunMeras.png" alt="" class="hero-sun">
+      <h1>اكتشــف الفــرص في الأنديــة الطلابيــة</h1>
+    </section>
+
+    <!-- ===== Filtering ===== -->
+    <section class="filters" aria-label="التصفية">
+      <input type="search" id="searchBox" class="search" placeholder="ابحث عن فرصة..." aria-label="بحث في الفرص" autocomplete="off">
+      <div class="chips" id="chips">
+        <button type="button" class="chip active" data-option="all">الكــل</button>
+        <button type="button" class="chip" data-option="club">حســب النــادي</button>
+        <button type="button" class="chip" data-option="skill">حســب المهــارة</button>
+        <button type="button" class="chip" data-option="now">متاحــة الآن</button>
+      </div>
+
+      <select id="clubSelect" class="picker" hidden aria-label="اختر النادي"></select>
+      <select id="skillSelect" class="picker" hidden aria-label="اختر المهارة"></select>
+    </section>
+
+    <!-- ===== Results ===== -->
+    <section class="results">
+      <p id="emptyMessage" class="empty" hidden>لا يوجد فرص متاحة، نقدّر اهتمامك!</p>
+      <div id="cards" class="cards"></div>
+    </section>
+
+  </main>
+
+  <footer class="footer" id="site-footer"></footer>
+
+  <script src="layout.js" defer></script>
+  <script src="opportunities-data.js" defer></script>
+  <script src="opportunities.js" defer></script>
+</body>
+</html>
