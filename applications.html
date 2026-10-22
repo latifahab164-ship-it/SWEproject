@@ -10,6 +10,11 @@
   <link rel="stylesheet" href="Style.css">
 
   <style>
+
+    /* =========================================================
+       APPLICATIONS PAGE
+    ========================================================= */
+
     .apps-page {
       --teal-dark: #2E5560;
       --gold-dark: #EDD08A;
@@ -21,9 +26,10 @@
       padding: 34px 24px 60px;
     }
 
-    /* =========================
-       PAGE HEADER
-    ========================= */
+
+    /* =========================================================
+       PAGE TITLE
+    ========================================================= */
 
     .apps-page .page-title {
       display: flex;
@@ -48,21 +54,21 @@
       font-weight: 400;
     }
 
-    /* =========================
+
+    /* =========================================================
        FILTERS
-    ========================= */
+    ========================================================= */
 
     .apps-page .filter-bar {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
-
       gap: 10px;
 
       margin-bottom: 24px;
       padding: 14px 18px;
 
-      background: transparent;
+      background-color: transparent;
     }
 
     .apps-page .filter-label {
@@ -79,7 +85,7 @@
       border-radius: 999px;
       border: 2px solid var(--teal);
 
-      background: transparent;
+      background-color: transparent;
       color: var(--ink-dark);
 
       font-family: inherit;
@@ -88,27 +94,35 @@
 
       cursor: pointer;
 
-      transition: .2s;
+      transition:
+        background-color .2s,
+        color .2s,
+        border-color .2s;
     }
 
     .apps-page .filter-btn:hover {
-      background: var(--yellow);
+      background-color: var(--yellow);
     }
 
     .apps-page .filter-btn.active {
-      background: var(--ink);
+      background-color: var(--ink);
       border-color: #2E5560;
       color: #fff;
     }
 
-    /* =========================
+
+    /* =========================================================
        SECTION
-    ========================= */
+    ========================================================= */
 
     .apps-page .section {
-      background: transparent;
+      background-color: transparent;
+
       border: none;
+      border-radius: 0;
+
       box-shadow: none;
+      overflow: visible;
     }
 
     .apps-page .section-head {
@@ -116,7 +130,6 @@
       justify-content: space-between;
       align-items: center;
       flex-wrap: wrap;
-
       gap: 12px;
 
       padding: 16px 22px;
@@ -138,11 +151,13 @@
 
     .apps-page .section-body {
       padding: 20px 22px 22px;
+      background-color: transparent;
     }
 
-    /* =========================
+
+    /* =========================================================
        BADGES
-    ========================= */
+    ========================================================= */
 
     .apps-page .badge {
       display: inline-block;
@@ -153,23 +168,23 @@
 
       font-size: 13px;
       font-weight: 500;
-
       color: var(--ink-dark);
     }
 
     .apps-page .badge-member {
-      background: var(--teal-light);
+      background-color: var(--teal-light);
       border: 1px solid var(--teal);
     }
 
     .apps-page .badge-apply {
-      background: var(--gold);
+      background-color: var(--gold);
       border: 1px solid var(--gold-dark);
     }
 
-    /* =========================
-       APPLICATION CARDS
-    ========================= */
+
+    /* =========================================================
+       APPLICATION LIST
+    ========================================================= */
 
     .apps-page .app-list {
       display: flex;
@@ -181,12 +196,11 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-
       gap: 16px;
 
       padding: 16px 20px;
 
-      background: #fff;
+      background-color: #fff;
 
       border: 1px solid var(--line);
       border-right: 8px solid var(--teal-light);
@@ -229,23 +243,28 @@
       flex-shrink: 0;
     }
 
+
+    /* =========================================================
+       STATUS
+    ========================================================= */
+
     .apps-page .status {
       padding: 3px 12px;
 
       border-radius: 999px;
       border: 1px solid var(--gold-dark);
 
-      background: var(--yellow);
+      background-color: var(--yellow);
 
       font-size: 13px;
       font-weight: 500;
-
       color: var(--ink-dark);
     }
 
-    /* =========================
+
+    /* =========================================================
        BUTTONS
-    ========================= */
+    ========================================================= */
 
     .apps-page .app-actions {
       display: flex;
@@ -257,7 +276,6 @@
       padding: 6px 18px;
 
       border-radius: 999px;
-      border: 2px solid var(--ink-dark);
 
       font-family: inherit;
       font-size: 14px;
@@ -265,47 +283,59 @@
 
       cursor: pointer;
 
-      transition: .2s;
+      transition:
+        background-color .2s,
+        color .2s,
+        border-color .2s;
     }
 
+
+    /* عرض الطلب */
+
+    .apps-page .btn-details {
+      background-color: transparent;
+      border: 2px solid var(--teal);
+      color: var(--ink-dark);
+    }
+
+    .apps-page .btn-details:hover {
+      background-color: var(--yellow);
+      border-color: var(--gold);
+    }
+
+
+    /* قبول */
+
     .apps-page .btn-accept {
-      background: var(--ink);
-      border-color: #2E5560;
+      background-color: var(--ink);
+      border: 2px solid #2E5560;
       color: #fff;
     }
 
     .apps-page .btn-accept:hover {
-      background: var(--gold);
+      background-color: var(--gold);
       border-color: var(--gold);
       color: var(--ink-dark);
     }
 
+
+    /* رفض */
+
     .apps-page .btn-reject {
-      background: transparent;
-      border-color: var(--teal);
+      background-color: transparent;
+      border: 2px solid var(--teal);
       color: var(--ink-dark);
     }
 
     .apps-page .btn-reject:hover {
-      background: var(--yellow);
+      background-color: var(--yellow);
       border-color: var(--gold);
     }
 
-    .apps-page .btn-details,
-    .apps-page .btn-profile {
-      background: transparent;
-      border-color: var(--teal);
-      color: var(--ink-dark);
-    }
 
-    .apps-page .btn-details:hover,
-    .apps-page .btn-profile:hover {
-      background: var(--yellow);
-    }
-
-    /* =========================
+    /* =========================================================
        SUCCESS MESSAGE
-    ========================= */
+    ========================================================= */
 
     .apps-page .action-message {
       display: none;
@@ -313,7 +343,7 @@
       margin: 0 0 18px;
       padding: 12px 16px;
 
-      background: var(--teal-light);
+      background-color: var(--teal-light);
 
       border: 1px solid var(--teal);
       border-radius: 14px;
@@ -328,9 +358,10 @@
       display: block;
     }
 
-    /* =========================
+
+    /* =========================================================
        EMPTY STATE
-    ========================= */
+    ========================================================= */
 
     .apps-page .empty {
       margin: 0;
@@ -342,15 +373,16 @@
       border: 2px dashed var(--teal-dark);
       border-radius: 14px;
 
-      background: #fff;
+      background-color: #fff;
 
       font-size: 16px;
       color: var(--ink-dark);
     }
 
-    /* =========================
-       MODAL
-    ========================= */
+
+    /* =========================================================
+       APPLICATION MODAL
+    ========================================================= */
 
     .apps-page .modal-overlay {
       position: fixed;
@@ -362,20 +394,21 @@
 
       padding: 20px;
 
-      background: rgba(0, 0, 0, 0.35);
+      background-color: rgba(0, 0, 0, 0.35);
 
       z-index: 1000;
     }
 
     .apps-page .modal-box {
       width: 100%;
-      max-width: 500px;
+      max-width: 540px;
       max-height: 85vh;
+
       overflow-y: auto;
 
-      padding: 24px;
+      padding: 26px;
 
-      background: #fff;
+      background-color: #fff;
 
       border: 1px solid var(--line);
       border-radius: 18px;
@@ -385,100 +418,128 @@
       color: var(--ink-dark);
     }
 
-    .apps-page .modal-box h3 {
-      margin: 0 0 18px;
-
-      font-size: 21px;
-      font-weight: 500;
-    }
-
-    .apps-page .modal-box p {
-      margin: 9px 0;
-
-      line-height: 1.7;
-    }
-
-    .apps-page .modal-buttons {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-
-      margin-top: 20px;
-    }
-
-    /* =========================
-       APPLICANT PROFILE
-    ========================= */
-
-    .apps-page .profile-header {
-      padding-bottom: 16px;
-      margin-bottom: 16px;
-
-      border-bottom: 1px solid var(--line);
-    }
-
-    .apps-page .profile-name {
-      margin: 0 0 6px;
+    .apps-page .modal-title {
+      margin: 0 0 22px;
 
       font-size: 23px;
       font-weight: 500;
       color: var(--ink-dark);
     }
 
-    .apps-page .profile-major {
-      margin: 0;
 
-      color: var(--teal-dark);
+    /* =========================================================
+       MODAL SECTIONS
+    ========================================================= */
+
+    .apps-page .details-section {
+      margin-top: 22px;
     }
 
-    .apps-page .profile-section {
-      margin-top: 20px;
+    .apps-page .details-section:first-child {
+      margin-top: 0;
     }
 
-    .apps-page .profile-section h4 {
+    .apps-page .details-section-title {
       margin: 0 0 10px;
 
       font-size: 17px;
       font-weight: 500;
-
       color: var(--ink-dark);
     }
 
-    .apps-page .profile-info {
-      padding: 12px 14px;
+    .apps-page .details-box {
+      padding: 14px 16px;
 
-      background: var(--beige);
+      background-color: var(--beige);
 
       border-radius: 12px;
     }
+
+    .apps-page .details-box p {
+      margin: 7px 0;
+
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--ink-dark);
+    }
+
+
+    /* =========================================================
+       STUDENT PROFILE INSIDE APPLICATION
+    ========================================================= */
+
+    .apps-page .student-profile-head {
+      margin-bottom: 12px;
+    }
+
+    .apps-page .student-name {
+      margin: 0 0 5px;
+
+      font-size: 20px;
+      font-weight: 500;
+      color: var(--ink-dark);
+    }
+
+    .apps-page .student-major {
+      margin: 0;
+
+      font-size: 14px;
+      color: var(--teal-dark);
+    }
+
+
+    /* =========================================================
+       ACHIEVEMENTS
+    ========================================================= */
 
     .apps-page .achievement-card {
       margin-top: 9px;
       padding: 12px 14px;
 
+      background-color: #fff;
+
       border: 1px solid var(--line);
       border-radius: 12px;
-
-      background: #fff;
     }
 
-    .apps-page .achievement-card strong {
-      font-weight: 500;
+    .apps-page .achievement-card p {
+      margin: 5px 0;
+
+      font-size: 14px;
+      line-height: 1.6;
     }
 
     .apps-page .no-achievements {
+      margin: 0;
+
       padding: 14px;
 
-      background: var(--beige);
+      background-color: var(--beige);
 
       border-radius: 12px;
 
       text-align: center;
+
+      font-size: 14px;
+      color: var(--ink-dark);
     }
 
-    /* =========================
+
+    /* =========================================================
+       MODAL BUTTON
+    ========================================================= */
+
+    .apps-page .modal-buttons {
+      display: flex;
+      justify-content: flex-end;
+
+      margin-top: 24px;
+    }
+
+
+    /* =========================================================
        RESPONSIVE
-    ========================= */
+    ========================================================= */
 
     @media (max-width: 800px) {
 
@@ -490,12 +551,18 @@
         font-size: 24px;
       }
 
+      .apps-page .filter-bar {
+        padding-right: 0;
+        padding-left: 0;
+      }
+
       .apps-page .filter-label {
         width: 100%;
       }
 
       .apps-page .filter-btn {
         flex: 1 1 auto;
+        text-align: center;
       }
 
       .apps-page .section-head,
@@ -523,35 +590,57 @@
         flex: 1;
       }
 
-      .apps-page .modal-buttons {
-        flex-direction: column;
+      .apps-page .modal-box {
+        padding: 20px;
       }
 
       .apps-page .modal-buttons .btn-action {
         width: 100%;
       }
     }
+
   </style>
 </head>
 
 
 <body data-role="club" data-page="manage-requests">
 
-  <!-- Header comes from layout.js -->
-  <header class="header" id="site-header"></header>
 
+  <!-- =========================================================
+       SHARED HEADER
+       layout.js will generate the club header
+  ========================================================= -->
+
+  <header
+    class="header"
+    id="site-header">
+  </header>
+
+
+  <!-- =========================================================
+       PAGE
+  ========================================================= -->
 
   <main class="page apps-page">
 
+
     <h1 class="page-title">
-      <img src="sunMeras.png" alt="">
+
+      <img
+        src="sunMeras.png"
+        alt="">
+
       طلبات الطلاب
+
     </h1>
 
+
     <p class="page-subtitle">
-      راجع طلبات الطلاب واطلع على ملف الطالب قبل اتخاذ القرار.
+      راجع طلبات الطلاب واطلع على تفاصيل الطلب وملف الطالب قبل اتخاذ القرار.
     </p>
 
+
+    <!-- Success message -->
 
     <p
       class="action-message"
@@ -560,13 +649,16 @@
     </p>
 
 
-    <!-- =========================
+    <!-- =======================================================
          FILTERS
-    ========================== -->
+    ======================================================== -->
 
     <div class="filter-bar">
 
-      <span class="filter-label">عرض:</span>
+      <span class="filter-label">
+        عرض:
+      </span>
+
 
       <button
         type="button"
@@ -575,12 +667,14 @@
         جميع الطلبات
       </button>
 
+
       <button
         type="button"
         class="filter-btn"
         data-filter="membership">
         طلبات الانضمام للنادي
       </button>
+
 
       <button
         type="button"
@@ -592,17 +686,19 @@
     </div>
 
 
-    <!-- =========================
+    <!-- =======================================================
          APPLICATIONS
-    ========================== -->
+    ======================================================== -->
 
     <section class="section">
+
 
       <div class="section-head">
 
         <h2 class="section-title">
           الطلبات المستلمة
         </h2>
+
 
         <div class="legend">
 
@@ -621,10 +717,16 @@
 
       <div class="section-body">
 
-        <div class="app-list" id="app-list">
+
+        <div
+          class="app-list"
+          id="app-list">
 
 
-          <!-- نورة -->
+          <!-- =================================================
+               APPLICATION 1
+               نورة
+          ================================================== -->
 
           <article
             class="app-row type-opportunity"
@@ -632,6 +734,7 @@
             data-student-id="student1"
             data-type="opportunity"
             data-status="pending">
+
 
             <div class="app-info">
 
@@ -670,13 +773,7 @@
                 <button
                   type="button"
                   class="btn-action btn-details">
-                  عرض التفاصيل
-                </button>
-
-                <button
-                  type="button"
-                  class="btn-action btn-profile">
-                  عرض ملف الطالب
+                  عرض الطلب
                 </button>
 
                 <button
@@ -698,7 +795,10 @@
           </article>
 
 
-          <!-- سارة -->
+          <!-- =================================================
+               APPLICATION 2
+               سارة
+          ================================================== -->
 
           <article
             class="app-row type-membership"
@@ -706,6 +806,7 @@
             data-student-id="student2"
             data-type="membership"
             data-status="pending">
+
 
             <div class="app-info">
 
@@ -740,13 +841,7 @@
                 <button
                   type="button"
                   class="btn-action btn-details">
-                  عرض التفاصيل
-                </button>
-
-                <button
-                  type="button"
-                  class="btn-action btn-profile">
-                  عرض ملف الطالب
+                  عرض الطلب
                 </button>
 
                 <button
@@ -768,9 +863,16 @@
           </article>
 
 
-          <p class="empty" id="empty-message">
+          <!-- =================================================
+               EMPTY STATE
+          ================================================== -->
+
+          <p
+            class="empty"
+            id="empty-message">
             لا توجد طلبات قيد المراجعة حالياً
           </p>
+
 
         </div>
 
@@ -779,74 +881,47 @@
     </section>
 
 
-    <!-- =========================
-         APPLICATION DETAILS MODAL
-    ========================== -->
+    <!-- =======================================================
+         APPLICATION + STUDENT PROFILE MODAL
+
+         Important:
+         This is NOT the student's profile.html page.
+         The club only sees permitted student information here.
+    ======================================================== -->
 
     <div
       class="modal-overlay"
-      id="details-modal"
+      id="application-modal"
       role="dialog"
-      aria-modal="true">
+      aria-modal="true"
+      aria-labelledby="modal-title">
+
 
       <div class="modal-box">
 
-        <h3>تفاصيل الطلب</h3>
 
-        <div id="details-content"></div>
+        <h3
+          class="modal-title"
+          id="modal-title">
+          تفاصيل الطلب
+        </h3>
 
-        <div class="modal-buttons">
 
-          <button
-            type="button"
-            class="btn-action btn-profile"
-            id="details-profile-button">
-            عرض ملف الطالب
-          </button>
-
-          <button
-            type="button"
-            class="btn-action btn-details"
-            id="close-details">
-            إغلاق
-          </button>
-
+        <div id="modal-content">
         </div>
 
-      </div>
-
-    </div>
-
-
-    <!-- =========================
-         APPLICANT PROFILE MODAL
-
-         هذا ليس profile.html الخاصة بالطالب.
-         هذه نافذة مستقلة لمسؤول النادي فقط.
-    ========================== -->
-
-    <div
-      class="modal-overlay"
-      id="profile-modal"
-      role="dialog"
-      aria-modal="true">
-
-      <div class="modal-box">
-
-        <h3>ملف الطالب</h3>
-
-        <div id="profile-content"></div>
 
         <div class="modal-buttons">
 
           <button
             type="button"
             class="btn-action btn-details"
-            id="close-profile">
+            id="close-modal">
             إغلاق
           </button>
 
         </div>
+
 
       </div>
 
@@ -856,10 +931,24 @@
   </main>
 
 
-  <footer class="footer" id="site-footer"></footer>
+  <!-- =========================================================
+       SHARED FOOTER
+  ========================================================= -->
+
+  <footer
+    class="footer"
+    id="site-footer">
+  </footer>
 
 
-  <script src="layout.js" defer></script>
+  <!-- =========================================================
+       SHARED LAYOUT
+  ========================================================= -->
+
+  <script
+    src="layout.js"
+    defer>
+  </script>
 
 
   <script>
@@ -867,20 +956,32 @@
     /* =========================================================
        DEMO STUDENT DATA
 
-       لاحقاً هذه البيانات تأتي من قاعدة البيانات.
-       نفس Student Record الذي تعتمد عليه صفحة الطالب.
-       مسؤول النادي يحصل فقط على البيانات المسموح بعرضها.
+       حالياً بيانات تجريبية Front-end.
+
+       لاحقاً مع قاعدة البيانات:
+       صفحة الطالب وطلبات النادي تعتمد على نفس Student Record،
+       لكن مسؤول النادي يحصل فقط على المعلومات المسموح بعرضها.
     ========================================================= */
 
     var students = {
 
+
+      /* =========================
+         نورة
+      ========================= */
+
       student1: {
+
         name: "نورة القحطاني",
+
         major: "تقنية المعلومات",
+
         email: "noura@ksu.edu.sa",
+
         volunteerHours: 24,
 
         achievements: [
+
           {
             activity: "معسكر التصميم",
             club: "نادي التقنية",
@@ -892,23 +993,36 @@
             club: "نادي التقنية",
             date: "12 سبتمبر 2026"
           }
+
         ]
+
       },
 
 
+      /* =========================
+         سارة
+      ========================= */
+
       student2: {
+
         name: "سارة العتيبي",
+
         major: "نظم المعلومات",
+
         email: "sara@ksu.edu.sa",
+
         volunteerHours: 12,
 
         achievements: [
+
           {
             activity: "تنظيم اللقاء التعريفي",
             club: "نادي نظم المعلومات",
             date: "3 أكتوبر 2026"
           }
+
         ]
+
       }
 
     };
@@ -919,48 +1033,53 @@
     ========================================================= */
 
     var filterButtons =
-      document.querySelectorAll(".filter-btn");
+      document.querySelectorAll(
+        ".apps-page .filter-btn"
+      );
+
 
     var appList =
-      document.getElementById("app-list");
+      document.getElementById(
+        "app-list"
+      );
+
 
     var emptyMessage =
-      document.getElementById("empty-message");
+      document.getElementById(
+        "empty-message"
+      );
+
 
     var actionMessage =
-      document.getElementById("action-message");
+      document.getElementById(
+        "action-message"
+      );
 
 
-    var detailsModal =
-      document.getElementById("details-modal");
-
-    var detailsContent =
-      document.getElementById("details-content");
-
-    var closeDetails =
-      document.getElementById("close-details");
-
-    var detailsProfileButton =
-      document.getElementById("details-profile-button");
+    var applicationModal =
+      document.getElementById(
+        "application-modal"
+      );
 
 
-    var profileModal =
-      document.getElementById("profile-modal");
-
-    var profileContent =
-      document.getElementById("profile-content");
-
-    var closeProfile =
-      document.getElementById("close-profile");
+    var modalContent =
+      document.getElementById(
+        "modal-content"
+      );
 
 
-    var currentFilter = "all";
+    var closeModal =
+      document.getElementById(
+        "close-modal"
+      );
 
-    var selectedStudentId = "";
+
+    var currentFilter =
+      "all";
 
 
     /* =========================================================
-       FILTER
+       EMPTY MESSAGES
     ========================================================= */
 
     var emptyTexts = {
@@ -977,34 +1096,46 @@
     };
 
 
+    /* =========================================================
+       FILTER APPLICATIONS
+    ========================================================= */
+
     function applyFilter(filter) {
 
-      var rows =
-        document.querySelectorAll(".app-row");
 
-      var visible = 0;
+      var rows =
+        document.querySelectorAll(
+          ".apps-page .app-row"
+        );
+
+
+      var visible =
+        0;
 
 
       rows.forEach(function (row) {
+
 
         var typeMatches =
           filter === "all" ||
           row.dataset.type === filter;
 
 
-        var pending =
+        var isPending =
           row.dataset.status === "pending";
 
 
-        var show =
-          typeMatches && pending;
+        var shouldShow =
+          typeMatches && isPending;
 
 
         row.style.display =
-          show ? "" : "none";
+          shouldShow
+            ? ""
+            : "none";
 
 
-        if (show) {
+        if (shouldShow) {
           visible++;
         }
 
@@ -1016,30 +1147,55 @@
 
 
       emptyMessage.style.display =
-        visible === 0 ? "" : "none";
+        visible === 0
+          ? ""
+          : "none";
 
     }
 
 
-    filterButtons.forEach(function (button) {
+    /* =========================================================
+       FILTER BUTTONS
+    ========================================================= */
 
-      button.addEventListener("click", function () {
-
-        filterButtons.forEach(function (btn) {
-          btn.classList.remove("active");
-        });
+    filterButtons.forEach(
+      function (button) {
 
 
-        button.classList.add("active");
+        button.addEventListener(
+          "click",
+          function () {
 
-        currentFilter =
-          button.dataset.filter;
 
-        applyFilter(currentFilter);
+            filterButtons.forEach(
+              function (btn) {
 
-      });
+                btn.classList.remove(
+                  "active"
+                );
 
-    });
+              }
+            );
+
+
+            button.classList.add(
+              "active"
+            );
+
+
+            currentFilter =
+              button.dataset.filter;
+
+
+            applyFilter(
+              currentFilter
+            );
+
+          }
+        );
+
+      }
+    );
 
 
     /* =========================================================
@@ -1048,16 +1204,26 @@
 
     function showMessage(message) {
 
-      actionMessage.textContent = message;
 
-      actionMessage.classList.add("show");
+      actionMessage.textContent =
+        message;
 
 
-      setTimeout(function () {
+      actionMessage.classList.add(
+        "show"
+      );
 
-        actionMessage.classList.remove("show");
 
-      }, 2500);
+      setTimeout(
+        function () {
+
+          actionMessage.classList.remove(
+            "show"
+          );
+
+        },
+        2500
+      );
 
     }
 
@@ -1066,373 +1232,460 @@
        APPLICATION ACTIONS
     ========================================================= */
 
-    appList.addEventListener("click", function (event) {
-
-      var row =
-        event.target.closest(".app-row");
-
-
-      if (!row) {
-        return;
-      }
-
-
-      /* -------------------------
-         DETAILS
-      ------------------------- */
-
-      if (
-        event.target.classList.contains("btn-details")
-      ) {
-
-        selectedStudentId =
-          row.dataset.studentId;
-
-
-        detailsContent.replaceChildren();
-
-
-        var name =
-          row.querySelector(".app-student").textContent;
-
-
-        var type =
-          row.dataset.type === "membership"
-            ? "طلب انضمام للنادي"
-            : "طلب تقديم على فرصة";
-
-
-        addDetail(
-          detailsContent,
-          "الطالب: " + name
-        );
-
-
-        addDetail(
-          detailsContent,
-          "نوع الطلب: " + type
-        );
-
-
-        row
-          .querySelectorAll(".app-meta")
-          .forEach(function (item) {
-
-            addDetail(
-              detailsContent,
-              item.textContent
-            );
-
-          });
-
-
-        detailsModal.style.display = "flex";
-
-        return;
-      }
-
-
-      /* -------------------------
-         PROFILE
-      ------------------------- */
-
-      if (
-        event.target.classList.contains("btn-profile")
-      ) {
-
-        selectedStudentId =
-          row.dataset.studentId;
-
-
-        openStudentProfile(
-          selectedStudentId
-        );
-
-        return;
-      }
-
-
-      /* -------------------------
-         ACCEPT
-      ------------------------- */
-
-      if (
-        event.target.classList.contains("btn-accept")
-      ) {
-
-        row.dataset.status = "accepted";
-
-        showMessage(
-          "تم قبول الطلب بنجاح."
-        );
-
-        applyFilter(currentFilter);
-
-        return;
-      }
-
-
-      /* -------------------------
-         REJECT
-      ------------------------- */
-
-      if (
-        event.target.classList.contains("btn-reject")
-      ) {
-
-        row.dataset.status = "rejected";
-
-        showMessage(
-          "تم رفض الطلب بنجاح."
-        );
-
-        applyFilter(currentFilter);
-
-      }
-
-    });
-
-
-    /* =========================================================
-       DETAILS PROFILE BUTTON
-    ========================================================= */
-
-    detailsProfileButton.addEventListener(
+    appList.addEventListener(
       "click",
-      function () {
+      function (event) {
 
-        if (!selectedStudentId) {
+
+        var row =
+          event.target.closest(
+            ".app-row"
+          );
+
+
+        if (!row) {
           return;
         }
 
 
-        detailsModal.style.display =
-          "none";
+        /* =====================================================
+           VIEW APPLICATION
+           Details + Student Profile in ONE view
+        ====================================================== */
+
+        if (
+          event.target.classList.contains(
+            "btn-details"
+          )
+        ) {
 
 
-        openStudentProfile(
-          selectedStudentId
-        );
+          var studentId =
+            row.dataset.studentId;
+
+
+          var student =
+            students[studentId];
+
+
+          if (!student) {
+
+            alert(
+              "تعذر العثور على بيانات الطالب."
+            );
+
+            return;
+
+          }
+
+
+          /* Clear previous data */
+
+          modalContent.replaceChildren();
+
+
+          /* =================================================
+             APPLICATION DETAILS
+          ================================================== */
+
+          var applicationSection =
+            createSection(
+              "تفاصيل الطلب"
+            );
+
+
+          var applicationBox =
+            document.createElement(
+              "div"
+            );
+
+
+          applicationBox.className =
+            "details-box";
+
+
+          var applicationType =
+            row.dataset.type ===
+            "membership"
+
+              ? "طلب انضمام للنادي"
+
+              : "طلب تقديم على فرصة";
+
+
+          addParagraph(
+            applicationBox,
+            "نوع الطلب: " +
+            applicationType
+          );
+
+
+          /*
+            Copy the application information
+            shown in the card.
+          */
+
+          row
+            .querySelectorAll(
+              ".app-meta"
+            )
+            .forEach(
+              function (item) {
+
+                addParagraph(
+                  applicationBox,
+                  item.textContent
+                );
+
+              }
+            );
+
+
+          applicationSection.appendChild(
+            applicationBox
+          );
+
+
+          modalContent.appendChild(
+            applicationSection
+          );
+
+
+          /* =================================================
+             STUDENT PROFILE
+          ================================================== */
+
+          var profileSection =
+            createSection(
+              "ملف الطالب"
+            );
+
+
+          var studentHeader =
+            document.createElement(
+              "div"
+            );
+
+
+          studentHeader.className =
+            "student-profile-head";
+
+
+          var studentName =
+            document.createElement(
+              "h4"
+            );
+
+
+          studentName.className =
+            "student-name";
+
+
+          studentName.textContent =
+            student.name;
+
+
+          var studentMajor =
+            document.createElement(
+              "p"
+            );
+
+
+          studentMajor.className =
+            "student-major";
+
+
+          studentMajor.textContent =
+            student.major;
+
+
+          studentHeader.appendChild(
+            studentName
+          );
+
+
+          studentHeader.appendChild(
+            studentMajor
+          );
+
+
+          profileSection.appendChild(
+            studentHeader
+          );
+
+
+          /* Student information */
+
+          var profileBox =
+            document.createElement(
+              "div"
+            );
+
+
+          profileBox.className =
+            "details-box";
+
+
+          addParagraph(
+            profileBox,
+            "البريد الإلكتروني: " +
+            student.email
+          );
+
+
+          addParagraph(
+            profileBox,
+            "الساعات التطوعية: " +
+            student.volunteerHours +
+            " ساعة"
+          );
+
+
+          profileSection.appendChild(
+            profileBox
+          );
+
+
+          modalContent.appendChild(
+            profileSection
+          );
+
+
+          /* =================================================
+             ACHIEVEMENTS
+          ================================================== */
+
+          var achievementSection =
+            createSection(
+              "الإنجازات الموثقة"
+            );
+
+
+          if (
+            student.achievements.length === 0
+          ) {
+
+
+            var noAchievements =
+              document.createElement(
+                "p"
+              );
+
+
+            noAchievements.className =
+              "no-achievements";
+
+
+            noAchievements.textContent =
+              "لا توجد إنجازات موثقة حتى الآن.";
+
+
+            achievementSection.appendChild(
+              noAchievements
+            );
+
+
+          } else {
+
+
+            student.achievements.forEach(
+              function (achievement) {
+
+
+                var achievementCard =
+                  document.createElement(
+                    "div"
+                  );
+
+
+                achievementCard.className =
+                  "achievement-card";
+
+
+                addParagraph(
+                  achievementCard,
+                  "النشاط: " +
+                  achievement.activity
+                );
+
+
+                addParagraph(
+                  achievementCard,
+                  "النادي: " +
+                  achievement.club
+                );
+
+
+                addParagraph(
+                  achievementCard,
+                  "تاريخ المشاركة: " +
+                  achievement.date
+                );
+
+
+                achievementSection.appendChild(
+                  achievementCard
+                );
+
+              }
+            );
+
+          }
+
+
+          modalContent.appendChild(
+            achievementSection
+          );
+
+
+          /* Open modal */
+
+          applicationModal.style.display =
+            "flex";
+
+
+          closeModal.focus();
+
+
+          return;
+
+        }
+
+
+        /* =====================================================
+           ACCEPT
+        ====================================================== */
+
+        if (
+          event.target.classList.contains(
+            "btn-accept"
+          )
+        ) {
+
+
+          row.dataset.status =
+            "accepted";
+
+
+          /*
+            Backend later:
+            send row.dataset.id
+            with status = accepted
+          */
+
+
+          showMessage(
+            "تم قبول الطلب بنجاح."
+          );
+
+
+          applyFilter(
+            currentFilter
+          );
+
+
+          return;
+
+        }
+
+
+        /* =====================================================
+           REJECT
+        ====================================================== */
+
+        if (
+          event.target.classList.contains(
+            "btn-reject"
+          )
+        ) {
+
+
+          row.dataset.status =
+            "rejected";
+
+
+          /*
+            Backend later:
+            send row.dataset.id
+            with status = rejected
+          */
+
+
+          showMessage(
+            "تم رفض الطلب بنجاح."
+          );
+
+
+          applyFilter(
+            currentFilter
+          );
+
+        }
 
       }
     );
 
 
     /* =========================================================
-       OPEN APPLICANT PROFILE
+       CREATE SECTION
     ========================================================= */
 
-    function openStudentProfile(studentId) {
-
-      var student =
-        students[studentId];
+    function createSection(title) {
 
 
-      if (!student) {
-
-        alert(
-          "تعذر العثور على بيانات الطالب."
+      var section =
+        document.createElement(
+          "div"
         );
 
-        return;
-      }
+
+      section.className =
+        "details-section";
 
 
-      profileContent.replaceChildren();
-
-
-      /* Profile header */
-
-      var header =
-        document.createElement("div");
-
-      header.className =
-        "profile-header";
-
-
-      var name =
-        document.createElement("h4");
-
-      name.className =
-        "profile-name";
-
-      name.textContent =
-        student.name;
-
-
-      var major =
-        document.createElement("p");
-
-      major.className =
-        "profile-major";
-
-      major.textContent =
-        student.major;
-
-
-      header.appendChild(name);
-
-      header.appendChild(major);
-
-      profileContent.appendChild(header);
-
-
-      /* Basic information */
-
-      var informationSection =
-        document.createElement("div");
-
-      informationSection.className =
-        "profile-section";
-
-
-      var informationTitle =
-        document.createElement("h4");
-
-      informationTitle.textContent =
-        "المعلومات الأساسية";
-
-
-      var informationBox =
-        document.createElement("div");
-
-      informationBox.className =
-        "profile-info";
-
-
-      addDetail(
-        informationBox,
-        "البريد الإلكتروني: " +
-        student.email
-      );
-
-
-      addDetail(
-        informationBox,
-        "الساعات التطوعية: " +
-        student.volunteerHours +
-        " ساعة"
-      );
-
-
-      informationSection.appendChild(
-        informationTitle
-      );
-
-      informationSection.appendChild(
-        informationBox
-      );
-
-
-      profileContent.appendChild(
-        informationSection
-      );
-
-
-      /* Achievements */
-
-      var achievementSection =
-        document.createElement("div");
-
-      achievementSection.className =
-        "profile-section";
-
-
-      var achievementTitle =
-        document.createElement("h4");
-
-      achievementTitle.textContent =
-        "الإنجازات الموثقة";
-
-
-      achievementSection.appendChild(
-        achievementTitle
-      );
-
-
-      if (
-        student.achievements.length === 0
-      ) {
-
-        var empty =
-          document.createElement("p");
-
-        empty.className =
-          "no-achievements";
-
-        empty.textContent =
-          "لا توجد إنجازات موثقة حتى الآن.";
-
-
-        achievementSection.appendChild(
-          empty
+      var heading =
+        document.createElement(
+          "h4"
         );
 
-      } else {
 
-        student.achievements.forEach(
-          function (achievement) {
-
-            var card =
-              document.createElement("div");
-
-            card.className =
-              "achievement-card";
+      heading.className =
+        "details-section-title";
 
 
-            addDetail(
-              card,
-              "النشاط: " +
-              achievement.activity
-            );
+      heading.textContent =
+        title;
 
 
-            addDetail(
-              card,
-              "النادي: " +
-              achievement.club
-            );
-
-
-            addDetail(
-              card,
-              "تاريخ المشاركة: " +
-              achievement.date
-            );
-
-
-            achievementSection.appendChild(
-              card
-            );
-
-          }
-        );
-
-      }
-
-
-      profileContent.appendChild(
-        achievementSection
+      section.appendChild(
+        heading
       );
 
 
-      profileModal.style.display =
-        "flex";
+      return section;
 
     }
 
 
     /* =========================================================
-       HELPER
+       ADD PARAGRAPH
     ========================================================= */
 
-    function addDetail(container, text) {
+    function addParagraph(
+      container,
+      text
+    ) {
+
 
       var paragraph =
-        document.createElement("p");
+        document.createElement(
+          "p"
+        );
+
 
       paragraph.textContent =
         text;
+
 
       container.appendChild(
         paragraph
@@ -1442,41 +1695,36 @@
 
 
     /* =========================================================
-       CLOSE MODALS
+       CLOSE MODAL
     ========================================================= */
 
-    closeDetails.addEventListener(
+    function hideModal() {
+
+      applicationModal.style.display =
+        "none";
+
+    }
+
+
+    closeModal.addEventListener(
       "click",
-      function () {
-
-        detailsModal.style.display =
-          "none";
-
-      }
+      hideModal
     );
 
 
-    closeProfile.addEventListener(
-      "click",
-      function () {
+    /* Close when clicking outside */
 
-        profileModal.style.display =
-          "none";
-
-      }
-    );
-
-
-    detailsModal.addEventListener(
+    applicationModal.addEventListener(
       "click",
       function (event) {
 
+
         if (
-          event.target === detailsModal
+          event.target ===
+          applicationModal
         ) {
 
-          detailsModal.style.display =
-            "none";
+          hideModal();
 
         }
 
@@ -1484,34 +1732,18 @@
     );
 
 
-    profileModal.addEventListener(
-      "click",
-      function (event) {
-
-        if (
-          event.target === profileModal
-        ) {
-
-          profileModal.style.display =
-            "none";
-
-        }
-
-      }
-    );
-
+    /* Close with ESC */
 
     document.addEventListener(
       "keydown",
       function (event) {
 
-        if (event.key === "Escape") {
 
-          detailsModal.style.display =
-            "none";
+        if (
+          event.key === "Escape"
+        ) {
 
-          profileModal.style.display =
-            "none";
+          hideModal();
 
         }
 
@@ -1520,13 +1752,13 @@
 
 
     /* =========================================================
-       INITIAL
+       INITIAL VIEW
     ========================================================= */
 
     applyFilter("all");
 
   </script>
 
-</body>
 
+</body>
 </html>
