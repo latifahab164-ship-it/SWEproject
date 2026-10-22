@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>مِراس - تسجيل الدخول</title>
+
   <link rel="stylesheet" href="Style.css">
 
   <style>
+
     /* ==========================================================
        ألوان مِراس
-       إذا كان ملف Style.css مربوطًا بالصفحة، تُستخدم ألوانه تلقائيًا،
-       وإلا تُستخدم القيم الاحتياطية الموجودة بعد الفاصلة.
-       ========================================================== */
+    ========================================================== */
+
     .auth-page {
       --au-teal-dark: #2E5560;
       --au-ink: var(--ink, #2E5560);
@@ -27,70 +30,118 @@
       --au-error: #A33A3A;
     }
 
-    * { box-sizing: border-box; }
+    * {
+      box-sizing: border-box;
+    }
 
     body {
       margin: 0;
-      font-family: "Tajawal", "Segoe UI", Tahoma, Arial, sans-serif;
+      font-family: "Thmanyah Sans", "Segoe UI", Tahoma, Arial, sans-serif;
       background-color: var(--au-beige, #F4EEE2);
       color: #1F3A42;
     }
 
-    /* ---------- الصفحة ---------- */
+
+    /* ==========================================================
+       الصفحة
+    ========================================================== */
+
     .auth-page {
       width: 100%;
       max-width: 520px;
+
       margin: 0 auto;
       padding: 40px 20px 60px;
     }
 
+    .auth-page .logo {
+      display: block;
+
+      width: 150px;
+      max-width: 100%;
+      height: auto;
+
+      margin: 0 auto 20px;
+    }
+
     .auth-page .page-title {
       margin: 0 0 6px;
+
       text-align: center;
+
       font-size: 30px;
+      font-weight: 500;
+
       color: var(--au-ink-dark);
     }
 
     .auth-page .page-subtitle {
       margin: 0 0 26px;
+
       text-align: center;
+
       font-size: 15px;
+      font-weight: 300;
+
       color: var(--au-teal-dark);
     }
 
-    /* ---------- البطاقة ---------- */
+
+    /* ==========================================================
+       البطاقة
+    ========================================================== */
+
     .auth-page .card {
       background-color: #fff;
+
       border-radius: 18px;
       border: 1px solid var(--au-line);
       border-top: 5px solid var(--au-teal-light);
+
       box-shadow: 0 6px 20px rgba(46, 85, 96, 0.10);
+
       padding: 24px;
     }
 
-    /* ---------- التبويبات ---------- */
+
+    /* ==========================================================
+       تسجيل الدخول / إنشاء حساب
+    ========================================================== */
+
     .auth-page .tabs {
       display: flex;
       gap: 6px;
+
       margin-bottom: 22px;
       padding: 5px;
+
       border-radius: 999px;
       border: 1px solid var(--au-line);
+
       background-color: var(--au-header-bg);
     }
 
     .auth-page .tab {
       flex: 1;
+
       padding: 9px 12px;
+
       border: none;
       border-radius: 999px;
+
       background-color: transparent;
+
       font-family: inherit;
       font-size: 15px;
       font-weight: 500;
+
       color: var(--au-teal-dark);
+
       cursor: pointer;
-      transition: background-color .2s, color .2s;
+
+      transition:
+        background-color .2s,
+        color .2s;
     }
 
     .auth-page .tab:hover {
@@ -102,7 +153,11 @@
       color: #fff;
     }
 
-    /* ---------- اللوحات (تسجيل الدخول / إنشاء حساب / إعادة تعيين) ---------- */
+
+    /* ==========================================================
+       اللوحات
+    ========================================================== */
+
     .auth-page .panel {
       display: none;
     }
@@ -113,47 +168,137 @@
     }
 
     @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(8px); }
-      to   { opacity: 1; transform: translateY(0); }
+
+      from {
+        opacity: 0;
+        transform: translateY(8px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
     }
 
     .auth-page .panel-title {
       margin: 0 0 6px;
+
       font-size: 21px;
+      font-weight: 500;
+
       color: var(--au-ink-dark);
     }
 
     .auth-page .panel-desc {
       margin: 0 0 18px;
+
       font-size: 14px;
+      font-weight: 300;
       line-height: 1.9;
+
       color: var(--au-teal-dark);
     }
 
-    /* ---------- الحقول ---------- */
+
+    /* ==========================================================
+       اختيار نوع المستخدم
+    ========================================================== */
+
+    .auth-page .user-type-title {
+      display: block;
+
+      margin: 0 0 8px;
+
+      font-size: 14px;
+      font-weight: 500;
+
+      color: var(--au-teal-dark);
+    }
+
+    .auth-page .user-type {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 7px;
+
+      margin-bottom: 20px;
+      padding: 5px;
+
+      border: 1px solid var(--au-line);
+      border-radius: 14px;
+
+      background-color: var(--au-header-bg);
+    }
+
+    .auth-page .user-type-btn {
+      padding: 9px 10px;
+
+      border: none;
+      border-radius: 10px;
+
+      background-color: transparent;
+
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+
+      color: var(--au-teal-dark);
+
+      cursor: pointer;
+
+      transition:
+        background-color .2s,
+        color .2s;
+    }
+
+    .auth-page .user-type-btn:hover {
+      background-color: var(--au-teal-light);
+    }
+
+    .auth-page .user-type-btn.active {
+      background-color: var(--au-ink);
+      color: #fff;
+    }
+
+
+    /* ==========================================================
+       الحقول
+    ========================================================== */
+
     .auth-page .field {
       margin-bottom: 16px;
     }
 
     .auth-page .label {
       display: block;
+
       margin: 0 0 6px;
+
       font-size: 14px;
       font-weight: 500;
+
       color: var(--au-teal-dark);
     }
 
     .auth-page .input {
       display: block;
+
       width: 100%;
+
       padding: 11px 14px;
+
       border-radius: 12px;
       border: 1px solid var(--au-line);
       border-right: 5px solid var(--au-teal-light);
+
       background-color: var(--au-header-bg);
+
       font-family: inherit;
       font-size: 16px;
+      font-weight: 400;
+
       color: var(--au-ink-dark);
+
       transition: border-color .2s;
     }
 
@@ -162,7 +307,6 @@
       border-color: var(--au-teal-dark);
     }
 
-    /* البريد والرقم الجامعي يُكتبان من اليسار لليمين */
     .auth-page .input.ltr {
       direction: ltr;
       text-align: right;
@@ -174,8 +318,11 @@
 
     .auth-page .field-error {
       display: none;
+
       margin: 6px 0 0;
+
       font-size: 13px;
+
       color: var(--au-error);
     }
 
@@ -183,7 +330,11 @@
       display: block;
     }
 
-    /* حقل كلمة المرور مع زر الإظهار */
+
+    /* ==========================================================
+       كلمة المرور
+    ========================================================== */
+
     .auth-page .password-wrap {
       position: relative;
     }
@@ -194,17 +345,25 @@
 
     .auth-page .toggle-pass {
       position: absolute;
+
       top: 50%;
       left: 10px;
+
       transform: translateY(-50%);
+
       padding: 4px 10px;
+
       border: none;
       border-radius: 999px;
+
       background-color: transparent;
+
       font-family: inherit;
       font-size: 13px;
       font-weight: 500;
+
       color: var(--au-teal-dark);
+
       cursor: pointer;
     }
 
@@ -212,39 +371,64 @@
       background-color: var(--au-teal-light);
     }
 
-    /* ---------- الأزرار ---------- */
+
+    /* ==========================================================
+       الأزرار
+    ========================================================== */
+
     .auth-page .btn {
       display: block;
+
       width: 100%;
+
       padding: 11px 22px;
+
       border-radius: 999px;
       border: 2px solid var(--au-ink);
+
       background-color: var(--au-ink);
       color: #fff;
+
       font-family: inherit;
       font-size: 16px;
       font-weight: 500;
+
       text-align: center;
+
       cursor: pointer;
-      transition: background-color .2s, color .2s, border-color .2s;
+
+      transition:
+        background-color .2s,
+        color .2s,
+        border-color .2s;
     }
 
     .auth-page .btn:hover {
       border-color: var(--au-gold);
       background-color: var(--au-gold);
+
       color: var(--au-ink-dark);
     }
 
-    /* ---------- الروابط ---------- */
+
+    /* ==========================================================
+       الروابط
+    ========================================================== */
+
     .auth-page .link-btn {
       padding: 0;
+
       border: none;
       background: none;
+
       font-family: inherit;
       font-size: 14px;
       font-weight: 500;
+
       color: var(--au-teal-dark);
+
       text-decoration: underline;
+
       cursor: pointer;
     }
 
@@ -258,20 +442,31 @@
 
     .auth-page .switch-row {
       margin: 18px 0 0;
+
       text-align: center;
+
       font-size: 14px;
+
       color: var(--au-teal-dark);
     }
 
-    /* ---------- الرسائل ---------- */
+
+    /* ==========================================================
+       الرسائل
+    ========================================================== */
+
     .auth-page .message {
       display: none;
+
       margin: 0 0 18px;
       padding: 12px 16px;
+
       border-radius: 14px;
+
       font-size: 14px;
       font-weight: 500;
       line-height: 1.8;
+
       color: var(--au-ink-dark);
     }
 
@@ -294,8 +489,13 @@
       border: 1px dashed var(--au-teal-dark);
     }
 
-    /* ---------- الشاشات الصغيرة ---------- */
+
+    /* ==========================================================
+       Responsive
+    ========================================================== */
+
     @media (max-width: 600px) {
+
       .auth-page {
         padding: 26px 14px 44px;
       }
@@ -307,390 +507,1431 @@
       .auth-page .card {
         padding: 18px;
       }
+
     }
+
   </style>
 </head>
 
+
 <body>
 
-  <!-- سيضيف صاحب المشروع الهيدر لاحقًا -->
-  <header></header>
 
   <main class="page auth-page" id="auth-page">
 
-    <img src="logoMeras.png" alt="شعار مِراس" style="display: block; width: 150px; max-width: 100%; height: auto; margin: 0 auto 20px;">
+    <img
+      src="logoMeras.png"
+      alt="شعار مِراس"
+      class="logo"
+    >
 
-    <h1 class="page-title">مرحبًا بك في مِراس</h1>
-    <p class="page-subtitle">منصة طلاب ونوادي جامعة الملك سعود</p>
+
+    <h1 class="page-title">
+      مرحبًا بك في مِراس
+    </h1>
+
+    <p class="page-subtitle">
+      منصة طلاب وأندية جامعة الملك سعود
+    </p>
+
 
     <div class="card">
 
-      <!-- ===== التبويبات (تختفي في واجهة إعادة التعيين) ===== -->
-      <div class="tabs" id="auth-tabs" role="tablist">
-        <button type="button" class="tab active" id="tab-login" role="tab" aria-selected="true">تسجيل الدخول</button>
-        <button type="button" class="tab" id="tab-register" role="tab" aria-selected="false">إنشاء حساب جديد</button>
+
+      <!-- ======================================================
+           LOGIN / REGISTER TABS
+      ======================================================= -->
+
+      <div
+        class="tabs"
+        id="auth-tabs"
+        role="tablist"
+      >
+
+        <button
+          type="button"
+          class="tab active"
+          id="tab-login"
+          role="tab"
+          aria-selected="true"
+        >
+          تسجيل الدخول
+        </button>
+
+        <button
+          type="button"
+          class="tab"
+          id="tab-register"
+          role="tab"
+          aria-selected="false"
+        >
+          إنشاء حساب جديد
+        </button>
+
       </div>
 
-      <!-- ==========================================================
-           أ. تسجيل الدخول (للطلاب ورؤساء الأندية)
-           ========================================================== -->
-      <section class="panel active" id="panel-login">
-        <h2 class="panel-title">تسجيل الدخول</h2>
-        <p class="panel-desc">سجّل دخولك باستخدام البريد الإلكتروني وكلمة المرور.</p>
 
-        <p class="message" id="login-message" role="alert"></p>
+      <!-- ======================================================
+           LOGIN
+      ======================================================= -->
 
-        <!-- لاحقًا: action="login.php" method="post" -->
-        <form id="login-form" name="login-form" novalidate>
+      <section
+        class="panel active"
+        id="panel-login"
+      >
+
+        <h2 class="panel-title">
+          تسجيل الدخول
+        </h2>
+
+        <p
+          class="panel-desc"
+          id="login-description"
+        >
+          اختر نوع حسابك ثم أدخل بيانات تسجيل الدخول.
+        </p>
+
+
+        <p
+          class="message"
+          id="login-message"
+          role="alert"
+        ></p>
+
+
+        <!-- نوع الحساب -->
+
+        <span class="user-type-title">
+          نوع الحساب
+        </span>
+
+        <div class="user-type">
+
+          <button
+            type="button"
+            class="user-type-btn active"
+            data-user-type="student"
+          >
+            طالب
+          </button>
+
+          <button
+            type="button"
+            class="user-type-btn"
+            data-user-type="club"
+          >
+            مسؤول نادي
+          </button>
+
+        </div>
+
+
+        <form
+          id="login-form"
+          name="login-form"
+          novalidate
+        >
+
+
+          <!-- حقل الطالب / النادي -->
 
           <div class="field">
-            <label class="label" for="login-email">البريد الإلكتروني</label>
-            <input class="input ltr" type="email" id="login-email" name="email" autocomplete="email" placeholder="name@example.com">
-            <p class="field-error" id="login-email-error"></p>
+
+            <label
+              class="label"
+              for="login-identifier"
+              id="login-identifier-label"
+            >
+              الرقم الجامعي
+            </label>
+
+            <input
+              class="input ltr"
+              type="text"
+              id="login-identifier"
+              name="identifier"
+              inputmode="numeric"
+              autocomplete="username"
+              placeholder="4XXXXXXXX"
+            >
+
+            <p
+              class="field-error"
+              id="login-identifier-error"
+            ></p>
+
           </div>
 
+
+          <!-- كلمة المرور -->
+
           <div class="field">
-            <label class="label" for="login-password">كلمة المرور</label>
+
+            <label
+              class="label"
+              for="login-password"
+            >
+              كلمة المرور
+            </label>
+
             <div class="password-wrap">
-              <input class="input ltr" type="password" id="login-password" name="password" autocomplete="current-password">
-              <button type="button" class="toggle-pass" data-target="login-password">إظهار</button>
+
+              <input
+                class="input ltr"
+                type="password"
+                id="login-password"
+                name="password"
+                autocomplete="current-password"
+              >
+
+              <button
+                type="button"
+                class="toggle-pass"
+                data-target="login-password"
+              >
+                إظهار
+              </button>
+
             </div>
-            <p class="field-error" id="login-password-error"></p>
+
+            <p
+              class="field-error"
+              id="login-password-error"
+            ></p>
+
           </div>
+
 
           <p class="forgot-row">
-            <button type="button" class="link-btn" id="go-reset">نسيت كلمة المرور؟</button>
+
+            <button
+              type="button"
+              class="link-btn"
+              id="go-reset"
+            >
+              نسيت كلمة المرور؟
+            </button>
+
           </p>
 
-          <button type="submit" class="btn">تسجيل الدخول</button>
+
+          <button
+            type="submit"
+            class="btn"
+          >
+            تسجيل الدخول
+          </button>
+
         </form>
 
+
         <p class="switch-row">
-          ليس لديك حساب؟
-          <button type="button" class="link-btn" id="go-register">إنشاء حساب جديد</button>
+
+          طالب وليس لديك حساب؟
+
+          <button
+            type="button"
+            class="link-btn"
+            id="go-register"
+          >
+            إنشاء حساب جديد
+          </button>
+
         </p>
+
       </section>
 
 
-      <section class="panel" id="panel-register">
-        <h2 class="panel-title">إنشاء حساب جديد</h2>
-        <p class="panel-desc">التسجيل متاح لطلاب جامعة الملك سعود فقط.</p>
+      <!-- ======================================================
+           STUDENT REGISTRATION
+      ======================================================= -->
 
-        <p class="message" id="register-message" role="alert"></p>
+      <section
+        class="panel"
+        id="panel-register"
+      >
 
-      
-        <form id="register-form" name="register-form" novalidate>
+        <h2 class="panel-title">
+          إنشاء حساب طالب جديد
+        </h2>
 
-          <div class="field">
-            <label class="label" for="register-name">الاسم الكامل</label>
-            <input class="input" type="text" id="register-name" name="full_name" autocomplete="name">
-            <p class="field-error" id="register-name-error"></p>
-          </div>
-
-          <div class="field">
-            <label class="label" for="register-id">الرقم الجامعي</label>
-            <input class="input ltr" type="text" id="register-id" name="university_id" inputmode="numeric" placeholder="4XXXXXXXX">
-            <p class="field-error" id="register-id-error"></p>
-          </div>
-
-          <div class="field">
-            <label class="label" for="register-email">البريد الإلكتروني الجامعي</label>
-            <input class="input ltr" type="email" id="register-email" name="email" autocomplete="email" placeholder="name@example.com">
-            <p class="field-error" id="register-email-error"></p>
-          </div>
-
-          <div class="field">
-            <label class="label" for="register-password">كلمة المرور</label>
-            <div class="password-wrap">
-              <input class="input ltr" type="password" id="register-password" name="password" autocomplete="new-password">
-              <button type="button" class="toggle-pass" data-target="register-password">إظهار</button>
-            </div>
-            <p class="field-error" id="register-password-error"></p>
-          </div>
-
-          <div class="field">
-            <label class="label" for="register-confirm">تأكيد كلمة المرور</label>
-            <div class="password-wrap">
-              <input class="input ltr" type="password" id="register-confirm" name="confirm_password" autocomplete="new-password">
-              <button type="button" class="toggle-pass" data-target="register-confirm">إظهار</button>
-            </div>
-            <p class="field-error" id="register-confirm-error"></p>
-          </div>
-
-          <button type="submit" class="btn">إنشاء حساب</button>
-        </form>
-
-        <p class="switch-row">
-          لديك حساب بالفعل؟
-          <button type="button" class="link-btn" id="go-login-from-register">تسجيل الدخول</button>
-        </p>
-      </section>
-
-    
-      <section class="panel" id="panel-reset">
-        <h2 class="panel-title">إعادة تعيين كلمة المرور</h2>
         <p class="panel-desc">
-          أدخل بريدك الإلكتروني، وسيتم إرسال تعليمات إعادة تعيين كلمة المرور إليه.
+          أدخل بياناتك لإنشاء حسابك في منصة مِراس.
         </p>
 
-        <p class="message info show">
-          هذه واجهة تجريبية: لا يتم إرسال أي بريد فعليًا الآن، وسيتم تفعيل الميزة بعد ربط الموقع بالخادم.
-        </p>
 
-        <p class="message" id="reset-message" role="alert"></p>
+        <p
+          class="message"
+          id="register-message"
+          role="alert"
+        ></p>
 
-      
-        <form id="reset-form" name="reset-form" novalidate>
+
+        <form
+          id="register-form"
+          name="register-form"
+          novalidate
+        >
+
+
+          <!-- الاسم -->
 
           <div class="field">
-            <label class="label" for="reset-email">البريد الإلكتروني</label>
-            <input class="input ltr" type="email" id="reset-email" name="email" autocomplete="email" placeholder="name@example.com">
-            <p class="field-error" id="reset-email-error"></p>
+
+            <label
+              class="label"
+              for="register-name"
+            >
+              الاسم الكامل
+            </label>
+
+            <input
+              class="input"
+              type="text"
+              id="register-name"
+              name="full_name"
+              autocomplete="name"
+            >
+
+            <p
+              class="field-error"
+              id="register-name-error"
+            ></p>
+
           </div>
 
-          <button type="submit" class="btn">إرسال رابط إعادة التعيين</button>
+
+          <!-- الرقم الجامعي -->
+
+          <div class="field">
+
+            <label
+              class="label"
+              for="register-id"
+            >
+              الرقم الجامعي
+            </label>
+
+            <input
+              class="input ltr"
+              type="text"
+              id="register-id"
+              name="university_id"
+              inputmode="numeric"
+              placeholder="4XXXXXXXX"
+            >
+
+            <p
+              class="field-error"
+              id="register-id-error"
+            ></p>
+
+          </div>
+
+
+          <!-- رقم الجوال -->
+
+          <div class="field">
+
+            <label
+              class="label"
+              for="register-mobile"
+            >
+              رقم الجوال
+            </label>
+
+            <input
+              class="input ltr"
+              type="tel"
+              id="register-mobile"
+              name="mobile"
+              inputmode="tel"
+              autocomplete="tel"
+              placeholder="05XXXXXXXX"
+            >
+
+            <p
+              class="field-error"
+              id="register-mobile-error"
+            ></p>
+
+          </div>
+
+
+          <!-- التخصص -->
+
+          <div class="field">
+
+            <label
+              class="label"
+              for="register-major"
+            >
+              التخصص
+            </label>
+
+            <input
+              class="input"
+              type="text"
+              id="register-major"
+              name="major"
+              placeholder="مثال: تقنية المعلومات"
+            >
+
+            <p
+              class="field-error"
+              id="register-major-error"
+            ></p>
+
+          </div>
+
+
+          <!-- البريد -->
+
+          <div class="field">
+
+            <label
+              class="label"
+              for="register-email"
+            >
+              البريد الإلكتروني
+            </label>
+
+            <input
+              class="input ltr"
+              type="email"
+              id="register-email"
+              name="email"
+              autocomplete="email"
+              placeholder="name@example.com"
+            >
+
+            <p
+              class="field-error"
+              id="register-email-error"
+            ></p>
+
+          </div>
+
+
+          <!-- كلمة المرور -->
+
+          <div class="field">
+
+            <label
+              class="label"
+              for="register-password"
+            >
+              كلمة المرور
+            </label>
+
+            <div class="password-wrap">
+
+              <input
+                class="input ltr"
+                type="password"
+                id="register-password"
+                name="password"
+                autocomplete="new-password"
+              >
+
+              <button
+                type="button"
+                class="toggle-pass"
+                data-target="register-password"
+              >
+                إظهار
+              </button>
+
+            </div>
+
+            <p
+              class="field-error"
+              id="register-password-error"
+            ></p>
+
+          </div>
+
+
+          <!-- تأكيد كلمة المرور -->
+
+          <div class="field">
+
+            <label
+              class="label"
+              for="register-confirm"
+            >
+              تأكيد كلمة المرور
+            </label>
+
+            <div class="password-wrap">
+
+              <input
+                class="input ltr"
+                type="password"
+                id="register-confirm"
+                name="confirm_password"
+                autocomplete="new-password"
+              >
+
+              <button
+                type="button"
+                class="toggle-pass"
+                data-target="register-confirm"
+              >
+                إظهار
+              </button>
+
+            </div>
+
+            <p
+              class="field-error"
+              id="register-confirm-error"
+            ></p>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="btn"
+          >
+            إنشاء حساب
+          </button>
+
         </form>
 
+
         <p class="switch-row">
-          <button type="button" class="link-btn" id="back-to-login">العودة إلى تسجيل الدخول</button>
+
+          لديك حساب بالفعل؟
+
+          <button
+            type="button"
+            class="link-btn"
+            id="go-login-from-register"
+          >
+            تسجيل الدخول
+          </button>
+
         </p>
+
       </section>
+
+
+      <!-- ======================================================
+           RESET PASSWORD
+      ======================================================= -->
+
+      <section
+        class="panel"
+        id="panel-reset"
+      >
+
+        <h2 class="panel-title">
+          إعادة تعيين كلمة المرور
+        </h2>
+
+        <p class="panel-desc">
+          أدخل البريد الإلكتروني المرتبط بحسابك لإعادة تعيين كلمة المرور.
+        </p>
+
+
+        <p
+          class="message"
+          id="reset-message"
+          role="alert"
+        ></p>
+
+
+        <form
+          id="reset-form"
+          name="reset-form"
+          novalidate
+        >
+
+          <div class="field">
+
+            <label
+              class="label"
+              for="reset-email"
+            >
+              البريد الإلكتروني
+            </label>
+
+            <input
+              class="input ltr"
+              type="email"
+              id="reset-email"
+              name="email"
+              autocomplete="email"
+              placeholder="name@example.com"
+            >
+
+            <p
+              class="field-error"
+              id="reset-email-error"
+            ></p>
+
+          </div>
+
+
+          <button
+            type="submit"
+            class="btn"
+          >
+            إرسال رابط إعادة التعيين
+          </button>
+
+        </form>
+
+
+        <p class="switch-row">
+
+          <button
+            type="button"
+            class="link-btn"
+            id="back-to-login"
+          >
+            العودة إلى تسجيل الدخول
+          </button>
+
+        </p>
+
+      </section>
+
 
     </div>
+
   </main>
 
-  <footer class="footer" id="site-footer"></footer>
-
-  <script src="layout.js" defer></script>
 
   <script>
- 
-    var tabs = document.getElementById("auth-tabs");
-    var tabLogin = document.getElementById("tab-login");
-    var tabRegister = document.getElementById("tab-register");
+
+    /* ==========================================================
+       PANELS
+    ========================================================== */
+
+    var tabs =
+      document.getElementById("auth-tabs");
+
+    var tabLogin =
+      document.getElementById("tab-login");
+
+    var tabRegister =
+      document.getElementById("tab-register");
+
 
     var panels = {
-      login: document.getElementById("panel-login"),
-      register: document.getElementById("panel-register"),
-      reset: document.getElementById("panel-reset")
+
+      login:
+        document.getElementById("panel-login"),
+
+      register:
+        document.getElementById("panel-register"),
+
+      reset:
+        document.getElementById("panel-reset")
+
     };
 
+
     function showPanel(name) {
-      // إخفاء كل اللوحات ثم إظهار المطلوبة
+
       Object.keys(panels).forEach(function (key) {
+
         panels[key].classList.remove("active");
+
       });
+
+
       panels[name].classList.add("active");
 
-      // التبويبات تظهر فقط في تسجيل الدخول وإنشاء الحساب
-      tabs.style.display = (name === "reset") ? "none" : "flex";
 
-      // تمييز التبويب الحالي
-      tabLogin.classList.toggle("active", name === "login");
-      tabRegister.classList.toggle("active", name === "register");
-      tabLogin.setAttribute("aria-selected", name === "login");
-      tabRegister.setAttribute("aria-selected", name === "register");
+      tabs.style.display =
+        name === "reset"
+          ? "none"
+          : "flex";
 
-      // مسح الرسائل والأخطاء عند التنقل
-      document.querySelectorAll(".message:not(.info)").forEach(function (m) {
-        m.classList.remove("show");
-      });
-      document.querySelectorAll(".field-error").forEach(function (e) {
-        e.classList.remove("show");
-      });
-      document.querySelectorAll(".input").forEach(function (i) {
-        i.classList.remove("invalid");
-      });
+
+      tabLogin.classList.toggle(
+        "active",
+        name === "login"
+      );
+
+      tabRegister.classList.toggle(
+        "active",
+        name === "register"
+      );
+
+
+      tabLogin.setAttribute(
+        "aria-selected",
+        name === "login"
+      );
+
+      tabRegister.setAttribute(
+        "aria-selected",
+        name === "register"
+      );
+
+
+      document
+        .querySelectorAll(".message")
+        .forEach(function (message) {
+
+          message.classList.remove("show");
+
+        });
+
+
+      document
+        .querySelectorAll(".field-error")
+        .forEach(function (error) {
+
+          error.classList.remove("show");
+
+        });
+
+
+      document
+        .querySelectorAll(".input")
+        .forEach(function (input) {
+
+          input.classList.remove("invalid");
+
+        });
+
     }
 
-    tabLogin.addEventListener("click", function () { showPanel("login"); });
-    tabRegister.addEventListener("click", function () { showPanel("register"); });
-    document.getElementById("go-register").addEventListener("click", function () { showPanel("register"); });
-    document.getElementById("go-login-from-register").addEventListener("click", function () { showPanel("login"); });
-    document.getElementById("go-reset").addEventListener("click", function () { showPanel("reset"); });
-    document.getElementById("back-to-login").addEventListener("click", function () { showPanel("login"); });
+
+    tabLogin.addEventListener(
+      "click",
+      function () {
+
+        showPanel("login");
+
+      }
+    );
+
+
+    tabRegister.addEventListener(
+      "click",
+      function () {
+
+        showPanel("register");
+
+      }
+    );
+
+
+    document
+      .getElementById("go-register")
+      .addEventListener(
+        "click",
+        function () {
+
+          showPanel("register");
+
+        }
+      );
+
+
+    document
+      .getElementById("go-login-from-register")
+      .addEventListener(
+        "click",
+        function () {
+
+          showPanel("login");
+
+        }
+      );
+
+
+    document
+      .getElementById("go-reset")
+      .addEventListener(
+        "click",
+        function () {
+
+          showPanel("reset");
+
+        }
+      );
+
+
+    document
+      .getElementById("back-to-login")
+      .addEventListener(
+        "click",
+        function () {
+
+          showPanel("login");
+
+        }
+      );
 
 
     /* ==========================================================
-       ثانيًا: إظهار / إخفاء كلمة المرور
-       ========================================================== */
-    document.querySelectorAll(".toggle-pass").forEach(function (btn) {
-      btn.addEventListener("click", function () {
-        var input = document.getElementById(btn.dataset.target);
-        if (input.type === "password") {
-          input.type = "text";
-          btn.textContent = "إخفاء";
-        } else {
-          input.type = "password";
-          btn.textContent = "إظهار";
+       STUDENT / CLUB LOGIN
+    ========================================================== */
+
+    var selectedUserType = "student";
+
+    var userTypeButtons =
+      document.querySelectorAll(".user-type-btn");
+
+    var loginIdentifier =
+      document.getElementById("login-identifier");
+
+    var loginIdentifierLabel =
+      document.getElementById("login-identifier-label");
+
+
+    userTypeButtons.forEach(function (button) {
+
+      button.addEventListener("click", function () {
+
+        selectedUserType =
+          button.dataset.userType;
+
+
+        userTypeButtons.forEach(function (btn) {
+
+          btn.classList.remove("active");
+
+        });
+
+
+        button.classList.add("active");
+
+
+        loginIdentifier.value = "";
+
+        loginIdentifier.classList.remove("invalid");
+
+        document
+          .getElementById("login-identifier-error")
+          .classList.remove("show");
+
+
+        /* طالب */
+
+        if (selectedUserType === "student") {
+
+          loginIdentifierLabel.textContent =
+            "الرقم الجامعي";
+
+          loginIdentifier.type =
+            "text";
+
+          loginIdentifier.inputMode =
+            "numeric";
+
+          loginIdentifier.placeholder =
+            "4XXXXXXXX";
+
         }
+
+
+        /* مسؤول نادي */
+
+        else {
+
+          loginIdentifierLabel.textContent =
+            "البريد الإلكتروني";
+
+          loginIdentifier.type =
+            "email";
+
+          loginIdentifier.inputMode =
+            "email";
+
+          loginIdentifier.placeholder =
+            "club@example.com";
+
+        }
+
       });
+
     });
 
 
     /* ==========================================================
-       ثالثًا: دوال مساعدة للتحقق وعرض الرسائل
-       ========================================================== */
+       PASSWORD VISIBILITY
+    ========================================================== */
+
+    document
+      .querySelectorAll(".toggle-pass")
+      .forEach(function (btn) {
+
+        btn.addEventListener("click", function () {
+
+          var input =
+            document.getElementById(
+              btn.dataset.target
+            );
+
+
+          if (input.type === "password") {
+
+            input.type = "text";
+            btn.textContent = "إخفاء";
+
+          }
+
+          else {
+
+            input.type = "password";
+            btn.textContent = "إظهار";
+
+          }
+
+        });
+
+      });
+
+
+    /* ==========================================================
+       VALIDATION HELPERS
+    ========================================================== */
+
     function setError(inputId, text) {
-      document.getElementById(inputId).classList.add("invalid");
-      var error = document.getElementById(inputId + "-error");
+
+      document
+        .getElementById(inputId)
+        .classList.add("invalid");
+
+
+      var error =
+        document.getElementById(
+          inputId + "-error"
+        );
+
+
       error.textContent = text;
       error.classList.add("show");
+
     }
+
 
     function clearErrors(form) {
-      form.querySelectorAll(".input").forEach(function (i) {
-        i.classList.remove("invalid");
-      });
-      form.querySelectorAll(".field-error").forEach(function (e) {
-        e.classList.remove("show");
-      });
+
+      form
+        .querySelectorAll(".input")
+        .forEach(function (input) {
+
+          input.classList.remove("invalid");
+
+        });
+
+
+      form
+        .querySelectorAll(".field-error")
+        .forEach(function (error) {
+
+          error.classList.remove("show");
+
+        });
+
     }
+
 
     function showMessage(id, type, text) {
-      var box = document.getElementById(id);
-      box.className = "message show " + type;
-      box.textContent = text;
+
+      var box =
+        document.getElementById(id);
+
+      box.className =
+        "message show " + type;
+
+      box.textContent =
+        text;
+
     }
+
 
     function hideMessage(id) {
-      document.getElementById(id).classList.remove("show");
+
+      document
+        .getElementById(id)
+        .classList.remove("show");
+
     }
+
 
     function isValidEmail(email) {
+
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-      // لاحقًا يمكن حصر التسجيل على نطاق الجامعة، مثل: @student.ksu.edu.sa
+
+    }
+
+
+    function isValidMobile(mobile) {
+
+      return /^05\d{8}$/.test(mobile);
+
     }
 
 
     /* ==========================================================
-       رابعًا: نموذج تسجيل الدخول
-       ========================================================== */
-    var loginForm = document.getElementById("login-form");
+       LOGIN
+    ========================================================== */
 
-    loginForm.addEventListener("submit", function (event) {
-      event.preventDefault(); // منع إعادة تحميل الصفحة
-      clearErrors(loginForm);
-      hideMessage("login-message");
+    var loginForm =
+      document.getElementById("login-form");
 
-      var email = document.getElementById("login-email").value.trim();
-      var password = document.getElementById("login-password").value;
-      var valid = true;
 
-      if (email === "") {
-        setError("login-email", "يرجى إدخال البريد الإلكتروني.");
-        valid = false;
-      } else if (!isValidEmail(email)) {
-        setError("login-email", "صيغة البريد الإلكتروني غير صحيحة.");
-        valid = false;
+    loginForm.addEventListener(
+      "submit",
+      function (event) {
+
+        event.preventDefault();
+
+        clearErrors(loginForm);
+        hideMessage("login-message");
+
+
+        var identifier =
+          loginIdentifier.value.trim();
+
+        var password =
+          document
+            .getElementById("login-password")
+            .value;
+
+        var valid = true;
+
+
+        /* ----------------------------------
+           Student
+        ---------------------------------- */
+
+        if (selectedUserType === "student") {
+
+          if (identifier === "") {
+
+            setError(
+              "login-identifier",
+              "يرجى إدخال الرقم الجامعي."
+            );
+
+            valid = false;
+
+          }
+
+          else if (!/^\d+$/.test(identifier)) {
+
+            setError(
+              "login-identifier",
+              "الرقم الجامعي يجب أن يحتوي على أرقام فقط."
+            );
+
+            valid = false;
+
+          }
+
+        }
+
+
+        /* ----------------------------------
+           Club
+        ---------------------------------- */
+
+        else {
+
+          if (identifier === "") {
+
+            setError(
+              "login-identifier",
+              "يرجى إدخال البريد الإلكتروني."
+            );
+
+            valid = false;
+
+          }
+
+          else if (!isValidEmail(identifier)) {
+
+            setError(
+              "login-identifier",
+              "صيغة البريد الإلكتروني غير صحيحة."
+            );
+
+            valid = false;
+
+          }
+
+        }
+
+
+        /* Password */
+
+        if (password === "") {
+
+          setError(
+            "login-password",
+            "يرجى إدخال كلمة المرور."
+          );
+
+          valid = false;
+
+        }
+
+
+        if (!valid) {
+
+          showMessage(
+            "login-message",
+            "error",
+            "يرجى تصحيح الأخطاء الموضحة أدناه."
+          );
+
+          return;
+
+        }
+
+
+        /* ======================================================
+           مؤقت للـ Front-end Demo
+
+           عند ربط Backend:
+           لا يتم الانتقال إلا بعد أن يؤكد الخادم
+           أن الرقم الجامعي/الإيميل وكلمة المرور صحيحة.
+        ====================================================== */
+
+
+        if (selectedUserType === "student") {
+
+          window.location.href =
+            "home.html";
+
+        }
+
+        else {
+
+          window.location.href =
+            "clubAdmin.html";
+
+        }
+
       }
-
-      if (password === "") {
-        setError("login-password", "يرجى إدخال كلمة المرور.");
-        valid = false;
-      }
-
-      if (!valid) {
-        showMessage("login-message", "error", "يرجى تصحيح الأخطاء الموضحة أدناه.");
-        return;
-      }
-
-      // لا يوجد تسجيل دخول فعلي الآن: التحقق من الحساب سيتم لاحقًا في الخادم
-      showMessage("login-message", "info", "البيانات صحيحة من حيث الشكل. تسجيل الدخول الفعلي سيتم تفعيله بعد ربط الموقع بالخادم وقاعدة البيانات.");
-      document.getElementById("login-password").value = "";
-    });
+    );
 
 
     /* ==========================================================
-       خامسًا: نموذج إنشاء حساب طالب
-       ========================================================== */
-    var registerForm = document.getElementById("register-form");
+       STUDENT REGISTRATION
+    ========================================================== */
 
-    registerForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-      clearErrors(registerForm);
-      hideMessage("register-message");
+    var registerForm =
+      document.getElementById("register-form");
 
-      var name = document.getElementById("register-name").value.trim();
-      var uniId = document.getElementById("register-id").value.trim();
-      var email = document.getElementById("register-email").value.trim();
-      var password = document.getElementById("register-password").value;
-      var confirm = document.getElementById("register-confirm").value;
-      var valid = true;
 
-      if (name === "") {
-        setError("register-name", "يرجى إدخال الاسم الكامل.");
-        valid = false;
+    registerForm.addEventListener(
+      "submit",
+      function (event) {
+
+        event.preventDefault();
+
+        clearErrors(registerForm);
+        hideMessage("register-message");
+
+
+        var name =
+          document
+            .getElementById("register-name")
+            .value.trim();
+
+        var uniId =
+          document
+            .getElementById("register-id")
+            .value.trim();
+
+        var mobile =
+          document
+            .getElementById("register-mobile")
+            .value.trim();
+
+        var major =
+          document
+            .getElementById("register-major")
+            .value.trim();
+
+        var email =
+          document
+            .getElementById("register-email")
+            .value.trim();
+
+        var password =
+          document
+            .getElementById("register-password")
+            .value;
+
+        var confirm =
+          document
+            .getElementById("register-confirm")
+            .value;
+
+
+        var valid = true;
+
+
+        /* Full name */
+
+        if (name === "") {
+
+          setError(
+            "register-name",
+            "يرجى إدخال الاسم الكامل."
+          );
+
+          valid = false;
+
+        }
+
+
+        /* University ID */
+
+        if (uniId === "") {
+
+          setError(
+            "register-id",
+            "يرجى إدخال الرقم الجامعي."
+          );
+
+          valid = false;
+
+        }
+
+        else if (!/^\d+$/.test(uniId)) {
+
+          setError(
+            "register-id",
+            "الرقم الجامعي يجب أن يحتوي على أرقام فقط."
+          );
+
+          valid = false;
+
+        }
+
+
+        /* Mobile */
+
+        if (mobile === "") {
+
+          setError(
+            "register-mobile",
+            "يرجى إدخال رقم الجوال."
+          );
+
+          valid = false;
+
+        }
+
+        else if (!isValidMobile(mobile)) {
+
+          setError(
+            "register-mobile",
+            "يرجى إدخال رقم جوال صحيح يبدأ بـ 05 ويتكون من 10 أرقام."
+          );
+
+          valid = false;
+
+        }
+
+
+        /* Major */
+
+        if (major === "") {
+
+          setError(
+            "register-major",
+            "يرجى إدخال التخصص."
+          );
+
+          valid = false;
+
+        }
+
+
+        /* Email */
+
+        if (email === "") {
+
+          setError(
+            "register-email",
+            "يرجى إدخال البريد الإلكتروني."
+          );
+
+          valid = false;
+
+        }
+
+        else if (!isValidEmail(email)) {
+
+          setError(
+            "register-email",
+            "صيغة البريد الإلكتروني غير صحيحة."
+          );
+
+          valid = false;
+
+        }
+
+
+        /* Password */
+
+        if (password === "") {
+
+          setError(
+            "register-password",
+            "يرجى إدخال كلمة المرور."
+          );
+
+          valid = false;
+
+        }
+
+        else if (password.length < 8) {
+
+          setError(
+            "register-password",
+            "كلمة المرور يجب ألا تقل عن 8 أحرف."
+          );
+
+          valid = false;
+
+        }
+
+
+        /* Confirm password */
+
+        if (confirm === "") {
+
+          setError(
+            "register-confirm",
+            "يرجى تأكيد كلمة المرور."
+          );
+
+          valid = false;
+
+        }
+
+        else if (confirm !== password) {
+
+          setError(
+            "register-confirm",
+            "كلمة المرور وتأكيدها غير متطابقتين."
+          );
+
+          valid = false;
+
+        }
+
+
+        if (!valid) {
+
+          showMessage(
+            "register-message",
+            "error",
+            "يرجى تصحيح الأخطاء الموضحة أدناه."
+          );
+
+          return;
+
+        }
+
+
+        /* ======================================================
+           Backend Required
+
+           هنا لاحقًا:
+           1. التحقق أن University ID غير مسجل.
+           2. التحقق أن Email غير مسجل.
+           3. إنشاء Student Account.
+           4. بعد النجاح يتم الانتقال إلى Login.
+
+           حاليًا نحاكي نجاح التسجيل للعرض فقط.
+        ====================================================== */
+
+
+        showMessage(
+          "register-message",
+          "success",
+          "تم إنشاء الحساب بنجاح. سيتم تحويلك إلى تسجيل الدخول."
+        );
+
+
+        registerForm.reset();
+
+
+        setTimeout(function () {
+
+          showPanel("login");
+
+        }, 1200);
+
       }
-
-      if (uniId === "") {
-        setError("register-id", "يرجى إدخال الرقم الجامعي.");
-        valid = false;
-      } else if (!/^\d+$/.test(uniId)) {
-        setError("register-id", "الرقم الجامعي يجب أن يحتوي على أرقام فقط.");
-        valid = false;
-      }
-
-      if (email === "") {
-        setError("register-email", "يرجى إدخال البريد الإلكتروني الجامعي.");
-        valid = false;
-      } else if (!isValidEmail(email)) {
-        setError("register-email", "صيغة البريد الإلكتروني غير صحيحة.");
-        valid = false;
-      }
-
-      if (password === "") {
-        setError("register-password", "يرجى إدخال كلمة المرور.");
-        valid = false;
-      } else if (password.length < 8) {
-        setError("register-password", "كلمة المرور يجب ألا تقل عن 8 أحرف.");
-        valid = false;
-      }
-
-      if (confirm === "") {
-        setError("register-confirm", "يرجى تأكيد كلمة المرور.");
-        valid = false;
-      } else if (confirm !== password) {
-        setError("register-confirm", "كلمة المرور وتأكيدها غير متطابقتين.");
-        valid = false;
-      }
-
-      if (!valid) {
-        showMessage("register-message", "error", "يرجى تصحيح الأخطاء الموضحة أدناه.");
-        return;
-      }
-
-      // لا يتم إنشاء حساب فعلي الآن
-      showMessage("register-message", "success", "تم التحقق من بياناتك بنجاح. سيتم إنشاء الحساب فعليًا بعد ربط الموقع بالخادم وقاعدة البيانات.");
-      registerForm.reset();
-    });
+    );
 
 
     /* ==========================================================
-       سادسًا: نموذج إعادة تعيين كلمة المرور
-       ========================================================== */
-    var resetForm = document.getElementById("reset-form");
+       RESET PASSWORD
+    ========================================================== */
 
-    resetForm.addEventListener("submit", function (event) {
-      event.preventDefault();
-      clearErrors(resetForm);
-      hideMessage("reset-message");
+    var resetForm =
+      document.getElementById("reset-form");
 
-      var email = document.getElementById("reset-email").value.trim();
 
-      if (email === "") {
-        setError("reset-email", "يرجى إدخال البريد الإلكتروني.");
-        return;
+    resetForm.addEventListener(
+      "submit",
+      function (event) {
+
+        event.preventDefault();
+
+        clearErrors(resetForm);
+        hideMessage("reset-message");
+
+
+        var email =
+          document
+            .getElementById("reset-email")
+            .value.trim();
+
+
+        if (email === "") {
+
+          setError(
+            "reset-email",
+            "يرجى إدخال البريد الإلكتروني."
+          );
+
+          return;
+
+        }
+
+
+        if (!isValidEmail(email)) {
+
+          setError(
+            "reset-email",
+            "صيغة البريد الإلكتروني غير صحيحة."
+          );
+
+          return;
+
+        }
+
+
+        showMessage(
+          "reset-message",
+          "success",
+          "تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني."
+        );
+
       }
+    );
 
-      if (!isValidEmail(email)) {
-        setError("reset-email", "صيغة البريد الإلكتروني غير صحيحة.");
-        return;
-      }
-
-      // لا يتم إرسال أي بريد فعليًا
-      showMessage("reset-message", "info", "هذه نسخة تجريبية: لم يتم إرسال أي بريد. سيتم إرسال رابط إعادة التعيين بعد تفعيل الخادم.");
-    });
   </script>
 
 </body>
