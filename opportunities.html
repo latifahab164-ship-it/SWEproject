@@ -3,48 +3,483 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>مِراس - الفرص</title>
+
   <link rel="stylesheet" href="Style.css">
   <link rel="stylesheet" href="student.css">
+
+  <style>
+    /* =====================================================
+       نافذة تأكيد التقديم - خاصة بصفحة الفرص فقط
+    ===================================================== */
+
+    .apply-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      padding: 20px;
+
+      background-color: rgba(31, 63, 73, 0.32);
+
+      opacity: 0;
+      visibility: hidden;
+
+      transition:
+        opacity 0.2s ease,
+        visibility 0.2s ease;
+    }
+
+    .apply-modal.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+
+    /* ===== نافذة التأكيد ===== */
+
+    .apply-modal-card {
+      width: 100%;
+      max-width: 440px;
+
+      padding: 30px;
+
+      background-color: #FFFCF8;
+
+      border: 1px solid rgba(46, 85, 96, 0.18);
+      border-top: 6px solid #7BB0BC;
+      border-radius: 20px;
+
+      box-shadow:
+        0 18px 50px rgba(46, 85, 96, 0.20);
+
+      text-align: center;
+
+      transform: translateY(12px);
+
+      transition: transform 0.2s ease;
+    }
+
+    .apply-modal.show .apply-modal-card {
+      transform: translateY(0);
+    }
+
+
+    /* ===== الأيقونة ===== */
+
+    .apply-modal-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 54px;
+      height: 54px;
+
+      margin: 0 auto 16px;
+
+      border-radius: 50%;
+
+      background-color: #F9E5AE;
+
+      color: #2E5560;
+
+      font-size: 23px;
+      font-weight: 500;
+    }
+
+    .apply-modal-icon.success {
+      background-color: #8EB8BF;
+      color: #fff;
+    }
+
+
+    /* ===== العنوان والنص ===== */
+
+    .apply-modal-title {
+      margin: 0 0 8px;
+
+      color: #1F3F49;
+
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    .apply-modal-text {
+      margin: 0;
+
+      color: #2E5560;
+
+      font-size: 15px;
+      font-weight: 400;
+      line-height: 1.8;
+    }
+
+
+    /* ===== بيانات الفرصة داخل النافذة ===== */
+
+    .apply-modal-opportunity {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      margin-top: 20px;
+      padding: 14px 16px;
+
+      background-color: #F8F0EA;
+
+      border-right: 5px solid #7BB0BC;
+      border-radius: 12px;
+
+      text-align: right;
+    }
+
+    .apply-modal-label {
+      color: #7BB0BC;
+
+      font-size: 13px;
+      font-weight: 500;
+    }
+
+    .apply-modal-opportunity strong {
+      color: #1F3F49;
+
+      font-size: 16px;
+      font-weight: 500;
+    }
+
+    .apply-modal-opportunity span:last-child {
+      color: #2E5560;
+
+      font-size: 14px;
+    }
+
+
+    /* ===== أزرار النافذة ===== */
+
+    .apply-modal-actions {
+      display: flex;
+      gap: 10px;
+
+      margin-top: 24px;
+    }
+
+    .apply-modal-confirm,
+    .apply-modal-cancel {
+      flex: 1;
+
+      padding: 10px 20px;
+
+      border-radius: 999px;
+
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 500;
+
+      cursor: pointer;
+
+      transition:
+        background-color 0.2s,
+        border-color 0.2s,
+        color 0.2s;
+    }
+
+
+    /* زر تأكيد التقديم */
+
+    .apply-modal-confirm {
+      background-color: #2E5560;
+
+      border: 2px solid #2E5560;
+
+      color: #fff;
+    }
+
+    .apply-modal-confirm:hover {
+      background-color: #EDD08A;
+      border-color: #EDD08A;
+
+      color: #2E5560;
+    }
+
+
+    /* زر إلغاء */
+
+    .apply-modal-cancel {
+      background-color: transparent;
+
+      border: 2px solid #7BB0BC;
+
+      color: #2E5560;
+    }
+
+    .apply-modal-cancel:hover {
+      background-color: #F9E5AE;
+      border-color: #EDD08A;
+
+      color: #2E5560;
+    }
+
+
+    /* ===== حالة تم التقديم ===== */
+
+    .apply.applied {
+      background-color: #8EB8BF !important;
+      border-color: #7BB0BC !important;
+
+      color: #fff !important;
+
+      cursor: default;
+    }
+
+
+    /* ===== Responsive ===== */
+
+    @media (max-width: 600px) {
+
+      .apply-modal-card {
+        padding: 24px 18px;
+      }
+
+      .apply-modal-actions {
+        flex-direction: column;
+      }
+
+    }
+  </style>
 </head>
+
+
 <body data-role="student" data-page="opportunities">
 
   <header class="header" id="site-header"></header>
 
+
   <main class="home">
 
     <!-- ===== Title ===== -->
+
     <section class="hero">
       <img src="sunMeras.png" alt="" class="hero-sun">
-      <h1>اكتشــف الفــرص في الأنديــة الطلابيــة</h1>
+
+      <h1>
+        اكتشــف الفــرص في الأنديــة الطلابيــة
+      </h1>
     </section>
+
 
     <!-- ===== Filtering ===== -->
+
     <section class="filters" aria-label="التصفية">
-      <input type="search" id="searchBox" class="search" placeholder="ابحث عن فرصة..." aria-label="بحث في الفرص" autocomplete="off">
+
+      <input
+        type="search"
+        id="searchBox"
+        class="search"
+        placeholder="ابحث عن فرصة..."
+        aria-label="بحث في الفرص"
+        autocomplete="off"
+      >
+
+
       <div class="chips" id="chips">
-        <button type="button" class="chip active" data-option="all">الكــل</button>
-        <button type="button" class="chip" data-option="club">حســب النــادي</button>
-        <button type="button" class="chip" data-option="skill">حســب المهــارة</button>
-        <button type="button" class="chip" data-option="now">متاحــة الآن</button>
+
+        <button
+          type="button"
+          class="chip active"
+          data-option="all">
+          الكــل
+        </button>
+
+        <button
+          type="button"
+          class="chip"
+          data-option="club">
+          حســب النــادي
+        </button>
+
+        <button
+          type="button"
+          class="chip"
+          data-option="skill">
+          حســب المهــارة
+        </button>
+
+        <button
+          type="button"
+          class="chip"
+          data-option="now">
+          متاحــة الآن
+        </button>
+
       </div>
 
-      <select id="clubSelect" class="picker" hidden aria-label="اختر النادي"></select>
-      <select id="skillSelect" class="picker" hidden aria-label="اختر المهارة"></select>
+
+      <select
+        id="clubSelect"
+        class="picker"
+        hidden
+        aria-label="اختر النادي">
+      </select>
+
+
+      <select
+        id="skillSelect"
+        class="picker"
+        hidden
+        aria-label="اختر المهارة">
+      </select>
+
     </section>
 
+
     <!-- ===== Results ===== -->
+
     <section class="results">
-      <p id="emptyMessage" class="empty" hidden>لا يوجد فرص متاحة، نقدّر اهتمامك!</p>
+
+      <p
+        id="emptyMessage"
+        class="empty"
+        hidden>
+        لا يوجد فرص متاحة، نقدّر اهتمامك!
+      </p>
+
       <div id="cards" class="cards"></div>
+
     </section>
 
   </main>
 
-  <footer class="footer" id="site-footer"></footer>
+
+  <!-- =====================================================
+       نافذة تأكيد التقديم
+  ====================================================== -->
+
+  <div
+    class="apply-modal"
+    id="applyModal"
+    aria-hidden="true">
+
+    <div
+      class="apply-modal-card"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="applyModalTitle">
+
+
+      <div class="apply-modal-icon">
+        ✓
+      </div>
+
+
+      <h2
+        class="apply-modal-title"
+        id="applyModalTitle">
+        تأكيد التقديم
+      </h2>
+
+
+      <p class="apply-modal-text">
+        هل أنت متأكد من رغبتك في التقديم على هذه الفرصة؟
+      </p>
+
+
+      <div class="apply-modal-opportunity">
+
+        <span class="apply-modal-label">
+          الفرصة
+        </span>
+
+        <strong id="applyOpportunityTitle"></strong>
+
+        <span id="applyOpportunityClub"></span>
+
+      </div>
+
+
+      <div class="apply-modal-actions">
+
+        <button
+          type="button"
+          class="apply-modal-confirm"
+          id="confirmApply">
+          تأكيد التقديم
+        </button>
+
+
+        <button
+          type="button"
+          class="apply-modal-cancel"
+          id="cancelApply">
+          إلغاء
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       نافذة نجاح التقديم
+  ====================================================== -->
+
+  <div
+    class="apply-modal"
+    id="successModal"
+    aria-hidden="true">
+
+    <div
+      class="apply-modal-card"
+      role="dialog"
+      aria-modal="true">
+
+
+      <div class="apply-modal-icon success">
+        ✓
+      </div>
+
+
+      <h2 class="apply-modal-title">
+        تم التقديم بنجاح
+      </h2>
+
+
+      <p class="apply-modal-text">
+        تم إرسال طلبك إلى النادي بنجاح، ويمكنك متابعة حالة الطلب من صفحة طلباتي.
+      </p>
+
+
+      <div class="apply-modal-actions">
+
+        <button
+          type="button"
+          class="apply-modal-confirm"
+          id="closeSuccess">
+          تم
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <footer
+    class="footer"
+    id="site-footer">
+  </footer>
+
 
   <script src="layout.js" defer></script>
   <script src="opportunities-data.js" defer></script>
   <script src="opportunities.js" defer></script>
+
 </body>
 </html>
